@@ -11,6 +11,7 @@ import BaseLayout from '../layout/base-layout.astro';
 		id='open'>
 		popover
 	</div>
+	<h2 class='title'>hhhhhhh</h2>
 	<form
 		class='max-w-2xl m-auto form bg-gray-100 p-3 rounded-2xl'
 		action=''>
@@ -23,8 +24,62 @@ import BaseLayout from '../layout/base-layout.astro';
 			<option value=''>hello</option>
 		</select>
 	</form>
+	<p class='anchor'>anchor</p>
+	<div class='max-w-96 m-auto'>
+		<details name='t'>
+			<summary data-no-transition=''>Tester 1</summary>
+			<div class='details'>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Similique, maiores!
+				</p>
+			</div>
+		</details>
+		<details name='t'>
+			<summary>Tester 1</summary>
+			<div class='details'>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Similique, maiores!
+				</p>
+			</div>
+		</details>
+		<details name='t'>
+			<summary>Tester 1</summary>
+			<div class='details'>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Similique, maiores!
+				</p>
+			</div>
+		</details>
+		<details name='t'>
+			<summary>Tester 1</summary>
+			<div class='details'>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Similique, maiores!
+				</p>
+			</div>
+		</details>
+	</div>
 </BaseLayout>
 <style lang='scss'>
 	.form {
+	}
+	.title {
+		anchor-name: --title;
+	}
+	.anchor {
+		position-anchor: --title;
+		position: absolute;
+		left: anchor(right);
+		bottom: anchor(top);
+	}
+	details {
+		--drop-down-icon: '--';
+		&[open] {
+			--drop-down-icon: '&';
+		}
 	}
 </style>

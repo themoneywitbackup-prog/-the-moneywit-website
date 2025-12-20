@@ -145,6 +145,8 @@
     /* Border Radius Compound */
     --border-radius-top-compound: var(--border-radius-top) var(--border-radius-top) var(--margin-zero) var(--margin-zero);
     --border-radius-bottom-compound: var(--margin-zero) var(--margin-zero) var(--border-radius-bottom) var(--border-radius-bottom);
+
+    interpolate-size: allow-keywords;
   }
 }
 
@@ -395,11 +397,14 @@
 
 
   select {
+    display: flex;
+    align-items: center;
     appearance: base-select;
 
     &::picker-icon {
       content: var(--drop-down-icon);
       color: var(--picker-icon-color);
+      block-size: 1em;
       transition: var(--transition-duration-medium) rotate;
     }
 
@@ -514,20 +519,48 @@
 
 /* Details */
 @layer details {
-  details > summary {
-    cursor: pointer;
-    list-style: none;
-  }
 
-  details > summary::marker,
-  details > summary::-webkit-details-marker {
-    display: none;
+  details {
+    & > summary {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      align-content: center;
+      list-style: none;
+      justify-content: space-between;
+
+      &::marker,
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        content: var(--drop-down-icon); // use SVG from CSS var
+        block-size: 1em;
+        aspect-ratio: 1 / 1;
+        transition: transform var(--transition-duration-fast) var(--ease-out-3);
+        transform-origin: center center;
+
+      }
+    }
+
+
+    &[open] {
+      & > summary {
+        &:not([data-no-transition]) {
+          &::after {
+            transform: rotate(var(--rotation-180));
+          }
+        }
+
+      }
+    }
+
   }
 
   @supports (interpolate-size: allow-keywords) {
-    :root {
-      interpolate-size: allow-keywords;
-    }
+
 
     ::details-content {
       --trans-duration: var(--transition-duration-base);
@@ -543,6 +576,10 @@
       padding-bottom: var(--details-padding-bottom);
     }
   }
+
+
+
+
 }
 
 /* Dialog */
