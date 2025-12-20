@@ -87,7 +87,7 @@
     --option-bg: #fff;
     --option-hover: #3d52ea;
     --option-check: '☑️';
-    --drop-down-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.0002 6.66679C18.0002 6.88013 17.9185 7.09346 17.756 7.25596L11.0894 13.9226C10.7635 14.2485 10.2369 14.2485 9.91104 13.9226L3.24437 7.25596C2.91854 6.93013 2.91854 6.40346 3.24437 6.07763C3.57021 5.75179 4.09687 5.75179 4.42271 6.07763L10.5002 12.1551L16.5777 6.07763C16.9035 5.75179 17.4302 5.75179 17.756 6.07763C17.9185 6.24013 18.0002 6.45346 18.0002 6.66679Z' fill='%235F738C'/%3E%3C/svg%3E");
+    --drop-down-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.0002 6.66679C18.0002 6.88013 17.9185 7.09346 17.756 7.25596L11.0894 13.9226C10.7635 14.2485 10.2369 14.2485 9.91104 13.9226L3.24437 7.25596C2.91854 6.93013 2.91854 6.40346 3.24437 6.07763C3.57021 5.75179 4.09687 5.75179 4.42271 6.07763L10.5002 12.1551L16.5777 6.07763C16.9035 5.75179 17.4302 5.75179 17.756 6.07763C17.9185 6.24013 18.0002 6.45346 18.0002 6.66679Z' fill=var(--option-hover) /%3E%3C/svg%3E");
     --img-placeholder: url(../assets/img-bg.svg);
     --debug: magenta;
     --target-text-bg: #FBE9E9;
@@ -141,11 +141,9 @@
     /* Borders */
     --table-border: var(--table-border-width) var(--outline-style) var(--table-border-color);
     --debug-outline: var(--table-border-width) var(--outline-style) var(--debug);
-
     /* Border Radius Compound */
     --border-radius-top-compound: var(--border-radius-top) var(--border-radius-top) var(--margin-zero) var(--margin-zero);
     --border-radius-bottom-compound: var(--margin-zero) var(--margin-zero) var(--border-radius-bottom) var(--border-radius-bottom);
-
     interpolate-size: allow-keywords;
   }
 }
@@ -494,7 +492,7 @@
     container-type: inline-size;
   }
 
-  section {
+  :is(section):not([data-no-cv]) {
     content-visibility: auto;
     contain-intrinsic-size: auto var(--section-intrinsic-size);
   }
