@@ -296,15 +296,17 @@
   table {
     border-collapse: var(--border-collapse);
     width: var(--width-full);
+
+    th,
+    td {
+      text-align: var(--text-align-left);
+      vertical-align: var(--vertical-align-top);
+      padding: var(--padding-table-cell);
+      border: var(--table-border);
+    }
   }
 
-  th,
-  td {
-    text-align: var(--text-align-left);
-    vertical-align: var(--vertical-align-top);
-    padding: var(--padding-table-cell);
-    border: var(--table-border);
-  }
+
 
   ::selection {
     background-color: var(--selection-bg);
@@ -391,11 +393,6 @@
     }
   }
 
-
-
-
-
-
   select {
     display: flex;
     align-items: center;
@@ -442,10 +439,6 @@
 
     }
   }
-
-
-
-
 
   /* transition the selected option changing */
   selectedcontent > * {
