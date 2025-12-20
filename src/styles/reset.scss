@@ -72,18 +72,8 @@
 @layer tokens {
   :root {
     /* Container & Layout */
-    --container-170: 1170px;
-    --container-lg: 1120px;
-    --container-max: 1440px;
-    --container-lgsx: 1127px;
-    --container-lgx1: 1140px;
-    --container-sm: 768px;
-    --mobile-lg: 800px;
     --nav-container: 80rem;
-    --container-1200: 75rem;
-    --max-container: 75rem;
-    --container: 75rem;
-    --page-container: 75rem;
+    --container: 1200px;
 
     /* Static Properties (moved from @property) */
     --scroll-width: 0px;
@@ -147,9 +137,7 @@
     --order-one: 1;
     --iteration-count: 1;
     --anchor-left: 0%;
-
     --backdrop-color: #00000083;
-
     /* Borders */
     --table-border: var(--table-border-width) var(--outline-style) var(--table-border-color);
     --debug-outline: var(--table-border-width) var(--outline-style) var(--debug);
@@ -168,7 +156,6 @@
     box-sizing: var(--box-sizing);
     font-family: var(--averta-font);
     color: var(--foreground);
-
   }
 
   html,
@@ -201,7 +188,6 @@
   body {
     min-height: var(--min-height-full);
     line-height: var(--line-height-base);
-    font-family: var(--averta-font);
     background-color: var(--background);
     color: var(--foreground);
     text-rendering: optimizeSpeed;
@@ -403,22 +389,34 @@
     }
   }
 
-  select,
+
+
+
+
+
+  select {
+    appearance: base-select;
+
+    &::picker-icon {
+      content: var(--drop-down-icon);
+      color: var(--picker-icon-color);
+      transition: var(--transition-duration-medium) rotate;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:open {
+      &::picker-icon {
+        rotate: var(--rotation-180);
+      }
+    }
+  }
+
+
   ::picker(select) {
     appearance: base-select;
-  }
-
-  select::picker-icon {
-    content: var(--drop-down-icon);
-    color: var(--picker-icon-color);
-    transition: var(--transition-duration-medium) rotate;
-  }
-
-  select:open::picker-icon {
-    rotate: var(--rotation-180);
-  }
-
-  ::picker(select) {
     opacity: var(--opacity-hidden);
     transition:
       opacity var(--transition-duration-fast) ease,
@@ -426,26 +424,23 @@
       display var(--transition-duration-fast) allow-discrete,
       overlay var(--transition-duration-fast) allow-discrete;
     border: none;
-  }
+    top: calc(anchor(bottom) + var(--picker-offset));
+    left: anchor(var(--anchor-left));
 
-  ::picker(select):popover-open {
-    opacity: var(--opacity-visible);
-  }
+    &:popover-open {
+      opacity: var(--opacity-visible);
+      transition: opacity .4s ease;
 
-  @starting-style {
-    ::picker(select):popover-open {
-      opacity: var(--opacity-hidden);
+      @starting-style {
+        opacity: var(--opacity-hidden);
+      }
+
     }
   }
 
-  ::picker(select) {
-    top: calc(anchor(bottom) + var(--picker-offset));
-    left: anchor(var(--anchor-left));
-  }
 
-  select::-ms-expand {
-    display: none;
-  }
+
+
 
   /* transition the selected option changing */
   selectedcontent > * {
@@ -553,69 +548,80 @@
 /* Dialog */
 @layer modal {
   dialog {
-    transition:
-      display var(--transition-duration-slower) allow-discrete,
-      overlay var(--transition-duration-slower) allow-discrete,
-      scale var(--transition-duration-fast) var(--ease-out-3);
-    scale: var(--opacity-hidden);
 
-    &[open] {
+    &:not([data-no-transition]) {
       transition:
         display var(--transition-duration-slower) allow-discrete,
         overlay var(--transition-duration-slower) allow-discrete,
-        scale var(--transition-duration-slow) var(--ease-out-3);
-      scale: var(--opacity-visible);
+        scale var(--transition-duration-fast) var(--ease-out-3);
+      scale: var(--opacity-hidden);
 
-      @starting-style {
-        scale: var(--opacity-hidden);
+      &[open] {
+        transition:
+          display var(--transition-duration-slower) allow-discrete,
+          overlay var(--transition-duration-slower) allow-discrete,
+          scale var(--transition-duration-slow) var(--ease-out-3);
+        scale: var(--opacity-visible);
+
+        @starting-style {
+          scale: var(--opacity-hidden);
+        }
+
+        &::backdrop {
+          opacity: var(--opacity-visible);
+
+          @starting-style {
+            opacity: var(--opacity-hidden);
+          }
+        }
       }
 
       &::backdrop {
-        opacity: var(--opacity-visible);
-
-        @starting-style {
-          opacity: var(--opacity-hidden);
-        }
+        background-color: var(--background-color);
+        transition: opacity var(--transition-duration-slower);
+        opacity: var(--opacity-hidden);
       }
     }
 
-    &::backdrop {
-      background-color: var(--background-color);
-      transition: opacity var(--transition-duration-slower);
-      opacity: var(--opacity-hidden);
-    }
   }
 
   [popover] {
-    transition:
-      display var(--transition-duration-slower) allow-discrete,
-      overlay var(--transition-duration-slower) allow-discrete,
-      scale var(--transition-duration-fast) var(--ease-out-3);
-    scale: var(--opacity-hidden);
+    margin: auto;
 
-    &:popover-open {
+    &:not([data-no-transition]) {
       transition:
         display var(--transition-duration-slower) allow-discrete,
         overlay var(--transition-duration-slower) allow-discrete,
-        scale var(--transition-duration-slow) var(--ease-out-3);
-      scale: var(--opacity-visible);
+        scale var(--transition-duration-fast) var(--ease-out-3);
+      scale: var(--opacity-hidden);
 
-      @starting-style {
-        scale: var(--opacity-hidden);
-      }
-
-      &::backdrop {
-        background-color: var(--backdrop-color);
-        backdrop-filter: blur(var(--blur-amount));
-        transition: opacity var(--transition-duration-slower);
-        opacity: var(--opacity-visible);
+      &:popover-open {
+        transition:
+          display var(--transition-duration-slower) allow-discrete,
+          overlay var(--transition-duration-slower) allow-discrete,
+          scale var(--transition-duration-slow) var(--ease-out-3);
+        scale: var(--opacity-visible);
 
         @starting-style {
-          opacity: var(--opacity-hidden);
+          scale: var(--opacity-hidden);
         }
 
+        &::backdrop {
+          background-color: var(--backdrop-color);
+          backdrop-filter: blur(var(--blur-amount));
+          transition: opacity var(--transition-duration-slower);
+          opacity: var(--opacity-visible);
+
+          @starting-style {
+            opacity: var(--opacity-hidden);
+          }
+
+        }
       }
     }
+
+
+
   }
 
 }

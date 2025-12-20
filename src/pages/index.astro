@@ -4,4 +4,27 @@ import BaseLayout from '../layout/base-layout.astro';
 
 <BaseLayout>
 	<h2 class='text-4xl text-cta-blue'>Hello Every 1</h2>
+	<button popovertarget='open'>Open</button>
+	<div
+		class=''
+		popover='auto'
+		id='open'>
+		popover
+	</div>
+	<form
+		class='max-w-2xl m-auto form bg-gray-100 p-3 rounded-2xl'
+		action=''>
+		<select
+			name=''
+			id=''>
+			<option value=''>select one</option>
+			<option value=''>hello</option>
+			<option value=''>hello</option>
+			<option value=''>hello</option>
+		</select>
+	</form>
 </BaseLayout>
+<style lang='scss'>
+	.form {
+	}
+</style>
