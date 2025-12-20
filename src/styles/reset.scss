@@ -1,32 +1,3 @@
-/* ==========================================
-   Global Design System Reset & Baseline
-   Author: Clement Femi Bazuaye
-   Github: https://github.com/dev-bazz
-   LinkedIn: https://www.linkedin.com/in/devbazz/
-   ========================================== */
-/*
-#:~:text=hello,you
-  ::target-text {}
-  */
-
-@property --base {
-  initial-value: #fff;
-  inherits: true;
-  syntax: "<color>";
-}
-
-@property --background {
-  initial-value: #fff;
-  inherits: true;
-  syntax: "<color>";
-}
-
-@property --foreground {
-  initial-value: #111;
-  inherits: true;
-  syntax: "<color>";
-}
-
 @property --spacing {
   initial-value: 1rem;
   inherits: true;
@@ -39,11 +10,7 @@
   syntax: "<length>";
 }
 
-@property --outline-color {
-  initial-value: #0275d8;
-  inherits: true;
-  syntax: "<color>";
-}
+
 
 @property --outline-offset {
   initial-value: 0.25rem;
@@ -51,17 +18,6 @@
   syntax: "<length>";
 }
 
-@property --selection-bg {
-  initial-value: #ebf8fe;
-  inherits: true;
-  syntax: "<color>";
-}
-
-@property --selection-fg {
-  initial-value: #0275d8;
-  inherits: true;
-  syntax: "<color>";
-}
 
 ::target-text {
   background-color: var(--target-text-bg);
@@ -69,23 +25,46 @@
   font-weight: var(--font-weight-bold);
 }
 
+@layer color-schema {
+  :root {
+    color-scheme: light dark;
+
+    /* Override all color properties with light-dark() */
+    --base: light-dark(#fff, #111);
+    --background: light-dark(#fff, #111);
+    --foreground: light-dark(#111, #fff);
+    --selection-bg: light-dark(#ebf8fe, #1a3a52);
+    --selection-fg: light-dark(#1a3a52, #ebf8fe);
+    --outline-color: light-dark(#0275d8, #4a9eff);
+    --option-hover-bg: light-dark(#e5e5e5, #2a2a2a);
+    --table-border-color: light-dark(#ddd, #444);
+    --scroll-thumb-color: light-dark(rgb(47, 47, 47), rgb(200, 200, 200));
+    --scroll-hover-color: light-dark(rgb(77, 87, 108), rgb(150, 160, 180));
+    --target-text-bg: light-dark(#FBE9E9, #4a2020);
+    --target-text-color: light-dark(#353F50, #e0e8f0);
+    --option-fg: light-dark(#000, #fff);
+    --option-bg: light-dark(#fff, #1a1a1a);
+    --option-hover: light-dark(#3d52ea, #6b7fff);
+    --backdrop-color: light-dark(#00000083, #ffffff20);
+  }
+
+
+}
+
 @layer tokens {
   :root {
-    /* Container & Layout */
-    --nav-container: 80rem;
-    --container: 1200px;
-
+    /* Container Query Breakpoints */
+    --container-xs: 20rem;
+    --container-sm: 30rem;
+    --container-md: 48rem;
+    --container-lg: 64rem;
+    --container-xl: 80rem;
     /* Static Properties (moved from @property) */
     --scroll-width: 0px;
+    --scroll-height: 0.25rem;
     --scroll-track-color: transparent;
-    --scroll-thumb-color: rgb(47, 47, 47);
     --scroll-border-radius: 50px;
-    --scroll-hover-color: rgb(77, 87, 108);
     --scroll-display: block;
-    --background-color: #fff;
-    --option-fg: #000;
-    --option-bg: #fff;
-    --option-hover: #3d52ea;
     --option-check: '☑️';
     --drop-down-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.0002 6.66679C18.0002 6.88013 17.9185 7.09346 17.756 7.25596L11.0894 13.9226C10.7635 14.2485 10.2369 14.2485 9.91104 13.9226L3.24437 7.25596C2.91854 6.93013 2.91854 6.40346 3.24437 6.07763C3.57021 5.75179 4.09687 5.75179 4.42271 6.07763L10.5002 12.1551L16.5777 6.07763C16.9035 5.75179 17.4302 5.75179 17.756 6.07763C17.9185 6.24013 18.0002 6.45346 18.0002 6.66679Z' fill=var(--option-hover) /%3E%3C/svg%3E");
     --img-placeholder: url(../assets/img-bg.svg);
@@ -93,8 +72,6 @@
     --target-text-bg: #FBE9E9;
     --target-text-color: #353F50;
     --placeholder-color: rgb(135, 135, 135);
-    --table-border-color: #ddd;
-    --option-hover-bg: #e5e5e5;
     --picker-icon-color: #999999;
     --font-weight-bold: 700;
     --line-height-base: 1.5;
@@ -137,7 +114,6 @@
     --order-one: 1;
     --iteration-count: 1;
     --anchor-left: 0%;
-    --backdrop-color: #00000083;
     /* Borders */
     --table-border: var(--table-border-width) var(--outline-style) var(--table-border-color);
     --debug-outline: var(--table-border-width) var(--outline-style) var(--debug);
@@ -145,6 +121,16 @@
     --border-radius-top-compound: var(--border-radius-top) var(--border-radius-top) var(--margin-zero) var(--margin-zero);
     --border-radius-bottom-compound: var(--margin-zero) var(--margin-zero) var(--border-radius-bottom) var(--border-radius-bottom);
     interpolate-size: allow-keywords;
+    /* ==========================================
+       Global Design System Reset & Baseline
+       Author: Clement Femi Bazuaye
+       Github: https://github.com/dev-bazz
+       LinkedIn: https://www.linkedin.com/in/devbazz/
+       ========================================== */
+    /*
+    #:~:text=hello,you
+      ::target-text {}
+      */
   }
 }
 
@@ -155,7 +141,8 @@
   *::after {
     box-sizing: var(--box-sizing);
     font-family: var(--averta-font);
-    color: var(--foreground);
+
+
   }
 
   html,
@@ -172,6 +159,8 @@
   dl,
   dd,
   ul,
+  section,
+  div,
   ol {
     margin: var(--margin-zero);
     padding: var(--padding-zero);
@@ -183,16 +172,20 @@
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+    font-display: swap;
+    color: var(--foreground);
+
   }
 
   body {
     min-height: var(--min-height-full);
     line-height: var(--line-height-base);
-    background-color: var(--background);
+    background-color: light-dark(var(--background));
     color: var(--foreground);
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-gutter: 0rem;
   }
 
   h1,
@@ -224,6 +217,15 @@
   video,
   img {
     object-fit: cover;
+  }
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+
+    &[loading='lazy'] {
+      content-visibility: auto;
+    }
   }
 
   ul,
@@ -311,11 +313,34 @@
     color: var(--selection-fg);
   }
 
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
   :focus-visible {
     outline-color: var(--outline-color);
     outline-width: var(--outline-size);
     outline-offset: var(--outline-offset);
     outline-style: var(--outline-style);
+  }
+
+  /* Better disabled state */
+  :disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Better readonly state */
+  :read-only {
+    cursor: default;
+  }
+
+  /* Autofill styles */
+  :is(input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus) {
+    -webkit-box-shadow: 0 0 0px 1000px var(--background) inset;
+    -webkit-text-fill-color: var(--foreground);
   }
 }
 
@@ -324,25 +349,30 @@
   div,
   body,
   section {
-    scrollbar-width: var(--scroll-width);
+    scrollbar-width: var(--scroll-width, thin);
     -ms-overflow-style: var(--scroll-display);
+    scrollbar-gutter: stable;
 
-    // Hide scrollbar
     &::-webkit-scrollbar {
       display: var(--scroll-display);
-    }
-
-    &::-webkit-scrollbar {
       width: var(--scroll-width);
+      height: var(--scroll-height);
+      transition:
+        width var(--transition-duration-medium) var(--ease-out-3),
+        height var(--transition-duration-medium) var(--ease-out-3);
     }
 
     &::-webkit-scrollbar-track {
       background: var(--scroll-track-color);
+      transition: background var(--transition-duration-medium) var(--ease-out-3);
     }
 
     &::-webkit-scrollbar-thumb {
       background: var(--scroll-thumb-color);
       border-radius: var(--scroll-border-radius);
+      transition:
+        background var(--transition-duration-medium) var(--ease-out-3),
+        border-radius var(--transition-duration-medium) var(--ease-out-3);
     }
 
     &::-webkit-scrollbar-thumb:hover {
