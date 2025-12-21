@@ -1,0 +1,46 @@
+---
+import BrandLogo from './assets/brand.svg';
+const navigation: {
+	link: string;
+	text: string;
+	children?: { link: string; text: string }[];
+}[] = [
+	{ link: '/', text: 'Home' },
+	{ link: '/what-we-do', text: 'What We Do' },
+	{ link: '/our-programs', text: 'Our Programs' },
+	{ link: '/shop', text: 'Shop' },
+	{ link: '/blog', text: 'Blog' },
+	{ link: '/about-us', text: 'About Us' },
+	{ link: '/careers', text: 'Careers' },
+];
+---
+
+<nav class='bg-black py-2.5 px-6'>
+	<div
+		class='max-w-containerBrand m-auto flex justify-between items-center gap-2'>
+		<BrandLogo />
+		<div class='text-white space-x-8 rs-font-link'>
+			{
+				navigation.map((data) => {
+					return <a href={data.link}>{data.text}</a>;
+				})
+			}
+		</div>
+		<a
+			class='py-3 px-6 bg-white align-middle rounded-full rs-font'
+			href='/'>
+			Get Started
+		</a>
+	</div>
+</nav>
+
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
+	.rs-font {
+		font-size: fn.useResponsiveSize(320, 1024, 12, 16);
+		font-family: var(--font-family);
+	}
+	.rs-font-link {
+		font-size: fn.useResponsiveSize(320, 1024, 12, 14);
+	}
+</style>

@@ -1,0 +1,25 @@
+@use 'sass:math'; // Importing the sass:math module for mathematical operations
+
+// 1. math.abs(): Returns the absolute value of a number.
+// 2. math.round(): Rounds a number to the nearest integer.
+// 3. math.ceil(): Rounds a number up to the nearest integer.
+// 4. math.floor(): Rounds a number down to the nearest integer.
+// 5. math.min(): Returns the smallest number from a set of numbers.
+// 6. math.max(): Returns the largest number from a set of numbers.
+// 7. math.clamp(): Restricts a number to a specified range.
+
+@function useResponsiveSize($min-width,
+  $max-width,
+  $size-at-min-width,
+  $size-at-max-width) {
+  @if ($min-width >=$max-width) {
+    @error "min-width cannot be greater than max-width";
+  }
+
+  $slope: calc(($size-at-max-width - $size-at-min-width) / ($max-width - $min-width));
+  $y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
+  $return-value: clamp(#{math.div($size-at-min-width, 16)}rem,
+      calc(#{math.div($y-axis-intersection, 16)}rem + #{$slope} * 100vw),
+      #{math.div($size-at-max-width, 16)}rem);
+  @return $return-value;
+}

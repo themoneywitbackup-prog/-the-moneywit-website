@@ -1,11 +1,29 @@
 ---
 import '../styles/global.css';
 import '@/styles/reset.scss';
+import Nav from '@/component/nav.astro';
+import { AstroFont } from 'astro-font';
 ---
 
 <html lang='en'>
 	<head>
 		<meta charset='utf-8' />
+		<AstroFont
+			config={[
+				{
+					src: [],
+					name: 'inter',
+					// Google Fonts URL
+					googleFontsURL:
+						'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
+					preload: true,
+					display: 'swap',
+					selector: '*,body, p,',
+					fallback: 'sans-serif',
+					cssVariable: 'font-family',
+				},
+			]}
+		/>
 		<link
 			rel='icon'
 			type='image/svg+xml'
@@ -22,6 +40,7 @@ import '@/styles/reset.scss';
 		<title>Astro</title>
 	</head>
 	<body>
+		<Nav />
 		<slot />
 	</body>
 </html>

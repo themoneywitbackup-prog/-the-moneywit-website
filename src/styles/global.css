@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
+
+
+@layer base {
+  body {
+    @apply font-sans;
+    /* Or use your custom font: @apply font-brand; */
+  }
+}
