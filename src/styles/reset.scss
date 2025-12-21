@@ -19,17 +19,11 @@
 }
 
 
-::target-text {
-  background-color: var(--target-text-bg);
-  color: var(--target-text-color);
-  font-weight: var(--font-weight-bold);
-}
+
 
 @layer color-schema {
   :root {
     color-scheme: light dark;
-
-    /* Override all color properties with light-dark() */
     --base: light-dark(#fff, #111);
     --background: light-dark(#fff, #111);
     --foreground: light-dark(#111, #fff);
@@ -46,9 +40,30 @@
     --option-bg: light-dark(#fff, #1a1a1a);
     --option-hover: light-dark(#3d52ea, #6b7fff);
     --backdrop-color: light-dark(#00000083, #ffffff20);
+
+
+    /* Input-specific colors */
+    --input-bg: light-dark(#ffffff, #1a1a1a);
+    --input-fg: light-dark(#111111, #f0f0f0);
+    --input-border: light-dark(#d1d5db, #374151);
+    --input-border-hover: light-dark(#9ca3af, #6b7280);
+    --input-border-focus: light-dark(#0275d8, #4a9eff);
+    --input-placeholder: light-dark(#9ca3af, #6b7280);
+    --input-disabled-bg: light-dark(#f3f4f6, #1f2937);
+    --input-disabled-fg: light-dark(#9ca3af, #6b7280);
+    --input-invalid: light-dark(#dc2626, #ef4444);
+    --input-valid: light-dark(#16a34a, #22c55e);
+
   }
 
 
+
+}
+
+::target-text {
+  background-color: var(--target-text-bg);
+  color: var(--target-text-color);
+  font-weight: var(--font-weight-bold);
 }
 
 @layer tokens {
@@ -65,7 +80,7 @@
     --scroll-track-color: transparent;
     --scroll-border-radius: 50px;
     --scroll-display: block;
-    --option-check: '☑️';
+    --option-check: url("data: image/svg+xml;  base64,  PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGVjay1pY29uIGx1Y2lkZS1jaGVjayI + PHBhdGggZD0iTTIwIDYgOSAxN2wtNS01Ii8 + PC9zdmc +");
     --drop-down-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.0002 6.66679C18.0002 6.88013 17.9185 7.09346 17.756 7.25596L11.0894 13.9226C10.7635 14.2485 10.2369 14.2485 9.91104 13.9226L3.24437 7.25596C2.91854 6.93013 2.91854 6.40346 3.24437 6.07763C3.57021 5.75179 4.09687 5.75179 4.42271 6.07763L10.5002 12.1551L16.5777 6.07763C16.9035 5.75179 17.4302 5.75179 17.756 6.07763C17.9185 6.24013 18.0002 6.45346 18.0002 6.66679Z' fill=var(--option-hover) /%3E%3C/svg%3E");
     --img-placeholder: url(../assets/img-bg.svg);
     --debug: magenta;
@@ -121,6 +136,11 @@
     --border-radius-top-compound: var(--border-radius-top) var(--border-radius-top) var(--margin-zero) var(--margin-zero);
     --border-radius-bottom-compound: var(--margin-zero) var(--margin-zero) var(--border-radius-bottom) var(--border-radius-bottom);
     interpolate-size: allow-keywords;
+
+    @media (prefers-color-scheme: dark) {
+      --option-check: url("data: image/svg+xml;  base64,  PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGVjay1pY29uIGx1Y2lkZS1jaGVjayI + PHBhdGggZD0iTTIwIDYgOSAxN2wtNS01Ii8 + PC9zdmc +");
+    }
+
     /* ==========================================
        Global Design System Reset & Baseline
        Author: Clement Femi Bazuaye
@@ -237,20 +257,40 @@
     cursor: pointer;
   }
 
-  button,
+  button {
+    cursor: pointer;
+  }
+
   input:not([type='checkbox'], [type='radio']),
   textarea,
   select {
     font: inherit;
-    color: inherit;
-    background: none;
-    border: none;
+    color: var(--input-fg);
+    background-color: var(--input-bg);
     margin: var(--margin-zero);
-    padding: var(--padding-zero);
+    padding: 0.5rem 0.75rem;
     outline: none;
+    border-radius: 0.375rem;
+    transition:
+      border-color var(--transition-duration-fast) var(--ease-out-3),
+      box-shadow var(--transition-duration-fast) var(--ease-out-3);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+
+    &::placeholder {
+      color: var(--input-placeholder);
+      opacity: 0.6;
+    }
+
+    &:disabled {
+      background-color: var(--input-disabled-bg);
+      color: var(--input-disabled-fg);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+
   }
 
   :is(select[data-select-placeholder]) {
@@ -274,7 +314,13 @@
     display: grid;
     gap: var(--gap-label);
     cursor: pointer;
+    color: var(--input-bg);
   }
+
+  label:has(input[type="checkbox"], input[type="radio"]) {
+    grid-template-columns: auto 1fr;
+  }
+
 
   textarea {
     resize: vertical;
@@ -305,6 +351,7 @@
       border: var(--table-border);
     }
   }
+
 
 
 
@@ -339,8 +386,11 @@
   :is(input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus) {
-    -webkit-box-shadow: 0 0 0px 1000px var(--background) inset;
-    -webkit-text-fill-color: var(--foreground);
+    -webkit-box-shadow:
+      0 0 0px 1000px var(--input-bg) inset;
+    -webkit-text-fill-color: var(--input-fg);
+    border: none;
+    caret-color: var(--input-fg);
   }
 }
 
@@ -415,6 +465,7 @@
   option {
     background: var(--option-bg);
     color: var(--option-fg);
+    padding: 0.5rem 0.75rem;
 
     &:hover {
       background: var(--option-hover-bg);
