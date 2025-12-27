@@ -1,0 +1,58 @@
+---
+
+---
+<section class='logos py-20 px-5'>
+	<div class='logos__container max-w-containerBrand mx-auto'>
+		<h2>
+			Trusted by <strong>leading organizations</strong> around the globe
+		</h2>
+    <div class="scroller">
+
+    </div>
+
+	</div>
+</section>
+
+<style lang='scss'>
+	.logos {
+		text-align: center;
+		&__container {
+		}
+	}
+  @mixin scrollerInfinite(
+    $gap-rem,
+    $scroll-speed,
+    $reverse: false,
+    $padding-block-rem: 32px
+  ) {
+    margin-inline: auto;
+    padding-block: $padding-block-rem;
+    overflow-x: hidden;
+
+    .scroller__inner {
+      display: flex;
+      flex-wrap: nowrap;
+      width: max-content;
+      animation: scroll $scroll-speedlinearinfinite;
+      align-items: center;
+      justify-content: flex-start;
+      gap: $gap-rem;
+      transition: animation-play-state 1s ease;
+
+      @if $reverse {
+        animation-direction: reverse;
+      }
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-50% - $gap-rem/2));
+      }
+    }
+  }
+
+</style>

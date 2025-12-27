@@ -1,13 +1,15 @@
 ---
 import BrandLogo from './assets/brand.svg';
+import LinkComp from './nav-comp/link-comp.astro';
+import { Hamburger, HamburgerIcon, MenuIcon } from '@lucide/astro';
 const navigation: {
 	link: string;
 	text: string;
 	children?: { link: string; text: string }[];
 }[] = [
 	{ link: '/', text: 'Home' },
-	{ link: '/what-we-do', text: 'What We Do' },
-	{ link: '/our-programs', text: 'Our Programs' },
+	{ link: '/what-we-do', text: 'What We Do', children: [] },
+	{ link: '/our-programs', text: 'Our Programs', children: [] },
 	{ link: '/shop', text: 'Shop' },
 	{ link: '/blog', text: 'Blog' },
 	{ link: '/about-us', text: 'About Us' },
@@ -19,18 +21,19 @@ const navigation: {
 	<div
 		class='max-w-containerBrand m-auto flex justify-between items-center gap-2'>
 		<BrandLogo />
-		<div class='text-white space-x-8 rs-font-link'>
+		<div class='gap-8 rs-font-link flex'>
 			{
 				navigation.map((data) => {
-					return <a href={data.link}>{data.text}</a>;
+					return <LinkComp {...data} />;
 				})
 			}
 		</div>
 		<a
-			class='py-3 px-6 bg-white align-middle rounded-full rs-font'
+			class='nav__cta py-3 px-6 bg-white align-middle rounded-full rs-font'
 			href='/'>
 			Get Started
 		</a>
+		<MenuIcon class='mobile-icon text-white' />
 	</div>
 </nav>
 
@@ -42,5 +45,18 @@ const navigation: {
 	}
 	.rs-font-link {
 		font-size: fn.useResponsiveSize(320, 1024, 12, 14);
+	}
+	@media screen and (width > 872px) {
+		.mobile-icon {
+			display: none;
+		}
+	}
+	@media screen and (width <= 872px) {
+		.rs-font-link {
+			display: none;
+		}
+		.nav__cta {
+			display: none;
+		}
 	}
 </style>
