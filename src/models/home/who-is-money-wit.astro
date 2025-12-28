@@ -1,0 +1,63 @@
+---
+import Card from './card.who-is-money-wit.astro';
+import BuilderImage from './assets/cards-builder-image.png';
+import DriverImage from './assets/driver-image.png';
+---
+
+<section class='home-about'>
+	<div class='home-about__container'>
+		<header class='space-y-4'>
+			<h2 class='home-about__title'>Who is a Money Wit?</h2>
+			<p>
+				A Money Wit is someone who takes charge of their money. The Money
+				Wit Africa makes finance simple through learning, media and
+				community. You can be part of it by joining today.
+			</p>
+		</header>
+		<div class='home-about__cards'>
+			<Card
+				image={BuilderImage}
+				title='Builders'
+				description='For young professionals building financial habits and wealth seekers creating long-term security.'
+			/>
+			<Card
+				image={DriverImage}
+				title='Drivers'
+				description='For entrepreneurs growing ventures and leaders shaping impact and legacy.'
+			/>
+		</div>
+	</div>
+</section>
+
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
+
+	.home-about {
+		background-color: #f7f6f4;
+		padding-block: max(1.5rem, min(3.75rem, 15cqw));
+		padding-inline: 1.25rem;
+		&__title {
+			font-size: fn.useResponsiveSize(420, 790, 24, 48);
+			font-weight: 600;
+			color: #231e15;
+		}
+		&__container {
+			max-width: 51.25rem;
+			margin-inline: auto;
+			header {
+				max-width: 37.5rem;
+				margin-inline: auto;
+				text-align: center;
+			}
+		}
+		&__cards {
+			display: grid;
+			gap: 1rem;
+			margin-top: max(1.5rem, min(3.75rem, 8cqw));
+			grid-template-columns: repeat(
+				auto-fill,
+				minmax(max(12.5rem, min(25rem, 46cqw)), 1fr)
+			);
+		}
+	}
+</style>
