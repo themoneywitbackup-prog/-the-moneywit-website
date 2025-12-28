@@ -6,7 +6,7 @@ import { Picture } from 'astro:assets';
 
 <section class='bg-black text-white hero align-middle px-6'>
 	<div
-		class='max-w-containerBrand m-auto flex justify-between '>
+		class='max-w-containerBrand m-auto flex justify-between hero__wrapper'>
 		<div class='hero__content'>
 			<div class='py-8'>
 				<header class='space-y-4'>
@@ -27,7 +27,7 @@ import { Picture } from 'astro:assets';
 				>
 			</div>
 		</div>
-		<div class=''>
+		<div class='hero__picture'>
 			<Picture
 				layout='constrained'
 				formats={['avif', 'webp']}
@@ -44,6 +44,36 @@ import { Picture } from 'astro:assets';
 	.hero {
 		min-height: max(25rem, min(46.875rem, 82dvh));
 		align-content: center;
+		&__picture {
+			position: relative;
+			isolation: isolate;
+			--degree: 180deg;
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: max(1.25rem, min(5rem, 10cqw));
+				background: linear-gradient(
+					var(--degree, 180deg),
+					black,
+					rgba(0, 0, 0, 0)
+				);
+			}
+			&::after {
+				--degree: 360deg;
+				bottom: 0;
+				top: auto;
+			}
+		}
+		&__wrapper {
+			@media screen and (width <= 830px) {
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+		}
 		&__content {
 			align-content: center;
 
