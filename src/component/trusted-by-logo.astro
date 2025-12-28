@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import cfaSociety from './assets/logos/cfa-society.png';
+import coronation from './assets/logos/coronation.png';
+import fsdh from './assets/logos/fsdh.png';
+import greenspring from './assets/logos/greenspring.png';
+import halffinance from './assets/logos/halffinance.png';
+import icd from './assets/logos/icd.png';
+import meristem from './assets/logos/meristem.png';
+import shell from './assets/logos/shell.png';
+import stanbic from './assets/logos/stanbic.png';
+import { Picture } from 'astro:assets';
+
+const logos = [
+	{ src: cfaSociety, alt: 'CFA Society' },
+	{ src: coronation, alt: 'Coronation' },
+	{ src: fsdh, alt: 'FSDH' },
+	{ src: greenspring, alt: 'Greenspring' },
+	{ src: halffinance, alt: 'Half Finance' },
+	{ src: icd, alt: 'ICD' },
+	{ src: meristem, alt: 'Meristem' },
+	{ src: shell, alt: 'Shell' },
+	{ src: stanbic, alt: 'Stanbic' },
+];
+const duplocatedLogo = [...logos, ...logos];
+---
+
+<section class='logos py-20 px-5'>
+	<div class='logos__container max-w-containerBrand mx-auto'>
+		<h2>
+			Trusted by <strong>leading organizations</strong> around the globe
+		</h2>
+		<div class='scroller'>
+			<ul class='scroller__inner'>
+				{
+					duplocatedLogo.map((data) => (
+						<li>
+							<Picture
+								src={data.src}
+								alt={data.alt}
+								layout='constrained'
+								formats={['avif', 'webp']}
+							/>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style lang='scss'>
+	.logos {
+		text-align: center;
+		&__container {
+		}
+	}
+
+	.scroller {
+		--gap: 5rem;
+		--degree: 80deg;
+		margin-inline: auto;
+		overflow-x: hidden;
+		margin-top: max(18px, min(40px, 6cqw));
+		position: relative;
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			background: linear-gradient(
+				var(--degree, 80deg),
+				#ffffff 0%,
+				#f7f6f400 115%
+			);
+			height: 100%;
+			width: 6.25rem;
+			z-index: 2;
+			top: 0;
+			backdrop-filter: blur(0.125rem);
+		}
+		&::before {
+			left: 0;
+		}
+		&::after {
+			--degree: 260deg;
+			right: 0;
+		}
+		&__inner {
+			display: flex;
+			flex-wrap: nowrap;
+			width: max-content;
+			animation: scroll 8s linear infinite;
+			gap: var(--gap);
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		@keyframes scroll {
+			0% {
+				transform: translateX(0);
+			}
+
+			100% {
+				transform: translateX(calc(-50% - var(--gap) / 2));
+			}
+		}
+	}
+</style>
