@@ -1,0 +1,26 @@
+---
+import { ChevronDownIcon } from '@lucide/astro'
+interface Props {
+  link: string
+  text: string
+  children?: { link: string; text: string }[]
+}
+const { link, text, children } = Astro.props
+console.log('🪲 🪲 link-comp.astro:9 🪲 link:', link)
+const { pathname } = Astro.url
+console.log('🪲 🪲 link-comp.astro:11 🪲 pathname:', pathname)
+const activePath = link === pathname
+console.log('🪲 🪲 link-comp.astro:13 🪲 activePath:', activePath)
+---
+
+{
+  children ? (
+    <span class="text-white flex">
+      <span>{text}</span> <ChevronDownIcon />
+    </span>
+  ) : (
+    <a class={activePath ? 'text-brandYellow' : 'text-white'} href={link}>
+      {text}
+    </a>
+  )
+}

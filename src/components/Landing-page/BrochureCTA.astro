@@ -1,0 +1,54 @@
+---
+interface Props {
+  heading?: string;
+  subtext?: string;
+  buttonText?: string;
+  brochureUrl?: string;
+}
+
+const {
+  heading = "Need Our Company Brochure?",
+  subtext = "Download our brochure to discover how we can work together to promote financial literacy.",
+  buttonText = "Download Brochure",
+  brochureUrl = "#",
+} = Astro.props;
+---
+
+<section class="bg-[#FFD100] py-20 px-6 flex flex-col items-center justify-center text-center">
+  <div class="max-w-4xl mx-auto flex flex-col items-center gap-6">
+    <h2 class="rs-brochure-heading font-bold text-[#1a1a1a] leading-tight">
+      {heading}
+    </h2>
+
+    <p class="rs-brochure-subtext text-[#4a4a4a] max-w-2xl">
+      {subtext}
+    </p>
+
+    <a
+      href={brochureUrl}
+      class="mt-4 bg-black text-white font-semibold py-4 px-10 rounded-xl shadow-lg transition-all duration-300 hover:bg-gray-800 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-black/20 rs-brochure-button"
+      aria-label="Download the company brochure"
+    >
+      {buttonText}
+    </a>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-brochure-heading {
+    font-size: fn.useResponsiveSize(320, 1024, 28, 48);
+    font-family: var(--font-family);
+  }
+
+  .rs-brochure-subtext {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+    line-height: 1.5;
+  }
+
+  .rs-brochure-button {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
+    display: inline-block;
+  }
+</style>
