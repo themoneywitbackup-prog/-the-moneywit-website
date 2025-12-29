@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import { Image } from 'astro:assets'
 import HeroImg from './assets/hero-img.png'
 import { Picture } from 'astro:assets'
@@ -63,4 +64,103 @@ import { Picture } from 'astro:assets'
       font-size: fn.useResponsiveSize(320, 900, 8, 14);
     }
   }
+=======
+import { Image } from 'astro:assets';
+import HeroImg from './assets/hero-img.png';
+import { Picture } from 'astro:assets';
+---
+
+<section class='bg-black text-white hero align-middle px-6'>
+	<div
+		class='max-w-containerBrand m-auto flex justify-between hero__wrapper'>
+		<div class='hero__content'>
+			<div class='py-8'>
+				<header class='space-y-4'>
+					<span
+						class='tag font-light border-brandYellow rounded-full inline-block p-1.5 border-solid border-[.2px] bg-[#ffcc241b] text-brandYellow'
+						>Africa's Top Financial Literacy Ecosystem</span
+					>
+					<h1>Your money works for you here.</h1>
+				</header>
+				<p class='text-[#A7A7A7] mt-6'>
+					Media, School, Community — one ecosystem to grow your financial
+					future
+				</p>
+				<a
+					class='hero__cta bg-brandYellow text-[#1E1E1E] font-semibold mt-12 py-4 px-6 rounded-full inline-block'
+					href='/'
+					>Get started</a
+				>
+			</div>
+		</div>
+		<div class='hero__picture'>
+			<Picture
+				layout='constrained'
+				formats={['avif', 'webp']}
+				height={700}
+				src={HeroImg}
+				alt={''}
+			/>
+		</div>
+	</div>
+</section>
+
+<style lang='scss'>
+	@use '@/styles/fn' as fn;
+	.hero {
+		min-height: max(25rem, min(46.875rem, 82dvh));
+		align-content: center;
+		&__picture {
+			position: relative;
+			isolation: isolate;
+			--degree: 180deg;
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: max(1.25rem, min(5rem, 10cqw));
+				background: linear-gradient(
+					var(--degree, 180deg),
+					black,
+					rgba(0, 0, 0, 0)
+				);
+			}
+			&::after {
+				--degree: 360deg;
+				bottom: 0;
+				top: auto;
+			}
+		}
+		&__wrapper {
+			@media screen and (width <= 830px) {
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+		&__content {
+			align-content: center;
+
+			h1 {
+				font-size: fn.useResponsiveSize(320, 900, 32, 60);
+				max-width: 14ch;
+				line-height: 1;
+				font-weight: bold;
+			}
+			p {
+				max-width: 32ch;
+
+				font-size: fn.useResponsiveSize(320, 900, 16, 24);
+			}
+		}
+		&__cta {
+			font-size: fn.useResponsiveSize(320, 900, 16, 22);
+		}
+		.tag {
+			font-size: fn.useResponsiveSize(320, 900, 8, 14);
+		}
+	}
+>>>>>>> 124dfbe53d83d7f9505db68603145a7fe256bf89
 </style>
