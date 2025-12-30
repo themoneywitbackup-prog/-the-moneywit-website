@@ -1,0 +1,75 @@
+---
+import StatCounter from '@/components/react/StatCounter';
+
+const stats = [
+  {
+    target: 100,
+    suffix: "K+",
+    label: "Individuals Reached",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`
+  },
+  {
+    target: 50,
+    suffix: "+",
+    label: "Companies Served",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M16 14h.01"/></svg>`
+  },
+  {
+    target: 7,
+    suffix: "+",
+    label: "Countries Impacted",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>`
+  }
+];
+---
+
+<section class="bg-black text-white py-20 px-6 overflow-hidden">
+  <div class="max-w-containerBrand m-auto text-center">
+    <h2 class="rs-impact-title font-bold mb-6">Our Impact</h2>
+     
+    <p class="rs-impact-description text-gray-400 max-w-3xl mx-auto mb-16">
+      We've reached over 100,000 individuals, served 50+ companies, and impacted lives across 20+ countries. Our commitment to financial education is making a global difference.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {stats.map((stat) => (
+        <div class="bg-[#111111] border border-white/5 rounded-2xl p-8 flex flex-col items-start text-left transition-transform hover:scale-[1.02]">
+          <div class="bg-[#FFD100] text-black p-2.5 rounded-lg mb-6 flex items-center justify-center">
+            <Fragment set:html={stat.icon} />
+          </div>
+          
+          <div class="rs-impact-number font-bold text-[#FFD100] mb-2 flex items-baseline">
+            <StatCounter target={stat.target} client:visible />
+            <span>{stat.suffix}</span>
+          </div>
+          
+          <span class="rs-impact-label text-gray-400 font-medium">
+            {stat.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-impact-title {
+    font-size: fn.useResponsiveSize(320, 1024, 32, 56);
+    font-family: var(--font-family);
+  }
+
+  .rs-impact-description {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+    line-height: 1.6;
+  }
+
+  .rs-impact-number {
+    font-size: fn.useResponsiveSize(320, 1024, 36, 48);
+  }
+
+  .rs-impact-label {
+    font-size: fn.useResponsiveSize(320, 1024, 14, 18);
+  }
+</style>

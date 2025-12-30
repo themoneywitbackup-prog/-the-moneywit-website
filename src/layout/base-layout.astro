@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
 import '@/styles/reset.scss';
-import Nav from '@/component/nav.astro';
+import Nav from '@/components/nav.astro';
+import Footer from '@/components/Footer.astro';
 import { AstroFont } from 'astro-font';
 ---
 
@@ -42,5 +43,6 @@ import { AstroFont } from 'astro-font';
 	<body>
 		<Nav />
 		<slot />
+		<Footer />
 	</body>
 </html>
