@@ -1,0 +1,102 @@
+---
+import StatCounter from '@/components/react/StatCounter'
+
+interface Stat {
+  target: number
+  suffix?: string
+  label: string
+  icon: string
+}
+
+interface Props {
+  title: string
+  description?: string
+  stats: Stat[]
+
+  bgColor?: string
+  cardColor?: string
+  titleColor?: string
+  descColor?: string
+  numColor?: string
+  labelColor?: string
+}
+
+const {
+  title,
+  description,
+  stats,
+  bgColor = 'bg-[#F7F6F4]',
+  cardColor = 'bg-[#F1F0E8]',
+  titleColor = 'text-[#1a1a1a]',
+  descColor = 'text-gray-600',
+  numColor = 'text-[#1a1a1a]',
+  labelColor = 'text-gray-700',
+} = Astro.props
+---
+
+<section class:list={[bgColor, 'py-20 px-6 overflow-hidden']}>
+  <div class="max-w-containerBrand m-auto text-center">
+    <h2 class:list={[titleColor, 'rs-grid-title font-bold mb-6']}>
+      {title}
+    </h2>
+
+    {
+      description && (
+        <p class:list={[descColor, 'rs-grid-description max-w-3xl mx-auto mb-16']}>{description}</p>
+      )
+    }
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {
+        stats.map((stat) => (
+          <div
+            class:list={[
+              cardColor,
+              'rounded-3xl p-10 flex flex-col items-start text-left transition-all duration-300 hover:shadow-lg',
+            ]}
+          >
+            <div class="bg-[#FFD100] text-black p-2.5 rounded-lg mb-8 flex items-center justify-center">
+              <Fragment set:html={stat.icon} />
+            </div>
+
+            <div
+              class:list={[
+                numColor,
+                'rs-grid-number font-bold mb-2 flex items-baseline tracking-tight',
+              ]}
+            >
+              <StatCounter target={stat.target} client:visible />
+              <span>{stat.suffix}</span>
+            </div>
+
+            <span class:list={[labelColor, 'rs-grid-label font-medium']}>{stat.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-grid-title {
+    font-size: fn.useResponsiveSize(320, 1024, 28, 48);
+    font-family: var(--font-family);
+    letter-spacing: -0.02em;
+  }
+
+  .rs-grid-description {
+    font-size: fn.useResponsiveSize(320, 1024, 15, 18);
+    line-height: 1.6;
+  }
+
+  .rs-grid-number {
+    font-size: fn.useResponsiveSize(320, 1024, 42, 52);
+    line-height: 1;
+  }
+
+  .rs-grid-label {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
+  }
+</style>
