@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  title: string
+  description: string
+  image: ImageMetadata
+  hasWaitlist?: boolean
+  timer?: string
+  category: string // Add this to link card to a tab
+}
+
+const { title, description, image, hasWaitlist, timer, category } = Astro.props
+---
+
+<div
+  data-service-card
+  data-category={category}
+  class="hidden bg-[#111111] border border-white/5 rounded-2xl overflow-hidden flex-col group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 h-full"
+>
+  <div class="relative h-64 md:h-72 overflow-hidden">
+    <Image
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div
+      class="absolute inset-0 p-6 flex flex-col justify-end bg-linear-to-t from-black/90 via-black/20 to-transparent"
+    >
+    </div>
+  </div>
+
+  <div class="p-8 text-center flex flex-col items-center grow">
+    <h3 class="text-white font-bold text-xl md:text-2xl mb-3 uppercase tracking-tight">{title}</h3>
+    <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-6">{description}</p>
+    {
+      hasWaitlist && (
+        <div class="mt-auto w-full flex flex-row items-center justify-between gap-10">
+          <button class="bg-white text-black w-auto px-4 py-4 rounded-full font-bold text-sm transition-all hover:bg-gray-200 active:scale-95 mb-4 cursor-pointer">
+            Join the Waitlist
+          </button>
+          {timer && (
+            <p class="text-gray-400 font-mono font-bold tracking-widest text-lg flex items-start">
+              {timer}
+            </p>
+          )}
+        </div>
+      )
+    }
+  </div>
+</div>

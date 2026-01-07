@@ -1,0 +1,30 @@
+---
+import Bannerwrapper from '@/components/ui/BannerWrapper.astro';
+
+interface Props {
+  heading?: string;
+  subtext?: string;
+  buttonText?: string;
+  headlineUrl?: string;
+}
+
+const {
+  heading = "Headline Goes Here",
+  subtext = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+  buttonText = "Join The Money Wit Club",
+  headlineUrl = "#",
+} = Astro.props;
+---
+
+<Bannerwrapper
+  bgColor="bg-[#F7F6F4]" 
+  headingColor="text-[#1a1a1a]"
+  subtextColor="text-[#4a4a4a]"
+  buttonClass="bg-[#FFD341] text-black rounded-4xl hover:bg-yellow-400 py-3"
+  href={headlineUrl}
+  ariaLabel="Join the Money Wit Club"
+>
+  <Fragment slot="heading">{heading}</Fragment>
+  <Fragment slot="subtext">{subtext}</Fragment>
+  <Fragment slot="button-text">{buttonText}</Fragment>
+</BannerCTA>
