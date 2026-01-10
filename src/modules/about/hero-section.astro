@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import AboutHeroImg from './assets/About-hero.webp'; 
+
+interface Props {
+  titleLine1?: string;
+  titleLine2?: string;
+}
+
+const { 
+  titleLine1 = "Inspiring Smarter", 
+  titleLine2 = "Money Choices" 
+} = Astro.props;
+---
+
+<section class="about-hero relative w-full overflow-hidden flex items-center justify-center">
+  <div class="absolute inset-0 z-0">
+    <Image 
+      src={AboutHeroImg} 
+      alt="People discussing financial choices" 
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div> 
+
+  <div class="max-w-containerBrand m-auto relative z-10 px-6 text-center">
+    <h1 class="rs-about-title font-bold text-white leading-tight">
+      {titleLine1} <br />
+      <span class="text-white">{titleLine2}</span>
+    </h1>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .about-hero {
+    min-height: max(20rem, min(35rem, 60dvh));
+  }
+
+  .rs-about-title {
+    font-size: fn.useResponsiveSize(320, 1024, 36, 72);
+    font-family: var(--font-family);
+    letter-spacing: -0.02em;
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import StatCounter from '@/components/react/StatCounter';
+import StatGrid from '@/components/ui/StatGrid.astro';
 
 const stats = [
 	{
@@ -23,61 +23,14 @@ const stats = [
 ];
 ---
 
-<section class='bg-black text-white py-20 px-6 overflow-hidden'>
-	<div class='max-w-containerBrand m-auto text-center'>
-		<h2 class='rs-impact-title font-bold mb-6'>Our Impact</h2>
-
-		<p
-			class='rs-impact-description text-gray-400 max-w-3xl mx-auto mb-16'>
-			We've reached over 100,000 individuals, served 50+ companies, and
-			impacted lives across 20+ countries. Our commitment to financial
-			education is making a global difference.
-		</p>
-
-		<div class='grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8'>
-			{
-				stats.map((stat) => (
-					<div class='bg-[#111111] border border-white/5 rounded-2xl p-8 flex flex-col items-start text-left transition-transform hover:scale-[1.02]'>
-						<div class='bg-[#FFD100] text-black p-2.5 rounded-lg mb-6 flex items-center justify-center'>
-							<Fragment set:html={stat.icon} />
-						</div>
-
-						<div class='rs-impact-number font-bold text-[#FFD100] mb-2 flex items-baseline'>
-							<StatCounter
-								target={stat.target}
-								client:visible
-							/>
-							<span>{stat.suffix}</span>
-						</div>
-
-						<span class='rs-impact-label text-gray-400 font-medium'>
-							{stat.label}
-						</span>
-					</div>
-				))
-			}
-		</div>
-	</div>
-</section>
-
-<style lang='scss'>
-	@use '@/styles/fn.scss' as fn;
-
-	.rs-impact-title {
-		font-size: fn.useResponsiveSize(320, 1024, 32, 56);
-		font-family: var(--font-family);
-	}
-
-	.rs-impact-description {
-		font-size: fn.useResponsiveSize(320, 1024, 16, 20);
-		line-height: 1.6;
-	}
-
-	.rs-impact-number {
-		font-size: fn.useResponsiveSize(320, 1024, 36, 48);
-	}
-
-	.rs-impact-label {
-		font-size: fn.useResponsiveSize(320, 1024, 14, 18);
-	}
-</style>
+<StatGrid
+  title="Our Impact"
+  description="We've reached over 100,000 individuals, served 50+ companies, and impacted lives across 20+ countries. Our commitment to financial education is making a global difference."
+  stats={stats}
+  bgColor="bg-black"
+  cardColor="bg-[#111111] border border-white/5"
+  titleColor="text-white"
+  descColor="text-gray-400"
+  numColor="text-[#FFD100]"
+  labelColor="text-gray-400"
+/>
