@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
+:root {
+  --primary: #FFD341;
+}
 
 @layer base {
   body {

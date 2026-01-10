@@ -17,10 +17,14 @@ const navigation: {
 ];
 ---
 
-<nav class='bg-black py-2.5 px-6'>
+<nav class='bg-black py-2.5 px-6 nav'>
 	<div
-		class='max-w-containerBrand m-auto flex justify-between items-center gap-2'>
-		<BrandLogo />
+		class='max-w-containerBrand m-auto flex justify-between items-center gap-2 nav__container'>
+		<a
+			title='home page'
+			href='/'>
+			<BrandLogo />
+		</a>
 		<div class='gap-8 rs-font-link flex'>
 			{
 				navigation.map((data) => {
