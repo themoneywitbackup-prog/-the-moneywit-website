@@ -7,6 +7,8 @@ import schoolPlaceHolder from './component/assets/placeholder.png';
 import type { SvgComponent } from 'astro/types';
 import type { ImageMetadata } from 'astro';
 import PplIcon from './assets/ppl-icon.svg';
+import GlobeIcon from './assets/globe.svg';
+import Multitrack from './multitrack.astro';
 const schoolsSamples: z.infer<typeof schoolProps>[] = [
 	{
 		title: 'Beat The Odds',
@@ -41,6 +43,13 @@ const stats: {
 		description: 'Number of people reached',
 		Icon: PplIcon,
 	},
+	{
+		stat: '7',
+		description: 'Countries covered',
+		Icon: GlobeIcon,
+		tagTitle:
+			'(US, Canada, Saudi Arabia, UK, Nigeria, Kenya, Cameroon)',
+	},
 ];
 ---
 
@@ -59,24 +68,7 @@ const stats: {
 		<ul class='school__list'>
 			{schoolsSamples.map((data) => <SchoolCard {...data} />)}
 		</ul>
-		<div class='multitrack'>
-			<h3 class='multitrack__title'>Mini track record summary</h3>
-			<ul>
-				{
-					stats.map(({ Icon, description, stat, tagTitle }) => (
-						<li class='multitrack-card'>
-							<div class='multitrack-card__wrapper'>
-								<Icon />
-								<h4 class='multitrack-card__title'>
-									{stat} <span>{tagTitle}</span>
-								</h4>
-							</div>
-							<p class='multitrack-card__description'>{description}</p>
-						</li>
-					))
-				}
-			</ul>
-		</div>
+		<Multitrack />
 	</div>
 </section>
 
@@ -123,24 +115,6 @@ const stats: {
 					var(--primary) 86%,
 					transparent
 				);
-			}
-		}
-	}
-	.multitrack {
-		&-card {
-			--opacity: 1;
-			--color-bg: #0f0f0f;
-			background-color: oklab(
-				from var(--color-bg) l a b / var(--opacity)
-			);
-			padding: 1.25rem;
-			&:hover {
-				--opacity: 0.8;
-			}
-			&__title {
-				color: oklab(from var(--primary) l a b);
-				font-size: fn.useResponsiveSize(400, 900, 16, 32);
-				font-weight: bold;
 			}
 		}
 	}
