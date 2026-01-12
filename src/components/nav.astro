@@ -8,11 +8,19 @@ const navigation: {
 	children?: { link: string; text: string }[];
 }[] = [
 	{ link: '/', text: 'Home' },
-	{ link: '/what-we-do', text: 'What We Do', children: [] },
-	{ link: '/our-programs', text: 'Our Programs', children: [] },
+	{
+		link: '/what-we-do',
+		text: 'What We Do',
+		children: [{ link: '/what-we-do', text: 'what we do' }],
+	},
+	{
+		link: '/our-programs',
+		text: 'Our Programs',
+		children: [{ link: '/individual', text: 'what we do' }],
+	},
 	{ link: '/shop', text: 'Shop' },
 	{ link: '/blog', text: 'Blog' },
-	{ link: '/about-us', text: 'About Us' },
+	{ link: '/about', text: 'About Us' },
 	{ link: '/careers', text: 'Careers' },
 ];
 ---
