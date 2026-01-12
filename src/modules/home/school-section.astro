@@ -6,6 +6,9 @@ import SchoolCard from './component/school-card.astro';
 import schoolPlaceHolder from './component/assets/placeholder.png';
 import type { SvgComponent } from 'astro/types';
 import type { ImageMetadata } from 'astro';
+import PplIcon from './assets/ppl-icon.svg';
+import GlobeIcon from './assets/globe.svg';
+import Multitrack from './multitrack.astro';
 const schoolsSamples: z.infer<typeof schoolProps>[] = [
 	{
 		title: 'Beat The Odds',
@@ -34,7 +37,20 @@ const stats: {
 	description: string;
 	Icon: SvgComponent & ImageMetadata;
 	tagTitle?: string;
-}[] = [];
+}[] = [
+	{
+		stat: '300+',
+		description: 'Number of people reached',
+		Icon: PplIcon,
+	},
+	{
+		stat: '7',
+		description: 'Countries covered',
+		Icon: GlobeIcon,
+		tagTitle:
+			'(US, Canada, Saudi Arabia, UK, Nigeria, Kenya, Cameroon)',
+	},
+];
 ---
 
 <section class='bg-black py-20 px-5 school'>
@@ -50,25 +66,15 @@ const stats: {
 			</a>
 		</header>
 		<ul class='school__list'>
-			{schoolsSamples.map((data) => <SchoolCard {...data} />)}
+			{
+				schoolsSamples.map((data) => (
+					<li>
+						<SchoolCard {...data} />
+					</li>
+				))
+			}
 		</ul>
-		<div class='multitrack'>
-			<h3 class='multitrack__title'>Mini track record summary</h3>
-			<ul>
-				{
-					stats.map(({ Icon, description, stat, tagTitle }) => (
-						<li class='multitrack-card'>
-							<div class='multitrack-card__wrapper'>
-								<Icon />
-								<h4>
-									{stat} <span>{tagTitle}</span>
-								</h4>
-							</div>
-						</li>
-					))
-				}
-			</ul>
-		</div>
+		<Multitrack />
 	</div>
 </section>
 

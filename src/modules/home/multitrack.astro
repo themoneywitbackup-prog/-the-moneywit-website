@@ -1,0 +1,105 @@
+---
+import type { SvgComponent } from 'astro/types';
+import PplIcon from './assets/ppl-icon.svg';
+import GlobeIcon from './assets/globe.svg';
+const stats: {
+	stat: string;
+	description: string;
+	Icon: SvgComponent & ImageMetadata;
+	tagTitle?: string;
+}[] = [
+	{
+		stat: '300+',
+		description: 'Number of people reached',
+		Icon: PplIcon,
+	},
+	{
+		stat: '7',
+		description: 'Countries covered',
+		Icon: GlobeIcon,
+		tagTitle:
+			'(US, Canada, Saudi Arabia, UK, Nigeria, Kenya, Cameroon)',
+	},
+];
+---
+
+<div class='multitrack'>
+	<h3 class='multitrack__title'>Mini track record summary</h3>
+	<ul class='multitrack__list'>
+		{
+			stats.map(({ Icon, description, stat, tagTitle }) => (
+				<li class='multitrack-card'>
+					<div class='multitrack-card__wrapper'>
+						<Icon />
+						<h4 class='multitrack-card__title'>
+							{stat}{' '}
+							<span class='multitrack-card__title--tag'>{tagTitle}</span>
+						</h4>
+					</div>
+					<p class='multitrack-card__description'>{description}</p>
+				</li>
+			))
+		}
+	</ul>
+</div>
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
+
+	.multitrack {
+		display: flex;
+		justify-content: space-between;
+		padding-block: 2rem;
+		align-items: center;
+		gap: 1.5rem;
+
+		@media screen and (width <= 730px) {
+			flex-wrap: wrap;
+		}
+		&__title {
+			font-size: fn.useResponsiveSize(400, 900, 16, 24);
+			max-width: 18ch;
+		}
+		&__list {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: 1rem;
+			@media screen and (width <= 730px) {
+				grid-template-columns: 1fr;
+				width: 100%;
+				li {
+					max-width: 100%;
+				}
+			}
+		}
+		&-card {
+			--opacity: 1;
+			--color-bg: #0f0f0f;
+			background-color: oklab(
+				from var(--color-bg) l a b / var(--opacity)
+			);
+			border-radius: 0.75rem;
+			padding: 1.25rem;
+			&:hover {
+				--opacity: 0.8;
+			}
+			&__wrapper {
+				display: grid;
+				gap: 0.5rem;
+			}
+			&__title {
+				color: oklab(from var(--primary) l a b);
+				font-size: fn.useResponsiveSize(400, 900, 16, 32);
+				font-weight: bold;
+				line-height: 1;
+				&--tag {
+					font-size: 0.75rem;
+					display: inline-block;
+					line-height: 1;
+				}
+			}
+			&__description {
+				margin-top: 0.75rem;
+			}
+		}
+	}
+</style>
