@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import LeftBg from '@/components/assets/left-bg-footer.png';
 import RightBg from '@/components/assets/rightm-bg-footer.png';
-import BrandLogo from '@/components/assets/branddark.svg'
+import BrandLogo from '@/components/assets/brandfooter.png'
 
 const quickLinks = [
   { text: "Home", href: "/" },
@@ -31,7 +32,13 @@ const socials = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
       
       <div class="flex flex-col gap-6">
-        <BrandLogo/>
+        <Picture
+				layout='constrained'
+				formats={['avif', 'webp']}
+				height={100}
+				src={BrandLogo}
+				alt={''}
+			/>
         <p class="rs-footer-text font-medium leading-relaxed">
           Join our upcoming paid newsletter where we share deeper insights, exclusive tips, and stories you won't find anywhere else.
         </p>

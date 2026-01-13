@@ -1,0 +1,46 @@
+---
+interface Props {
+  title?: string
+  paragraphs?: string[]
+}
+
+const {
+  title = 'Our Story',
+  paragraphs = [
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius faucibus massa sollicitudin amet augue. Nibh metus a semper purus mauris duis. Lorem eu neque, tristique quis duis. Nibh scelerisque ac adipiscing velit non nulla in amet pellentesque. Sit turpis pretium eget maecenas. Vestibulum dolor mattis consectetur eget commodo vitae. Amet pellentesque sit pulvinar lorem mi a, euismod risus rhoncus.',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius faucibus massa sollicitudin amet augue. Nibh metus a semper purus mauris duis. Lorem eu neque, tristique quis duis. Nibh scelerisque ac adipiscing velit non nulla in amet pellentesque. Sit turpis pretium eget maecenas. Vestibulum dolor mattis consectetur eget commodo vitae. Amet pellentesque sit pulvinar lorem mi a, euismod risus rhoncus.',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius faucibus massa sollicitudin amet augue. Nibh metus a semper purus mauris duis. Lorem eu neque, tristique quis duis. Nibh scelerisque ac adipiscing velit non nulla in amet pellentesque. Sit turpis pretium eget maecenas. Vestibulum dolor mattis consectetur eget commodo vitae. Amet pellentesque sit pulvinar lorem mi a, euismod risus rhoncus.',
+  ],
+} = Astro.props
+---
+
+<section class="our-story bg-black text-white py-24 px-6">
+  <div class="max-w-containerBrand m-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-4">
+    <div class="md:col-span-4">
+      <h2 class="rs-story-title font-bold leading-tight">
+        {title}
+      </h2>
+    </div>
+
+    <div class="md:col-start-6 md:col-span-7 flex flex-col gap-8">
+      {paragraphs.map((text) => <p class="rs-story-text text-gray-300">{text}</p>)}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-story-title {
+    font-size: fn.useResponsiveSize(320, 1024, 36, 64);
+    font-family: bold;
+    letter-spacing: -0.02em;
+  }
+
+  .rs-story-text {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
+    line-height: 1.7;
+    font-family: var(--font-family);
+    font-weight: 400;
+  }
+</style>
