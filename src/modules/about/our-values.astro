@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets'
+import empathyIcon from './assets/empathy.svg'
+import collaborationIcon from './assets/collaboration.svg'
+import initiativesIcon from './assets/initiatives.svg'
+
+const values = [
+  {
+    title: 'Initiative',
+    icon: initiativesIcon,
+    alt: 'Initiative Icon',
+  },
+  {
+    title: 'Collaboration',
+    icon: collaborationIcon,
+    alt: 'Collaboration Icon',
+  },
+  {
+    title: 'Empathy',
+    icon: empathyIcon,
+    alt: 'Empathy Icon',
+  },
+]
+---
+
+<section class="our-values bg-[#FFCC33] py-24 px-6">
+  <div class="max-w-containerBrand m-auto">
+    <h2 class="rs-values-title font-bold text-black mb-12">Our Values</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        values.map((value) => (
+          <div class="value-card bg-[#FFD752] rounded-4xl p-10 flex flex-col items-start gap-8 transition-transform hover:scale-[1.02]">
+            <div class="icon-container bg-white rounded-full w-24 h-24 flex items-center justify-center overflow-hidden shadow-sm">
+              <Image src={value.icon} alt={value.alt} class="w-14 h-14 object-contain" />
+            </div>
+            <h3 class="text-2xl font-bold text-black">{value.title}</h3>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+  .rs-values-title {
+    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+    font-family: var(--font-family);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .value-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+</style>
