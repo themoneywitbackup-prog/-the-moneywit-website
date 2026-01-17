@@ -1,58 +1,56 @@
 ---
-import { Picture } from 'astro:assets';
-import type { z } from 'astro:schema';
-import type { schoolProps } from '@/schema/school';
-import sizeOf from 'image-size';
-type Props = z.infer<typeof schoolProps>;
+import { Picture } from 'astro:assets'
+import type { z } from 'astro:schema'
+import type { schoolProps } from '@/schema/school'
+import sizeOf from 'image-size'
+type Props = z.infer<typeof schoolProps>
 
-const { description, imageUrl, link, title } = Astro.props;
+const { description, imageUrl, link, title } = Astro.props
 ---
 
-<a
-	class='school-card'
-	href={link}>
-	<Picture
-		class={'school-card__image'}
-		src={imageUrl}
-		alt={''}
-		width={400}
-		height={264}
-		layout='constrained'
-		formats={['avif', 'webp']}
-	/>
-	<div class='school-card__wrapper'>
-		<h3 class='school-card__title'>{title}</h3>
-		<p class='school-card__description'>{description}</p>
-	</div>
+<a class="school-card" href={link}>
+  <Picture
+    class={'school-card__image'}
+    src={imageUrl}
+    alt={''}
+    width={400}
+    height={264}
+    layout="constrained"
+    formats={['avif', 'webp']}
+  />
+  <div class="school-card__wrapper">
+    <h3 class="school-card__title">{title}</h3>
+    <p class="school-card__description">{description}</p>
+  </div>
 </a>
 
-<style lang='scss'>
-	@use '@/styles/fn.scss' as fn;
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
 
-	.school-card {
-		border-radius: 1rem;
-		overflow: clip;
-		min-height: 29.375rem;
-		display: grid;
-		grid-template-rows: auto 1fr;
-		&__image {
-			width: 100%;
-		}
-		&__title {
-			font-size: fn.useResponsiveSize(400, 980, 20, 24);
-			font-weight: 600;
-		}
-		&__description {
-			color: #a7a7a7;
-			font-size: fn.useResponsiveSize(400, 980, 14, 16);
-		}
-		&__wrapper {
-			background-color: #121212;
-			display: flex;
-			gap: 0.5rem;
-			flex-direction: column;
-			padding: max(1.125rem, min(1.5rem, 1cqw));
-			height: 100%;
-		}
-	}
+  .school-card {
+    border-radius: 1rem;
+    overflow: clip;
+    min-height: 29.375rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    &__image {
+      width: 100%;
+    }
+    &__title {
+      font-size: fn.useResponsiveSize(400, 980, 20, 24);
+      font-weight: 600;
+    }
+    &__description {
+      color: #a7a7a7;
+      font-size: fn.useResponsiveSize(400, 980, 14, 16);
+    }
+    &__wrapper {
+      background-color: #121212;
+      display: flex;
+      gap: 0.5rem;
+      flex-direction: column;
+      padding: max(1.125rem, min(1.5rem, 1cqw));
+      height: 100%;
+    }
+  }
 </style>
