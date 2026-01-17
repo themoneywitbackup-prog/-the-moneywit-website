@@ -1,61 +1,68 @@
 ---
 interface Props {
-  bgColor?: string
-  headingColor?: string
-  subtextColor?: string
-  buttonClass?: string
-  href?: string
-  ariaLabel?: string
+	bgColor?: string;
+	headingColor?: string;
+	subtextColor?: string;
+	buttonClass?: string;
+	href?: string;
+	ariaLabel?: string;
 }
 
 const {
-  bgColor = 'bg-[#FFD100]',
-  headingColor = 'text-[#1a1a1a]',
-  subtextColor = 'text-[#4a4a4a]',
-  buttonClass = 'bg-black text-white rounded-xl hover:bg-gray-800',
-  href = '#',
-  ariaLabel,
-} = Astro.props
+	bgColor = 'bg-[#FFD100]',
+	headingColor = 'text-[#1a1a1a]',
+	subtextColor = 'text-[#4a4a4a]',
+	buttonClass = 'bg-black text-white rounded-xl hover:bg-gray-800',
+	href = '#',
+	ariaLabel,
+} = Astro.props;
 ---
 
-<section class:list={[bgColor, 'py-20 px-6 flex flex-col items-center justify-center text-center']}>
-  <div class="max-w-4xl mx-auto flex flex-col items-center gap-6">
-    <h2 class:list={[headingColor, 'rs-banner-heading font-bold leading-tight']}>
-      <slot name="heading" />
-    </h2>
+<section
+	class:list={[
+		bgColor,
+		'py-20 px-6 flex flex-col items-center justify-center text-center',
+	]}>
+	<div class='max-w-4xl mx-auto flex flex-col items-center gap-6'>
+		<div class='grid gap-2'>
+			<h2
+				class:list={[
+					headingColor,
+					'rs-banner-heading font-bold leading-tight',
+				]}>
+				<slot name='heading' />
+			</h2>
 
-    <div class:list={[subtextColor, 'rs-banner-subtext max-w-2xl']}>
-      <slot name="subtext" />
-    </div>
+			<div class:list={[subtextColor, 'rs-banner-subtext max-w-2xl']}>
+				<slot name='subtext' />
+			</div>
+		</div>
 
-    <a
-      href={href}
-      class:list={[
-        buttonClass,
-        'mt-4 font-semibold py-4 px-10 shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-black/20 rs-banner-button',
-      ]}
-      aria-label={ariaLabel}
-    >
-      <slot name="button-text" />
-    </a>
-  </div>
+		<a
+			href={href}
+			class:list={[
+				buttonClass,
+				'mt-4 font-semibold py-4 px-10 shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-black/20 rs-banner-button',
+			]}
+			aria-label={ariaLabel}>
+			<slot name='button-text' />
+		</a>
+	</div>
 </section>
 
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
 
-  .rs-banner-heading {
-    font-size: fn.useResponsiveSize(320, 1024, 28, 48);
-    font-family: var(--font-family);
-  }
-
-  .rs-banner-subtext {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
-    line-height: 1.5;
-  }
-
-  .rs-banner-button {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
-    display: inline-block;
-  }
+	.rs-banner-heading {
+		font-size: fn.useResponsiveSize(320, 1024, 28, 36);
+		font-family: var(--font-family);
+	}
+	.rs-banner-subtext {
+		font-size: fn.useResponsiveSize(320, 1024, 14, 16);
+		line-height: 1.5;
+	}
+	.rs-banner-button {
+		font-size: fn.useResponsiveSize(320, 1024, 14, 16);
+		display: inline-block;
+	}
 </style>

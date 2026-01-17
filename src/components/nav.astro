@@ -25,7 +25,7 @@ const navigation: {
 ];
 ---
 
-<nav class='bg-black py-2.5 px-6 nav'>
+<nav class='bg-black py-2.5 px-6 nav '>
 	<div
 		class='max-w-containerBrand m-auto flex justify-between items-center gap-2 nav__container'>
 		<a
@@ -33,7 +33,7 @@ const navigation: {
 			href='/'>
 			<BrandLogo />
 		</a>
-		<div class='gap-8 rs-font-link flex'>
+		<div class='gap-8 rs-font-link flex z-50'>
 			{
 				navigation.map((data) => {
 					return <LinkComp {...data} />;

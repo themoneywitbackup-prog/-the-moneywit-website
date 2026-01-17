@@ -2,6 +2,7 @@
 import type { ImageMetadata } from 'astro';
 import placeHolderImage from './component/assets/placeholder.png';
 import { Picture } from 'astro:assets';
+import { ArrowRight } from '@lucide/astro';
 
 const medias: { link: string; text: string; media: ImageMetadata }[] =
 	[
@@ -17,32 +18,55 @@ const medias: { link: string; text: string; media: ImageMetadata }[] =
 	<div class='media__container'>
 		<header class='media__header'>
 			<h2>Media</h2>
-
-			<a href='/'>Partner with Us</a>
+			<a
+				class='media__cta'
+				href='/'
+				>Partner with Us
+				<ArrowRight />
+			</a>
 		</header>
 
 		<ul class='media__list'>
 			{
 				medias.map((data) => (
-					<li class='media-card'>
-						<a href={data.link}>
+					<li>
+						<a
+							class='media-card'
+							href={data.link}>
 							<Picture
+								class={'media-card__picture'}
 								src={data.media}
 								alt={''}
 								formats={['avif', 'webp']}
 							/>
-							<p>{data.text}</p>
+							<p class='media-card__title'>{data.text}</p>
 						</a>
 					</li>
 				))
 			}
 		</ul>
+
+		<div class='feature-in'>
+			<h3 class='feature-in__title'>Feature In:</h3>
+
+			<ul class='list feature-in__ul'>
+				<li class='feature-in__ul__item'>Helo</li>
+			</ul>
+		</div>
 	</div>
 </section>
 
 <style lang='scss'>
 	@use '@/styles/fn.scss' as fn;
 
+	.feature-in {
+		padding-block: 1.25rem;
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		&__title {
+			font-size: fn.useResponsiveSize(400, 900, 16, 24);
+		}
+	}
 	.media {
 		background-color: #000;
 		padding-block: 5rem;
@@ -61,6 +85,15 @@ const medias: { link: string; text: string; media: ImageMetadata }[] =
 				font-weight: bold;
 			}
 		}
+		&__cta {
+			background-color: var(--primary);
+			color: #000;
+			padding: max(0.5rem, min(0.75rem, 1.7cqw))
+				max(12px, min(1.5rem, 2.5cqw));
+			border-radius: 3.125rem;
+			display: flex;
+			gap: 0.5rem;
+		}
 		&__list {
 			display: grid;
 			margin-top: max(1.25rem, min(3.75rem, 6cqw));
@@ -69,9 +102,18 @@ const medias: { link: string; text: string; media: ImageMetadata }[] =
 				auto-fill,
 				minmax(max(13.75rem, min(18.75rem, 42cqw)), 1fr)
 			);
+			padding-bottom: 2rem;
 		}
 		&-card {
 			color: #a7a7a7;
+
+			&__picture {
+				border-radius: 0.5rem;
+			}
+			&__title {
+				margin-top: 1rem;
+				font-size: fn.useResponsiveSize(300, 900, 16, 20);
+			}
 		}
 	}
 </style>

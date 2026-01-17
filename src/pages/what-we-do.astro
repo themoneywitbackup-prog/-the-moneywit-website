@@ -1,16 +1,22 @@
 ---
-import BaseLayout from '../layout/base-layout.astro'
-import WhatWeDoComponent from '../modules/what-we-do/hero-section.astro'
-import ThreeExpressions from '../modules/what-we-do/ThreeExpressions.astro'
-import BrochureCTA from '../components/Landing-page/BrochureCTA.astro'
-import ImpactSection from '../modules/what-we-do/ImpactSection.astro'
+import BaseLayout from '../layout/base-layout.astro';
+import WhatWeDoComponent from '../modules/what-we-do/hero-section.astro';
+import ThreeExpressions from '../modules/what-we-do/ThreeExpressions.astro';
+import BrochureCTA from '../components/Landing-page/BrochureCTA.astro';
+import ImpactSection from '../modules/what-we-do/ImpactSection.astro';
 import TrustedByLogo from '@/components/trusted-by-logo.astro';
 ---
 
 <BaseLayout>
-  <WhatWeDoComponent/>
-  <ThreeExpressions/>
-  <BrochureCTA/> 
-  <ImpactSection/>
-  <TrustedByLogo/>
+	<WhatWeDoComponent />
+	<ThreeExpressions />
+	<BrochureCTA
+		heading='Need Our Company Brochure?'
+		subtext='Download our brochure to discover how we can work together to promote financial literac'
+		buttonText='Download Brochure'
+		download={false}
+		btnLink=""
+	/>
+	<ImpactSection />
+	<TrustedByLogo />
 </BaseLayout>
