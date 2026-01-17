@@ -1,112 +1,122 @@
 ---
 interface Props {
-  title: string
-  subtitle?: string
-  tabs?: string[]
-  defaultTab?: string
+	title: string;
+	subtitle?: string;
+	tabs?: string[];
+	defaultTab?: string;
 }
 
-const { title, subtitle, tabs = [], defaultTab } = Astro.props
+const { title, subtitle, tabs = [], defaultTab } = Astro.props;
 ---
 
-<section class="bg-black text-white py-20 px-6">
-  <div class="max-w-containerBrand mx-auto flex flex-col items-center">
-    <div class="text-center mb-12 max-w-3xl">
-      <h2 class="rs-service-title font-bold text-white mb-4 leading-tight">{title}</h2>
-      {subtitle && <p class="rs-service-subtitle text-gray-400">{subtitle}</p>}
-    </div>
+<section class='bg-black text-white py-20 px-6'>
+	<div class='max-w-containerBrand mx-auto flex flex-col items-center'>
+		<div class='text-center mb-12 max-w-3xl'>
+			<h2
+				class='rs-service-title font-bold text-white mb-4 leading-tight'>
+				{title}
+			</h2>
+			{
+				subtitle && (
+					<p class='rs-service-subtitle text-gray-400'>{subtitle}</p>
+				)
+			}
+		</div>
 
-    {
-      tabs.length > 0 && (
-        <div class="w-full mb-12">
-          <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-4 overflow-x-auto whitespace-nowrap scrollbar-hide cursor-pointer">
-            {tabs.map((tab) => (
-              <button
-                data-tab-target={tab}
-                class:list={[
-                  'tab-btn text-base md:text-lg font-medium transition-colors duration-300 relative pb-2 cursor-pointer',
-                  tab === defaultTab
-                    ? 'active text-[#FFD700]'
-                    : 'text-gray-500 hover:text-white cursor-pointer',
-                ]}
-              >
-                {tab}
-                <div
-                  class:list={[
-                    'line absolute bottom-0 left-0 w-full h-[2px] bg-[#FFD700]',
-                    tab === defaultTab ? 'block' : 'hidden',
-                  ]}
-                />
-              </button>
-            ))}
-          </div>
-          <div class="w-full h-[1px] bg-[#FFD700]/30" />
-        </div>
-      )
-    }
+		{
+			tabs.length > 0 && (
+				<div class='w-full mb-12'>
+					<div class='flex flex-wrap justify-center gap-6 md:gap-10 mb-4 overflow-x-auto whitespace-nowrap scrollbar-hide cursor-pointer'>
+						{tabs.map((tab) => (
+							<button
+								data-tab-target={tab}
+								class:list={[
+									'tab-btn text-base md:text-lg font-medium transition-colors duration-300 relative pb-2 cursor-pointer',
+									tab === defaultTab ?
+										'active text-[#FFD700]'
+									:	'text-gray-500 hover:text-white cursor-pointer',
+								]}>
+								{tab}
+								<div
+									class:list={[
+										'line absolute bottom-0 left-0 w-full h-[2px] bg-[#FFD700]',
+										tab === defaultTab ? 'block' : 'hidden',
+									]}
+								/>
+							</button>
+						))}
+					</div>
+					<div class='w-full h-[1px] bg-[#FFD700]/30' />
+				</div>
+			)
+		}
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl" id="card-container">
-      <slot />
-    </div>
-  </div>
+		<div
+			class='grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl'
+			id='card-container'>
+			<slot />
+		</div>
+	</div>
 </section>
 
 <script>
-  function setupTabs() {
-    const tabs = document.querySelectorAll('.tab-btn')
-    const cards = document.querySelectorAll('[data-service-card]')
+	function setupTabs() {
+		const tabs = document.querySelectorAll('.tab-btn');
+		const cards = document.querySelectorAll('[data-service-card]');
 
-    function filterCards(category: string | null) {
-      cards.forEach((card) => {
-        const cardCategory = card.getAttribute('data-category')
-        if (cardCategory === category) {
-          card.classList.remove('hidden')
-          card.classList.add('flex')
-        } else {
-          card.classList.add('hidden')
-          card.classList.remove('flex')
-        }
-      })
-    }
+		function filterCards(category: string | null) {
+			cards.forEach((card) => {
+				const cardCategory = card.getAttribute('data-category');
+				if (cardCategory === category) {
+					card.classList.remove('hidden');
+					card.classList.add('flex');
+				} else {
+					card.classList.add('hidden');
+					card.classList.remove('flex');
+				}
+			});
+		}
 
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const target = tab.getAttribute('data-tab-target')
-        tabs.forEach((t) => {
-          t.classList.remove('text-[#FFD700]', 'active')
-          t.classList.add('text-gray-500')
-          t.querySelector('.line')?.classList.add('hidden')
-        })
+		tabs.forEach((tab) => {
+			tab.addEventListener('click', () => {
+				const target = tab.getAttribute('data-tab-target');
+				tabs.forEach((t) => {
+					t.classList.remove('text-[#FFD700]', 'active');
+					t.classList.add('text-gray-500');
+					t.querySelector('.line')?.classList.add('hidden');
+				});
 
-        tab.classList.add('text-[#FFD700]', 'active')
-        tab.classList.remove('text-gray-500')
-        tab.querySelector('.line')?.classList.remove('hidden')
-        filterCards(target)
-      })
-    })
-    const activeTab = document.querySelector('.tab-btn.active')?.getAttribute('data-tab-target')
-    if (activeTab) filterCards(activeTab)
-  }
+				tab.classList.add('text-[#FFD700]', 'active');
+				tab.classList.remove('text-gray-500');
+				tab.querySelector('.line')?.classList.remove('hidden');
+				filterCards(target);
+			});
+		});
+		const activeTab = document
+			.querySelector('.tab-btn.active')
+			?.getAttribute('data-tab-target');
+		if (activeTab) filterCards(activeTab);
+	}
 
-  setupTabs()
-  document.addEventListener('astro:after-swap', setupTabs)
+	setupTabs();
+	document.addEventListener('astro:after-swap', setupTabs);
 </script>
 
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
-  .rs-service-title {
-    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
-    font-family: var(--font-family);
-  }
-  .rs-service-subtitle {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
-    line-height: 1.6;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
+	.rs-service-title {
+		font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+		font-family: var(--font-family);
+	}
+	.rs-service-subtitle {
+		font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+		line-height: 1.6;
+	}
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+	.scrollbar-hide {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
 </style>

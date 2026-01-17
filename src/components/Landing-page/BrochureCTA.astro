@@ -1,27 +1,27 @@
 ---
-import BannerCTA from '@/components/ui/BannerWrapper.astro'
+import BannerCTA from '@/components/ui/BannerWrapper.astro';
 
 interface Props {
-  heading?: string
-  subtext?: string
-  buttonText?: string
-  brochureUrl?: string
+	heading: string;
+	subtext: string;
+	buttonText: string;
+	btnLink: string;
+	download?: boolean;
 }
 
 const {
-  heading = 'Need Our Company Brochure?',
-  subtext = 'Download our brochure to discover how we can work together to promote financial literacy.',
-  buttonText = 'Download Brochure',
-  brochureUrl = '#',
-} = Astro.props
+	heading = 'Need Our Company Brochure?',
+	subtext = 'Download our brochure to discover how we can work together to promote financial literacy.',
+	buttonText = 'Download Brochure',
+	btnLink = '#',
+} = Astro.props;
 ---
 
 <BannerCTA
-  href={brochureUrl}
-  ariaLabel="Download the company brochure"
-  buttonClass="bg-black text-white rounded-full px-12"
->
-  <Fragment slot="heading">{heading}</Fragment>
-  <Fragment slot="subtext">{subtext}</Fragment>
-  <Fragment slot="button-text">{buttonText}</Fragment>
+	href={btnLink}
+	ariaLabel='Download the company brochure'
+	buttonClass='bg-black text-white rounded-[0.5rem] px-12'>
+	<Fragment slot='heading'>{heading}</Fragment>
+	<Fragment slot='subtext'>{subtext}</Fragment>
+	<Fragment slot='button-text'>{buttonText}</Fragment>
 </BannerCTA>

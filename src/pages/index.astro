@@ -1,18 +1,26 @@
 ---
-import HeroSection from '@/modules/home/hero-section.astro'
-import BaseLayout from '../layout/base-layout.astro'
-import TrustedByLogo from '../components/trusted-by-logo.astro'
-import WhoIsMoneyWit from '@/modules/home/who-is-money-wit.astro'
-import SchoolSection from '@/modules/home/school-section.astro'
-import OurCommunity from '@/modules/home/our-community.astro'
-import MediaHome from '@/modules/home/media-home.astro'
+import HeroSection from '@/modules/home/hero-section.astro';
+import BaseLayout from '../layout/base-layout.astro';
+import TrustedByLogo from '../components/trusted-by-logo.astro';
+import WhoIsMoneyWit from '@/modules/home/who-is-money-wit.astro';
+import SchoolSection from '@/modules/home/school-section.astro';
+import OurCommunity from '@/modules/home/our-community.astro';
+import MediaHome from '@/modules/home/media-home.astro';
+import BrochureCTA from '@/components/Landing-page/BrochureCTA.astro';
 ---
 
 <BaseLayout>
-  <HeroSection />
-  <TrustedByLogo />
-  <WhoIsMoneyWit />
-  <SchoolSection />
-  <OurCommunity />
-  <MediaHome />
+	<HeroSection />
+	<TrustedByLogo />
+	<WhoIsMoneyWit />
+	<SchoolSection />
+	<OurCommunity />
+	<MediaHome />
+	<BrochureCTA
+		heading='Partner with The Money Wit'
+		subtext='Collaborate with us to reach a wider audience and make a greater impact on financial literacy.'
+		buttonText='Become a Partner'
+		download={false}
+		btnLink=''
+	/>
 </BaseLayout>
