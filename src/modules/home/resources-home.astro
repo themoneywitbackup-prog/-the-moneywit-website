@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import placeHolderImage from './assets/place-holder.png';
+---
+
+<section class='resources'>
+	<div class='resources__container'>
+		<header class='resources__header'>
+			<div class='resources__title'>
+				<h2>Free Resources</h2>
+
+				<p>
+					Guides, templates, and tools to help you start learning right
+					away.
+				</p>
+			</div>
+			<a
+				class='resources__cta'
+				href='/'>
+				Find Out More
+			</a>
+		</header>
+		<ul class='resources__list'>
+			<li class='resource-card'>
+				<Image
+					class='resource-card__image'
+					src={placeHolderImage}
+					alt={''}
+				/>
+				<p class='resource-card__title'>High Earner Clarity Checklist</p>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
+	.resources {
+		background-color: #000;
+		color: #fff;
+		padding-block: max(1.875rem, min(5rem, 6cqw));
+		padding-inline: 1.25rem;
+		&__container {
+			max-width: 75rem;
+			margin-inline: auto;
+			display: grid;
+			gap: 3.75rem;
+		}
+		&__header {
+			display: flex;
+			justify-content: space-between;
+			align-items: end;
+		}
+		&__title {
+			display: grid;
+			gap: 1rem;
+			h2 {
+				font-size: fn.useResponsiveSize(300, 900, 20, 36);
+				font-weight: 600;
+			}
+			p {
+				color: #a7a7a7;
+			}
+		}
+		&__cta {
+			color: #231e15;
+			background-color: var(--primary);
+			padding: 0.75rem 1.5rem;
+			border-radius: 3.125rem;
+		}
+		&__list {
+			--column-size: 17.875rem;
+			display: grid;
+			gap: 2rem;
+			grid-template-columns: repeat(
+				auto-fill,
+				minmax(var(--column-size), 1fr)
+			);
+			@container (width <= 600px) {
+				--column-size: 12.875rem;
+			}
+		}
+	}
+
+	.resource-card {
+		display: grid;
+		gap: 1rem;
+		&__image {
+			width: 100%;
+			border-radius: 1rem;
+		}
+		&__title {
+			color: #f7f6f4;
+			font-size: fn.useResponsiveSize(300, 900, 14, 20);
+		}
+	}
+</style>
