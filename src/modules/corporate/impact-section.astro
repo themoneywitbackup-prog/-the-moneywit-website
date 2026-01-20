@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+import impactImg from './assets/impact.webp'
+
+interface Props {
+  title?: string
+  topText?: string
+  bottomText?: string
+}
+
+const {
+  title = 'Impact Spread',
+  topText = "When your employees gain financial literacy, the benefits extend far beyond your organisation's walls. Your team members take these wealth-building strategies home, breaking generational cycles of financial struggle within their families. They share insights with friends, creating a ripple effect of positive financial change.",
+  bottomText = "Studies show that financially literate employees make more ethical decisions regarding insurance, loans, and investments—skills they pass on to their networks. When you invest in your employees' financial education, you're not just building a better workplace; you're contributing to economically healthier communities.",
+} = Astro.props
+---
+
+<section class="bg-black py-20 px-6 overflow-hidden">
+  <div class="max-w-containerBrand m-auto flex flex-col items-center">
+    <div class="w-full max-w-4xl mb-12">
+      <h2 class="rs-hero-heading font-bold text-[#F7F6F4] text-5xl mt-6 md:mt-8 mb-3 md:mb-5">
+        {title}
+      </h2>
+      <p class="rs-corporate-text text-[#F7F6F4] leading-relaxed text-center md:text-left">
+        {topText}
+      </p>
+    </div>
+
+    <div class="w-full max-w-4xl mb-12">
+      <div class="relative rounded-[24px] overflow-hidden shadow-sm aspect-video sm:aspect-auto">
+        <Image
+          src={impactImg}
+          alt="Professionals shaking hands and collaborating"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+    </div>
+
+    <div class="w-full max-w-4xl">
+      <p class="rs-corporate-text text-[#A7A7A7] leading-relaxed text-center md:text-left">
+        {bottomText}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn' as fn;
+  .rs-corporate-text {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+    font-family: var(--font-family);
+  }
+</style>

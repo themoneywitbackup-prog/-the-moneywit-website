@@ -3,7 +3,12 @@
 
 :root {
   --primary: #FFD341;
+
 }
+::selection {
+    background-color: oklab(from var(--primary) l a b / .3);
+    color: oklab(from var(--primary) .7 a b)
+  }
 
 @layer base {
   body {

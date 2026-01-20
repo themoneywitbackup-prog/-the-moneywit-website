@@ -1,0 +1,97 @@
+---
+import { Picture } from 'astro:assets'
+import checklistImg from '../school/assets/checklist.png'
+import diasporaImg from '../school/assets/diaspora.png'
+import webinarImg from '../school/assets/webinar.png'
+
+interface Props {
+  title?: string
+  description?: string
+  titleSize?: string
+}
+
+const {
+  title = 'Free Resources',
+  description = 'Guides, templates, and tools to help you start learning right away.',
+  titleSize = '16px',
+} = Astro.props
+
+const resources = [
+  {
+    title: 'High Earner Clarity Checklist',
+    src: checklistImg,
+    alt: 'High Earner Clarity Checklist book cover',
+  },
+  {
+    title: 'Beginner Investment Checklist',
+    src: checklistImg,
+    alt: 'Beginner Investment Checklist book cover',
+  },
+  {
+    title: 'African In Diaspora',
+    src: diasporaImg,
+    alt: 'African In Diaspora guide cover',
+  },
+  {
+    title: 'Parent Free Webinar',
+    src: webinarImg,
+    alt: 'Parents discussing financial future',
+  },
+]
+---
+
+<section class="bg-black text-white py-20 px-6">
+  <div class="max-w-containerBrand mx-auto">
+    <div class="mb-12 text-center md:text-left">
+      <h2 class="rs-resources-title font-bold mb-4">{title}</h2>
+      <p class="rs-resources-desc text-gray-400">{description}</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+      {
+        resources.map((item) => (
+          <div class="flex flex-col gap-4 group cursor-pointer w-full max-w-71.25">
+            <div class="relative overflow-hidden rounded-2xl w-full h-auto aspect-285/261 min-71.25:w-71.25 min-65.25:h-65.25">
+              <Picture
+                src={item.src}
+                alt={item.alt}
+                layout="constrained"
+                formats={['avif', 'webp']}
+                width={285}
+                height={261}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <h3
+              class="rs-card-title font-medium text-white transition-colors group-hover:text-[#FFD100] text-center md:text-left"
+              style={`font-size: ${titleSize};`}
+            >
+              {item.title}
+            </h3>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-resources-title {
+    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+    font-family: var(--font-family);
+    letter-spacing: -0.01em;
+  }
+
+  .rs-resources-desc {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+    line-height: 1.5;
+  }
+
+  .rs-card-title {
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+  }
+</style>

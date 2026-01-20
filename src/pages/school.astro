@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@/layout/base-layout.astro'
+import SchoolHero from '@/modules/school/hero-section.astro'
+import TrustedByLogo from '../components/trusted-by-logo.astro'
+import OurPrograms from '@/modules/school/our-programs.astro'
+import TrackRecord from '@/modules/school/Track-record.astro'
+import FreeResource from '@/modules/school/free-resources.astro'
+import BrochureCTA from '../components/Landing-page/BrochureCTA.astro'
+import Testimonials from '../modules/school/testimonials.astro'
+import NewsletterCard from '@/modules/school/newsletter-card.astro'
+---
+
+<BaseLayout>
+  <SchoolHero />
+  <TrustedByLogo />
+  <OurPrograms />
+  <TrackRecord />
+  <FreeResource />
+  <BrochureCTA
+    heading="Need Our Company Brochure?"
+    subtext="Download our brochure to discover how we can work together to promote financial literac"
+    buttonText="Download Brochure"
+    download={false}
+    btnLink=""
+  />
+  <Testimonials />
+  <NewsletterCard />
+</BaseLayout>

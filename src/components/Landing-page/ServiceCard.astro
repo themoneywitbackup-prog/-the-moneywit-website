@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 
+
 interface Props {
   title: string
   description: string
@@ -8,6 +9,7 @@ interface Props {
   hasWaitlist?: boolean
   timer?: string
   category: string
+ 
 }
 
 const { title, description, image, hasWaitlist, timer, category } = Astro.props
