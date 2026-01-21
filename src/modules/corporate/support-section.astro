@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets'
+import supportImg from './assets/support.webp'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'Support Your Staff',
+  description = "True employee support goes beyond just offering high salaries. It means investing in their total well-being and future success. Financial literacy programs are a good indicator of company culture, and they demonstrate that your firm has a genuine interest in its people. Such programs also help your organisation stand out in today's competitive job market.",
+} = Astro.props
+---
+
+<section class="bg-[#F7F6F4] py-20 px-6 overflow-hidden">
+  <div class="max-w-containerBrand mx-auto flex flex-col items-center">
+    <div class="w-full max-w-4xl mb-12 md:mb-16">
+      <h2 class="rs-hero-heading font-bold text-[#1a1a1a] mb-6 md:mb-8">
+        {title}
+      </h2>
+      <p class="rs-support-desc text-gray-600 leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <div class="w-full max-w-4xl">
+      <div class="relative rounded-3xl overflow-hidden shadow-sm">
+        <Image
+          src={supportImg}
+          alt="Group of diverse professionals smiling and joining hands"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-hero-heading {
+    font-size: fn.useResponsiveSize(320, 1024, 36, 56);
+    font-family: var(--font-family);
+    line-height: 1.1;
+  }
+
+  .rs-support-desc {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+    max-width: 900px;
+  }
+</style>
