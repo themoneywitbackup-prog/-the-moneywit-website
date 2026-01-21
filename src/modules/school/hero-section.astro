@@ -1,0 +1,118 @@
+---
+import { Image } from 'astro:assets'
+import SchoolHeroImg from './assets/school.webp'
+import StatCounter from '@/components/react/StatCounter'
+
+import PeopleIcon from '@/components/assets/icons/pepicons-pop_people.svg'
+import ContinentsIcon from '@/components/assets/icons/Group.svg'
+import GlobeIcon from '@/components/assets/icons/material-symbols_globe.svg'
+
+interface Stat {
+  target: number
+  suffix?: string
+  label: string
+  icon: ImageMetadata
+}
+
+interface Props {
+  title?: string
+  description?: string
+  buttonText?: string
+  buttonLink?: string
+}
+
+const {
+  title = 'Learn money the way it should be taught',
+  description = 'From saving to investing, we turn complex money ideas into simple skills you can use to build wealth with confidence.',
+  buttonText = 'Start Learning',
+  buttonLink = '#',
+} = Astro.props
+
+const stats: Stat[] = [
+  {
+    target: 300,
+    suffix: '+',
+    label: 'Individuals Trained',
+    icon: PeopleIcon,
+  },
+  {
+    target: 4,
+    label: 'Continents',
+    icon: ContinentsIcon,
+  },
+  {
+    target: 10,
+    label: 'Countries Impacted',
+    icon: GlobeIcon,
+  },
+]
+---
+
+<section class="school-hero bg-black text-white overflow-hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch min-h-[85vh]">
+    <div
+      class="flex flex-col justify-center px-6 py-16 lg:py-24 max-w-containerBrand md:ml-[98px] w-full"
+    >
+      <h1 class="rs-school-title font-bold leading-[1.1] mb-6">
+        {title}
+      </h1>
+
+      <p class="rs-school-desc text-gray-400 mb-10">
+        {description}
+      </p>
+
+      <a
+        href={buttonLink}
+        class="bg-[#ffd100] text-black font-bold py-4 px-10 rounded-full w-fit transition-all duration-300 ease-in-out hover:bg-[#f7ca00] hover:scale-105 mb-16 inline-block text-[1.125rem]"
+      >
+        {buttonText}
+      </a>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {
+          stats.map((stat) => (
+            <div class="bg-[#111111] border border-white/5 rounded-2xl p-6 flex flex-col gap-4 transition-colors duration-300 ease-in-out hover:bg-[#1a1a1a]">
+              <div class="w-10 h-10 bg-[#FFD100] rounded-lg flex items-center justify-center">
+                <Image src={stat.icon} alt="" width={24} height={24} />
+              </div>
+
+              <div>
+                <div class="text-2xl font-bold flex items-baseline tracking-tight">
+                  <StatCounter target={stat.target} client:visible />
+                  {stat.suffix && <span>{stat.suffix}</span>}
+                </div>
+
+                <p class="text-xs md:text-[10px] text-gray-500 font-medium uppercase tracking-wider mt-1">
+                  {stat.label}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="relative hidden lg:block ml-22.5 w-full h-full">
+      <Image
+        src={SchoolHeroImg}
+        alt="Students learning money skills"
+        class="absolute inset-0 w-full h-full object-cover object-bottom-right"
+      />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-school-title {
+    font-size: fn.useResponsiveSize(320, 1024, 38, 64);
+    font-family: var(--font-family);
+    letter-spacing: -0.02em;
+  }
+
+  .rs-school-desc {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+    line-height: 1.5;
+  }
+</style>
