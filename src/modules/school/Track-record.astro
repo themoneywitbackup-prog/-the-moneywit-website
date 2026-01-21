@@ -1,49 +1,6 @@
 ---
 import StatGrid from '@/components/ui/StatGrid.astro'
 
-import PeopleIcon from '@/components/assets/icons/pepicons-pop_people.svg'
-import ContinentsIcon from '@/components/assets/icons/Group.svg'
-import GlobeIcon from '@/components/assets/icons/material-symbols_globe.svg'
 
-import type { ImageMetadata } from 'astro'
-
-interface Stat {
-  target: number
-  suffix?: string
-  label: string
-  icon: any 
-}
-
-const stats: Stat[] = [
-  {
-    target: 300,
-    suffix: 'K+',
-    label: 'Individuals Reached',
-    icon: PeopleIcon,
-  },
-  {
-    target: 4,
-    suffix: '+',
-    label: 'Companies Served',
-    icon: ContinentsIcon,
-  },
-  {
-    target: 15,
-    suffix: '+',
-    label: 'Countries Impacted',
-    icon: GlobeIcon,
-  },
-]
 ---
 
-<StatGrid
-  title="Track Record and companies we've served"
-  description="We've reached over 100,000 individuals, served 50+ companies, and impacted lives across 15 countries. Our commitment to financial education is making a global difference."
-  stats={stats}
-  bgColor="bg-[#F7F6F4]"
-  cardColor="bg-[#F2F1E8] border border-white/5"
-  titleColor="text-[#231E15]"
-  descColor="text-[#A7A7A7]"
-  numColor="text-[#231E15]"
-  labelColor="text-gray-400"
-/>
