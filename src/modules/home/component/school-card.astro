@@ -3,18 +3,17 @@ import { Picture } from 'astro:assets';
 import type { z } from 'astro:schema';
 import type { schoolProps } from '@/schema/school';
 import sizeOf from 'image-size';
-import { Image } from 'astro:assets';
+import { Image } from 'astro-preload/components';
 type Props = z.infer<typeof schoolProps>;
-
 const { description, imageUrl, link, title } = Astro.props;
 ---
 
 <a
 	class='school-card'
 	href={link}>
-	<img
+	<Image
 		class={'school-card__image'}
-		src={imageUrl}
+		url={`https:\\${imageUrl}`}
 		alt={''}
 		width={400}
 		height={264}
