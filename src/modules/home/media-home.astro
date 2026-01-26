@@ -1,18 +1,6 @@
 ---
-import type { ImageMetadata } from 'astro';
-import placeHolderImage from './component/assets/placeholder.png';
-import { Picture } from 'astro:assets';
 import { ArrowRight } from '@lucide/astro';
 import { getCollection } from 'astro:content';
-
-const medias: { link: string; text: string; media: ImageMetadata }[] =
-	[
-		...Array(3).fill({
-			media: placeHolderImage,
-			link: '/',
-			text: 'Money Mistakes to Be Made',
-		}),
-	];
 const mediaData = await getCollection('mediaCollection');
 mediaData[0].data.youtubeCode;
 ---
