@@ -10,7 +10,7 @@ export interface schoolType extends EntrySkeletonType {
 	};
 }
 
-export interface resourceType {
+export interface resourceType extends EntrySkeletonType {
 	contentType: "resources";
 	fields: {
 		previewImage: EntryFieldTypes.Object<ImageContent>;
@@ -20,7 +20,15 @@ export interface resourceType {
 	};
 }
 
-export interface programType {
+export interface community extends EntrySkeletonType {
+	contentType: "community";
+	fields: {
+		previewImage: EntryFieldTypes.Object<ImageContent>;
+		title: EntryFieldTypes.Text;
+		communityLink: EntryFieldTypes.Text;
+	};
+}
+export interface programType extends EntrySkeletonType {
 	contentType: "program";
 	fields: {
 		previewImage: EntryFieldTypes.Object<ImageContent>;
