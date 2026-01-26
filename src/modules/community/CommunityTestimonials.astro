@@ -1,0 +1,60 @@
+---
+const testimonials = [
+  {
+    videoId: 'WB0H1DT3Fh4',
+    title: 'Member Testimonial 1',
+  },
+  {
+    videoId: 'vtfpJZ62Wpg',
+    title: 'Member Testimonial 2',
+  },
+  {
+    videoId: 'eCYabgeiMss',
+    title: 'Member Testimonial 3',
+  },
+]
+---
+
+<section class="bg-[#F7F7F7] py-24 px-6">
+  <div class="max-w-containerBrand mx-auto">
+    <h2 class="rs-testimonial-title text-center font-bold text-[#1A1A1A] mb-16">
+      Hear from our community members
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      {
+        testimonials.map((video) => (
+          <div class="aspect-video w-full rounded-lg overflow-hidden shadow-sm bg-black border border-black/5">
+            <iframe
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${video.videoId}?rel=0`}
+              title={video.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              class="hover:opacity-95 transition-opacity"
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="flex justify-center">
+      <button
+        class="bg-[#FFD640] text-[#1A1A1A] font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform"
+      >
+        Join The Club
+      </button>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-testimonial-title {
+    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+    letter-spacing: -0.02em;
+  }
+</style>

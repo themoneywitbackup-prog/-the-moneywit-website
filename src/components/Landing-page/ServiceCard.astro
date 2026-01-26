@@ -1,18 +1,17 @@
 ---
 import { Image } from 'astro:assets'
 
-
 interface Props {
   title: string
   description: string
   image: ImageMetadata
   hasWaitlist?: boolean
+  hasBrochure?: boolean 
   timer?: string
   category: string
- 
 }
 
-const { title, description, image, hasWaitlist, timer, category } = Astro.props
+const { title, description, image, hasWaitlist, hasBrochure, timer, category } = Astro.props
 ---
 
 <article
@@ -33,14 +32,20 @@ const { title, description, image, hasWaitlist, timer, category } = Astro.props
     <h3 class="card-title">{title}</h3>
     <p class="card-description">{description}</p>
 
-    {
-      hasWaitlist && (
-        <div class="waitlist-container">
-          <button class="waitlist-btn">Join the Waitlist</button>
-          {timer && <p class="waitlist-timer">{timer}</p>}
-        </div>
-      )
-    }
+    <div class="action-container">
+      {
+        hasWaitlist ? (
+          <div class="waitlist-container">
+            <button class="waitlist-btn">Join the Waitlist</button>
+            {timer && <p class="waitlist-timer">{timer}</p>}
+          </div>
+        ) : hasBrochure ? (
+          <div class="brochure-container">
+            <button class="brochure-btn">Download Brochure</button>
+          </div>
+        ) : null
+      }
+    </div>
   </header>
 </article>
 
@@ -70,8 +75,12 @@ const { title, description, image, hasWaitlist, timer, category } = Astro.props
     margin-bottom: 1.5rem;
   }
 
-  .waitlist-container {
+  .action-container {
     margin-top: auto;
+    width: 100%;
+  }
+
+  .waitlist-container, .brochure-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,15 +88,17 @@ const { title, description, image, hasWaitlist, timer, category } = Astro.props
     width: 100%;
   }
 
-  .waitlist-btn {
+  .waitlist-btn, .brochure-btn {
     background-color: #ffffff;
     color: #000000;
     padding: 0.75rem 1.25rem;
     border-radius: 9999px;
-    font-weight: 700;
-    font-size: 0.875rem;
+    font-weight: 400;
+    font-size: 16px;
     transition: all 0.3s ease;
     cursor: pointer;
+    border: none;
+    width: fit-content;
 
     &:hover {
       background-color: #e5e5e5;
@@ -96,9 +107,8 @@ const { title, description, image, hasWaitlist, timer, category } = Astro.props
   }
 
   .waitlist-timer {
-    color: #ffd700;
-    font-family: monospace;
-    font-weight: bold;
+    color: #707070;
+    font-weight: 400;
     letter-spacing: 0.1em;
     font-size: 1.125rem;
   }

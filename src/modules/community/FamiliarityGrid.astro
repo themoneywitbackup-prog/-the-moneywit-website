@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import WalletIcon from '@/modules/community/assets/icon/zondicons_wallet.svg';
+import ThinkingIcon from '@/modules/community/assets/icon/mdi_thinking.svg';
+import SmileIcon from '@/modules/community/assets/icon/smile.svg';
+import GraphDownIcon from '@/modules/community/assets/icon/solar_graph-down-bold.svg';
+import GraduateIcon from '@/modules/community/assets/icon/fa6-solid_user-graduate.svg';
+import LateIcon from '@/modules/community/assets/icon/material-symbols_assignment-late.svg';
+
+const familiarScenarios = [
+  {
+    text: "You earn well, but feel your income isn't working for you",
+    icon: WalletIcon
+  },
+  {
+    text: "You want to invest in different assets but don't know where to begin.",
+    icon: SmileIcon
+  },
+  {
+    text: "You feel alone in your investment journey with no one to discuss opportunities with.",
+    icon:  ThinkingIcon
+  },
+  {
+    text: "The investment options you know offer disappointingly low returns.",
+    icon: GraphDownIcon
+  },
+  {
+    text: "You've taken classes but lack the confidence to take action.",
+    icon: GraduateIcon
+  },
+  {
+    text: "You always hear about great investment opportunities after the profit has been made",
+    icon: LateIcon
+  }
+];
+---
+
+<section class="bg-[#F7F7F7] py-24 px-6">
+  <div class="max-w-containerBrand mx-auto">
+    <h2 class="rs-familiar-title font-bold text-[#1A1A1A] mb-16">
+      Does This Sound Familiar?
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {familiarScenarios.map((item) => (
+        <div class="familiar-card bg-white rounded-[2rem] p-10 flex flex-col gap-6 relative overflow-hidden">
+          <div class="absolute inset-0 opacity-[0.03] pointer-events-none grid-pattern"></div>
+          
+          <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center relative z-10">
+            <Image 
+              src={item.icon} 
+              alt="" 
+              width={24} 
+              height={24} 
+              
+            />
+          </div>
+
+          <p class="rs-familiar-text text-[#231E15] font-normal leading-relaxed relative z-10">
+            {item.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-familiar-title {
+    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+    letter-spacing: -0.02em;
+  }
+
+  .rs-familiar-text {
+    font-size: fn.useResponsiveSize(320, 1024, 18, 22);
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(#000 1px, transparent 1px),
+      linear-gradient(90deg, #000 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .familiar-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+</style>

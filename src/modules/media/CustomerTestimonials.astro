@@ -1,0 +1,89 @@
+---
+import { Picture } from 'astro:assets'
+import placeholderImg from '@/modules/media/assets/Content.png'
+import ArrowBackIcon from '@/modules/community/assets/icon/arrow_back.svg'
+import ArrowFowardIcon from '@/modules/community/assets/icon/arrow_forward.svg'
+const testimonials = [1, 2, 3, 4, 5]
+---
+
+<section class="py-24 px-6 bg-white overflow-hidden">
+  <div class="max-w-containerBrand mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="rs-testimonial-heading font-bold text-black mb-4">Customer Testimonials</h2>
+      <p class="text-gray-600 text-lg md:text-xl">Hear directly from the people we've helped.</p>
+    </div>
+
+    <div class="relative mb-12">
+      <div
+        id="testimonial-container"
+        class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x scroll-smooth"
+      >
+        {
+          testimonials.map((_) => (
+            <div class="min-w-50 md:min-w-62.5 aspect-square rounded-2xl overflow-hidden bg-[#E5E5E5] snap-center">
+              <Picture
+                src={placeholderImg}
+                formats={['avif', 'webp']}
+                alt="Testimonial content"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-4">
+      <button
+        id="prev-btn"
+        aria-label="Previous testimonial"
+        class="w-12 h-12 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors group"
+      >
+        <ArrowBackIcon />
+      </button>
+
+      <button
+        id="next-btn"
+        aria-label="Next testimonial"
+        class="w-12 h-12 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors group"
+      >
+        <ArrowFowardIcon />
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const container = document.getElementById('testimonial-container')
+  const prevBtn = document.getElementById('prev-btn')
+  const nextBtn = document.getElementById('next-btn')
+
+  if (container && prevBtn && nextBtn) {
+    const scrollAmount = 340
+
+    nextBtn.addEventListener('click', () => {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    })
+
+    prevBtn.addEventListener('click', () => {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+    })
+  }
+</script>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-testimonial-heading {
+    font-size: fn.useResponsiveSize(320, 1024, 36, 56);
+    letter-spacing: -0.02em;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>

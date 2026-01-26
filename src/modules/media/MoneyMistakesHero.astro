@@ -1,0 +1,46 @@
+---
+import { Picture } from 'astro:assets'
+import heroBg from '@/modules/media/assets/mediahero.webp'
+---
+
+<section
+  class="relative w-full h-[500px] md:h-[700px] flex items-center justify-center overflow-hidden"
+>
+  <div class="absolute inset-0 z-0">
+    <Picture
+      src={heroBg}
+      formats={['avif', 'webp']}
+      alt="Money Mistakes Background"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl px-6 text-center text-white">
+    <h1 class="rs-hero-title font-bold mb-6 tracking-tight">Money Mistakes</h1>
+
+    <p class="rs-hero-text mb-10 max-w-2xl mx-auto leading-relaxed text-gray-200">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+      elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+      commodo diam libero vitae erat.
+    </p>
+
+    <button
+      class="bg-[#B3B3B3] hover:bg-white text-black font-bold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95"
+    >
+      Coming Soon
+    </button>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-hero-title {
+    font-size: fn.useResponsiveSize(320, 1024, 48, 72);
+  }
+
+  .rs-hero-text {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+  }
+</style>

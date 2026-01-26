@@ -1,0 +1,43 @@
+---
+import StatGrid from '@/components/ui/StatGrid.astro'
+
+import HandshakeIcon from '@/components/assets/icons/Group.svg'
+import PeopleIcon from '@/components/assets/icons/pepicons-pop_people.svg'
+import GlobeIcon from '@/components/assets/icons/material-symbols_globe.svg'
+
+const stats = [
+  {
+    target: 50,
+    suffix: ' + deals done',
+    prefix: ' Over ',
+    label: 'Deals done',
+    icon: HandshakeIcon,
+  },
+  {
+    target: 3,
+    suffix: ' million+ invested',
+    prefix: '$ ',
+    label: 'Financial literacy drives',
+    icon: PeopleIcon,
+  },
+  {
+    target: 10,
+    suffix: '',
+    label: 'Countries reached',
+    icon: GlobeIcon,
+  },
+]
+---
+
+<StatGrid
+  title="Community Impact"
+  stats={stats}
+  bgColor="bg-black"
+  cardColor="bg-[#111111] border border-white/5"
+  titleColor="text-white"
+  numColor="text-[#FFD100]"
+  titleClass="text-left"
+  labelColor="text-gray-500"
+  numClass="!text-3xl"
+  cardClass=" w-full md:max-w-[402px] min-h-[166px]"
+/>
