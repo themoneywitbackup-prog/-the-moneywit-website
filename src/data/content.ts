@@ -4,7 +4,7 @@ import type {
 	schoolType,
 	resourceType,
 	programType,
-} from "@/types/school";
+} from "@/types/contentful";
 import { defineCollection, z } from "astro:content";
 
 export const schoolCollection = defineCollection({
