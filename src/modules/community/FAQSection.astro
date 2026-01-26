@@ -1,0 +1,148 @@
+---
+const faqs = [
+  {
+    question: 'Who is the club for?',
+    content: [
+      'Club is for you if earn well and you understand that making your money work for you is the sure path to financial freedom but the whole process seems vague and overwhelming',
+      'You are done with getting caught in bad investments',
+      'You are tired of trying to piece together free content online and want it all streamlined',
+      'You would like to hear of coded investment opportunities while they are hot and available',
+      'You would like to connect with people of like minds and frequency',
+      'You would like to build wealth sustainably',
+      'You are ready to take action',
+    ],
+  },
+  {
+    question: 'The club is not for you',
+    content: [
+      'You are looking for a get-rich-quick scheme',
+      'You secretly like the high of acquiring knowledge without taking action',
+      'You care more about looking wealthy than being wealthy',
+      'If you are looking to outsource responsibility for your finances to someone else',
+    ],
+  },
+  {
+    question: 'What should I expect as a member of The Money Wit Club?',
+    content: [
+      'Weekly emails with investment opportunities,',
+      'Monthly webinars on various money topics',
+      'A platform to ask real time money questions',
+      'A learning platform with learning resources',
+      'and community events.',
+      'We will be focused on building accountability and ensuring that what you have learnt, you do.',
+    ],
+  },
+  {
+    question: 'What do you do in the club?',
+    text: 'We highlight investment opportunities in regulated and alternative assets. We explain what they are, how they work, how to access them. You engage, take action by investing and build wealth!',
+  },
+  {
+    question: 'What is the profile of members in the club?',
+    text: 'Career profile: Mid, Senior and Executive management and business owners across various sectors. Geographic reach: Nigeria, USA, UK, Canada',
+  },
+  {
+    question: 'What is your cancellation policy?',
+    text: 'We operate a cancel at anytime policy. If you do not wish to continue, you may cancel your membership at any time. Cancellation will take effect from the anniversary of your last subscription payment. But know we are guaranteed to deliver',
+  },
+]
+---
+
+<section class="bg-black text-white py-24 px-6 min-h-screen">
+  <div class="max-w-containerBrand mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+    <div class="lg:sticky lg:top-24 h-fit">
+      <h2 class="rs-faq-title font-bold mb-8 leading-tight">
+        Questions?<br />
+        We Have Answers
+      </h2>
+      <button
+        class="bg-[#FFD640] text-black font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform"
+      >
+        Join The Club
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-4" id="faq-list">
+      {
+        faqs.map((faq) => (
+          <div class="faq-item bg-[#111111] rounded-2xl overflow-hidden border border-white/5 transition-all duration-300">
+            <button
+              class="faq-toggle w-full p-6 md:p-8 flex justify-between items-center text-left group cursor-pointer"
+              aria-expanded="false"
+            >
+              <span class="text-lg md:text-xl font-medium pr-8">{faq.question}</span>
+
+              <div class="relative w-6 h-6 flex items-center justify-center shrink-0">
+                <span class="icon-v absolute w-0.5 h-full bg-white/40 group-hover:bg-white transition-all duration-300" />
+                <span class="absolute w-full h-0.5 bg-white/40 group-hover:bg-white transition-all duration-300" />
+              </div>
+            </button>
+
+            <div class="faq-content max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+              <div class="p-6 md:p-8 pt-0 text-white leading-relaxed border-t border-white/5 mt-2">
+                {faq.content ? (
+                  <ul class="list-disc pl-5 space-y-3 mt-4">
+                    {faq.content.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p class="mt-4">{faq.text}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggles = document.querySelectorAll('.faq-toggle')
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const content = toggle.nextElementSibling as HTMLElement
+      const iconV = toggle.querySelector('.icon-v')
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true'
+
+      document.querySelectorAll('.faq-toggle').forEach((other) => {
+        if (other !== toggle) {
+          other.setAttribute('aria-expanded', 'false')
+          ;(other.nextElementSibling as HTMLElement).style.maxHeight = '0px'
+          ;(other.nextElementSibling as HTMLElement).style.opacity = '0'
+          other.querySelector('.icon-v')?.classList.remove('rotate-90', 'opacity-0')
+        }
+      })
+
+      if (isExpanded) {
+        toggle.setAttribute('aria-expanded', 'false')
+        content.style.maxHeight = '0px'
+        content.style.opacity = '0'
+        iconV?.classList.remove('rotate-90', 'opacity-0')
+      } else {
+        toggle.setAttribute('aria-expanded', 'true')
+        content.style.maxHeight = content.scrollHeight + 'px'
+        content.style.opacity = '1'
+        iconV?.classList.add('rotate-90', 'opacity-0')
+      }
+    })
+  })
+</script>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-faq-title {
+    font-size: fn.useResponsiveSize(320, 1024, 40, 64);
+    letter-spacing: -0.02em;
+  }
+
+  .faq-item[aria-expanded='true'] {
+    background-color: #1a1a1a;
+  }
+
+  .icon-v {
+    transform-origin: center;
+  }
+</style>

@@ -1,70 +1,11 @@
 ---
-import { Image } from 'astro:assets'
+import GenericHero from '@/components/ui/GenericHero.astro'
 import heroImage from './assets/individual-hero.webp'
-
-interface Props {
-  heading?: string
-  subheading?: string
-  buttonText?: string
-  buttonHref?: string
-}
-
-const {
-  heading = 'Grow Your Financial Literacy',
-  subheading = 'Skills, Step by Step',
-  buttonText = 'Get started',
-  buttonHref = '#',
-} = Astro.props
 ---
 
-<section class="bg-black text-white pt-20 pb-16 px-6 flex flex-col items-center overflow-hidden">
-  <div class="max-w-containerBrand w-full mx-auto flex flex-col items-center text-center">
-    <div class="flex flex-col items-center gap-2 md:gap-4 mb-10">
-      <h1 class="rs-hero-heading font-bold tracking-tight leading-tight ">
-        {heading}
-      </h1>
-      <h2 class="rs-hero-subheading font-bold tracking-tight">
-        {subheading}
-      </h2>
-    </div>
-
-    <a
-      href={buttonHref}
-      class="bg-[#FFD60A] hover:bg-[#ffdf40] text-black font-bold py-3.5 px-10 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 rs-hero-button mb-16"
-    >
-      {buttonText}
-    </a>
-
-    <div class="w-full max-w-5xl px-2 md:px-0">
-      <div class="relative rounded-[10px] overflow-hidden shadow-2xl border border-white/5">
-        <Image
-          src={heroImage}
-          alt="A smiling person in a mustard shirt working on a laptop in a bright modern office"
-          class="w-full h-auto object-cover"
-          loading="eager"
-        />
-      </div>
-    </div>
-  </div>
-</section>
-
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
-
-  .rs-hero-heading {
-    font-size: fn.useResponsiveSize(320, 1024, 36, 64);
-    font-family: var(--font-family);
-  }
-
-  .rs-hero-subheading {
-    font-size: fn.useResponsiveSize(320, 1024, 28, 52);
-    font-family: var(--font-family);
-    opacity: 1;
-  }
-  .rs-hero-button {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
-  }
-  .max-w-containerBrand {
-    max-width: 1200px;
-  }
-</style>
+<GenericHero
+  heading="Grow Your Financial Literacy Skills, Step by Step"
+  image={heroImage}
+   headingClass="!text-5xl md:!text-6xl text-[#F7F6F4] font-bold leading-[1.2] tracking-[-0.02em] max-w-[800px]"
+  imageAlt="individual financial literacy hero image"
+/>

@@ -1,0 +1,100 @@
+---
+import { Picture } from 'astro:assets'
+import { Image } from 'astro:assets'
+import ArrowBackIcon from '@/modules/community/assets/icon/arrow_back.svg'
+import ArrowFowardIcon from '@/modules/community/assets/icon/arrow_forward.svg'
+const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/modules/community/assets/guest*.png',
+  { eager: true }
+)
+const images = Object.values(imageFiles)
+
+const sortedImages = images.sort((a, b) => {
+  const getNum = (path: string) => parseInt(path.match(/guest(\d+)/)?.[1] || '0')
+  return getNum(a.default.src) - getNum(b.default.src)
+})
+---
+
+<section class="bg-black py-24 overflow-hidden">
+  <div class="max-w-containerBrand mx-auto px-6 mb-16 text-center">
+    <h2 class="rs-gallery-title font-bold text-white mb-4">Community Growth and Guests</h2>
+    <p class="rs-gallery-subtitle text-gray-400">Gallery and event highlights.</p>
+  </div>
+
+  <div class="relative max-w-containerBrand mx-auto px-6 group">
+    <button
+      id="prevBtn"
+      class="absolute top-[45%] -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 left-2 md:-left-6 opacity-100 md:opacity-0 group-hover:opacity-100 cursor-pointer"
+      aria-label="Scroll left"
+    >
+      <ArrowBackIcon />
+    </button>
+
+    <button
+      id="nextBtn"
+      class="absolute top-[45%] -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 right-2 md:-right-6 opacity-100 md:opacity-0 group-hover:opacity-100 cursor-pointer"
+      aria-label="Scroll right"
+    >
+      <ArrowFowardIcon />
+    </button>
+
+    <div
+      id="scrollContainer"
+      class="flex overflow-x-auto gap-4 md:gap-6 pb-12 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+    >
+      {
+        sortedImages.map((img) => (
+          <div class="flex-none w-[296px] snap-start">
+            <div class="aspect-4/5 rounded-3xl md:rounded-[2rem] overflow-hidden">
+              <Picture
+                src={img.default}
+                formats={['avif', 'webp']}
+                layout="constrained"
+                height={296}
+                alt="Community event highlight"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+
+  .rs-gallery-title {
+    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+    letter-spacing: -0.02em;
+  }
+
+  .rs-gallery-subtitle {
+    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const container = document.getElementById('scrollContainer')
+  const nextBtn = document.getElementById('nextBtn')
+  const prevBtn = document.getElementById('prevBtn')
+
+  const scrollAmount = 374
+
+  nextBtn?.addEventListener('click', () => {
+    container?.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+  })
+
+  prevBtn?.addEventListener('click', () => {
+    container?.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+  })
+</script>

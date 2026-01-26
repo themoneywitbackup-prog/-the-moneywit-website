@@ -1,0 +1,65 @@
+---
+const features = [
+  {
+    title: 'Expert-Vetted Opportunities',
+    description: 'We highlight diverse investment opportunities for you to explore',
+  },
+  {
+    title: 'Simple Explanations',
+    description: 'We break down complex investing concepts into "simple English"',
+  },
+  {
+    title: 'Supportive Community:',
+    description:
+      'Connect with mid, senior, and executive-level professionals and business owners from Nigeria, the USA, UK, and Canada',
+  },
+  {
+    title: 'Investment Monitoring',
+    description:
+      "We keep track of our investment recommendations and notify you of any changes, so you don't have to",
+  },
+]
+---
+
+<section class="bg-[#F7F7F7] py-24 px-6">
+  <div class="max-w-containerBrand mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <div>
+      <h2 class="rs-stability-title font-bold text-[#1A1A1A] mb-6 leading-tight !text-3xl">
+        The Money Wit Club:<br /> Your Path to Financial Stability
+      </h2>
+      <p class="text-gray-600 text-lg mb-10 max-w-xl">
+        This is where your financial education earns returns. This is where action builds wealth.
+      </p>
+      <a
+        href="#"
+        class="inline-block bg-[#FFD100] text-black font-bold py-4 px-8 rounded-full hover:bg-[#e6bd00] transition-colors"
+      >
+        Join The Club
+      </a>
+    </div>
+
+    <div class="relative pl-8">
+      <div class="absolute left-0 top-2 bottom-2 w-[2px] bg-gray-300"></div>
+
+      <div class="space-y-12">
+        {
+          features.map((feature) => (
+            <div class="relative">
+              <div class="absolute -left-[37px] top-2 w-4 h-4 rounded-full bg-gray-400 border-4 border-[#F7F7F7]" />
+
+              <h3 class="text-xl font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
+              <p class="text-gray-500 leading-relaxed">{feature.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '@/styles/fn.scss' as fn;
+  .rs-stability-title {
+    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+  }
+</style>

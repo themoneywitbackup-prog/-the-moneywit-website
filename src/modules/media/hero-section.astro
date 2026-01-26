@@ -1,0 +1,55 @@
+---
+import GenericHero from '@/components/ui/GenericHero.astro'
+import StatGrid from '@/components/ui/StatGrid.astro'
+
+import EyeIcon from './assets/icon/eye.svg'
+import GraphIcon from './assets/icon/chart.svg'
+import UsersIcon from './assets/icon/user.svg'
+
+const stats = [
+  {
+    target: 3.2,
+    suffix: 'M+',
+    label: 'Views Per Month',
+    icon: EyeIcon,
+  },
+  {
+    target: 500,
+    suffix: 'K+',
+    label: 'Impressions Today',
+    icon: GraphIcon,
+  },
+  {
+    target: 20,
+    suffix: 'K+',
+    label: 'Active Users',
+    icon: UsersIcon,
+  },
+]
+---
+
+<div class="bg-black">
+  <GenericHero
+    heading="Simplifying Finance, One Story at a Time"
+    subheading="From shows to live sessions, we create content that makes finance relatable, practical, and worth sharing."
+    buttonText="Partner With Us"
+    buttonHref="/partner"
+    headingClass="text-white opacity-90 max-w-xl mx-auto !text-5xl md:!text-6xl font-bold leading-[1.2] tracking-[-0.02em]"
+    subheadingClass="text-gray-400 !text-lg max-w-xl mx-auto"
+  />
+
+  <div class="-mt-20 pb-24">
+    <StatGrid
+      title=""
+      stats={stats}
+      bgColor="bg-transparent"
+      cardColor="bg-[#111111]"
+      iconBgColor="bg-[#FFD100]"
+      numColor="text-[#FFD100]"
+      numClass="!text-[32px]"
+      labelColor="text-gray-400"
+      labelClass="!text-[16px]"
+      cardClass="border border-white/5 min-h-[166px] "
+    />
+  </div>
+</div>
