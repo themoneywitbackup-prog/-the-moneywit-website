@@ -1,111 +1,125 @@
 ---
-import ServiceWrapper from '@/components/ui/ServiceWrapper.astro'
-import ServiceCard from '@/components/Landing-page/ServiceCard.astro'
-import beatImage from '@/modules/individual/assets/beat.webp'
-import corporate from '@/modules/school/assets/paid-corporate.webp'
-import retirement from '@/modules/school/assets/retirement.webp'
+import ServiceWrapper from '@/components/ui/ServiceWrapper.astro';
+import ServiceCard from '@/components/Landing-page/ServiceCard.astro';
+import beatImage from '@/modules/individual/assets/beat.webp';
+import corporate from '@/modules/school/assets/paid-corporate.webp';
+import retirement from '@/modules/school/assets/retirement.webp';
+import { getCollection } from 'astro:content';
 
 interface Props {
-  title?: string;
-  subtitle?: string;
-  defaultTab?: string;
-  
+	title?: string;
+	subtitle?: string;
+	defaultTab?: string;
 }
 
-const { 
-  title = "How We Can Serve You", 
-  subtitle = "Flexible, self-paced learning that covers the foundations of money management, saving, and investing.",
-  defaultTab = "Online Programs" 
+const {
+	title = 'How We Can Serve You',
+	subtitle = 'Flexible, self-paced learning that covers the foundations of money management, saving, and investing.',
+	defaultTab = 'Online Programs',
 } = Astro.props;
 
 const tabs = [
-  'Tools & Resources',
-  'Online Programs',
-  'Workshops',
-  'Bespoke Programs',
-  'Paid Programs',
-]
+	'Tools & Resources',
+	'Online Programs',
+	'Workshops',
+	'Bespoke Programs',
+	'Paid Programs',
+];
 
-const description = "We'll give you the clarity and tools to take control of your financial future"
+const description =
+	"We'll give you the clarity and tools to take control of your financial future";
+const programmes = await getCollection('programCollection');
+
+const allTabs = (await getCollection('programCollection')).flatMap(
+	(data) => data.data.category,
+);
+
+const allTSet = new Set(allTabs);
+allTSet.delete('individual');
+console.log('🪲 🧩 services.astro:39 🧩 allTSet:', allTSet);
+console.log('🪲 🧩 services.astro:40 🧩 allTabs:', allTabs);
 ---
 
 <ServiceWrapper
-  title={title}
-  subtitle={subtitle}
-  tabs={tabs}
-  defaultTab={defaultTab} 
->
-  <ServiceCard
-    category="Tools & Resources"
-    title="Budgeting Template"
-    description="A comprehensive tool to track your monthly spending and savings."
-    image={beatImage}
-  />
-  <ServiceCard
-    category="Tools & Resources"
-    title="Investment Calculator"
-    description="Calculate your projected returns based on various asset classes."
-    image={beatImage}
-  />
+	title={title}
+	subtitle={subtitle}
+	tabs={Array.from(allTSet)}
+	defaultTab={defaultTab}>
+	{
+		programmes.map((data) => {
+			return (
+				<ServiceCard
+					category={'online'}
+					title={data.data.title}
+					description={data.data.description}
+					image={data.data.previewImage}
+				/>
+			);
+		})
+	}
 
-  <ServiceCard
-    category="Online Programs"
-    title="BEAT THE ODDS"
-    description={description}
-    image={beatImage}
-  />
-  <ServiceCard
-    category="Online Programs"
-    title="Money Wise Bible Strong"
-    description={description}
-    image={beatImage}
-    hasWaitlist={true}
-    timer="5D:22H:20M"
-  />
+	<ServiceCard
+		category='Tools & Resources'
+		title='Investment Calculator'
+		description='Calculate your projected returns based on various asset classes.'
+		image={beatImage}
+	/>
 
-  <ServiceCard
-    category="Workshops"
-    title="BEAT THE ODDS"
-    description="We’ll give you the clarity and tools to take control of your financial future."
-    image={beatImage}
-    
-  />
-  <ServiceCard
-    category="Workshops"
-    title="Money Wise Bible Strong"
-    description="We’ll give you the clarity and tools to take control of your financial future."
-    image={beatImage}
-    hasWaitlist={true}
-    timer="5D:22H:20M"
-  />
+	<ServiceCard
+		category='Online Programs'
+		title='BEAT THE ODDS'
+		description={description}
+		image={beatImage}
+	/>
+	<ServiceCard
+		category='Online Programs'
+		title='Money Wise Bible Strong'
+		description={description}
+		image={beatImage}
+		hasWaitlist={true}
+		timer='5D:22H:20M'
+	/>
 
-  <ServiceCard
-    category="Bespoke Programs"
-    title="Corporate Literacy"
-    description="Customized financial wellness programs for your organization's employees."
-    image={beatImage}
-  />
-  <ServiceCard
-    category="Bespoke Programs"
-    title="Private Coaching"
-    description="One-on-one tailored financial strategy sessions with our lead experts."
-    image={beatImage}
-  />
+	<ServiceCard
+		category='Workshops'
+		title='BEAT THE ODDS'
+		description='We’ll give you the clarity and tools to take control of your financial future.'
+		image={beatImage}
+	/>
+	<ServiceCard
+		category='Workshops'
+		title='Money Wise Bible Strong'
+		description='We’ll give you the clarity and tools to take control of your financial future.'
+		image={beatImage}
+		hasWaitlist={true}
+		timer='5D:22H:20M'
+	/>
 
-  <ServiceCard
-    category="Paid Programs"
-    title="Retirement Planning"
-    description="Our retirement planning services give you the insights and resources you need to plan for a comfortable and secure retirement."
-    image={retirement}
-    hasBrochure={true}
-   
-  />
-  <ServiceCard
-    category="Paid Programs"
-    title="Corporate Financial Wellness"
-    description="We provide comprehensive resources and personalised guidance to help your employees achieve their financial goals."
-    image={corporate}
-    hasBrochure={true}
-  
-  />
+	<ServiceCard
+		category='Bespoke Programs'
+		title='Corporate Literacy'
+		description="Customized financial wellness programs for your organization's employees."
+		image={beatImage}
+	/>
+	<ServiceCard
+		category='Bespoke Programs'
+		title='Private Coaching'
+		description='One-on-one tailored financial strategy sessions with our lead experts.'
+		image={beatImage}
+	/>
+
+	<ServiceCard
+		category='Paid Programs'
+		title='Retirement Planning'
+		description='Our retirement planning services give you the insights and resources you need to plan for a comfortable and secure retirement.'
+		image={retirement}
+		hasBrochure={true}
+	/>
+	<ServiceCard
+		category='Paid Programs'
+		title='Corporate Financial Wellness'
+		description='We provide comprehensive resources and personalised guidance to help your employees achieve their financial goals.'
+		image={corporate}
+		hasBrochure={true}
+	/>
 </ServiceWrapper>
