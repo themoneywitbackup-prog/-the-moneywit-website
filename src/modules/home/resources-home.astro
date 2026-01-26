@@ -24,7 +24,7 @@ const resources = await getCollection('resourceCollection');
 		</header>
 		<ul class='resources__list'>
 			{
-				resources.map((data) => {
+				resources.slice(0, 3).map((data) => {
 					return (
 						<li>
 							<a

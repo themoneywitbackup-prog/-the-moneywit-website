@@ -1,36 +1,13 @@
 ---
-import type { schoolProps } from '@/schema/school';
 import { ArrowRight } from '@lucide/astro';
-import type { z } from 'astro:schema';
 import SchoolCard from './component/school-card.astro';
-import schoolPlaceHolder from './component/assets/placeholder.png';
 import type { SvgComponent } from 'astro/types';
 import type { ImageMetadata } from 'astro';
 import PplIcon from './assets/ppl-icon.svg';
 import GlobeIcon from './assets/globe.svg';
 import Multitrack from './multitrack.astro';
-import { getEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 const schoolsSamples = await getCollection('schoolCollection');
-const stats: {
-	stat: string;
-	description: string;
-	Icon: SvgComponent & ImageMetadata;
-	tagTitle?: string;
-}[] = [
-	{
-		stat: '300+',
-		description: 'Number of people reached',
-		Icon: PplIcon,
-	},
-	{
-		stat: '7',
-		description: 'Countries covered',
-		Icon: GlobeIcon,
-		tagTitle:
-			'(US, Canada, Saudi Arabia, UK, Nigeria, Kenya, Cameroon)',
-	},
-];
 ---
 
 <section class='bg-black py-20 px-5 school'>
@@ -48,7 +25,7 @@ const stats: {
 
 		<ul class='school__list'>
 			{
-				schoolsSamples.map((data) => (
+				schoolsSamples.slice(0, 3).map((data) => (
 					<li>
 						<SchoolCard
 							title={data.data.title}

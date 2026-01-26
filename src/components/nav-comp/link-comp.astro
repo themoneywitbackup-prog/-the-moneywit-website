@@ -3,9 +3,10 @@ import { ChevronDownIcon } from '@lucide/astro';
 interface Props {
 	link: string;
 	text: string;
+	clickable?:boolean;
 	children?: { link: string; text: string }[];
 }
-const { link, text, children } = Astro.props;
+const { link, text, children , clickable} = Astro.props;
 console.log('🪲 🪲 link-comp.astro:9 🪲 link:', link);
 const { pathname } = Astro.url;
 console.log('🪲 🪲 link-comp.astro:11 🪲 pathname:', pathname);
@@ -16,7 +17,7 @@ console.log('🪲 🪲 link-comp.astro:13 🪲 activePath:', activePath);
 {
 	children ?
 		<span class='text-white flex nav-item'>
-			<span>{text}</span> <ChevronDownIcon />
+			{clickable ? <a class="clickme" href={link}><span>{text}</span> <ChevronDownIcon /></a>: <span>{text}</span> <ChevronDownIcon />}
 			<div class='nav-item__drop-down'>
 				<ul class='nav-item__list'>
 					{children.map((data) => (
@@ -37,6 +38,12 @@ console.log('🪲 🪲 link-comp.astro:13 🪲 activePath:', activePath);
 <style lang='scss'>
 	.nav-item {
 		position: relative;
+		isolation: isolate;
+		.clickme {
+			position: relative;
+			z-index: 4;
+			display: flex;
+		}
 		&__drop-down {
 			display: none;
 		}
