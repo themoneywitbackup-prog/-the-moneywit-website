@@ -39,6 +39,14 @@ export interface programType extends EntrySkeletonType {
 		countDown: EntryFieldTypes.Date;
 	};
 }
+
+export interface media extends EntrySkeletonType {
+	contentType: "media";
+	fields: {
+		title: EntryFieldTypes.Text;
+		youtubeCode: EntryFieldTypes.Text;
+	};
+}
 export type ImageContent = {
 	fields: {
 		description: string;
