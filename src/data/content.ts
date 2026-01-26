@@ -4,6 +4,7 @@ import type {
 	schoolType,
 	resourceType,
 	programType,
+	media,
 } from "@/types/contentful";
 import { defineCollection, z } from "astro:content";
 
@@ -100,6 +101,26 @@ export const programCollection = defineCollection({
 			link: data.fields.link,
 			category: data.fields.category,
 			countDown: data.fields.countDown,
+			updatedAt: data.sys.updatedAt,
+		}));
+	},
+});
+
+export const mediaCollection = defineCollection({
+	schema: z.object({
+		title: z.string(),
+		youtubeCode: z.string(),
+		updatedAt: z.string(),
+	}),
+	async loader() {
+		const res = await client.getEntries<media>({
+			content_type: "media",
+			limit: 1000,
+		});
+		return res.items.map((data) => ({
+			id: data.sys.id,
+			title: data.fields.title,
+			youtubeCode: data.fields.youtubeCode,
 			updatedAt: data.sys.updatedAt,
 		}));
 	},

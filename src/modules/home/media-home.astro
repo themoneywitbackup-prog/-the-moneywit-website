@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import placeHolderImage from './component/assets/placeholder.png';
 import { Picture } from 'astro:assets';
 import { ArrowRight } from '@lucide/astro';
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
 const medias: { link: string; text: string; media: ImageMetadata }[] =
 	[
@@ -13,7 +13,8 @@ const medias: { link: string; text: string; media: ImageMetadata }[] =
 			text: 'Money Mistakes to Be Made',
 		}),
 	];
-	// const mediaData = getCollection("", entry)
+const mediaData = await getCollection('mediaCollection');
+mediaData[0].data.youtubeCode;
 ---
 
 <section class='media'>
@@ -30,19 +31,20 @@ const medias: { link: string; text: string; media: ImageMetadata }[] =
 
 		<ul class='media__list'>
 			{
-				medias.map((data) => (
+				mediaData.map((data) => (
 					<li>
-						<a
-							class='media-card'
-							href={data.link}>
-							<Picture
+						<div class='media-card'>
+							<iframe
 								class={'media-card__picture'}
-								src={data.media}
-								alt={''}
-								formats={['avif', 'webp']}
+								src={`https://www.youtube.com/embed/${data.data.youtubeCode}`}
+								title='YouTube video player'
+								frameborder='0'
+								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+								referrerpolicy='strict-origin-when-cross-origin'
+								allowfullscreen
 							/>
-							<p class='media-card__title'>{data.text}</p>
-						</a>
+							<p class='media-card__title'>{data.data.title}</p>
+						</div>
 					</li>
 				))
 			}
@@ -111,6 +113,9 @@ const medias: { link: string; text: string; media: ImageMetadata }[] =
 
 			&__picture {
 				border-radius: 0.5rem;
+				aspect-ratio: 394/221;
+				width: 100%;
+				max-width: 24.625rem;
 			}
 			&__title {
 				margin-top: 1rem;

@@ -1,5 +1,6 @@
 import {
 	communityCollection,
+	mediaCollection,
 	programCollection,
 	resourceCollection,
 	schoolCollection,
@@ -10,4 +11,5 @@ export const collections = {
 	communityCollection,
 	resourceCollection,
 	programCollection,
+	mediaCollection,
 };
