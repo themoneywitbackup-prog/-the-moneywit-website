@@ -6,6 +6,8 @@ import PlaceHolderImage from './assets/driver-image.png';
 import type { SvgComponent } from 'astro/types';
 import HandIcon from './assets/hand-icon.svg';
 import MoneyIcon from './assets/money.svg';
+import { Image } from 'astro-preload/components';
+import { getCollection } from 'astro:content';
 
 const communities: { communityImage: ImageMetadata; link: string }[] =
 	[
@@ -34,6 +36,7 @@ const communityStats: {
 		description: 'Financial literacy drives',
 	},
 ];
+const communitiesData = await getCollection('communityCollection');
 ---
 
 <section class='our-community'>
@@ -52,13 +55,12 @@ const communityStats: {
 	<div class='our-community__wrapper--grid'>
 		<ul class='scroller'>
 			{
-				communities.map((data) => (
+				communitiesData.map((data) => (
 					<li class='our-community__community'>
-						<a href={data.link}>
-							<Picture
-								src={data.communityImage}
+						<a href={data.data.communityLink}>
+							<Image
+								url={`https://${data.data.previewImage}`}
 								alt={''}
-								formats={['avif', 'webp']}
 							/>
 						</a>
 					</li>
