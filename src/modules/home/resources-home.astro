@@ -1,6 +1,8 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from 'astro-preload/components';
 import placeHolderImage from './assets/place-holder.png';
+import { getCollection } from 'astro:content';
+const resources = await getCollection('resourceCollection');
 ---
 
 <section class='resources'>
@@ -21,14 +23,24 @@ import placeHolderImage from './assets/place-holder.png';
 			</a>
 		</header>
 		<ul class='resources__list'>
-			<li class='resource-card'>
-				<Image
-					class='resource-card__image'
-					src={placeHolderImage}
-					alt={''}
-				/>
-				<p class='resource-card__title'>High Earner Clarity Checklist</p>
-			</li>
+			{
+				resources.map((data) => {
+					return (
+						<li>
+							<a
+								class='resource-card'
+								href={data.data.linkToResource}>
+								<Image
+									class='resource-card__image'
+									url={`https://${data.data.previewImage}`}
+									alt={''}
+								/>
+								<p class='resource-card__title'>{data.data.title}</p>
+							</a>
+						</li>
+					);
+				})
+			}
 		</ul>
 	</div>
 </section>
