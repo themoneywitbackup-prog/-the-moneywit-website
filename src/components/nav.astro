@@ -1,19 +1,31 @@
 ---
 import BrandLogo from './assets/brand.svg';
 import LinkComp from './nav-comp/link-comp.astro';
-import { Hamburger, HamburgerIcon, MenuIcon } from '@lucide/astro';
+
+import {
+	Cross,
+	CrossIcon,
+	Hamburger,
+	HamburgerIcon,
+	MenuIcon,
+	X,
+} from '@lucide/astro';
 const navigation: {
 	link: string;
 	text: string;
+	clickable?: true;
 	children?: { link: string; text: string }[];
 }[] = [
 	{ link: '/', text: 'Home' },
 	{
 		link: '/what-we-do',
 		text: 'What We Do',
+		clickable: true,
 		children: [
-			{ link: '/what-we-do', text: 'Expressions' },
+			{ link: '/school', text: 'School' },
+
 			{ link: '/media', text: 'Media' },
+			{ link: '/community', text: 'Community' },
 		],
 	},
 	{
@@ -24,7 +36,7 @@ const navigation: {
 			{ link: '/corporate', text: 'Corporate' },
 		],
 	},
-	{ link: '/shop', text: 'Shop' },
+	{ link: 'https://www.shop.themoneywit.africa', text: 'Shop' },
 	{ link: '/blog', text: 'Blog' },
 	{ link: '/about', text: 'About Us' },
 	{ link: '/careers', text: 'Careers' },
@@ -51,12 +63,65 @@ const navigation: {
 			href='/'>
 			Get Started
 		</a>
-		<MenuIcon class='mobile-icon text-white' />
+		<button
+			popovertarget='mobile-menu'
+			class='mobile-icon text-white'>
+			<MenuIcon />
+		</button>
 	</div>
 </nav>
 
+<div
+	popover
+	id='mobile-menu'
+	class='mobile-menu'>
+	<div class='mobile-menu__header'>
+		<button
+			popovertarget='mobile-menu'
+			type='button'>
+			<X />
+		</button>
+	</div>
+	<ul class='grid gap-1'>
+		{
+			navigation.map((data) => {
+				return data.children ?
+						<li>
+							<details>
+								<summary>{data.text}</summary>
+								<div class='details'>
+									<ul>
+										{data.children.map((data) => (
+											<li>
+												<a href={data.link}>{data.text}</a>
+											</li>
+										))}
+									</ul>
+								</div>
+							</details>
+						</li>
+					:	<li>
+							<a href={data.link}>{data.text}</a>
+						</li>;
+			})
+		}
+	</ul>
+</div>
 <style lang='scss'>
 	@use '@/styles/fn.scss' as fn;
+	.mobile-menu {
+		--color-bg: oklab(from #ffd341 l a b);
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100dvh;
+		background-color: var(--color-bg);
+		padding: 1.25rem;
+		&__header {
+			display: flex;
+			justify-content: end;
+		}
+	}
 	.rs-font {
 		font-size: fn.useResponsiveSize(320, 1024, 12, 16);
 		font-family: var(--font-family);

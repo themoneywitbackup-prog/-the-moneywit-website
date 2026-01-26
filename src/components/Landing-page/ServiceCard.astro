@@ -1,115 +1,133 @@
 ---
-import { Image } from 'astro:assets'
-
+import { Image } from 'astro:assets';
+import { Image as PreloadImage } from 'astro-preload/components';
 interface Props {
-  title: string
-  description: string
-  image: ImageMetadata
-  hasWaitlist?: boolean
-  hasBrochure?: boolean 
-  timer?: string
-  category: string
+	title: string;
+	description: string;
+	image: ImageMetadata | string;
+	hasWaitlist?: boolean;
+	hasBrochure?: boolean;
+	timer?: string;
+	category: string;
 }
 
-const { title, description, image, hasWaitlist, hasBrochure, timer, category } = Astro.props
+const {
+	title,
+	description,
+	image,
+	hasWaitlist,
+	hasBrochure,
+	timer,
+	category,
+} = Astro.props;
 ---
 
 <article
-  data-service-card
-  data-category={category}
-  class="hidden bg-[#111111] border border-white/10 rounded-[1.25rem] overflow-hidden flex-col group transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 h-full"
->
-  <div class="relative h-64 md:h-72 overflow-hidden">
-    <Image
-      src={image}
-      alt={title}
-      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-    />
-    <div class="absolute inset-0 bg-linear-to-t from-[#111111]/40 to-transparent"></div>
-  </div>
+	data-service-card
+	data-category={category}
+	class='hidden bg-[#111111] border border-white/10 rounded-[1.25rem] overflow-hidden flex-col group transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 h-full'>
+	<div class='relative h-64 md:h-72 overflow-hidden'>
+		{
+			typeof image === 'string' ?
+				<PreloadImage
+					class='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+					url={`https://${image}`}
+				/>
+			:	<Image
+					src={image}
+					alt={title}
+					class='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+				/>
+		}
+		<div
+			class='absolute inset-0 bg-linear-to-t from-[#111111]/40 to-transparent'>
+		</div>
+	</div>
 
-  <header class="card-content">
-    <h3 class="card-title">{title}</h3>
-    <p class="card-description">{description}</p>
+	<header class='card-content'>
+		<h3 class='card-title'>{title}</h3>
+		<p class='card-description'>{description}</p>
 
-    <div class="action-container">
-      {
-        hasWaitlist ? (
-          <div class="waitlist-container">
-            <button class="waitlist-btn">Join the Waitlist</button>
-            {timer && <p class="waitlist-timer">{timer}</p>}
-          </div>
-        ) : hasBrochure ? (
-          <div class="brochure-container">
-            <button class="brochure-btn">Download Brochure</button>
-          </div>
-        ) : null
-      }
-    </div>
-  </header>
+		<div class='action-container'>
+			{
+				hasWaitlist ?
+					<div class='waitlist-container'>
+						<button class='waitlist-btn'>Join the Waitlist</button>
+						{timer && <p class='waitlist-timer'>{timer}</p>}
+					</div>
+				: hasBrochure ?
+					<div class='brochure-container'>
+						<button class='brochure-btn'>Download Brochure</button>
+					</div>
+				:	null
+			}
+		</div>
+	</header>
 </article>
 
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
 
-  .card-content {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    gap: 0.75rem;
-  }
+	.card-content {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		gap: 0.75rem;
+	}
 
-  .card-title {
-    color: #ffffff;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    font-size: fn.useResponsiveSize(320, 1024, 20, 24);
-  }
+	.card-title {
+		color: #ffffff;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: -0.01em;
+		font-size: fn.useResponsiveSize(320, 1024, 20, 24);
+	}
 
-  .card-description {
-    color: #a7a7a7;
-    line-height: 1.6;
-    font-size: fn.useResponsiveSize(320, 1024, 14, 16);
-    margin-bottom: 1.5rem;
-  }
+	.card-description {
+		color: #a7a7a7;
+		line-height: 1.6;
+		font-size: fn.useResponsiveSize(320, 1024, 14, 16);
+		margin-bottom: 1.5rem;
+	}
 
-  .action-container {
-    margin-top: auto;
-    width: 100%;
-  }
+	.action-container {
+		margin-top: auto;
+		width: 100%;
+	}
 
-  .waitlist-container, .brochure-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
-  }
+	.waitlist-container,
+	.brochure-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		width: 100%;
+	}
 
-  .waitlist-btn, .brochure-btn {
-    background-color: #ffffff;
-    color: #000000;
-    padding: 0.75rem 1.25rem;
-    border-radius: 9999px;
-    font-weight: 400;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-    width: fit-content;
+	.waitlist-btn,
+	.brochure-btn {
+		background-color: #ffffff;
+		color: #000000;
+		padding: 0.75rem 1.25rem;
+		border-radius: 9999px;
+		font-weight: 400;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		border: none;
+		width: fit-content;
 
-    &:hover {
-      background-color: #e5e5e5;
-      transform: scale(1.02);
-    }
-  }
+		&:hover {
+			background-color: #e5e5e5;
+			transform: scale(1.02);
+		}
+	}
 
-  .waitlist-timer {
-    color: #707070;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    font-size: 1.125rem;
-  }
+	.waitlist-timer {
+		color: #707070;
+		font-weight: 400;
+		letter-spacing: 0.1em;
+		font-size: 1.125rem;
+	}
 </style>
