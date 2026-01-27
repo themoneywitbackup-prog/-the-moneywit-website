@@ -37,6 +37,7 @@ export interface programType extends EntrySkeletonType {
 		link: EntryFieldTypes.Text;
 		category: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
 		countDown: EntryFieldTypes.Date;
+		buttonText: EntryFieldTypes.Text;
 	};
 }
 
