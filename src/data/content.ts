@@ -87,6 +87,7 @@ export const programCollection = defineCollection({
 		category: z.array(z.string()),
 		countDown: z.string(),
 		updatedAt: z.string(),
+		buttonText: z.string().optional(),
 	}),
 	async loader() {
 		const res = await client.getEntries<programType>({
@@ -102,6 +103,7 @@ export const programCollection = defineCollection({
 			category: data.fields.category,
 			countDown: data.fields.countDown,
 			updatedAt: data.sys.updatedAt,
+			buttonText: data.fields.buttonText,
 		}));
 	},
 });
