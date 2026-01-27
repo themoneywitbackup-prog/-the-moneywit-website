@@ -47,14 +47,14 @@ console.log('🪲 🧩 services.astro:40 🧩 allTabs:', allTabs);
 	defaultTab={defaultTab}>
 	{
 		programmes.map((data) => {
-			return (
+			return data.data.category.map((tag) => (
 				<ServiceCard
-					category={'online'}
+					category={tag}
 					title={data.data.title}
 					description={data.data.description}
 					image={data.data.previewImage}
 				/>
-			);
+			));
 		})
 	}
 

@@ -1,76 +1,83 @@
 ---
-import { Picture } from 'astro:assets'
+import { Picture } from 'astro:assets';
 
-import amazonLogo from '@/modules/media/assets/amazon.png'
-import appleLogo from '@/modules/media/assets/ApplePodcast.png'
-import spotifyLogo from '@/modules/media/assets/spotify.png'
+import amazonLogo from '@/modules/media/assets/amazon.png';
+import appleLogo from '@/modules/media/assets/ApplePodcast.png';
+import spotifyLogo from '@/modules/media/assets/spotify.png';
 
 const podcasts = [
-  {
-    name: 'Listen On Apple Podcast',
-    image: appleLogo,
-    href: '#',
-  },
-  {
-    name: 'Listen On Spotify Podcast',
-    image: spotifyLogo,
-    href: '#',
-  },
-  {
-    name: 'Listen On Amazon Music',
-    image: amazonLogo,
-    href: '#',
-  },
-]
+	{
+		name: 'Listen On Apple Podcast',
+		image: appleLogo,
+		href:
+			'https://podcasts.apple.com/us/podcast/oler-oladele/id1686265392',
+	},
+	{
+		name: 'Listen On Spotify Podcast',
+		image: spotifyLogo,
+		href:
+			'https://open.spotify.com/show/2IODzQAdIQ6hUlNFCFiqFu?si=ZoqsqwQ1RBqJIcgJQdKPzA',
+	},
+	{
+		name: 'Listen On Amazon Music',
+		image: amazonLogo,
+		href:
+			'https://music.amazon.com/podcasts/d00fb2d3-d6d1-4d2a-833f-637bc71ef18b/oler-oladele',
+	},
+];
 ---
 
-<section class="py-24 px-6 bg-[#F7F7F7]">
-  <div class="max-w-containerBrand mx-auto">
-    <div class="mb-12 max-w-2xl">
-      <h2 class="rs-show-title font-bold text-[#1A1A1A] mb-4">The Money Wit Show</h2>
-      <p class="rs-show-description text-gray-600 leading-relaxed">
-        Listen to the latest episodes of The Money Wit Show and get expert advice on investing and
-        financial education.
-      </p>
-    </div>
+<section class='py-24 px-6 bg-[#F7F7F7]'>
+	<div class='max-w-containerBrand mx-auto'>
+		<div class='mb-12 max-w-2xl'>
+			<h2 class='rs-show-title font-bold text-[#1A1A1A] mb-4'>
+				The Money Wit Show
+			</h2>
+			<p class='rs-show-description text-gray-600 leading-relaxed'>
+				Listen to the latest episodes of The Money Wit Show and get expert
+				advice on investing and financial education.
+			</p>
+		</div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {
-        podcasts.map((podcast) => (
-          <div class="flex flex-col gap-4">
-            <a
-              href={podcast.href}
-              class:list={[
-                'aspect-4/3 rounded-2xl flex items-center justify-center transition-all hover:scale-[1.03] duration-300 overflow-hidden',
-              ]}
-            >
-              <Picture
-                src={podcast.image}
-                formats={['avif', 'webp']}
-                alt={podcast.name}
-                class="w-full h-full object-contain "
-                pictureAttributes={{ class: 'flex justify-center w-full h-full' }}
-              />
-            </a>
-            <span class="text-lg text-center md:text-left font-medium text-[#1A1A1A] ">
-              {podcast.name}
-            </span>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+		<div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
+			{
+				podcasts.map((podcast) => (
+					<div class='flex flex-col gap-4'>
+						<a
+							href={podcast.href}
+							target='_blank'
+							class:list={[
+								'aspect-4/3 rounded-2xl flex items-center justify-center transition-all hover:scale-[1.03] duration-300 overflow-hidden',
+							]}>
+							<Picture
+								src={podcast.image}
+								formats={['avif', 'webp']}
+								alt={podcast.name}
+								class='w-full h-full object-contain '
+								pictureAttributes={{
+									class: 'flex justify-center w-full h-full',
+								}}
+							/>
+						</a>
+						<span class='text-lg text-center md:text-left font-medium text-[#1A1A1A] '>
+							{podcast.name}
+						</span>
+					</div>
+				))
+			}
+		</div>
+	</div>
 </section>
 
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
 
-  .rs-show-title {
-    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
-    letter-spacing: -0.02em;
-  }
+	.rs-show-title {
+		font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+		letter-spacing: -0.02em;
+	}
 
-  .rs-show-description {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
-  }
+	.rs-show-description {
+		font-size: fn.useResponsiveSize(320, 1024, 16, 18);
+	}
 </style>
