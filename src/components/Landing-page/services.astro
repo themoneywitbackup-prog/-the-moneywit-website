@@ -49,6 +49,7 @@ console.log('🪲 🧩 services.astro:40 🧩 allTabs:', allTabs);
 		programmes.map((data) => {
 			return data.data.category.map((tag) => (
 				<ServiceCard
+					{...data.data}
 					category={tag}
 					title={data.data.title}
 					description={data.data.description}
