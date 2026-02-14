@@ -11,11 +11,11 @@ import preload from "astro-preload";
 import compressor from "astro-compressor";
 
 // https://astro.build/config
-export default defineConfig({
+export default defineConfig( {
 	vite: {
-		plugins: [tailwindcss()],
+		plugins: [ tailwindcss() ],
 	},
 
 	adapter: netlify(),
-	integrations: [react(), preload(), compressor()],
-});
+	integrations: [ react(), preload(), compressor() ],
+} );
