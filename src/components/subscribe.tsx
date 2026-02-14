@@ -29,7 +29,6 @@ const SubscribeNewsLetter = () => {
 				body: formData,
 			},
 		});
-		console.log("🪲 🧩 subscribe.tsx:32 🧩 res:", res);
 	};
 	return (
 		<form
