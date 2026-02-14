@@ -14,17 +14,22 @@ const SubscribeNewsLetter = () => {
 		resetOptions: { keepDirtyValues: true, keepErrors: true },
 	});
 
-	useEffect(() => {
-		console.log("All Loaded");
-	}, []);
+	useEffect(() => {}, []);
 	const handleFormSubmit: SubmitHandler<z.infer<typeof formPayload>> = async (
 		data,
 	) => {
+		const formData = new FormData();
+		formData.append("email", data.email);
+		formData.append("date", new Date().toString());
+
 		const res = await fetchDX({
 			url: endpointNewsletter,
-			options: { method: "POST", body: JSON.stringify(data) },
+			options: {
+				method: "POST",
+				body: formData,
+			},
 		});
-		console.log("🪲 🧩 subscribe.tsx:27 🧩 res:", res);
+		console.log("🪲 🧩 subscribe.tsx:32 🧩 res:", res);
 	};
 	return (
 		<form
