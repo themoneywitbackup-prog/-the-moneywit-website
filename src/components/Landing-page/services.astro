@@ -28,19 +28,19 @@ const pageProgram = programmes.filter((data) => {
 const allCategories = pageProgram.flatMap(
 	(data) => data.data.category || [],
 );
-const uniqueCategories = [...new Set(allCategories)].filter(
+const allTagSet = new Set(allCategories);
+allTagSet.delete('individual');
+allTagSet.delete('corporate');
+const uniqueCategories = [...allTagSet].filter(
 	(cat) => cat && cat.trim() !== '',
 );
-
-const effectiveDefaultTab =
-	defaultTab || uniqueCategories[0] || 'Programs';
 ---
 
 <ServiceWrapper
 	title={title}
 	subtitle={subtitle}
 	tabs={uniqueCategories}
-	defaultTab={effectiveDefaultTab}>
+	defaultTab={uniqueCategories[0]}>
 	{
 		pageProgram.map((program) => {
 			return program.data.category?.map((category) => (
