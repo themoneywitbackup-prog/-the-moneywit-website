@@ -7,8 +7,17 @@ interface Props {
 	description: string;
 	image: string;
 	timeAndDate: Date;
+	paymentLink: string;
+	paymentLink2: string;
 }
-const { description, image, timeAndDate, title } = Astro.props;
+const {
+	description,
+	image,
+	timeAndDate,
+	title,
+	paymentLink,
+	paymentLink2,
+} = Astro.props;
 ---
 
 <section class='campaign-hero'>
@@ -21,6 +30,18 @@ const { description, image, timeAndDate, title } = Astro.props;
 				<p>{description}</p>
 			</header>
 			<Countdown client:load />
+			<div class='campaign-hero__cta'>
+				<a
+					href={paymentLink}
+					class='campaign-hero__primary'>
+					{paymentLink}
+				</a>
+				<a
+					href={paymentLink2}
+					class='campaign-hero__secondary'>
+					{paymentLink2}
+				</a>
+			</div>
 		</div>
 	</div>
 	<div class='campaign-hero__image'>
@@ -37,8 +58,26 @@ const { description, image, timeAndDate, title } = Astro.props;
 		grid: [stack] 1fr / [stack] 1fr;
 		isolation: isolate;
 		place-items: center;
-		&__container {
+		&__cta {
+			display: flex;
+			margin-top: 2rem;
+			justify-content: center;
+			gap: 1rem;
+			& * {
+				padding: 0.75rem 1.5rem;
+				border-radius: 3.125rem;
+			}
+		}
+		&__primary {
+			background-color: #000000;
+		}
+		&__secondary {
+			background-color: #fff;
+			color: #000000;
+		}
+		&__ &__container {
 			padding-inline: 1.25rem;
+			padding-block: 2rem;
 		}
 		&__header {
 			text-align: center;
@@ -81,6 +120,7 @@ const { description, image, timeAndDate, title } = Astro.props;
 				width: 100%;
 				aspect-ratio: var(--aspect-ratio);
 				object-fit: cover;
+
 				@container (width <=600px) {
 					--aspect-ratio: 1/1.5;
 				}
@@ -88,30 +128,39 @@ const { description, image, timeAndDate, title } = Astro.props;
 		}
 	}
 	.countdown {
+		--column-size: 4;
 		border: 1px solid #fff;
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(var(--column-size), 1fr);
 		place-items: center;
-		padding-inline: 1.5rem;
-		padding-block: 1rem;
+		padding-inline: fn.useResponsiveSize(380, 700, 12, 24);
+		padding-block: fn.useResponsiveSize(380, 700, 12, 16);
 		max-width: 25rem;
 		margin-inline: auto;
 		border-radius: 0.75rem;
 		margin-top: 2rem;
 
+		@media (width <=600px) {
+			--column-size: 2;
+			max-width: 12.5rem;
+		}
+
 		& > span {
 			display: grid;
 			place-items: center;
-			font-size: 2rem;
+			font-size: fn.useResponsiveSize(380, 700, 16, 32);
 			width: 100%;
-			padding-inline: 1.25rem;
+			padding-inline: fn.useResponsiveSize(380, 900, 8, 20);
 
 			& + span {
 				border-left: 1px solid #fff;
+				@media (width <=600px) {
+					border-left: none;
+				}
 			}
 
 			p {
-				font-size: 1rem;
+				font-size: fn.useResponsiveSize(380, 700, 12, 16);
 				font-weight: 300;
 				text-transform: capitalize;
 			}

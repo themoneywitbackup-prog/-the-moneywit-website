@@ -12,7 +12,7 @@ export const getStaticPaths = (async () => {
 	});
 	return reshapeObject;
 }) satisfies GetStaticPaths;
-const { title, description, backgroundImage, timeAndDate } =
+const { title, description, backgroundImage, timeAndDate ,paymentLinkOne,paymentLinkTwoDollar} =
 	Astro.props;
 ---
 
@@ -22,5 +22,7 @@ const { title, description, backgroundImage, timeAndDate } =
 		description={description}
 		image={backgroundImage}
 		timeAndDate={new Date(timeAndDate)}
+    paymentLink={paymentLinkOne}
+    paymentLink2={paymentLinkTwoDollar}
 	/>
 </BaseLayout>
