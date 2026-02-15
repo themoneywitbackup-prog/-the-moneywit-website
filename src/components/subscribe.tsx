@@ -1,7 +1,7 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchDX } from "@/lib/dev/fetch";
 import { endpointNewsletter } from "@/lib/const";
 
@@ -9,9 +9,10 @@ const formPayload = z.object({
 	email: z.email(),
 });
 const SubscribeNewsLetter = () => {
-	const { handleSubmit, register } = useForm({
+	const [isPending, setIsPending] = useState(false);
+	const { handleSubmit, register, reset } = useForm({
 		resolver: zodResolver(formPayload),
-		resetOptions: { keepDirtyValues: true, keepErrors: true },
+		resetOptions: { keepErrors: true },
 	});
 
 	useEffect(() => {}, []);
@@ -22,31 +23,44 @@ const SubscribeNewsLetter = () => {
 		formData.append("email", data.email);
 		formData.append("date", new Date().toString());
 
-		const res = await fetchDX({
-			url: endpointNewsletter,
-			options: {
-				method: "POST",
-				body: formData,
-			},
-		});
+		try {
+			setIsPending(true);
+			const res = await fetchDX({
+				url: endpointNewsletter,
+				options: {
+					method: "POST",
+					body: formData,
+				},
+			});
+			reset();
+		} catch (error) {
+		} finally {
+			setIsPending(false);
+		}
 	};
 	return (
 		<form
 			onSubmit={handleSubmit(handleFormSubmit)}
 			className="flex flex-col sm:flex-row gap-2 mt-2"
 		>
-			<input
-				{...register("email", { required: true })}
-				type="email"
-				placeholder="Enter your email"
-				className="bg-transparent border border-black/20 rounded-full py-3 px-6 placeholder:text-black/60 focus:outline-none focus:border-black flex-grow text-sm"
-			/>
-			<button
-				type="submit"
-				className="bg-black cursor-pointer text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 text-sm whitespace-nowrap"
-			>
-				Join Waitlist
-			</button>
+			{isPending ? (
+				<div>Pending</div>
+			) : (
+				<>
+					<input
+						{...register("email", { required: true })}
+						type="email"
+						placeholder="Enter your email"
+						className="bg-transparent border border-black/20 rounded-full py-3 px-6 placeholder:text-black/60 focus:outline-none focus:border-black flex-grow text-sm"
+					/>
+					<button
+						type="submit"
+						className="bg-black cursor-pointer text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 text-sm whitespace-nowrap"
+					>
+						Join Waitlist
+					</button>
+				</>
+			)}
 		</form>
 	);
 };
