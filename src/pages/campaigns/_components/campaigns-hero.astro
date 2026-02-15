@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro-preload/components';
+import Countdown from './count-down';
 
 interface Props {
 	title: string;
@@ -19,6 +20,7 @@ const { description, image, timeAndDate, title } = Astro.props;
 				</h1>
 				<p>{description}</p>
 			</header>
+			<Countdown client:load />
 		</div>
 	</div>
 	<div class='campaign-hero__image'>
@@ -28,7 +30,8 @@ const { description, image, timeAndDate, title } = Astro.props;
 		/>
 	</div>
 </section>
-<style lang='scss'>
+<style lang='scss' is:global>
+	@use '@/styles/fn.scss' as fn;
 	.campaign-hero {
 		display: grid;
 		grid: [stack] 1fr / [stack] 1fr;
@@ -39,6 +42,20 @@ const { description, image, timeAndDate, title } = Astro.props;
 		}
 		&__header {
 			text-align: center;
+			display: grid;
+			gap: 1.5rem;
+			h1 {
+				font-size: fn.useResponsiveSize(380, 700, 24, 64);
+				max-width: 20ch;
+				line-height: 1;
+				font-weight: bold;
+				text-wrap: balance;
+			}
+			p {
+				font-size: fn.useResponsiveSize(380, 700, 16, 18);
+				max-width: 55ch;
+				margin-inline: auto;
+			}
 		}
 		& > * {
 			grid-area: stack;
@@ -67,6 +84,36 @@ const { description, image, timeAndDate, title } = Astro.props;
 				@container (width <=600px) {
 					--aspect-ratio: 1/1.5;
 				}
+			}
+		}
+	}
+	.countdown {
+		border: 1px solid #fff;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		place-items: center;
+		padding-inline: 1.5rem;
+		padding-block: 1rem;
+		max-width: 25rem;
+		margin-inline: auto;
+		border-radius: 0.75rem;
+		margin-top: 2rem;
+
+		& > span {
+			display: grid;
+			place-items: center;
+			font-size: 2rem;
+			width: 100%;
+			padding-inline: 1.25rem;
+
+			& + span {
+				border-left: 1px solid #fff;
+			}
+
+			p {
+				font-size: 1rem;
+				font-weight: 300;
+				text-transform: capitalize;
 			}
 		}
 	}
