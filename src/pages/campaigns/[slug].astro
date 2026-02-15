@@ -21,11 +21,15 @@ const {
 	paymentLinkOne,
 	paymentLinkTwoDollar,
 	pageContent,
+	textForLink1,
+	textForLink2,
 } = Astro.props;
 ---
 
 <BaseLayout>
 	<CampaignsHero
+		paymentText={textForLink1}
+		payment2Text={textForLink2}
 		title={title}
 		description={description}
 		image={backgroundImage}
