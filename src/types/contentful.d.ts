@@ -48,6 +48,20 @@ export interface media extends EntrySkeletonType {
 		youtubeCode: EntryFieldTypes.Text;
 	};
 }
+
+export interface campaignPage extends EntrySkeletonType {
+	contentType: "campaignPage";
+	fields: {
+		title: EntryFieldTypes.Text;
+		description: EntryFieldTypes.Text;
+		timeAndDate: EntryFieldTypes.Date;
+		backgroundImage: EntryFieldTypes.Object<ImageContent>;
+		paymentLinkOne: EntryFieldTypes.Text;
+		paymentLinkTwoDollar: EntryFieldTypes.Text;
+		slug: EntryFieldTypes.Text;
+		pageContent: EntryFieldTypes.RichText;
+	};
+}
 export type ImageContent = {
 	fields: {
 		description: string;

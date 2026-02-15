@@ -13,6 +13,12 @@ const SubscribeNewsLetter = () => {
 	const { handleSubmit, register, reset } = useForm({
 		resolver: zodResolver(formPayload),
 		resetOptions: { keepErrors: true },
+		errors: {
+			email: {
+				type: "required",
+				message: "Your Email is required",
+			},
+		},
 	});
 
 	useEffect(() => {}, []);
@@ -21,7 +27,10 @@ const SubscribeNewsLetter = () => {
 	) => {
 		const formData = new FormData();
 		formData.append("email", data.email);
-		formData.append("date", new Date().toString());
+		formData.append(
+			"date",
+			new Date().toISOString().split("T").at(0)?.toString() ?? "none",
+		);
 
 		try {
 			setIsPending(true);
