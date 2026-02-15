@@ -14,4 +14,5 @@ export default defineConfig( {
 
 	adapter: netlify(),
 	integrations: [ react(), preload(), compressor() ],
+	site: "https://themoneywit.africa"
 } );
