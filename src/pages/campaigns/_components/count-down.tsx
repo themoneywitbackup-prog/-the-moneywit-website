@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 type Props = {
 	targetDate?: string;
 };
+
 export default function Countdown({
 	targetDate = `${new Date().getFullYear()}-11-01T00:00:00`,
 }: Props) {
