@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '@/layout/base-layout.astro';
 import { campaignPage } from '@/data/campaign-page';
 import { getCollection } from 'astro:content';
+import CampaignsHero from './_components/campaigns-hero.astro';
 export const getStaticPaths = (async () => {
 	const content = await getCollection('campaignPage');
 	const reshapeObject = content.map((data) => {
@@ -10,8 +11,15 @@ export const getStaticPaths = (async () => {
 	});
 	return reshapeObject;
 }) satisfies GetStaticPaths;
+const { title, description, backgroundImage, timeAndDate } =
+	Astro.props;
 ---
 
 <BaseLayout>
-	<h2>Hello</h2>
+	<CampaignsHero
+		title={title}
+		description={description}
+		image={backgroundImage}
+		timeAndDate={new Date(timeAndDate)}
+	/>
 </BaseLayout>

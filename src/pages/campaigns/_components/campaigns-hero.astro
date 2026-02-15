@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro-preload/components';
+
+interface Props {
+	title: string;
+	description: string;
+	image: string;
+	timeAndDate: Date;
+}
+const { description, image, timeAndDate, title } = Astro.props;
+---
+
+<section class='campaign-hero'>
+	<div class='campaign-hero__container'>
+		<div class='campaign-hero__content'>
+			<header class='campaign-hero__header'>
+				<h1>
+					{title}
+				</h1>
+				<p>{description}</p>
+			</header>
+		</div>
+	</div>
+	<div class='campaign-hero__image'>
+		<Image
+			url={`https://${image}`}
+			alt={''}
+		/>
+	</div>
+</section>
+<style lang='scss'>
+	.campaign-hero {
+		display: grid;
+		grid: [stack] 1fr / [stack] 1fr;
+		isolation: isolate;
+		place-items: center;
+		&__container {
+			padding-inline: 1.25rem;
+		}
+		&__header {
+			text-align: center;
+		}
+		& > * {
+			grid-area: stack;
+		}
+		&__content {
+			color: #fff;
+		}
+		&__image {
+			--aspect-ratio: 2/1;
+			position: relative;
+			z-index: -3;
+			container-type: inline-size;
+			width: 100%;
+
+			&::before {
+				content: '';
+				background-color: oklab(from #000 l a b / 0.5);
+				position: absolute;
+				inset: 0;
+			}
+			img {
+				min-height: 50dvw;
+				width: 100%;
+				aspect-ratio: var(--aspect-ratio);
+				object-fit: cover;
+				@container (width <=600px) {
+					--aspect-ratio: 1/1.5;
+				}
+			}
+		}
+	}
+</style>
