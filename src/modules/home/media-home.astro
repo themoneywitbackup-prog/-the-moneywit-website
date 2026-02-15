@@ -2,7 +2,6 @@
 import { ArrowRight } from '@lucide/astro';
 import { getCollection } from 'astro:content';
 const mediaData = await getCollection('mediaCollection');
-
 ---
 
 <section class='media'>
@@ -37,14 +36,6 @@ const mediaData = await getCollection('mediaCollection');
 				))
 			}
 		</ul>
-
-		<div class='feature-in'>
-			<h3 class='feature-in__title'>Feature In:</h3>
-
-			<ul class='list feature-in__ul'>
-				<li class='feature-in__ul__item'>Helo</li>
-			</ul>
-		</div>
 	</div>
 </section>
 

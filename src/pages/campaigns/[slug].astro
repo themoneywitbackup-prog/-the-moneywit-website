@@ -1,0 +1,68 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layout/base-layout.astro';
+import { campaignPage } from '@/data/campaign-page';
+import { getCollection } from 'astro:content';
+import CampaignsHero from './_components/campaigns-hero.astro';
+import Countdown from './_components/count-down';
+import { generateHTMLString } from '@/lib/contentful/html-parser';
+export const getStaticPaths = (async () => {
+	const content = await getCollection('campaignPage');
+	const reshapeObject = content.map((data) => {
+		return { props: data.data, params: { slug: data.data.slug } };
+	});
+	return reshapeObject;
+}) satisfies GetStaticPaths;
+const {
+	title,
+	description,
+	backgroundImage,
+	timeAndDate,
+	paymentLinkOne,
+	paymentLinkTwoDollar,
+	pageContent,
+	textForLink1,
+	textForLink2,
+} = Astro.props;
+---
+
+<BaseLayout>
+	<CampaignsHero
+		paymentText={textForLink1}
+		payment2Text={textForLink2}
+		title={title}
+		description={description}
+		image={backgroundImage}
+		timeAndDate={new Date(timeAndDate)}
+		paymentLink={paymentLinkOne}
+		paymentLink2={paymentLinkTwoDollar}
+	/>
+	<section class='page-content'>
+		<div
+			class='page-content__container'
+			set:html={generateHTMLString(pageContent)}
+		/>
+	</section>
+</BaseLayout>
+
+<style lang='scss' is:global>
+	.pageTextContent {
+		background-color: #f7f6f4;
+		padding-block: 5rem;
+		padding-inline: 1.25rem;
+		&__container {
+			max-width: 48rem;
+			margin-inline: auto;
+
+			* + * {
+				margin-top: 1rem;
+			}
+		}
+	}
+	.form-iframe {
+		min-height: 50rem;
+		@media (width <= 500px) {
+			min-height: 43.75rem;
+		}
+	}
+</style>

@@ -1,44 +1,57 @@
 ---
-import ServiceWrapper from '@/components/ui/ServiceWrapper.astro'
-import ServiceCard from '@/components/Landing-page/ServiceCard.astro'
-import { getCollection } from 'astro:content'
+import ServiceWrapper from '@/components/ui/ServiceWrapper.astro';
+import ServiceCard from '@/components/Landing-page/ServiceCard.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
-  title?: string
-  subtitle?: string
-  defaultTab?: string
+	title?: string;
+	subtitle?: string;
+	defaultTab?: string;
+	category?: 'corporate' | 'individual';
 }
 
 const {
-  title = 'How We Can Serve You',
-  subtitle = 'Flexible, self-paced learning that covers the foundations of money management, saving, and investing.',
-  defaultTab,
-} = Astro.props
+	title = 'How We Can Serve You',
+	subtitle = 'Flexible, self-paced learning that covers the foundations of money management, saving, and investing.',
+	defaultTab,
+	category,
+} = Astro.props;
 
-const programmes = await getCollection('programCollection')
+const programmes = await getCollection('programCollection');
 
-const allCategories = programmes.flatMap((data) => data.data.category || [])
-const uniqueCategories = [...new Set(allCategories)].filter((cat) => cat && cat.trim() !== '')
-
-const effectiveDefaultTab = defaultTab || uniqueCategories[0] || 'Programs'
+const pageProgram = programmes.filter((data) => {
+	if (category) {
+		return data.data.category.includes(category);
+	}
+	return true;
+});
+const allCategories = pageProgram.flatMap(
+	(data) => data.data.category || [],
+);
+const allTagSet = new Set(allCategories);
+allTagSet.delete('individual');
+allTagSet.delete('corporate');
+const uniqueCategories = [...allTagSet].filter(
+	(cat) => cat && cat.trim() !== '',
+);
 ---
 
 <ServiceWrapper
-  title={title}
-  subtitle={subtitle}
-  tabs={uniqueCategories}
-  defaultTab={effectiveDefaultTab}
->
-  {
-    programmes.map((program) => {
-      return program.data.category?.map((category) => (
-        <ServiceCard
-          category={category}
-          title={program.data.title}
-          description={program.data.description}
-          image={program.data.previewImage}
-        />
-      ))
-    })
-  }
+	title={title}
+	subtitle={subtitle}
+	tabs={uniqueCategories}
+	defaultTab={uniqueCategories[0]}>
+	{
+		pageProgram.map((program) => {
+			return program.data.category?.map((category) => (
+				<ServiceCard
+					category={category}
+					title={program.data.title}
+					description={program.data.description}
+					image={program.data.previewImage}
+					link={program.data.link}
+				/>
+			));
+		})
+	}
 </ServiceWrapper>

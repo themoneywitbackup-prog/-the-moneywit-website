@@ -6,12 +6,19 @@ import ServiceSection from '@/modules/individual/ServiceSection.astro';
 import HeadlineSection from '@/modules/individual/HeadlineSection.astro';
 import WealthDescription from '@/modules/individual/WealthDescription.astro';
 import Testimonials from '@/modules/individual/Testimonials.astro';
+import OurServeComponent from '@/components/Landing-page/services.astro';
 ---
 
 <BaseLayout>
 	<Hero />
 	<TrackRecord />
-	<ServiceSection />
+	<OurServeComponent
+		category='individual'
+		defaultTab='Online Programs'
+		title='How We Can Serve You'
+		subtitle='Flexible, self-paced learning that covers the foundations of money management, saving, and investing.'
+	/>
+
 	<HeadlineSection />
 	<WealthDescription />
 	<Testimonials />

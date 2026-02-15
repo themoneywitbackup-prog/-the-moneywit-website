@@ -14,7 +14,6 @@ export const schoolCollection = defineCollection({
 			content_type: "school",
 			limit: 1000,
 		});
-		console.log(res.items, { depth: null });
 		return res.items.map((data) => ({
 			id: data.sys.id,
 			preview: data.fields.preview.fields.file.url,
@@ -127,3 +126,5 @@ export const mediaCollection = defineCollection({
 		}));
 	},
 });
+
+

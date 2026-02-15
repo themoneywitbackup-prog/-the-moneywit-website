@@ -5,6 +5,7 @@ import {
 	resourceCollection,
 	schoolCollection,
 } from "@/data/content";
+import { campaignPage } from "./data/campaign-page";
 
 export const collections = {
 	schoolCollection,
@@ -12,4 +13,5 @@ export const collections = {
 	resourceCollection,
 	programCollection,
 	mediaCollection,
+	campaignPage,
 };

@@ -7,11 +7,8 @@ interface Props {
 	children?: { link: string; text: string }[];
 }
 const { link, text, children , clickable} = Astro.props;
-console.log('🪲 🪲 link-comp.astro:9 🪲 link:', link);
 const { pathname } = Astro.url;
-console.log('🪲 🪲 link-comp.astro:11 🪲 pathname:', pathname);
 const activePath = link === pathname;
-console.log('🪲 🪲 link-comp.astro:13 🪲 activePath:', activePath);
 ---
 
 {
