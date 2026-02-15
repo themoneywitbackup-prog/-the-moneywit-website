@@ -111,22 +111,25 @@ const {
 			z-index: -3;
 			container-type: inline-size;
 			width: 100%;
+			min-height: 50dvw;
 
 			&::before {
 				content: '';
 				background-color: oklab(from #000 l a b / 0.5);
 				position: absolute;
 				inset: 0;
+				z-index: 2;
 			}
 			img {
-				min-height: 50dvw;
+				z-index: 1;
+				position: absolute;
 				width: 100%;
-				aspect-ratio: var(--aspect-ratio);
+				height: 100%;
+				// aspect-ratio: var(--aspect-ratio);
 				object-fit: cover;
-
-				@container (width <=600px) {
-					--aspect-ratio: 1/1.5;
-				}
+				// @container (width <=600px) {
+				// 	--aspect-ratio: 1/1.5;
+				// }
 			}
 		}
 	}
