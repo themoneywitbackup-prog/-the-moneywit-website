@@ -60,6 +60,8 @@ export interface campaignPageType extends EntrySkeletonType {
 		paymentLinkTwoDollar: EntryFieldTypes.Text;
 		slug: EntryFieldTypes.Text;
 		pageContent: EntryFieldTypes.RichText;
+		textForLink1: EntryFieldTypes.Text;
+		textForLink2: EntryFieldTypes.Text;
 	};
 }
 export type ImageContent = {

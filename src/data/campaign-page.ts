@@ -19,6 +19,8 @@ export const campaignPage = defineCollection({
 			slug: data.fields.slug,
 			pageContent: data.fields.pageContent,
 			updatedAt: data.sys.updatedAt,
+			textForLink1: data.fields.textForLink1,
+			textForLink2: data.fields.textForLink2,
 		}));
 	},
 	schema: z.object({
@@ -29,6 +31,9 @@ export const campaignPage = defineCollection({
 		backgroundImage: z.string(),
 		paymentLinkOne: z.string().url(),
 		paymentLinkTwoDollar: z.string().url(),
+		textForLink1: z.string(),
+		textForLink2: z.string(),
+
 		slug: z.string(),
 		pageContent: z.any(),
 		updatedAt: z.string().datetime(),
