@@ -49,7 +49,7 @@ export interface media extends EntrySkeletonType {
 	};
 }
 
-export interface campaignPage extends EntrySkeletonType {
+export interface campaignPageType extends EntrySkeletonType {
 	contentType: "campaignPage";
 	fields: {
 		title: EntryFieldTypes.Text;
