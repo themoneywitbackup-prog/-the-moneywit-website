@@ -1,0 +1,17 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layout/base-layout.astro';
+import { campaignPage } from '@/data/campaign-page';
+import { getCollection } from 'astro:content';
+export const getStaticPaths = (async () => {
+	const content = await getCollection('campaignPage');
+	const reshapeObject = content.map((data) => {
+		return { props: data.data, params: { slug: data.data.slug } };
+	});
+	return reshapeObject;
+}) satisfies GetStaticPaths;
+---
+
+<BaseLayout>
+	<h2>Hello</h2>
+</BaseLayout>

@@ -21,7 +21,16 @@ export const campaignPage = defineCollection({
 			updatedAt: data.sys.updatedAt,
 		}));
 	},
-  schema : z.object({
-    
-  }),
+	schema: z.object({
+		id: z.string(),
+		title: z.string(),
+		description: z.string(),
+		timeAndDate: z.string(),
+		backgroundImage: z.string(),
+		paymentLinkOne: z.string().url(),
+		paymentLinkTwoDollar: z.string().url(),
+		slug: z.string(),
+		pageContent: z.any(),
+		updatedAt: z.string().datetime(),
+	}),
 });
