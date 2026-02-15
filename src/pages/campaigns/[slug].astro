@@ -5,6 +5,7 @@ import { campaignPage } from '@/data/campaign-page';
 import { getCollection } from 'astro:content';
 import CampaignsHero from './_components/campaigns-hero.astro';
 import Countdown from './_components/count-down';
+import { generateHTMLString } from '@/lib/contentful/html-parser';
 export const getStaticPaths = (async () => {
 	const content = await getCollection('campaignPage');
 	const reshapeObject = content.map((data) => {
@@ -12,8 +13,15 @@ export const getStaticPaths = (async () => {
 	});
 	return reshapeObject;
 }) satisfies GetStaticPaths;
-const { title, description, backgroundImage, timeAndDate ,paymentLinkOne,paymentLinkTwoDollar} =
-	Astro.props;
+const {
+	title,
+	description,
+	backgroundImage,
+	timeAndDate,
+	paymentLinkOne,
+	paymentLinkTwoDollar,
+	pageContent,
+} = Astro.props;
 ---
 
 <BaseLayout>
@@ -22,7 +30,29 @@ const { title, description, backgroundImage, timeAndDate ,paymentLinkOne,payment
 		description={description}
 		image={backgroundImage}
 		timeAndDate={new Date(timeAndDate)}
-    paymentLink={paymentLinkOne}
-    paymentLink2={paymentLinkTwoDollar}
+		paymentLink={paymentLinkOne}
+		paymentLink2={paymentLinkTwoDollar}
 	/>
+	<section class='page-content'>
+		<div
+			class='page-content__container'
+			set:html={generateHTMLString(pageContent)}
+		/>
+	</section>
 </BaseLayout>
+
+<style lang='scss' is:global>
+	.pageTextContent {
+		background-color: #f7f6f4;
+		padding-block: 5rem;
+		padding-inline: 1.25rem;
+		&__container {
+			max-width: 48rem;
+			margin-inline: auto;
+			
+			* + * {
+				margin-top: 1rem;
+			}
+		}
+	}
+</style>

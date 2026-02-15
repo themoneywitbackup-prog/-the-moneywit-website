@@ -29,7 +29,10 @@ const {
 				</h1>
 				<p>{description}</p>
 			</header>
-			<Countdown client:load />
+			<Countdown
+				targetDate={timeAndDate.toDateString()}
+				client:load
+			/>
 			<div class='campaign-hero__cta'>
 				<a
 					href={paymentLink}
