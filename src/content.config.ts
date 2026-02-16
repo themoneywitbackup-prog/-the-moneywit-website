@@ -4,8 +4,11 @@ import {
 	programCollection,
 	resourceCollection,
 	schoolCollection,
+	
+	
 } from "@/data/content";
 import { campaignPage } from "./data/campaign-page";
+import {  HomepageCollections } from "./data/webpages";
 
 export const collections = {
 	schoolCollection,
@@ -14,4 +17,5 @@ export const collections = {
 	programCollection,
 	mediaCollection,
 	campaignPage,
+	 HomepageCollections
 };

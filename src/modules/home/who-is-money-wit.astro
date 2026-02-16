@@ -2,28 +2,39 @@
 import Card from './card.who-is-money-wit.astro';
 import BuilderImage from './assets/cards-builder-image.png';
 import DriverImage from './assets/driver-image.png';
+
+interface Props {
+	
+	whoismoneywitHeader: string;
+	whoismoneywitSubHeader: string;
+	whoismoneywitFirstCardHeader: string;
+	whoismoneywitFirstCardDesc: string;
+	whoismoneywitSecondCardHeader: string;
+	whoismoneywitSecondCardDesc: string;
+	
+}
+
+const {  whoismoneywitHeader, whoismoneywitSubHeader, whoismoneywitFirstCardHeader, whoismoneywitFirstCardDesc, whoismoneywitSecondCardHeader, whoismoneywitSecondCardDesc } = Astro.props;
 ---
 
 <section class='home-about'>
 	<div class='home-about__container'>
 		<header class='space-y-4'>
-			<h2 class='home-about__title'>Who is a Money Wit?</h2>
+			<h2 class='home-about__title'>{whoismoneywitHeader}</h2>
 			<p>
-				A Money Wit is someone who takes charge of their money. The Money
-				Wit Africa makes finance simple through learning, media and
-				community. You can be part of it by joining today.
+				{whoismoneywitSubHeader}
 			</p>
 		</header>
 		<div class='home-about__cards'>
 			<Card
 				image={BuilderImage}
-				title='Builders'
-				description='For young professionals building financial habits and wealth seekers creating long-term security.'
+				title={whoismoneywitFirstCardHeader}
+				description={whoismoneywitFirstCardDesc}
 			/>
 			<Card
 				image={DriverImage}
-				title='Drivers'
-				description='For entrepreneurs growing ventures and leaders shaping impact and legacy.'
+				title={whoismoneywitSecondCardHeader}
+				description={whoismoneywitSecondCardDesc}
 			/>
 		</div>
 	</div>

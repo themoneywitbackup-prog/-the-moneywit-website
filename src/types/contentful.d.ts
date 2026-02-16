@@ -64,6 +64,27 @@ export interface campaignPageType extends EntrySkeletonType {
 		textForLink2: EntryFieldTypes.Text;
 	};
 }
+export interface homePageType extends EntrySkeletonType {
+	contentType: "homepage";
+	fields: {
+		heroTag: EntryFieldTypes.Text;
+		heroTitle: EntryFieldTypes.Text;
+		heroDescription: EntryFieldTypes.Text;
+		heroButton: EntryFieldTypes.Text;
+		heroButtonLink: EntryFieldTypes.Text;
+		whoismoneywitHeader: EntryFieldTypes.Text;
+		whoismoneywitSubHeader: EntryFieldTypes.Text;
+		whoismoneywitFirstCardHeader: EntryFieldTypes.Text;
+		whoismoneywitFirstCardDesc: EntryFieldTypes.Text;
+		whoismoneywitSecondCardHeader: EntryFieldTypes.Text;
+		whoismoneywitSecondCardDesc: EntryFieldTypes.Text;
+		patnerTitle: EntryFieldTypes.Text;
+		partnerDesc: EntryFieldTypes.Text;
+		patnerButton: EntryFieldTypes.Text;
+		partnerButtonLink: EntryFieldTypes.Text;
+		
+	};
+}
 export type ImageContent = {
 	fields: {
 		description: string;
