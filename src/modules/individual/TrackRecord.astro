@@ -23,10 +23,17 @@ const individualStats = [
    icon: GlobeIcon,
   }
 ];
+
+interface Props {
+  trackRecordHeader: string
+  trackRecordDesc: string
+}
+
+const { trackRecordHeader, trackRecordDesc } = Astro.props
 ---
 
 <StatGrid 
-  title="Track Record of people we've served"
-  description="We've reached over 100,000 individuals, served 50+ companies, and impacted lives across 20+ countries. Our commitment to financial education is making a global difference."
+  title={trackRecordHeader}
+  description={trackRecordDesc}
   stats={individualStats}
 />

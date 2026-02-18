@@ -2,6 +2,18 @@
 import { Image } from 'astro:assets';
 import HeroImg from './assets/hero-img.png';
 import { Picture } from 'astro:assets';
+
+interface Props {
+	heroTag: string;
+	heroTitle: string;
+	description: string;
+	ctaText: string;
+	ctaLink: string;
+	
+	
+}
+
+const { heroTag, heroTitle, description, ctaText, ctaLink} = Astro.props;
 ---
 
 <section class='bg-black text-white hero align-middle px-6'>
@@ -12,18 +24,17 @@ import { Picture } from 'astro:assets';
 				<header class='space-y-4'>
 					<span
 						class='tag font-light border-brandYellow rounded-full inline-block p-1.5 border-solid border-[.2px] bg-[#ffcc241b] text-brandYellow'
-						>Africa's Top Financial Literacy Ecosystem</span
+						>{heroTag}</span
 					>
-					<h1>Your money works for you here.</h1>
+					<h1>{heroTitle}</h1>
 				</header>
 				<p class='text-[#A7A7A7] mt-6'>
-					Media, School, Community — one ecosystem to grow your financial
-					future
+					{description}
 				</p>
 				<a
 					class='hero__cta bg-brandYellow text-[#1E1E1E] font-semibold mt-12 py-4 px-6 rounded-full inline-block'
-					href='/'
-					>Get started</a
+					href={ctaLink}
+					>{ctaText}</a
 				>
 			</div>
 		</div>

@@ -4,24 +4,36 @@ import expressionOne from './assets/expressionOne.webp'
 import expressionTwo from './assets/expressionTwo.webp'
 import expressionThree from './assets/expressionThree.webp'
 import ArrowFowardIcon from '@/modules/community/assets/icon/arrow_forward.svg'
+
+interface Props {
+    expressionHeader?: string
+    expressionCardOneTitle?: string
+    expressionCardOneDesc?: string
+    expressionCardTwoTitle?: string
+    expressionCardTwoDesc?: string
+    expressionCardThreeTitle?: string
+    expressionCardThreeDesc?: string
+
+}
+const { expressionHeader, expressionCardOneDesc, expressionCardTwoDesc, expressionCardThreeDesc,expressionCardOneTitle,expressionCardTwoTitle,expressionCardThreeTitle } = Astro.props;
 const expressions = [
   {
-    title: 'Media',
-    description: 'Simplifying finance through stories, explainers, and actionable tips',
+    title: expressionCardOneTitle,
+    description: expressionCardOneDesc,
     image: expressionOne,
     link: '/media',
     alt: 'Young woman recording a podcast',
   },
   {
-    title: 'School',
-    description: 'Hands-on courses and workshops that teach practical money skills.',
+    title: expressionCardTwoTitle,
+    description: expressionCardTwoDesc,
     image: expressionTwo,
     link: '/school',
     alt: 'Teacher presenting to a classroom',
   },
   {
-    title: 'Community',
-    description: 'Small groups, peer-learning, and events to practice what you learn.',
+    title: expressionCardThreeTitle,
+    description: expressionCardThreeDesc,
     image: expressionThree,
     link: '/community',
     alt: 'Group of friends laughing and talking',
@@ -31,7 +43,7 @@ const expressions = [
 
 <section class="bg-[#F9F9F9] py-20 px-6">
   <div class="max-w-containerBrand m-auto">
-    <h2 class="text-center font-bold text-[#222] rs-section-title mb-12">Our Three Expressions</h2>
+    <h2 class="text-center font-bold text-[#222] rs-section-title mb-12">{expressionHeader}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {

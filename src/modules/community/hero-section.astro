@@ -1,13 +1,24 @@
 ---
 import GenericHero from '@/components/ui/GenericHero.astro'
 import community from './assets/community.webp'
+
+
+interface Props {
+  communityHeroHeader: string
+  communityHeroDesc: string
+  communityHeroButtonText: string
+  communityHeroButtonLink: string
+}
+
+const { communityHeroHeader, communityHeroDesc, communityHeroButtonText, communityHeroButtonLink } = Astro.props
 ---
 
 <GenericHero
-  heading="Learning and Taking Action"
+  heading={communityHeroHeader}
   headingClass="text-[#F7F6F4] font-bold leading-[3] tracking-[-0.02em] !text-4xl md:!text-5xl capitalize"
-  subheading="Get the information, knowledge, and community support you need to confidently build your financial future"
+  subheading={communityHeroDesc}
   subheadingClass="text-[#A7A7A7] !text-[20px] max-w-2xl font-normal"
   image={community}
-  buttonText="Join The Money Wit Community"
+  buttonText={communityHeroButtonText}
+  buttonHref={communityHeroButtonLink}
 />

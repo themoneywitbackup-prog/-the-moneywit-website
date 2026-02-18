@@ -1,12 +1,21 @@
 ---
 import GenericHero from '@/components/ui/GenericHero.astro'
 import corporateImg from './assets/corporate.webp'
+
+interface Props {
+  corporateHeroHeader: string
+  corporateHeroButtonText: string
+  corporateHeroButtonLink: string
+}
+
+const { corporateHeroHeader, corporateHeroButtonText, corporateHeroButtonLink } = Astro.props
 ---
 
 <GenericHero
-  heading="Financial Well-being for Your Staff"
+  heading={corporateHeroHeader}
   subheading=""
-  buttonText="Get started"
+  buttonText={corporateHeroButtonText}
+  buttonHref={corporateHeroButtonLink}
   image={corporateImg}
   imageAlt="Business team meeting"
   headingClass="!text-5xl md:!text-6xl text-[#F7F6F4] font-bold leading-[1.2] tracking-[-0.02em] max-w-[700px]"

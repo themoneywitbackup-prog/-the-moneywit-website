@@ -7,29 +7,48 @@ import GraphDownIcon from '@/modules/community/assets/icon/solar_graph-down-bold
 import GraduateIcon from '@/modules/community/assets/icon/fa6-solid_user-graduate.svg';
 import LateIcon from '@/modules/community/assets/icon/material-symbols_assignment-late.svg';
 
+
+interface Props {
+  familiarHeader: string
+  familiarCardOneText: string
+  familiarCardTwoText: string
+  familiarCardThreeText: string
+  familiarCardFourText: string
+  familiarCardFiveText: string
+  familiarCardSixText: string
+}
+const { familiarHeader,
+  familiarCardOneText,
+  familiarCardTwoText,
+  familiarCardThreeText,
+  familiarCardFourText,
+  familiarCardFiveText,
+  familiarCardSixText
+} = Astro.props
+
 const familiarScenarios = [
   {
-    text: "You earn well, but feel your income isn't working for you",
+    text: familiarCardOneText,
     icon: WalletIcon
   },
   {
-    text: "You want to invest in different assets but don't know where to begin.",
+    text: familiarCardTwoText,
     icon: SmileIcon
   },
   {
-    text: "You feel alone in your investment journey with no one to discuss opportunities with.",
+    text: familiarCardThreeText,
     icon:  ThinkingIcon
   },
   {
-    text: "The investment options you know offer disappointingly low returns.",
+    text: familiarCardFourText,
     icon: GraphDownIcon
   },
   {
-    text: "You've taken classes but lack the confidence to take action.",
+    text: familiarCardFiveText,
     icon: GraduateIcon
   },
   {
-    text: "You always hear about great investment opportunities after the profit has been made",
+    text: familiarCardSixText,
     icon: LateIcon
   }
 ];
@@ -38,7 +57,7 @@ const familiarScenarios = [
 <section class="bg-[#F7F7F7] py-24 px-6">
   <div class="max-w-containerBrand mx-auto">
     <h2 class="rs-familiar-title font-bold text-[#1A1A1A] mb-16">
-      Does This Sound Familiar?
+     {familiarHeader}
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
