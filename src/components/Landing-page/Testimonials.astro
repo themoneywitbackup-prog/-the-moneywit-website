@@ -1,36 +1,38 @@
 ---
+
+interface Props {
+  message: string
+  name: string
+}
+
+const { message, name } = Astro.props
 const testimonials = [
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name:name,
+    quote:message,
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: name,
+    quote:message,
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: name,
+    quote:message,
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name:name,
+    quote:message,
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: name,
+    quote:message,
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: name,
+    quote:message,
   },
 ]
+
 ---
 
 <section class="bg-black text-white py-24 px-6 overflow-hidden">

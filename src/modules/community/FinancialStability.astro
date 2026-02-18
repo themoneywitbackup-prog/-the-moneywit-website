@@ -1,40 +1,70 @@
 ---
+
+interface Props {
+  moneyWitFinancialHeader: string
+  moneyWitFinancialDesc: string
+  moneyWitFinancialButtonText: string
+  moneyWitFinancialButtonLink: string
+  moneyWitFinancialStepOneTitle: string
+  moneyWitFinancialStepOneDesc: string
+  moneyWitFinancialStepTwoTitle: string
+  moneyWitFinancialStepTwoDesc: string
+  moneyWitFinancialStepThreeTitle: string
+  moneyWitFinancialStepThreeDesc: string
+  moneyWitFinancialStepFourTitile: string
+  moneyWitFinancialStepFourDesc: string
+}
+const {
+  moneyWitFinancialHeader,
+  moneyWitFinancialDesc,
+  moneyWitFinancialButtonText,
+  moneyWitFinancialButtonLink,
+  moneyWitFinancialStepOneTitle,
+  moneyWitFinancialStepOneDesc,
+  moneyWitFinancialStepTwoTitle,
+  moneyWitFinancialStepTwoDesc,
+  moneyWitFinancialStepThreeTitle,
+  moneyWitFinancialStepThreeDesc,
+  moneyWitFinancialStepFourTitile,
+  moneyWitFinancialStepFourDesc
+} = Astro.props
+
 const features = [
   {
-    title: 'Expert-Vetted Opportunities',
-    description: 'We highlight diverse investment opportunities for you to explore',
+    title: moneyWitFinancialStepOneTitle,
+    description:  moneyWitFinancialStepOneDesc,
   },
   {
-    title: 'Simple Explanations',
-    description: 'We break down complex investing concepts into "simple English"',
+    title: moneyWitFinancialStepTwoTitle,
+    description: moneyWitFinancialStepTwoDesc,
   },
   {
-    title: 'Supportive Community:',
-    description:
-      'Connect with mid, senior, and executive-level professionals and business owners from Nigeria, the USA, UK, and Canada',
+    title: moneyWitFinancialStepThreeTitle,
+    description: moneyWitFinancialStepThreeDesc,
   },
   {
-    title: 'Investment Monitoring',
-    description:
-      "We keep track of our investment recommendations and notify you of any changes, so you don't have to",
+    title: moneyWitFinancialStepFourTitile,
+    description: moneyWitFinancialStepFourDesc,
   },
+  
 ]
+
 ---
 
 <section class="bg-[#F7F7F7] py-24 px-6">
   <div class="max-w-containerBrand mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
     <div>
       <h2 class="rs-stability-title font-bold text-[#1A1A1A] mb-6 leading-tight !text-3xl">
-        The Money Wit Club:<br /> Your Path to Financial Stability
+        {moneyWitFinancialHeader}
       </h2>
       <p class="text-gray-600 text-lg mb-10 max-w-xl">
-        This is where your financial education earns returns. This is where action builds wealth.
+        {moneyWitFinancialDesc}
       </p>
       <a
-        href="#"
+        href={moneyWitFinancialButtonLink}
         class="inline-block bg-[#FFD100] text-black font-bold py-4 px-8 rounded-full hover:bg-[#e6bd00] transition-colors"
       >
-        Join The Club
+     {moneyWitFinancialButtonText}
       </a>
     </div>
 

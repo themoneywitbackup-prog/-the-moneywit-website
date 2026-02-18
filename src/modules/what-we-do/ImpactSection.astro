@@ -3,7 +3,12 @@ import StatGrid from '@/components/ui/StatGrid.astro';
 import PeopleIcon from '@/components/assets/icons/pepicons-pop_people.svg'
 import ContinentsIcon from '@/components/assets/icons/Group.svg'
 import GlobeIcon from '@/components/assets/icons/mdi_company.svg'
-
+interface Props {
+	impactHeader: string
+	impactDesc: string
+	
+}
+const { impactHeader, impactDesc} = Astro.props;
 const stats = [
 	{
 		target: 100,
@@ -29,8 +34,8 @@ const stats = [
 ---
 
 <StatGrid
-  title="Our Impact"
-  description="We've reached over 100,000 individuals, served 50+ companies, and impacted lives across 20+ countries. Our commitment to financial education is making a global difference."
+  title={impactHeader}
+  description={impactDesc}
   stats={stats}
   bgColor="bg-black"
   cardColor="bg-[#111111] border border-white/5"

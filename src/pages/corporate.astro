@@ -1,26 +1,68 @@
 ---
-import BaseLayout from '@/layout/base-layout.astro';
-import CorporateHero from '@/modules/corporate/hero-section.astro';
-import StaffSection from '@/modules/corporate/staff-section.astro';
-import HeadlineSection from '@/modules/corporate/HeadlineSection.astro';
-import SecondHeadline from '@/modules/corporate/secondHeadline.astro';
-import SupportSection from '@/modules/corporate/support-section.astro';
-import ImpactSection from '@/modules/corporate/impact-section.astro';
-import Testimonials from '@/components/Landing-page/Testimonials.astro';
-import OurStaffComponent from '@/components/Landing-page/services.astro';
+import BaseLayout from '@/layout/base-layout.astro'
+import CorporateHero from '@/modules/corporate/hero-section.astro'
+import StaffSection from '@/modules/corporate/staff-section.astro'
+import HeadlineSection from '@/modules/corporate/HeadlineSection.astro'
+import SecondHeadline from '@/modules/corporate/secondHeadline.astro'
+import SupportSection from '@/modules/corporate/support-section.astro'
+import ImpactSection from '@/modules/corporate/impact-section.astro'
+import Testimonials from '@/components/Landing-page/Testimonials.astro'
+import OurStaffComponent from '@/components/Landing-page/services.astro'
+import { getCollection } from 'astro:content'
+const corporatePageContent = await getCollection('corporatePageCollections')
+const pageContent = corporatePageContent[0].data
+
+const customerTestimonialPageContent = await getCollection("customerTestimonialPageCollections")
+
+const customerContent = customerTestimonialPageContent[0].data
+
+const {
+  heroTitle,
+  heroButtonText,
+  heroButtonLink,
+  firstHeadlineTitile,
+  firstHeadlineDesc,
+  firstHeadlineButtonText,
+  firstHeadlineButtonLink,
+  secondHeadlineTitle,
+  secondHeadlineDesc,
+  secondHeadlineButtonText,
+  secondHeadlineButtonLink,
+  supportStaffTitle,
+  supportStaffDesc,
+  impactSpreadTitle,
+  impactSpreadDescOne,
+  impactSpreadDescTwo
+} = pageContent
+
+const {message,name } = customerContent
 ---
 
 <BaseLayout>
-	<CorporateHero />
-	<OurStaffComponent
-		defaultTab='Workshops'
-		title='For Your Staff'
-		category='corporate'
-		subtitle='Flexible, self-paced learning that covers the foundations of money management, saving, and investing..'
-	/>
-	<HeadlineSection />
-	<SecondHeadline />
-	<SupportSection />
-	<ImpactSection />
-	<Testimonials />
+  <CorporateHero
+    corporateHeroHeader={heroTitle}
+    corporateHeroButtonText={heroButtonText}
+    corporateHeroButtonLink={heroButtonLink}
+  />
+  <OurStaffComponent
+    defaultTab="Workshops"
+    title="For Your Staff"
+    category="corporate"
+    subtitle="Flexible, self-paced learning that covers the foundations of money management, saving, and investing.."
+  />
+  <HeadlineSection
+    heading={firstHeadlineTitile}
+    subtext={firstHeadlineDesc}
+    buttonText={firstHeadlineButtonText}
+    headlineUrl={firstHeadlineButtonLink}
+  />
+  <SecondHeadline
+    heading={secondHeadlineTitle}
+    subtext={secondHeadlineDesc}
+    buttonText={secondHeadlineButtonText}
+    headlineUrl={secondHeadlineButtonLink}
+  />
+  <SupportSection  title={supportStaffTitle} description={supportStaffDesc} />
+  <ImpactSection title={impactSpreadTitle} descOne={impactSpreadDescOne} descTwo={impactSpreadDescTwo} />
+  <Testimonials message={message} name={name}/>
 </BaseLayout>

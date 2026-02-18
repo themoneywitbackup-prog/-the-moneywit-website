@@ -3,10 +3,11 @@ import { Image } from 'astro:assets'
 import PhilosophyImg from './assets/Philosophy.webp'
 
 interface Props {
-  title?: string
+ ourPhilosophyDesc:string
+ ourPhilosophyTitle:string
 }
 
-const { title = 'Our Philosophy' } = Astro.props
+const {  ourPhilosophyDesc,ourPhilosophyTitle } = Astro.props
 ---
 <section class="our-philosophy py-24 px-6 bg-black">
   <div
@@ -14,29 +15,11 @@ const { title = 'Our Philosophy' } = Astro.props
   >
     <div class="flex flex-col gap-8">
       <h2 class="rs-philosophy-title font-bold text-[#F7F6F4]">
-        {title}
+      {ourPhilosophyTitle}
       </h2>
 
       <div class="rs-philosophy-text flex flex-col gap-6 text-[#F7F6F4]">
-        <p>
-          For us, investing is like farming! Plant a seed in good soil, suitable environment, water
-          it, give it time and at some point, you'll be reaping harvest every year! Time is our best
-          friend in investing - play the long game and start early. Don't put all your eggs in one
-          basket! DIVERSIFY! Some investments will give you cash flow, some will give you capital
-          gains, it all adds up.
-        </p>
-        <p>
-          At the start, a larger percentage of your investments should be in regulated entities
-          (you'll know what that is when you join us) - you are in it for the long haul. Every
-          investment opportunity must make sense in simple english, we avoid convoluted and
-          illogical opportunities. Your money journey is one that will last your whole life time,
-          take yourself seriously, mentally prepare for the ups, downs and opportunities they will
-          present - your future self will thank you.
-        </p>
-        <p>
-          Finally, Return is always a reward for risk! For most opportunities, the higher the
-          return, the higher the risk! Know this and know peace!
-        </p>
+        {ourPhilosophyDesc}
       </div>
     </div>
 

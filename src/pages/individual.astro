@@ -1,25 +1,62 @@
 ---
-import BaseLayout from '@/layout/base-layout.astro';
-import Hero from '@/modules/individual/hero-section.astro';
-import TrackRecord from '@/modules/individual/TrackRecord.astro';
-import ServiceSection from '@/modules/individual/ServiceSection.astro';
-import HeadlineSection from '@/modules/individual/HeadlineSection.astro';
-import WealthDescription from '@/modules/individual/WealthDescription.astro';
-import Testimonials from '@/modules/individual/Testimonials.astro';
-import OurServeComponent from '@/components/Landing-page/services.astro';
+import BaseLayout from '@/layout/base-layout.astro'
+import Hero from '@/modules/individual/hero-section.astro'
+import TrackRecord from '@/modules/individual/TrackRecord.astro'
+import ServiceSection from '@/modules/individual/ServiceSection.astro'
+import HeadlineSection from '@/modules/individual/HeadlineSection.astro'
+import WealthDescription from '@/modules/individual/WealthDescription.astro'
+import Testimonials from '@/components/Landing-page/Testimonials.astro'
+import OurServeComponent from '@/components/Landing-page/services.astro'
+import { getCollection } from 'astro:content'
+const individulaPageContent = await getCollection('individualPageCollections')
+const pageContent = individulaPageContent[0].data
+const {
+  heroTitle,
+  heroButtonText,
+  heroButtonLink,
+  trackRecordHeader,
+  trackRecordDesc,
+  headlineHeader,
+  headlineDesc,
+  headlineButtonText,
+  headlineButtonLink,
+  generationalWealthHeader,
+  generationalWealthDesc,
+  generationalWealthSubHeader,
+  generationalWealthSubDesc,
+  generationalWealthLastDesc,
+} = pageContent
+
+const customerTestimonialPageContent = await getCollection("customerTestimonialPageCollections")
+
+const customerContent = customerTestimonialPageContent[0].data
+
+
+const {message,name } = customerContent
 ---
 
 <BaseLayout>
-	<Hero />
-	<TrackRecord />
-	<OurServeComponent
-		category='individual'
-		defaultTab='Online Programs'
-		title='How We Can Serve You'
-		subtitle='Flexible, self-paced learning that covers the foundations of money management, saving, and investing.'
-	/>
+  <Hero heroTitle={heroTitle} heroButtonText={heroButtonText} heroButtonLink={heroButtonLink} />
+  <TrackRecord trackRecordHeader={trackRecordHeader} trackRecordDesc={trackRecordDesc} />
+  <OurServeComponent
+    category="individual"
+    defaultTab="Online Programs"
+    title="How We Can Serve You"
+    subtitle="Flexible, self-paced learning that covers the foundations of money management, saving, and investing."
+  />
 
-	<HeadlineSection />
-	<WealthDescription />
-	<Testimonials />
+  <HeadlineSection
+    heading={headlineHeader}
+    subtext={headlineDesc}
+    buttonText={headlineButtonText}
+    headlineUrl={headlineButtonLink}
+  />
+  <WealthDescription
+    heading={generationalWealthHeader}
+    descOne={generationalWealthDesc}
+    descTwo={generationalWealthSubHeader}
+    descThree={generationalWealthSubDesc}
+    descFour={generationalWealthLastDesc} 
+  />
+  <Testimonials message={message} name={name}/>
 </BaseLayout>

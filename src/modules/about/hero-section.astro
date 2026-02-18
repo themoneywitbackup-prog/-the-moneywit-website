@@ -3,11 +3,11 @@ import { Picture } from 'astro:assets'
 import AboutHeroImg from './assets/About-hero.png'
 
 interface Props {
-  titleLine1?: string
-  titleLine2?: string
+  title: string
+  
 }
 
-const { titleLine1 = 'Inspiring Smarter', titleLine2 = 'Money Choices' } = Astro.props
+const { title } = Astro.props
 ---
 <section class="about-hero relative w-full overflow-hidden flex items-center justify-center">
   <div class="absolute inset-0 z-0">
@@ -25,10 +25,8 @@ const { titleLine1 = 'Inspiring Smarter', titleLine2 = 'Money Choices' } = Astro
   </div>
 
   <div class="max-w-containerBrand m-auto relative z-10 px-6 text-center">
-    <h1 class="rs-about-title font-bold !text-[64px] text-white leading-tight">
-      {titleLine1}
-      <br />
-      <span class="text-white">{titleLine2}</span>
+    <h1 class="rs-about-title font-bold !text-[60px] text-white leading-tight max-w-md">
+      {title}
     </h1>
   </div>
 </section>
@@ -41,7 +39,7 @@ const { titleLine1 = 'Inspiring Smarter', titleLine2 = 'Money Choices' } = Astro
   }
   .rs-about-title {
     font-size: fn.useResponsiveSize(320, 1024, 36, 72);
-    font-family: bold;
+    
     letter-spacing: -0.02em;
   }
   picture,

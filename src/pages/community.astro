@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layout/base-layout.astro'
 import Hero from '@/modules/community/hero-section.astro'
-import CommunityOverview from '@/modules/community/CommunityOverview.astro'
+import CommunityOverview from '@/modules/community/Overview.astro'
 import ImpactSection from '@/modules/community/impact.astro'
 import FamiliaritySection from '@/modules/community/FamiliarityGrid.astro'
 import FinancialStability from '@/modules/community/FinancialStability.astro'
@@ -9,16 +9,116 @@ import CommunityGuest from '@/modules/community/CommunityGuest.astro'
 import CommunityFeatures from '@/modules/community/CommunityFeatures.astro'
 import FAQSection from '@/modules/community/FAQSection.astro'
 import CommunityTestimonials from '@/modules/community/CommunityTestimonials.astro'
+import { getCollection } from 'astro:content'
+const communityPageContent = await getCollection('communityPageCollections')
+const faqPageContent = await getCollection('faqPageCollections')
+const faqContent = faqPageContent[0].data
+const pageContent = communityPageContent[0].data
+
+const {
+  communityHeroHeader,
+  communityHeroDesc,
+  communityHeroButtonText,
+  communityHeroButtonLink,
+  communityOverviewHeader,
+  communityOverviewFirstDesc,
+  communityOverviewSecDesc,
+  communityOverviewThirdDesc,
+  familiarHeader,
+  familiarCardOneText,
+  familiarCardTwoText,
+  familiarCardThreeText,
+  familiarCardFourText,
+  familiarCardFiveText,
+  familiarCardSixText,
+  moneyWitFinancialHeader,
+  moneyWitFinancialDesc,
+  moneyWitFinancialButtonText,
+  moneyWitFinancialButtonLink,
+  moneyWitFinancialStepOneTitle,
+  moneyWitFinancialStepOneDesc,
+  moneyWitFinancialStepTwoTitle,
+  moneyWitFinancialStepTwoDesc,
+  moneyWitFinancialStepThreeTitle,
+  moneyWitFinancialStepThreeDesc,
+  moneyWitFinancialStepFourTitile,
+  moneyWitFinancialStepFourDesc,
+  featureLiteLink,
+  featurePremiumLink,
+ 
+  
+} = pageContent
+
+const {questionOne,
+  questionTwo,
+  questionThree,
+  questionFour,
+  questionFive,
+  questionSix,
+  answerOne,
+  answerTwo,
+  answerThree,
+  answerFour,
+  answerFive,
+  answerSix ,
+   faqButtonText,
+  faqButtonLink} = faqContent
 ---
 
 <BaseLayout>
-  <Hero />
-  <CommunityOverview />
+  <Hero
+    communityHeroHeader={communityHeroHeader}
+    communityHeroDesc={communityHeroDesc}
+    communityHeroButtonText={communityHeroButtonText}
+    communityHeroButtonLink={communityHeroButtonLink}
+  />
+  <CommunityOverview
+    title={communityOverviewHeader}
+    highlightText={communityOverviewSecDesc}
+    descriptionOne={communityOverviewFirstDesc}
+    descriptionTwo={communityOverviewThirdDesc}
+  />
   <ImpactSection />
-  <FamiliaritySection />
-  <FinancialStability />
-  <CommunityGuest/>
-  <CommunityTestimonials/>
-  <CommunityFeatures/>
-  <FAQSection/>
+  <FamiliaritySection
+    familiarHeader={familiarHeader}
+    familiarCardOneText={familiarCardOneText}
+    familiarCardTwoText={familiarCardTwoText}
+    familiarCardThreeText={familiarCardThreeText}
+    familiarCardFourText={familiarCardFourText}
+    familiarCardFiveText={familiarCardFiveText}
+    familiarCardSixText={familiarCardSixText}
+  />
+  <FinancialStability
+    moneyWitFinancialHeader={moneyWitFinancialHeader}
+    moneyWitFinancialDesc={moneyWitFinancialDesc}
+    moneyWitFinancialButtonText={moneyWitFinancialButtonText}
+    moneyWitFinancialButtonLink={moneyWitFinancialButtonLink}
+    moneyWitFinancialStepOneTitle={moneyWitFinancialStepOneTitle}
+    moneyWitFinancialStepOneDesc={moneyWitFinancialStepOneDesc}
+    moneyWitFinancialStepTwoTitle={moneyWitFinancialStepTwoTitle}
+    moneyWitFinancialStepTwoDesc={moneyWitFinancialStepTwoDesc}
+    moneyWitFinancialStepThreeTitle={moneyWitFinancialStepThreeTitle}
+    moneyWitFinancialStepThreeDesc={moneyWitFinancialStepThreeDesc}
+    moneyWitFinancialStepFourTitile={moneyWitFinancialStepFourTitile}
+    moneyWitFinancialStepFourDesc={moneyWitFinancialStepFourDesc}
+  />
+  <CommunityGuest />
+  <CommunityTestimonials />
+  <CommunityFeatures featureLiteLink={featureLiteLink} featurePremiumLink={featurePremiumLink} />
+  <FAQSection
+    questionOne={questionOne}
+    questionTwo={questionTwo}
+    questionThree={questionThree}
+    questionFour={questionFour}
+    questionFive={questionFive}
+    questionSix={questionSix}
+    answerOne={answerOne}
+    answerTwo={answerTwo}
+    answerThree={answerThree}
+    answerFour={answerFour}
+    answerFive={answerFive}
+    answerSix={answerSix}
+    faqButtonLink={faqButtonLink}
+    faqButtonText={faqButtonText}
+  />
 </BaseLayout>
