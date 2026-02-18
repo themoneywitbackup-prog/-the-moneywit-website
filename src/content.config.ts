@@ -16,7 +16,8 @@ import {
   individualPageCollections,
   corporatePageCollections,
   aboutPageCollections,
-  customerTestimonialPageCollections
+  customerTestimonialPageCollections,
+  footerPageCollections
 } from './data/webpages'
 
 export const collections = {
@@ -35,5 +36,6 @@ export const collections = {
   individualPageCollections,
   corporatePageCollections,
   aboutPageCollections,
-  customerTestimonialPageCollections
+  customerTestimonialPageCollections,
+  footerPageCollections
 }
