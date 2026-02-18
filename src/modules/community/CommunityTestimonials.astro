@@ -13,6 +13,11 @@ const testimonials = [
     title: 'Member Testimonial 3',
   },
 ]
+interface Props {
+  buttonText: string
+  buttonLink: string
+}
+const { buttonText, buttonLink } = Astro.props
 ---
 
 <section class="bg-[#F7F7F7] py-24 px-6">
@@ -41,11 +46,13 @@ const testimonials = [
     </div>
 
     <div class="flex justify-center">
-      <button
-        class="bg-[#FFD640] text-[#1A1A1A] font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform"
-      >
-        Join The Club
-      </button>
+      <a href={buttonLink}>
+        <button
+          class="bg-[#FFD640] text-[#1A1A1A] font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform cursor-pointer"
+        >
+          {buttonText}
+        </button>
+      </a>
     </div>
   </div>
 </section>

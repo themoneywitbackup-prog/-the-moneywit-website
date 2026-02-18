@@ -216,6 +216,8 @@ export const communityPageCollections = defineCollection({
       moneyWitFinancialStepFourDesc: data.fields.moneyWitFinancialStepFourDesc,
       featureLiteLink: data.fields.featureLiteLink,
       featurePremiumLink: data.fields.featurePremiumLink,
+      communityMembersButtonText: data.fields.communityMembersButtonText,
+      communityMembersButtonLink: data.fields.communityMembersButtonLink,
     }))
   },
   schema: z.object({
@@ -248,6 +250,8 @@ export const communityPageCollections = defineCollection({
     moneyWitFinancialStepFourDesc: z.string(),
     featureLiteLink: z.string(),
     featurePremiumLink: z.string(),
+    communityMembersButtonText: z.string(),
+    communityMembersButtonLink: z.string(),
   }),
 })
 

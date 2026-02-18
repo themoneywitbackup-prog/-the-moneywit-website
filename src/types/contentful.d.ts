@@ -170,6 +170,9 @@ export interface communityPageType extends EntrySkeletonType {
     moneyWitFinancialStepFourDesc: EntryFieldTypes.Text
     featureLiteLink: EntryFieldTypes.Text
     featurePremiumLink: EntryFieldTypes.Text
+    communityMembersButtonText: EntryFieldTypes.Text
+    communityMembersButtonLink: EntryFieldTypes.Text
+
 
   }
 }
