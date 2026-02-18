@@ -1,48 +1,63 @@
 ---
+interface Props {
+  questionOne: string
+  questionTwo: string
+  questionThree: string
+  questionFour: string
+  questionFive: string
+  questionSix: string
+  answerOne: string
+  answerTwo: string
+  answerThree: string
+  answerFour: string
+  answerFive: string
+  answerSix: string
+  faqButtonText: string
+  faqButtonLink: string
+}
+
+const {
+  questionOne,
+  questionTwo,
+  questionThree,
+  questionFour,
+  questionFive,
+  questionSix,
+  answerOne,
+  answerTwo,
+  answerThree,
+  answerFour,
+  answerFive,
+  answerSix,
+  faqButtonText,
+  faqButtonLink
+ 
+} = Astro.props
+
 const faqs = [
   {
-    question: 'Who is the club for?',
-    content: [
-      'Club is for you if earn well and you understand that making your money work for you is the sure path to financial freedom but the whole process seems vague and overwhelming',
-      'You are done with getting caught in bad investments',
-      'You are tired of trying to piece together free content online and want it all streamlined',
-      'You would like to hear of coded investment opportunities while they are hot and available',
-      'You would like to connect with people of like minds and frequency',
-      'You would like to build wealth sustainably',
-      'You are ready to take action',
-    ],
+    question: questionOne,
+    content: answerOne,
   },
   {
-    question: 'The club is not for you',
-    content: [
-      'You are looking for a get-rich-quick scheme',
-      'You secretly like the high of acquiring knowledge without taking action',
-      'You care more about looking wealthy than being wealthy',
-      'If you are looking to outsource responsibility for your finances to someone else',
-    ],
+    question: questionTwo,
+    content: answerTwo,
   },
   {
-    question: 'What should I expect as a member of The Money Wit Club?',
-    content: [
-      'Weekly emails with investment opportunities,',
-      'Monthly webinars on various money topics',
-      'A platform to ask real time money questions',
-      'A learning platform with learning resources',
-      'and community events.',
-      'We will be focused on building accountability and ensuring that what you have learnt, you do.',
-    ],
+    question: questionThree,
+    content: answerThree,
   },
   {
-    question: 'What do you do in the club?',
-    text: 'We highlight investment opportunities in regulated and alternative assets. We explain what they are, how they work, how to access them. You engage, take action by investing and build wealth!',
+    question: questionFour,
+    content: answerFour,
   },
   {
-    question: 'What is the profile of members in the club?',
-    text: 'Career profile: Mid, Senior and Executive management and business owners across various sectors. Geographic reach: Nigeria, USA, UK, Canada',
+    question: questionFive,
+    content: answerFive,
   },
   {
-    question: 'What is your cancellation policy?',
-    text: 'We operate a cancel at anytime policy. If you do not wish to continue, you may cancel your membership at any time. Cancellation will take effect from the anniversary of your last subscription payment. But know we are guaranteed to deliver',
+    question: questionSix,
+    content: answerSix,
   },
 ]
 ---
@@ -57,13 +72,14 @@ const faqs = [
       <button
         class="bg-[#FFD640] text-black font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform"
       >
-        Join The Club
+      <a href={faqButtonLink}> {faqButtonText}</a>
+       
       </button>
     </div>
 
     <div class="flex flex-col gap-4" id="faq-list">
       {
-        faqs.map((faq) => (
+        faqs.map((faq: { question: string; content: string }) => (
           <div class="faq-item bg-[#111111] rounded-2xl overflow-hidden border border-white/5 transition-all duration-300">
             <button
               class="faq-toggle w-full p-6 md:p-8 flex justify-between items-center text-left group cursor-pointer"
@@ -80,13 +96,9 @@ const faqs = [
             <div class="faq-content max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
               <div class="p-6 md:p-8 pt-0 text-white leading-relaxed border-t border-white/5 mt-2">
                 {faq.content ? (
-                  <ul class="list-disc pl-5 space-y-3 mt-4">
-                    {faq.content.map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
+                  <p class="mt-4">{faq.content}</p>
                 ) : (
-                  <p class="mt-4">{faq.text}</p>
+                  <p class="mt-4">{faq.content}</p>
                 )}
               </div>
             </div>

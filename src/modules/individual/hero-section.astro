@@ -1,11 +1,26 @@
 ---
 import GenericHero from '@/components/ui/GenericHero.astro'
 import heroImage from './assets/individual-hero.webp'
+
+interface Props {
+  heroTitle: string
+  heroButtonText: string
+  heroButtonLink: string
+  
+}
+
+const {
+  heroTitle,
+  heroButtonText,
+  heroButtonLink
+} = Astro.props
 ---
 
 <GenericHero
-  heading="Grow Your Financial Literacy Skills, Step by Step"
+  heading={heroTitle}
   image={heroImage}
    headingClass="!text-5xl md:!text-6xl text-[#F7F6F4] font-bold leading-[1.2] tracking-[-0.02em] max-w-[800px]"
   imageAlt="individual financial literacy hero image"
+  buttonText={heroButtonText}
+  buttonHref={heroButtonLink}
 />

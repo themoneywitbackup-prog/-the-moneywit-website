@@ -6,12 +6,14 @@ interface Props {
   title?: string
   topText?: string
   bottomText?: string
+  descOne: string
+  descTwo?: string
 }
 
 const {
-  title = 'Impact Spread',
-  topText = "When your employees gain financial literacy, the benefits extend far beyond your organisation's walls. Your team members take these wealth-building strategies home, breaking generational cycles of financial struggle within their families. They share insights with friends, creating a ripple effect of positive financial change.",
-  bottomText = "Studies show that financially literate employees make more ethical decisions regarding insurance, loans, and investments—skills they pass on to their networks. When you invest in your employees' financial education, you're not just building a better workplace; you're contributing to economically healthier communities.",
+  title,
+  descOne,
+  descTwo
 } = Astro.props
 ---
 
@@ -22,7 +24,7 @@ const {
         {title}
       </h2>
       <p class="rs-corporate-text text-[#F7F6F4] leading-relaxed text-center md:text-left">
-        {topText}
+        {descOne}
       </p>
     </div>
 
@@ -38,7 +40,7 @@ const {
 
     <div class="w-full max-w-4xl">
       <p class="rs-corporate-text text-[#A7A7A7] leading-relaxed text-center md:text-left">
-        {bottomText}
+        {descTwo}
       </p>
     </div>
   </div>

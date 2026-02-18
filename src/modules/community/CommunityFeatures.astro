@@ -18,6 +18,12 @@ const features = [
 
 const CheckIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`
 const DashIcon = `<span class="text-gray-300">—</span>`
+interface Props {
+  featureLiteLink: string
+  featurePremiumLink: string
+}
+
+const { featureLiteLink, featurePremiumLink } = Astro.props
 ---
 
 <section class="bg-white py-24 px-6">
@@ -40,7 +46,7 @@ const DashIcon = `<span class="text-gray-300">—</span>`
                   >
                 </div>
                 <a
-                  href="#"
+                  href={featureLiteLink}
                   class="w-full max-w-[160px] bg-white text-black py-2 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors text-center"
                   >Join Us</a
                 >
@@ -55,7 +61,7 @@ const DashIcon = `<span class="text-gray-300">—</span>`
                   >
                 </div>
                 <a
-                  href="#"
+                  href={featurePremiumLink}
                   class="w-full max-w-[160px] bg-[#FFD640] text-black py-2 rounded-full text-sm font-bold hover:brightness-110 transition-all text-center"
                   >Join Us</a
                 >

@@ -1,21 +1,22 @@
 ---
-import { Image } from 'astro:assets';
-import placeholderImg from './assets/Placeholder.png';
+import { Image } from 'astro:assets'
+import { Image as PreloadImage } from 'astro-preload/components'
+import placeholderImg from './assets/Placeholder.png'
 
 interface Props {
-  title?: string
-  description?: string
-  buttonText?: string
-  buttonHref?: string
-  imageSrc?: string
+  whatWeDoHeroTitle?: string
+  whatWeDoHeroDesc?: string
+  whatWeDoHeroButton?: string
+  whatWeDoButtonLink?: string
+  imageSrc: string
   imageAlt?: string
 }
 
 const {
-  title = 'What We Do',
-  description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  buttonText = 'CTA',
-  buttonHref = '#',
+  whatWeDoHeroTitle,
+  whatWeDoHeroDesc,
+  whatWeDoHeroButton,
+  whatWeDoButtonLink,
   imageSrc,
   imageAlt = 'What we do illustration',
 } = Astro.props
@@ -25,35 +26,25 @@ const {
   <div class="max-w-containerBrand m-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     <div class="flex flex-col items-start gap-6">
       <h2 class="rs-heading font-bold leading-tight">
-        {title}
+        {whatWeDoHeroTitle}
       </h2>
 
       <p class="rs-body text-gray-300 max-w-xl">
-        {description}
+        {whatWeDoHeroDesc}
       </p>
 
       <a
-        href={buttonHref}
+        href={whatWeDoButtonLink}
         class="bg-[#FFD700] hover:bg-[#ffed4a] text-black font-semibold py-3 px-8 rounded-full transition-colors duration-300 rs-button"
       >
-        {buttonText}
+        {whatWeDoHeroButton}
       </a>
     </div>
 
     <div
       class="relative w-full aspect-square md:aspect-4/3 bg-[#222] rounded-2xl overflow-hidden flex items-center justify-center"
     >
-      {
-        imageSrc ? (
-          <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" />
-        ) : (
-          <Image 
-            src={placeholderImg} 
-            alt="Placeholder" 
-            class="w-full h-full object-cover opacity-50"
-          />
-        )
-      }
+      <PreloadImage url={`https://${imageSrc}`} alt={imageAlt} class="w-full h-full object-cover opacity-50" />
     </div>
   </div>
 </section>

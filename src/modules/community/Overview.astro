@@ -2,11 +2,15 @@
 interface Props {
   title?: string
   highlightText?: string
+  descriptionOne: string
+  descriptionTwo?: string
 }
 
 const {
-  title = 'Community Overview',
-  highlightText = 'Our community bridges the gap between understanding financial principles and executing strategic actions.',
+  title ,
+  highlightText,
+  descriptionOne,
+  descriptionTwo,
 } = Astro.props
 ---
 
@@ -18,10 +22,8 @@ const {
 
     <div class="max-w-4xl mx-auto flex flex-col gap-12">
       <p class="rs-community-body text-gray-700">
-        The Money Wit is the action arm; where your financial education transforms into wealth
-        building opportunities. The Money Wit empowers you to actively deploy capital into vetted
-        investment opportunities including startups, mutual funds, Eurobonds, Tekedia, and curated
-        deals across emerging markets.
+        {descriptionOne}
+       
       </p>
 
       <h3 class="rs-community-highlight font-bold text-black px-4">
@@ -29,9 +31,7 @@ const {
       </h3>
 
       <p class="rs-community-body text-gray-700">
-        You don't just learn about wealth building; you participate in it through collective
-        intelligence, shared due diligence, and access to institutional-grade opportunities to
-        facilitate wealth building.
+        {descriptionTwo}
       </p>
     </div>
   </div>

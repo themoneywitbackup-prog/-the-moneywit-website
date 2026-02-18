@@ -5,24 +5,32 @@ import amazonLogo from '@/modules/media/assets/amazon.png';
 import appleLogo from '@/modules/media/assets/ApplePodcast.png';
 import spotifyLogo from '@/modules/media/assets/spotify.png';
 
+
+
+interface Props {
+ mediaMoneyWitShowHeader: string
+ mediaMoneyWitDesc: string
+ mediaAppleMoneyWitShowLink: string
+ mediaSpotifyMoneyWitShow: string
+ mediaAmazonMoneyWitShow: string
+}
+const {mediaMoneyWitShowHeader, mediaMoneyWitDesc, mediaAppleMoneyWitShowLink, mediaSpotifyMoneyWitShow, mediaAmazonMoneyWitShow} = Astro.props
+
 const podcasts = [
 	{
 		name: 'Listen On Apple Podcast',
 		image: appleLogo,
-		href:
-			'https://podcasts.apple.com/us/podcast/oler-oladele/id1686265392',
+		href:mediaAppleMoneyWitShowLink,
 	},
 	{
 		name: 'Listen On Spotify Podcast',
 		image: spotifyLogo,
-		href:
-			'https://open.spotify.com/show/2IODzQAdIQ6hUlNFCFiqFu?si=ZoqsqwQ1RBqJIcgJQdKPzA',
+		href:mediaSpotifyMoneyWitShow,
 	},
 	{
 		name: 'Listen On Amazon Music',
 		image: amazonLogo,
-		href:
-			'https://music.amazon.com/podcasts/d00fb2d3-d6d1-4d2a-833f-637bc71ef18b/oler-oladele',
+		href:mediaAmazonMoneyWitShow,
 	},
 ];
 ---
@@ -31,11 +39,10 @@ const podcasts = [
 	<div class='max-w-containerBrand mx-auto'>
 		<div class='mb-12 max-w-2xl'>
 			<h2 class='rs-show-title font-bold text-[#1A1A1A] mb-4'>
-				The Money Wit Show
+				{mediaMoneyWitShowHeader}
 			</h2>
 			<p class='rs-show-description text-gray-600 leading-relaxed'>
-				Listen to the latest episodes of The Money Wit Show and get expert
-				advice on investing and financial education.
+				{mediaMoneyWitDesc}
 			</p>
 		</div>
 

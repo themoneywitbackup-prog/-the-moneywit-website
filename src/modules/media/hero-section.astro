@@ -26,14 +26,22 @@ const stats = [
     icon: UsersIcon,
   },
 ]
+interface Props {
+  mediaHeroTitle: string
+  mediaHeroDesc: string
+  mediaHeroButtonText: string
+  mediaHeroButtonLink: string
+}
+
+const { mediaHeroTitle, mediaHeroDesc, mediaHeroButtonText, mediaHeroButtonLink } = Astro.props
 ---
 
 <div class="bg-black">
   <GenericHero
-    heading="Simplifying Finance, One Story at a Time"
-    subheading="From shows to live sessions, we create content that makes finance relatable, practical, and worth sharing."
-    buttonText="Partner With Us"
-    buttonHref="/partner"
+    heading={mediaHeroTitle}
+    subheading={mediaHeroDesc}
+    buttonText={mediaHeroButtonText}
+    buttonHref={mediaHeroButtonLink}
     headingClass="text-white opacity-90 max-w-xl mx-auto !text-5xl md:!text-6xl font-bold leading-[1.2] tracking-[-0.02em]"
     subheadingClass="text-gray-400 !text-lg max-w-xl mx-auto"
   />

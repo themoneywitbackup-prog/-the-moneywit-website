@@ -1,35 +1,64 @@
----
+<!-- ---
+interface Props {
+  header: string
+  customerDesc: string
+  cardOne:string
+  cardTwo:string
+  cardThree:string
+  cardFour:string
+  cardFive:string
+  cardSix:string
+  cardOneName: string
+  cardTwoName: string
+  cardThreeName: string
+  cardFourName: string
+  cardFiveName: string
+  cardSixName: string
+
+}
+
+const {
+  header,
+  customerDesc,
+  cardOne,
+  cardTwo,
+  cardThree,
+  cardFour,
+  cardFive,
+  cardSix,
+  cardOneName,
+  cardTwoName,
+  cardThreeName,
+  cardFourName,
+  cardFiveName,
+  cardSixName
+} = Astro.props
 const testimonials = [
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: cardOneName,
+    quote: cardOne
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: cardTwoName,
+    quote: cardTwo
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: cardThreeName,
+    quote: cardThree
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: cardFourName,
+    quote: cardFour
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
+    name: cardFiveName,
+    quote: cardFive
   },
   {
-    name: 'Name Surname',
-    quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.',
-  },
+    name: cardSixName,
+    quote: cardSix
+  }
+   
 ]
 ---
 
@@ -37,10 +66,10 @@ const testimonials = [
   <div class="max-w-containerBrand mx-auto">
     <div class="text-center mb-16 flex flex-col items-center">
       <h2 class="rs-testimonial-title font-bold text-white mb-4 leading-tight tracking-tight">
-        Customer testimonials
+        { header}
       </h2>
       <p class="rs-testimonial-subtitle text-gray-400 max-w-lg">
-        Hear directly from the individuals we’ve helped.
+       {customerDesc}
       </p>
     </div>
 
@@ -78,4 +107,4 @@ const testimonials = [
   .rs-testimonial-name {
     font-size: fn.useResponsiveSize(320, 1024, 13, 15);
   }
-</style>
+</style> -->
