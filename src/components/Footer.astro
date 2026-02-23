@@ -68,6 +68,7 @@ const { cookiesSettingsLink, termsOfServiceLink, privacyPolicyLink } =
 				<a
 					target='_blank'
 					href='https://oleroladele.substack.com/subscribe?next=https%3A%2F%2Fsubstack.com%2F%40themoneywit&utm_source=profile-page&utm_medium=web&utm_campaign=substack_profile&just_signed_up=true'
+					class='footer-waitlist-btn'
 					>Join Wait list</a
 				>
 			</div>
@@ -244,5 +245,31 @@ const { cookiesSettingsLink, termsOfServiceLink, privacyPolicyLink } =
 	}
 	.max-w-containerBrand {
 		max-width: 1200px;
+	}
+</style>
+<style>
+	.footer-waitlist-btn {
+		display: inline-block;
+		background: #222;
+		color: #ffd100;
+		font-weight: 600;
+		padding: 0.75em 2em;
+		border-radius: 999px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+		text-decoration: none;
+		transition:
+			background 0.2s,
+			color 0.2s,
+			box-shadow 0.2s;
+		border: 2px solid #2222;
+		margin-top: 0.5em;
+		text-align: center;
+	}
+	.footer-waitlist-btn:hover,
+	.footer-waitlist-btn:focus {
+		background: #222;
+		color: #ffd100;
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+		border-color: #ffd100;
 	}
 </style>
