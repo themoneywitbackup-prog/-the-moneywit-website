@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { testimonials } = Astro.props;
+const safeTestimonials = Array.isArray(testimonials) ? testimonials : [];
 ---
 
 <section class='bg-black text-white py-24 px-6 overflow-hidden'>
@@ -21,16 +22,20 @@ const { testimonials } = Astro.props;
 		<div
 			class='grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto'>
 			{
-				testimonials.map((item) => (
-					<div class='bg-[#111111] border border-white/5 rounded-2xl p-8 md:p-10 flex flex-col justify-between transition-all duration-300 hover:border-white/10 hover:bg-[#161616]'>
-						<p class='rs-testimonial-quote text-gray-300 italic mb-8 leading-relaxed'>
-							"{item.message}"
-						</p>
-						<span class='rs-testimonial-name font-semibold text-gray-500 uppercase tracking-widest'>
-							{item.name}
-						</span>
-					</div>
-				))
+				safeTestimonials.length > 0 ? (
+					safeTestimonials.map((item) => (
+						<div class='bg-[#111111] border border-white/5 rounded-2xl p-8 md:p-10 flex flex-col justify-between transition-all duration-300 hover:border-white/10 hover:bg-[#161616]'>
+							<p class='rs-testimonial-quote text-gray-300 italic mb-8 leading-relaxed'>
+								"{item.message}"
+							</p>
+							<span class='rs-testimonial-name font-semibold text-gray-500 uppercase tracking-widest'>
+								{item.name}
+							</span>
+						</div>
+					))
+				) : (
+					<div class='col-span-full text-center text-gray-400 py-8'>No testimonials available at this time.</div>
+				)
 			}
 		</div>
 	</div>
