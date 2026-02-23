@@ -170,6 +170,10 @@ export interface communityPageType extends EntrySkeletonType {
     moneyWitFinancialStepFourDesc: EntryFieldTypes.Text
     featureLiteLink: EntryFieldTypes.Text
     featurePremiumLink: EntryFieldTypes.Text
+    communityMembersButtonText: EntryFieldTypes.Text
+    communityMembersButton: EntryFieldTypes.Text
+    communityMembersButtonLink: EntryFieldTypes.Text
+
 
   }
 }
@@ -252,6 +256,14 @@ export interface customerTestimonialPageType extends EntrySkeletonType {
   fields: {
     message: EntryFieldTypes.Text
     name: EntryFieldTypes.Text  
+  }
+}
+export interface footerPageType extends EntrySkeletonType {
+  contentType: 'footer'
+  fields: {
+    privacyPolicyLink: EntryFieldTypes.Text
+    termsOfServiceLink: EntryFieldTypes.Text  
+    cookiesSettingsLink: EntryFieldTypes.Text  
   }
 }
 export type ImageContent = {

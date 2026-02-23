@@ -19,6 +19,15 @@ const socials = [
 	{ name: 'LinkedIn', href: '#', icon: 'linkedin' },
 	{ name: 'X / Twitter', href: '#', icon: 'x' },
 ];
+
+interface Props{
+	privacyPolicyLink:string
+	termsOfServiceLink:string
+	cookiesSettingsLink:string
+
+}
+
+const {cookiesSettingsLink,termsOfServiceLink,privacyPolicyLink} = Astro.props
 ---
 
 <footer
@@ -204,17 +213,17 @@ const socials = [
 			<p>© 2025 All rights reserved.</p>
 			<div class='flex flex-wrap justify-center gap-6'>
 				<a
-					href='#'
+					href={privacyPolicyLink}
 					class='hover:underline'
 					>Privacy Policy</a
 				>
 				<a
-					href='#'
+					href={termsOfServiceLink}
 					class='hover:underline'
 					>Terms of Service</a
 				>
 				<a
-					href='#'
+					href={cookiesSettingsLink}
 					class='hover:underline'
 					>Cookies Settings</a
 				>

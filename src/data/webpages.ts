@@ -11,6 +11,7 @@ import type {
   corporatePageType,
   aboutPageType,
   customerTestimonialPageType,
+  footerPageType,
 } from '@/types/contentful'
 
 export const HomepageCollections = defineCollection({
@@ -216,6 +217,8 @@ export const communityPageCollections = defineCollection({
       moneyWitFinancialStepFourDesc: data.fields.moneyWitFinancialStepFourDesc,
       featureLiteLink: data.fields.featureLiteLink,
       featurePremiumLink: data.fields.featurePremiumLink,
+      communityMembersButtonText: data.fields.communityMembersButtonText,
+      communityMembersButtonLink: data.fields.communityMembersButtonLink,
     }))
   },
   schema: z.object({
@@ -248,6 +251,8 @@ export const communityPageCollections = defineCollection({
     moneyWitFinancialStepFourDesc: z.string(),
     featureLiteLink: z.string(),
     featurePremiumLink: z.string(),
+    communityMembersButtonText: z.string(),
+    communityMembersButtonLink: z.string(),
   }),
 })
 
@@ -419,5 +424,27 @@ export const aboutPageCollections = defineCollection({
     ourPhilosophyTitle: z.string(),
     ourPhilosophyDesc: z.string(),
 
+  }),
+})
+export const footerPageCollections = defineCollection({
+  async loader() {
+    const res = await client.getEntries<footerPageType>({
+      content_type: 'footer',
+      limit: 1000,
+    })
+    return res.items.map((data) => ({
+      id: data.sys.id,
+      privacyPolicyLink: data.fields.privacyPolicyLink,
+      termsOfServiceLink: data.fields.termsOfServiceLink,
+      cookiesSettingsLink: data.fields.cookiesSettingsLink,
+      
+    }))
+  },
+  schema: z.object({
+    privacyPolicyLink: z.string(),
+    termsOfServiceLink: z.string(),
+    cookiesSettingsLink: z.string(),
+
+  
   }),
 })
