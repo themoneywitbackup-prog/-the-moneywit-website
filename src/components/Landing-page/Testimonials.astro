@@ -1,83 +1,56 @@
 ---
-
 interface Props {
-  message: string
-  name: string
+	testimonials: { message: string; name: string }[];
 }
 
-const { message, name } = Astro.props
-const testimonials = [
-  {
-    name:name,
-    quote:message,
-  },
-  {
-    name: name,
-    quote:message,
-  },
-  {
-    name: name,
-    quote:message,
-  },
-  {
-    name:name,
-    quote:message,
-  },
-  {
-    name: name,
-    quote:message,
-  },
-  {
-    name: name,
-    quote:message,
-  },
-]
-
+const { testimonials } = Astro.props;
 ---
 
-<section class="bg-black text-white py-24 px-6 overflow-hidden">
-  <div class="max-w-containerBrand mx-auto">
-    <div class="text-center mb-16 flex flex-col items-center">
-      <h2 class="rs-testimonial-title font-bold text-white mb-4 leading-tight tracking-tight">
-        Customer testimonials
-      </h2>
-      <p class="rs-testimonial-subtitle text-gray-400 max-w-lg">
-        Hear directly from the individuals we’ve helped.
-      </p>
-    </div>
+<section class='bg-black text-white py-24 px-6 overflow-hidden'>
+	<div class='max-w-containerBrand mx-auto'>
+		<div class='text-center mb-16 flex flex-col items-center'>
+			<h2
+				class='rs-testimonial-title font-bold text-white mb-4 leading-tight tracking-tight'>
+				Customer testimonials
+			</h2>
+			<p class='rs-testimonial-subtitle text-gray-400 max-w-lg'>
+				Hear directly from the individuals we’ve helped.
+			</p>
+		</div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto">
-      {
-        testimonials.map((item) => (
-          <div class="bg-[#111111] border border-white/5 rounded-2xl p-8 md:p-10 flex flex-col justify-between transition-all duration-300 hover:border-white/10 hover:bg-[#161616]">
-            <p class="rs-testimonial-quote text-gray-300 italic mb-8 leading-relaxed">
-              "{item.quote}"
-            </p>
-            <span class="rs-testimonial-name font-semibold text-gray-500 uppercase tracking-widest">
-              {item.name}
-            </span>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+		<div
+			class='grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto'>
+			{
+				testimonials.map((item) => (
+					<div class='bg-[#111111] border border-white/5 rounded-2xl p-8 md:p-10 flex flex-col justify-between transition-all duration-300 hover:border-white/10 hover:bg-[#161616]'>
+						<p class='rs-testimonial-quote text-gray-300 italic mb-8 leading-relaxed'>
+							"{item.message}"
+						</p>
+						<span class='rs-testimonial-name font-semibold text-gray-500 uppercase tracking-widest'>
+							{item.name}
+						</span>
+					</div>
+				))
+			}
+		</div>
+	</div>
 </section>
 
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
 
-  .rs-testimonial-title {
-    font-size: fn.useResponsiveSize(320, 1024, 32, 56);
-    font-family: var(--font-family);
-  }
-  .rs-testimonial-subtitle {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
-    line-height: 1.6;
-  }
-  .rs-testimonial-quote {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 18);
-  }
-  .rs-testimonial-name {
-    font-size: fn.useResponsiveSize(320, 1024, 13, 15);
-  }
+	.rs-testimonial-title {
+		font-size: fn.useResponsiveSize(320, 1024, 32, 56);
+		font-family: var(--font-family);
+	}
+	.rs-testimonial-subtitle {
+		font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+		line-height: 1.6;
+	}
+	.rs-testimonial-quote {
+		font-size: fn.useResponsiveSize(320, 1024, 16, 18);
+	}
+	.rs-testimonial-name {
+		font-size: fn.useResponsiveSize(320, 1024, 13, 15);
+	}
 </style>
