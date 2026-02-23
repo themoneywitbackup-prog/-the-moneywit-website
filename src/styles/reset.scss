@@ -1,1 +1,7 @@
+.form-iframe {
+  min-height: 50rem;
 
+  @media (width <=500px) {
+    min-height: 43.75rem;
+  }
+}

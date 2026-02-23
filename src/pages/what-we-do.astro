@@ -1,61 +1,73 @@
 ---
-import BaseLayout from '../layout/base-layout.astro'
-import WhatWeDoComponent from '../modules/what-we-do/hero-section.astro'
-import ThreeExpressions from '../modules/what-we-do/ThreeExpressions.astro'
-import BrochureCTA from '../components/Landing-page/BrochureCTA.astro'
-import ImpactSection from '../modules/what-we-do/ImpactSection.astro'
-import TrustedByLogo from '@/components/trusted-by-logo.astro'
-import { getCollection } from 'astro:content'
+import BaseLayout from '../layout/base-layout.astro';
+import WhatWeDoComponent from '../modules/what-we-do/hero-section.astro';
+import ThreeExpressions from '../modules/what-we-do/ThreeExpressions.astro';
+import BrochureCTA from '../components/Landing-page/BrochureCTA.astro';
+import ImpactSection from '../modules/what-we-do/ImpactSection.astro';
+import TrustedByLogo from '@/components/trusted-by-logo.astro';
+import { getCollection } from 'astro:content';
 
-const whatWeDoPageContent = await getCollection('whatWeDoPageCollections')
-const pageContent = whatWeDoPageContent[0].data
+const whatWeDoPageContent = await getCollection(
+	'whatWeDoPageCollections',
+);
+const pageContent = whatWeDoPageContent[0].data;
 const {
-  whatWeDoHeroTitle,
-  whatWeDoHeroDesc,
-  whatWeDoHeroButton,
-  whatWeDoButtonLink,
-  expressionHeader,
-  expressionCardOneTitle,
-  expressionCardOneDesc,
-  expressionCardTwoTitle,
-  expressionCardTwoDesc,
-  expressionCardThreeTitle,
-  expressionCardThreeDesc,
-  brochureTitle,
-  brochureDesc,
-  brochureButtonText,
-  brochureButtonLink,
-  impactHeader,
-  impactDesc,
-  whatWeDoHeroImage
-} = pageContent
+	whatWeDoHeroTitle,
+	whatWeDoHeroDesc,
+	whatWeDoHeroButton,
+	whatWeDoButtonLink,
+	expressionHeader,
+	expressionCardOneTitle,
+	expressionCardOneDesc,
+	expressionCardTwoTitle,
+	expressionCardTwoDesc,
+	expressionCardThreeTitle,
+	expressionCardThreeDesc,
+	brochureTitle,
+	brochureDesc,
+	brochureButtonText,
+	brochureButtonLink,
+	impactHeader,
+	impactDesc,
+	whatWeDoHeroImage,
+} = pageContent;
 ---
 
 <BaseLayout>
-  <WhatWeDoComponent
-    imageSrc={whatWeDoHeroImage}
-    whatWeDoHeroTitle={whatWeDoHeroTitle}
-    whatWeDoHeroTitle={whatWeDoHeroTitle}
-    whatWeDoHeroDesc={whatWeDoHeroDesc}
-    whatWeDoHeroButton={whatWeDoHeroButton}
-    whatWeDoButtonLink={whatWeDoButtonLink}
-  />
-  <ThreeExpressions
-    expressionHeader={expressionHeader}
-    expressionCardOneTitle={expressionCardOneTitle}
-    expressionCardOneDesc={expressionCardOneDesc}
-    expressionCardTwoTitle={expressionCardTwoTitle}
-    expressionCardTwoDesc={expressionCardTwoDesc}
-    expressionCardThreeTitle={expressionCardThreeTitle}
-    expressionCardThreeDesc={expressionCardThreeDesc}
-  />
-  <BrochureCTA
-    heading={brochureTitle}
-    subtext={brochureDesc}
-    buttonText={brochureButtonText}
-    download={false}
-    btnLink={brochureButtonLink}
-  />
-  <ImpactSection impactHeader={impactHeader} impactDesc={impactDesc}/>
-  <TrustedByLogo />
+	<WhatWeDoComponent
+		imageSrc={whatWeDoHeroImage}
+		whatWeDoHeroTitle={whatWeDoHeroTitle}
+		whatWeDoHeroTitle={whatWeDoHeroTitle}
+		whatWeDoHeroDesc={whatWeDoHeroDesc}
+		whatWeDoHeroButton={whatWeDoHeroButton}
+		whatWeDoButtonLink={whatWeDoButtonLink}
+	/>
+	<ThreeExpressions
+		expressionHeader={expressionHeader}
+		expressionCardOneTitle={expressionCardOneTitle}
+		expressionCardOneDesc={expressionCardOneDesc}
+		expressionCardTwoTitle={expressionCardTwoTitle}
+		expressionCardTwoDesc={expressionCardTwoDesc}
+		expressionCardThreeTitle={expressionCardThreeTitle}
+		expressionCardThreeDesc={expressionCardThreeDesc}
+	/>
+	<BrochureCTA
+		heading={brochureTitle}
+		subtext={brochureDesc}
+		buttonText={brochureButtonText}
+		download={false}
+		btnLink={brochureButtonLink}
+	/>
+	<ImpactSection
+		impactHeader={impactHeader}
+		impactDesc={impactDesc}
+	/>
+	<TrustedByLogo />
+	<iframe
+		class='form-iframe'
+		aria-label='Oleroladele.com services'
+		frameborder='0'
+		style='height:500px;width:99%;border:none;'
+		src='https://forms.zohopublic.com/oleroladelecom/form/TheMoneyWitClub/formperma/a-KgdInUn8XWu2SKwkY2FnNb2iW4OryuzS2ZRUzhF8s'
+	></iframe>
 </BaseLayout>

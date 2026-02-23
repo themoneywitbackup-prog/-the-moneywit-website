@@ -1,78 +1,72 @@
 ---
-import HeroSection from '@/modules/home/hero-section.astro'
-import BaseLayout from '../layout/base-layout.astro'
-import TrustedByLogo from '../components/trusted-by-logo.astro'
-import WhoIsMoneyWit from '@/modules/home/who-is-money-wit.astro'
-import SchoolSection from '@/modules/home/school-section.astro'
-import OurCommunity from '@/modules/home/our-community.astro'
-import MediaHome from '@/modules/home/media-home.astro'
-import BrochureCTA from '@/components/Landing-page/BrochureCTA.astro'
-import ResourcesHome from '@/modules/home/resources-home.astro'
-import { getCollection } from 'astro:content'
-const HomepageContent = await getCollection('HomepageCollections')
-const pageContent = HomepageContent[0].data
+import HeroSection from '@/modules/home/hero-section.astro';
+import BaseLayout from '../layout/base-layout.astro';
+import TrustedByLogo from '../components/trusted-by-logo.astro';
+import WhoIsMoneyWit from '@/modules/home/who-is-money-wit.astro';
+import SchoolSection from '@/modules/home/school-section.astro';
+import OurCommunity from '@/modules/home/our-community.astro';
+import MediaHome from '@/modules/home/media-home.astro';
+import BrochureCTA from '@/components/Landing-page/BrochureCTA.astro';
+import ResourcesHome from '@/modules/home/resources-home.astro';
+import { getCollection } from 'astro:content';
+const HomepageContent = await getCollection('HomepageCollections');
+const pageContent = HomepageContent[0].data;
 const {
-  heroTag,
-  heroTitle,
-  heroDescription,
-  heroButton,
-  heroButtonLink,
-  whoismoneywitHeader,
-  whoismoneywitSubHeader,
-  whoismoneywitFirstCardHeader,
-  whoismoneywitFirstCardDesc,
-  whoismoneywitSecondCardHeader,
-  whoismoneywitSecondCardDesc,
-  patnerTitle,
- partnerDesc,
- patnerButton,
- partnerButtonLink
-
-} = pageContent
+	heroTag,
+	heroTitle,
+	heroDescription,
+	heroButton,
+	heroButtonLink,
+	whoismoneywitHeader,
+	whoismoneywitSubHeader,
+	whoismoneywitFirstCardHeader,
+	whoismoneywitFirstCardDesc,
+	whoismoneywitSecondCardHeader,
+	whoismoneywitSecondCardDesc,
+	patnerTitle,
+	partnerDesc,
+	patnerButton,
+	partnerButtonLink,
+} = pageContent;
 ---
 
 <BaseLayout>
-  <HeroSection
-    heroTag={heroTag}
-    heroTitle={heroTitle}
-    description={heroDescription}
-    ctaText={heroButton}
-    ctaLink={heroButtonLink}
-  />
-  <TrustedByLogo />
-  <WhoIsMoneyWit
-    whoismoneywitHeader={whoismoneywitHeader}
-    whoismoneywitSubHeader={whoismoneywitSubHeader}
-    whoismoneywitFirstCardHeader={whoismoneywitFirstCardHeader}
-    whoismoneywitFirstCardDesc={whoismoneywitFirstCardDesc}
-    whoismoneywitSecondCardHeader={whoismoneywitSecondCardHeader}
-    whoismoneywitSecondCardDesc={whoismoneywitSecondCardDesc}
-  />
-  <SchoolSection />
-  <OurCommunity />
-  <MediaHome />
-  <BrochureCTA
-    heading={patnerTitle}
-    subtext={partnerDesc}
-    buttonText={patnerButton}
-    download={false}
-    btnLink={partnerButtonLink}
-  />
-  <ResourcesHome />
+	<HeroSection
+		heroTag={heroTag}
+		heroTitle={heroTitle}
+		description={heroDescription}
+		ctaText={heroButton}
+		ctaLink={heroButtonLink}
+	/>
+	<TrustedByLogo />
+	<WhoIsMoneyWit
+		whoismoneywitHeader={whoismoneywitHeader}
+		whoismoneywitSubHeader={whoismoneywitSubHeader}
+		whoismoneywitFirstCardHeader={whoismoneywitFirstCardHeader}
+		whoismoneywitFirstCardDesc={whoismoneywitFirstCardDesc}
+		whoismoneywitSecondCardHeader={whoismoneywitSecondCardHeader}
+		whoismoneywitSecondCardDesc={whoismoneywitSecondCardDesc}
+	/>
+	<SchoolSection />
+	<OurCommunity />
+	<MediaHome />
+	<BrochureCTA
+		heading={patnerTitle}
+		subtext={partnerDesc}
+		buttonText={patnerButton}
+		download={false}
+		btnLink={partnerButtonLink}
+	/>
+	<ResourcesHome />
 
-  <iframe
-    aria-label="Signup"
-    frameborder="0"
-    class="form-iframe"
-    style="width:99%;border:none;"
-    src="https://forms.zohopublic.com/oleroladelecom/form/Signup/formperma/BMLvnK5CEPZ7PMRlSjEgXaSolP-DhbtuLSTK44wAw5s"
-  ></iframe>
+	<iframe
+		class='form-iframe'
+		aria-label='CONTACT US'
+		frameborder='0'
+		style='height:500px;width:99%;border:none;'
+		src='https://forms.zohopublic.com/oleroladelecom/form/CONTACTUS/formperma/QEh5-VzS88orhYBjbFwuuwCjYTRHJr4BfJP0JYRW-B4'
+	></iframe>
 </BaseLayout>
-<style lang="scss">
-  .form-iframe {
-    min-height: 50rem;
-    @media (width <= 500px) {
-      min-height: 43.75rem;
-    }
-  }
+<style lang='scss'>
+	
 </style>
