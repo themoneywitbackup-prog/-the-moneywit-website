@@ -14,13 +14,13 @@ const communityStats: {
 }[] = [
 	{
 		Icon: HandIcon,
-		title: 'Over 50+ deals done',
+		title: '50+',
 		description: 'Deals done',
 	},
 	{
 		Icon: MoneyIcon,
-		title: '$3million+ invested',
-		description: 'Financial literacy drives',
+		title: '$3million+',
+		description: 'Invested by Money Wit Club members',
 	},
 ];
 const communitiesData = await getCollection('communityCollection');
@@ -29,13 +29,13 @@ const communitiesData = await getCollection('communityCollection');
 <section class='our-community'>
 	<div class='our-community__wrapper'>
 		<header class='our-community__header'>
-			<h2>Our Community</h2>
+			<h2>The Money Wit Club</h2>
 			<p>We learn and take action</p>
 		</header>
 		<a
 			href='https://substack.com/@themoneywit/posts'
 			class='our-community__cta'>
-			<span>Join Us Now</span>
+			<span>Find Out More</span>
 			<ArrowRight width={22} />
 		</a>
 	</div>
@@ -58,7 +58,7 @@ const communitiesData = await getCollection('communityCollection');
 	<div class='community-stats'>
 		<div class='community-stats__container'>
 			<h3 class='community-stats__title'>
-				Deals done, impact made, and financial literacy drives.
+				Real people, Real Deals, Real financial transformation.
 			</h3>
 			<ul class='community-stats__list'>
 				{
