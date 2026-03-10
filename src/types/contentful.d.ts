@@ -62,6 +62,8 @@ export interface campaignPageType extends EntrySkeletonType {
     pageContent: EntryFieldTypes.RichText
     textForLink1: EntryFieldTypes.Text
     textForLink2: EntryFieldTypes.Text
+   
+    
   }
 }
 export interface homePageType extends EntrySkeletonType {
