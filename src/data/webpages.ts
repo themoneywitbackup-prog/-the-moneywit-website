@@ -443,8 +443,6 @@ export const footerPageCollections = defineCollection({
   schema: z.object({
     privacyPolicyLink: z.string(),
     termsOfServiceLink: z.string(),
-    cookiesSettingsLink: z.string(),
-
-  
+    cookiesSettingsLink: z.string(), 
   }),
 })

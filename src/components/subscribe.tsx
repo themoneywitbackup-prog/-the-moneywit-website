@@ -19,6 +19,7 @@ const SubscribeNewsLetter = () => {
 				message: "Your Email is required",
 			},
 		},
+		
 	});
 
 	useEffect(() => {}, []);

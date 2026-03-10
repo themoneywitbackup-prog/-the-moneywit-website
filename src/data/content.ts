@@ -99,7 +99,7 @@ export const programCollection = defineCollection({
 			title: data.fields.title,
 			description: data.fields.description,
 			link: data.fields.link,
-			category: data.fields.category,
+			category: data.fields.category ?? [],
 			countDown: data.fields.countDown,
 			updatedAt: data.sys.updatedAt,
 			buttonText: data.fields.buttonText,
