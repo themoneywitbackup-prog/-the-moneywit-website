@@ -1,43 +1,42 @@
 ---
-import BaseLayout from '@/layout/base-layout.astro'
-import Hero from '@/modules/media/hero-section.astro'
-import MoneyWitShow from '@/modules/media/MoneyWitShow.astro'
-import GlobalNewsReview from '@/modules/media/GlobalNewsReview.astro'
-import MoneyMistakes from '@/modules/media/MoneyMistakesHero.astro'
-import Testimonials from '@/modules/media/CustomerTestimonials.astro'
-import { getCollection } from 'astro:content'
-
-const mediaPageContent = await getCollection('mediaPageCollections')
-const pageContent = mediaPageContent[0].data
+import BaseLayout from '@/layout/base-layout.astro';
+import Hero from '@/modules/media/hero-section.astro';
+import MoneyWitShow from '@/modules/media/MoneyWitShow.astro';
+import GlobalNewsReview from '@/modules/media/GlobalNewsReview.astro';
+import MoneyMistakes from '@/modules/media/MoneyMistakesHero.astro';
+import { getCollection } from 'astro:content';
+import Testimonials from '@/modules/school/testimonials.astro';
+const mediaPageContent = await getCollection('mediaPageCollections');
+const pageContent = mediaPageContent[0].data;
 
 const {
-  mediaHeroTitle,
-  mediaHeroDesc,
-  mediaHeroButtonText,
-  mediaHeroButtonLink,
-  mediaMoneyWitShowHeader,
-  mediaMoneyWitDesc,
-  mediaAppleMoneyWitShowLink,
-  mediaSpotifyMoneyWitShow,
-  mediaAmazonMoneyWitShow,
-} = pageContent
+	mediaHeroTitle,
+	mediaHeroDesc,
+	mediaHeroButtonText,
+	mediaHeroButtonLink,
+	mediaMoneyWitShowHeader,
+	mediaMoneyWitDesc,
+	mediaAppleMoneyWitShowLink,
+	mediaSpotifyMoneyWitShow,
+	mediaAmazonMoneyWitShow,
+} = pageContent;
 ---
 
 <BaseLayout>
-  <Hero
-    mediaHeroTitle={mediaHeroTitle}
-    mediaHeroDesc={mediaHeroDesc}
-    mediaHeroButtonText={mediaHeroButtonText}
-    mediaHeroButtonLink={mediaHeroButtonLink}
-  />
-  <MoneyWitShow
-    mediaMoneyWitShowHeader={mediaMoneyWitShowHeader}
-    mediaMoneyWitDesc={mediaMoneyWitDesc}
-    mediaAppleMoneyWitShowLink={mediaAppleMoneyWitShowLink}
-    mediaSpotifyMoneyWitShow={mediaSpotifyMoneyWitShow}
-    mediaAmazonMoneyWitShow={mediaAmazonMoneyWitShow}
-  />
-  <GlobalNewsReview />
-  <MoneyMistakes /> 
-  <Testimonials />
+	<Hero
+		mediaHeroTitle={mediaHeroTitle}
+		mediaHeroDesc={mediaHeroDesc}
+		mediaHeroButtonText={mediaHeroButtonText}
+		mediaHeroButtonLink={mediaHeroButtonLink}
+	/>
+	<MoneyWitShow
+		mediaMoneyWitShowHeader={mediaMoneyWitShowHeader}
+		mediaMoneyWitDesc={mediaMoneyWitDesc}
+		mediaAppleMoneyWitShowLink={mediaAppleMoneyWitShowLink}
+		mediaSpotifyMoneyWitShow={mediaSpotifyMoneyWitShow}
+		mediaAmazonMoneyWitShow={mediaAmazonMoneyWitShow}
+	/>
+	<GlobalNewsReview />
+	<MoneyMistakes />
+	<Testimonials />
 </BaseLayout>
