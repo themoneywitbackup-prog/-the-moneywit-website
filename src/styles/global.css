@@ -14,5 +14,6 @@
   body {
     @apply font-sans;
     /* Or use your custom font: @apply font-brand; */
+    scroll-behaviour: smooth;
   }
 }
