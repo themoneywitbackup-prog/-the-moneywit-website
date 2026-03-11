@@ -12,6 +12,7 @@ export default function Countdown({
 		[targetDate],
 	);
 	const [sec, setSec] = useState(timeInSeconds);
+	const [hasReached, setHasReached] = useState(false);
 	const days = Math.floor(sec / 86400); // 86400 seconds in a day
 	const hh = Math.floor((sec % 86400) / 3600); // Remaining hours after days
 	const mm = Math.floor((sec % 3600) / 60);
@@ -19,7 +20,10 @@ export default function Countdown({
 
 	// Add interval to countdown every second
 	useEffect(() => {
-		if (sec <= 0) return; // Stop when countdown reaches 0
+		if (sec <= 0) {
+			setHasReached(true);
+			return;
+		} // Stop when countdown reaches 0
 		const interval = setInterval(() => {
 			setSec((prev) => (prev > 0 ? prev - 1 : 0));
 		}, 1000);
@@ -28,54 +32,56 @@ export default function Countdown({
 	}, [sec]);
 	return (
 		<NumberFlowGroup>
-			<div
-				style={{
-					fontVariantNumeric: "tabular-nums",
-				}}
-				className="~text-3xl/4xl flex items-baseline font-semibold countdown"
-			>
-				<span>
-					<NumberFlow
-						trend={-1}
-						value={days}
-						suffix=""
-						format={{ minimumIntegerDigits: 2 }}
-					/>
-					<p>days</p>
-				</span>
-				<span>
-					<NumberFlow
-						prefix=""
-						trend={-1}
-						value={hh}
-						suffix=""
-						format={{ minimumIntegerDigits: 2 }}
-					/>
-					<p>hours</p>
-				</span>
-				<span>
-					<NumberFlow
-						prefix=""
-						trend={-1}
-						value={mm}
-						suffix=""
-						digits={{ 1: { max: 5 } }}
-						format={{ minimumIntegerDigits: 2 }}
-					/>
-					<p>mins</p>
-				</span>
-				<span>
-					<NumberFlow
-						prefix=""
-						trend={-1}
-						value={ss}
-						suffix=""
-						digits={{ 1: { max: 5 } }}
-						format={{ minimumIntegerDigits: 2 }}
-					/>
-					<p>secs</p>
-				</span>
-			</div>
+			{hasReached ? null : (
+				<div
+					style={{
+						fontVariantNumeric: "tabular-nums",
+					}}
+					className="~text-3xl/4xl flex items-baseline font-semibold countdown"
+				>
+					<span>
+						<NumberFlow
+							trend={-1}
+							value={days}
+							suffix=""
+							format={{ minimumIntegerDigits: 2 }}
+						/>
+						<p>days</p>
+					</span>
+					<span>
+						<NumberFlow
+							prefix=""
+							trend={-1}
+							value={hh}
+							suffix=""
+							format={{ minimumIntegerDigits: 2 }}
+						/>
+						<p>hours</p>
+					</span>
+					<span>
+						<NumberFlow
+							prefix=""
+							trend={-1}
+							value={mm}
+							suffix=""
+							digits={{ 1: { max: 5 } }}
+							format={{ minimumIntegerDigits: 2 }}
+						/>
+						<p>mins</p>
+					</span>
+					<span>
+						<NumberFlow
+							prefix=""
+							trend={-1}
+							value={ss}
+							suffix=""
+							digits={{ 1: { max: 5 } }}
+							format={{ minimumIntegerDigits: 2 }}
+						/>
+						<p>secs</p>
+					</span>
+				</div>
+			)}
 		</NumberFlowGroup>
 	);
 }
