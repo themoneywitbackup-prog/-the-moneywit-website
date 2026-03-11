@@ -7,6 +7,7 @@ import CampaignsHero from './_components/campaigns-hero.astro';
 import Countdown from './_components/count-down';
 import { generateHTMLString } from '@/lib/contentful/html-parser';
 import Testimonials from '@/modules/school/testimonials.astro';
+import MeetOurFacilitator from './_components/meet-facilator';
 
 export const getStaticPaths = (async () => {
 	const content = await getCollection('campaignPage');
@@ -50,6 +51,50 @@ const {
 </BaseLayout>
 
 <style lang='scss' is:global>
+	@use '@/styles/fn' as fn;
+	.our-facilitator {
+		background-color: var(--white-bg);
+		padding-block: max(2.5rem, min(7rem, 10cqw));
+		container-type: inline-size;
+		padding-inline: 1.25rem;
+
+		&__title {
+			font-size: fn.useResponsiveSize(300, 800, 32, 48);
+			text-align: center;
+			font-weight: 700;
+			margin-bottom: 3.125rem;
+		}
+		&__container {
+			max-width: var(--max-container);
+			margin-inline: auto;
+		}
+		&__content {
+			align-content: center;
+			p + p {
+				margin-top: 1.25rem;
+			}
+			img {
+				margin-top: 2rem;
+			}
+		}
+		&__image {
+			img {
+				aspect-ratio: 600/640;
+				object-fit: cover;
+				object-position: center center;
+				border-radius: 1rem;
+			}
+		}
+		&__layout {
+			--number-columns: 2;
+			display: grid;
+			gap: 1.5rem;
+			grid-template-columns: repeat(var(--number-columns), 1fr);
+			@container (inline-size <= 730px) {
+				--number-columns: 1;
+			}
+		}
+	}
 	.pageTextContent {
 		background-color: #f7f6f4;
 		padding-block: 5rem;

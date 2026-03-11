@@ -1,7 +1,11 @@
 ---
 import { ArrowRight } from '@lucide/astro';
 import { getCollection } from 'astro:content';
-const mediaData = await getCollection('mediaCollection');
+const data = await getCollection('mediaCollection');
+
+const mediaData = data.filter((data) =>
+	data.data.placement.includes('home'),
+);
 ---
 
 <section class='media'>

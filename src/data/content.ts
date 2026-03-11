@@ -112,6 +112,7 @@ export const mediaCollection = defineCollection({
 		title: z.string(),
 		youtubeCode: z.string(),
 		updatedAt: z.string(),
+		placement: z.array(z.string()),
 	}),
 	async loader() {
 		const res = await client.getEntries<media>({
@@ -123,8 +124,7 @@ export const mediaCollection = defineCollection({
 			title: data.fields.title,
 			youtubeCode: data.fields.youtubeCode,
 			updatedAt: data.sys.updatedAt,
+			placement: data.fields.placement ?? [],
 		}));
 	},
 });
-
-

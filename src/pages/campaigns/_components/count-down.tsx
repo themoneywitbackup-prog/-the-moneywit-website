@@ -27,7 +27,6 @@ export default function Countdown({
 		const interval = setInterval(() => {
 			setSec((prev) => (prev > 0 ? prev - 1 : 0));
 		}, 1000);
-		// Cleanup interval on component unmount or when sec changes
 		return () => clearInterval(interval);
 	}, [sec]);
 	return (
