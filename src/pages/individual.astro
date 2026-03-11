@@ -5,7 +5,7 @@ import TrackRecord from '@/modules/individual/TrackRecord.astro';
 import ServiceSection from '@/modules/individual/ServiceSection.astro';
 import HeadlineSection from '@/modules/individual/HeadlineSection.astro';
 import WealthDescription from '@/modules/individual/WealthDescription.astro';
-import Testimonials from '@/components/Landing-page/Testimonials.astro';
+import Testimonials from '@/modules/school/testimonials.astro';
 import OurServeComponent from '@/components/Landing-page/services.astro';
 import { getCollection } from 'astro:content';
 const individulaPageContent = await getCollection(
@@ -70,5 +70,5 @@ const customerContent = customerTestimonialPageContent.map(
 		descThree={generationalWealthSubDesc}
 		descFour={generationalWealthLastDesc}
 	/>
-	<Testimonials testimonials={customerContent} />
+	<Testimonials />
 </BaseLayout>

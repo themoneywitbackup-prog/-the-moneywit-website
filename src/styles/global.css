@@ -3,12 +3,16 @@
 
 :root {
   --primary: #FFD341;
+  --max-container: 75rem;
+  --white-bg: #F7F6F4;
+  /*1200px*/
 
 }
+
 ::selection {
-    background-color: oklab(from var(--primary) l a b / .3);
-    color: oklab(from var(--primary) .7 a b)
-  }
+  background-color: oklab(from var(--primary) l a b / .3);
+  color: oklab(from var(--primary) .7 a b)
+}
 
 @layer base {
   body {

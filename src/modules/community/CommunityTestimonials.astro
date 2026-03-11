@@ -1,72 +1,66 @@
 ---
-const testimonials = [
-  {
-    videoId: 'LaXLTAxdhGA',
-    title: 'Member Testimonial 1',
-  },
-  {
-    videoId: 'j_eDf9ldwM0',
-    title: 'Member Testimonial 2',
-  },
-  {
-    videoId: 'KD2COH6ttjA',
-    title: 'Member Testimonial 3',
-  },
-]
-interface Props {
-  buttonText: string
-  buttonLink: string
-}
-const { buttonText, buttonLink } = Astro.props
-
 import { getCollection } from 'astro:content';
-const mediaData = await getCollection('mediaCollection');
 
+interface Props {
+	buttonText: string;
+	buttonLink: string;
+	placement?: 'media' | 'home' | 'community';
+}
+const { buttonText, buttonLink, placement } = Astro.props;
+
+const data = await getCollection('mediaCollection');
+
+let mediaData = data;
+if (placement) {
+	mediaData = mediaData.filter((data) =>
+		data.data.placement.includes(placement),
+	);
+}
 ---
 
-<section class="bg-[#F7F7F7] py-24 px-6">
-  <div class="max-w-containerBrand mx-auto">
-    <h2 class="rs-testimonial-title text-center font-bold text-[#1A1A1A] mb-16">
-      Hear from our community members
-    </h2>
+<section class='bg-[#F7F7F7] py-24 px-6'>
+	<div class='max-w-containerBrand mx-auto'>
+		<h2
+			class='rs-testimonial-title text-center font-bold text-[#1A1A1A] mb-16'>
+			Hear from our community members
+		</h2>
 
-    <div class="mb-16">
-  <ul class="media__list grid grid-cols-1 md:grid-cols-3 gap-6">
-    {
-      mediaData.slice(0, 3).map((data) => (
-        <li>
-          <div class="media-card">
-            <iframe
-              class="media-card__picture w-full aspect-video"
-              src={`https://www.youtube.com/embed/${data.data.youtubeCode}`}
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            />
-          </div>
-        </li>
-      ))
-    }
-  </ul>
-</div>
+		<div class='mb-16'>
+			<ul class='media__list grid grid-cols-1 md:grid-cols-3 gap-6'>
+				{
+					mediaData.slice(0, 3).map((data) => (
+						<li>
+							<div class='media-card'>
+								<iframe
+									class='media-card__picture w-full aspect-video'
+									src={`https://www.youtube.com/embed/${data.data.youtubeCode}`}
+									title='YouTube video player'
+									frameborder='0'
+									allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+									allowfullscreen
+								/>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
 
-    <div class="flex justify-center">
-      <a href={buttonLink}>
-        <button
-          class="bg-[#FFD640] text-[#1A1A1A] font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform cursor-pointer"
-        >
-          {buttonText}
-        </button>
-      </a>
-    </div>
-  </div>
+		<div class='flex justify-center'>
+			<a href={buttonLink}>
+				<button
+					class='bg-[#FFD640] text-[#1A1A1A] font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform cursor-pointer'>
+					{buttonText}
+				</button>
+			</a>
+		</div>
+	</div>
 </section>
 
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
-  .rs-testimonial-title {
-    font-size: fn.useResponsiveSize(320, 1024, 32, 48);
-    letter-spacing: -0.02em;
-  }
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
+	.rs-testimonial-title {
+		font-size: fn.useResponsiveSize(320, 1024, 32, 48);
+		letter-spacing: -0.02em;
+	}
 </style>

@@ -18,7 +18,6 @@ export async function fetchDX<T>(args: argsFetchDX): Promise<T> {
 
 	try {
 		const res = await fetch(modifiedUrl, options);
-
 		if (!res.ok) {
 			// Return response if success
 			const errorData = await res.json();

@@ -1,7 +1,20 @@
 ---
 import ArrowFowardIcon from '@/modules/community/assets/icon/arrow_forward.svg';
 import { getCollection } from 'astro:content';
-const mediaData = await getCollection('mediaCollection');
+interface Props {
+	placement?: 'media' | 'home' | 'community';
+}
+const { placement } = Astro.props;
+const data = await getCollection('mediaCollection');
+
+let mediaData = data;
+if (placement) {
+	mediaData = mediaData.filter((data) =>
+		data.data.placement.includes(placement),
+	);
+}
+
+console.dir(mediaData, { depth: null });
 ---
 
 <section class='bg-black text-white py-24 px-6'>

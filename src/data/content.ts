@@ -99,7 +99,7 @@ export const programCollection = defineCollection({
 			title: data.fields.title,
 			description: data.fields.description,
 			link: data.fields.link,
-			category: data.fields.category,
+			category: data.fields.category ?? [],
 			countDown: data.fields.countDown,
 			updatedAt: data.sys.updatedAt,
 			buttonText: data.fields.buttonText,
@@ -112,6 +112,7 @@ export const mediaCollection = defineCollection({
 		title: z.string(),
 		youtubeCode: z.string(),
 		updatedAt: z.string(),
+		placement: z.array(z.string()),
 	}),
 	async loader() {
 		const res = await client.getEntries<media>({
@@ -123,8 +124,7 @@ export const mediaCollection = defineCollection({
 			title: data.fields.title,
 			youtubeCode: data.fields.youtubeCode,
 			updatedAt: data.sys.updatedAt,
+			placement: data.fields.placement ?? [],
 		}));
 	},
 });
-
-
