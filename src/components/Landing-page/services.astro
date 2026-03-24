@@ -32,14 +32,23 @@ const allTagSet = new Set(allCategories);
 allTagSet.delete('individual');
 allTagSet.delete('corporate');
 const uniqueCategories = [...allTagSet].filter(
-	(cat) => cat && cat.trim() !== '',
+   (cat) => cat && cat.trim() !== '',
 );
+
+const displayCategories = uniqueCategories.map((cat) => {
+   if (category === 'corporate') {
+      if (cat === 'Online Programs') return 'Human Capital';
+      if (cat === 'Tools & Resources') return 'Media Partnerships';
+      if (cat === 'Workshops') return 'Executive';
+   }
+   return cat;
+});
 ---
 
 <ServiceWrapper
 	title={title}
 	subtitle={subtitle}
-	tabs={uniqueCategories}
+	tabs={displayCategories}
 	defaultTab={uniqueCategories[0]}>
 	{
 		pageProgram.map((program) => {
