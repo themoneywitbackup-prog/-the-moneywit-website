@@ -48,7 +48,8 @@ const displayCategories = uniqueCategories.map((cat) => {
 <ServiceWrapper
 	title={title}
 	subtitle={subtitle}
-	tabs={displayCategories}
+	tabs={uniqueCategories}
+	displayTabs={displayCategories}
 	defaultTab={uniqueCategories[0]}>
 	{
 		pageProgram.map((program) => {
