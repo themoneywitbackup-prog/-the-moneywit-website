@@ -1,120 +1,98 @@
 ---
-import { Picture } from 'astro:assets'
-import userAvatar from '../school/assets/swing.png'
+import { Picture } from 'astro:assets';
+import userAvatar from '../school/assets/swing.png';
+import { getCollection } from 'astro:content';
+
+const testimonials = (
+	await getCollection('customerTestimonialPageCollections')
+).map((data) => data.data);
 
 interface Testimonial {
-  text: string
-  name: string
-  rating: number
+	text: string;
+	name: string;
+	rating: number;
 }
 
 interface Props {
-  title?: string
-  subtitle?: string
+	title?: string;
+	subtitle?: string;
 }
 
 const {
-  title = 'What Our Participants Say',
-  subtitle = "Hear directly from the people we've helped. Real words, real experiences, from those who have learned, grown, and built confidence with us.",
-} = Astro.props
-
-const testimonials: Testimonial[] = [
-  {
-    rating: 5,
-    text: '“The camp experience has been good and informative and brief, which good!”',
-    name: 'Elutabe Oghale',
-  },
-  {
-    rating: 5,
-    text: "“The camp experience has been so education so far can't wait to learn about trading.”",
-    name: 'Favour Chidera',
-  },
-  {
-    rating: 5,
-    text: "One of the attractions to me was the very simple, basic way financial matters are broken down for a layman's understanding and the different ranges of resources available in the club – webinars, events, hangouts, workshops, access to bonds, stocks, and more.",
-    name: 'Iyiola Olumnide',
-  },
-  {
-    rating: 5,
-    text: "“It's been wonderful so far, learning from various sessions. I'm looking forward to day 3.”",
-    name: 'Fortune Oluwabamise',
-  },
-  {
-    rating: 5,
-    text: 'Joining the club has completely revolutionized my thoughts and actions towards my relationship with money. I was very risk averse and only focused on savings accounts and real estate. So diversification and compounding are the two main areas of growth for me.',
-    name: 'Iyiola Olumnide',
-  },
-  {
-    rating: 5,
-    text: "I've leveraged the network of seasoned financial professionals in the club to grow my portfolio. I now have a goal I'm working towards and have read 4 financial books in 6 months — this is from someone who hadn't read any before joining.",
-    name: 'Iyiola Olumnide',
-  },
-]
+	title = 'What Our Participants Say',
+	subtitle = "Hear directly from the people we've helped. Real words, real experiences, from those who have learned, grown, and built confidence with us.",
+} = Astro.props;
 ---
 
-<section class="bg-[#F7F6F4] py-24 px-6">
-  <div class="max-w-containerBrand mx-auto">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
-      <h2 class="rs-test-title font-bold text-[#1a1a1a] mb-4">
-        {title}
-      </h2>
-      <p class="rs-test-subtitle text-gray-600">
-        {subtitle}
-      </p>
-    </div>
+<section class='bg-[#F7F6F4] py-24 px-6'>
+	<div class='max-w-containerBrand mx-auto'>
+		<div class='text-center mb-16 max-w-3xl mx-auto'>
+			<h2 class='rs-test-title font-bold text-[#1a1a1a] mb-4'>
+				{title}
+			</h2>
+			<p class='rs-test-subtitle text-gray-600'>
+				{subtitle}
+			</p>
+		</div>
 
-    <div class="columns-1 md:columns-2 lg:columns-3 gap-3 space-y-3">
-      {
-        testimonials.map((item) => (
-          <div class="break-inside-avoid bg-[#EBEBEB] rounded-xl p-8 flex flex-col gap-3 transition-all duration-300 hover:shadow-md">
-            <div class="flex gap-1">
-              {Array.from({ length: item.rating }).map(() => (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD100">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                </svg>
-              ))}
-            </div>
+		<div class='columns-1 md:columns-2 lg:columns-3 gap-3 space-y-3'>
+			{
+				testimonials.map((item) => (
+					<div class='break-inside-avoid bg-[#EBEBEB] rounded-xl p-8 flex flex-col gap-3 transition-all duration-300 hover:shadow-md'>
+						<div class='flex gap-1'>
+							{Array.from({ length: 5 }).map(() => (
+								<svg
+									width='20'
+									height='20'
+									viewBox='0 0 24 24'
+									fill='#FFD100'>
+									<path d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z' />
+								</svg>
+							))}
+						</div>
 
-            <p class="rs-test-text text-[#333] font-medium italic">{item.text}</p>
+						<p class='rs-test-text text-[#333] font-medium italic'>
+							{item.message}
+						</p>
 
-            <div class="flex items-center gap-3 mt-auto pt-2">
-              <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
-                <Picture
-                  src={userAvatar}
-                  alt={item.name}
-                  layout="constrained"
-                  formats={['avif', 'webp']}
-                  width={40}
-                  height={40}
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <span class="font-bold text-[#1a1a1a]">{item.name}</span>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+						<div class='flex items-center gap-3 mt-auto pt-2'>
+							<div class='w-10 h-10 rounded-full overflow-hidden border-2 border-white/20'>
+								<Picture
+									src={userAvatar}
+									alt={item.name}
+									layout='constrained'
+									formats={['avif', 'webp']}
+									width={40}
+									height={40}
+									class='w-full h-full object-cover'
+								/>
+							</div>
+							<span class='font-bold text-[#1a1a1a]'>{item.name}</span>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
 </section>
 
-<style lang="scss">
-  @use '@/styles/fn.scss' as fn;
+<style lang='scss'>
+	@use '@/styles/fn.scss' as fn;
 
-  .rs-test-title {
-    font-size: fn.useResponsiveSize(320, 1024, 32, 56);
-    font-family: var(--font-family);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
+	.rs-test-title {
+		font-size: fn.useResponsiveSize(320, 1024, 32, 56);
+		font-family: var(--font-family);
+		letter-spacing: -0.02em;
+		line-height: 1.1;
+	}
 
-  .rs-test-subtitle {
-    font-size: fn.useResponsiveSize(320, 1024, 16, 20);
-    line-height: 1.5;
-  }
+	.rs-test-subtitle {
+		font-size: fn.useResponsiveSize(320, 1024, 16, 20);
+		line-height: 1.5;
+	}
 
-  .rs-test-text {
-    font-size: fn.useResponsiveSize(320, 1024, 15, 18);
-    line-height: 1.6;
-  }
+	.rs-test-text {
+		font-size: fn.useResponsiveSize(320, 1024, 15, 18);
+		line-height: 1.6;
+	}
 </style>
