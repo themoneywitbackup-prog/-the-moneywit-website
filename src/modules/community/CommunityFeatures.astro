@@ -1,101 +1,125 @@
 ---
 const features = [
-  { name: 'Weekly financial news insights', lite: true, premium: true },
-  { name: 'Access to deals', lite: true, premium: true },
-  { name: 'Deals and investment recommendations', lite: true, premium: true },
-  { name: 'Deep-dive investing guides', lite: true, premium: true },
-  { name: 'Portfolio tools/templates', lite: true, premium: true },
-  { name: 'Quarterly Masterclass invites', lite: true, premium: true },
-  { name: 'Community access', lite: true, premium: true },
-  { name: 'Monthly webinars', lite: false, premium: true },
-  { name: 'Events and meet ups', lite: false, premium: true },
-  { name: 'Real time support', lite: false, premium: true },
-  { name: 'Discounted access to Money', lite: false, premium: true },
-  { name: 'Wit School Programs', lite: false, premium: true },
-  { name: 'Deal flow personalized management', lite: false, premium: true },
-  { name: 'Real-time Community Support', lite: false, premium: true },
-]
+	{
+		name: 'Weekly financial news insights',
+		lite: true,
+		premium: true,
+	},
+	{ name: 'Access to deals', lite: true, premium: true },
+	{
+		name: 'Deals and investment recommendations',
+		lite: true,
+		premium: true,
+	},
+	{ name: 'Deep-dive investing guides', lite: true, premium: true },
+	{ name: 'Portfolio tools/templates', lite: true, premium: true },
+	{ name: 'Quarterly Masterclass invites', lite: true, premium: true },
+	{ name: 'Community access', lite: true, premium: true },
+	{ name: 'Monthly webinars', lite: false, premium: true },
+	{ name: 'Events and meet ups', lite: false, premium: true },
+	{ name: 'Real time support', lite: false, premium: true },
+	{ name: 'Discounted access to Money', lite: false, premium: true },
+	{ name: 'Wit School Programs', lite: false, premium: true },
+	{
+		name: 'Deal flow personalized management',
+		lite: false,
+		premium: true,
+	},
+	{ name: 'Real-time Community Support', lite: false, premium: true },
+];
 
-const CheckIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`
-const DashIcon = `<span class="text-gray-300">—</span>`
+const CheckIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+const DashIcon = `<span class="text-gray-300">—</span>`;
 interface Props {
-  featureLiteLink: string
-  featurePremiumLink: string
+	featureLiteLink: string;
+	featurePremiumLink: string;
 }
 
-const { featureLiteLink, featurePremiumLink } = Astro.props
+const { featureLiteLink, featurePremiumLink } = Astro.props;
 ---
 
-<section class="bg-white py-24 px-6" id="community-features">
-  <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-black mb-16">
-      A Refined Exploration of Our <br /> Community Features
-    </h2>
+<section
+	class='bg-white py-24 px-6'
+	id='community-features'>
+	<div class='max-w-5xl mx-auto'>
+		<h2
+			class='text-3xl md:text-4xl font-bold text-center text-black mb-16'>
+			A Refined Exploration of Our <br /> Community Features
+		</h2>
 
-    <div class="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-      <table class="w-full text-left border-collapse">
-        <thead>
-          <tr class="bg-black text-white">
-            <th class="p-6 md:p-8 text-lg font-medium border-r border-white/10 w-1/3">Feature</th>
-            <th class="p-6 md:p-8 text-center border-r border-white/10">
-              <div class="flex flex-col items-center gap-4">
-                <div class="flex flex-col md:flex-row items-center gap-2">
-                  <span class="text-2xl font-bold">Lite</span>
-                  <span class="text-gray-400 text-sm"
-                    >$6.67 <br /> <span class="text-[10px]">/per month</span></span
-                  >
-                </div>
-                <a
-                  href={featureLiteLink}
-                  class="w-full max-w-[160px] bg-white text-black py-2 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors text-center"
-                  >Join Us</a
-                >
-              </div>
-            </th>
-            <th class="p-6 md:p-8 text-center bg-[#0a0a0a]">
-              <div class="flex flex-col items-center gap-4">
-                <div class="flex flex-col md:flex-row items-center gap-2">
-                  <span class="text-2xl font-bold">Premium</span>
-                  <span class="text-gray-400 text-sm"
-                    >$30 <br /> <span class="text-[10px]">/per month</span></span
-                  >
-                </div>
-                <a
-                  href={featurePremiumLink}
-                  class="w-full max-w-[160px] bg-[#FFD640] text-black py-2 rounded-full text-sm font-bold hover:brightness-110 transition-all text-center"
-                  >Join Us</a
-                >
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="text-black">
-          {
-            features.map((feature) => (
-              <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
-                <td class="p-5 md:px-8 text-sm md:text-base font-medium border-r border-gray-100">
-                  {feature.name}
-                </td>
-                <td class="p-5 text-center border-r border-gray-100">
-                  <div class="flex justify-center" set:html={feature.lite ? CheckIcon : DashIcon} />
-                </td>
-                <td class="p-5 text-center">
-                  <div
-                    class="flex justify-center"
-                    set:html={feature.premium ? CheckIcon : DashIcon}
-                  />
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-    </div>
-  </div>
+		<div
+			class='overflow-x-auto rounded-2xl border border-gray-200 shadow-sm'>
+			<table class='w-full text-left border-collapse'>
+				<thead>
+					<tr class='bg-black text-white'>
+						<th
+							class='p-6 md:p-8 text-lg font-medium border-r border-white/10 w-1/3'
+							>Feature</th
+						>
+						<th class='p-6 md:p-8 text-center border-r border-white/10'>
+							<div class='flex flex-col items-center gap-4'>
+								<div class='flex flex-col md:flex-row items-center gap-2'>
+									<span class='text-2xl font-bold'>Lite</span>
+									<span class='text-gray-400 text-sm'
+										>$6.67 <br />
+										<span class='text-[10px]'>/per month</span></span
+									>
+								</div>
+								<a
+									href={featureLiteLink}
+									class='w-full max-w-[160px] bg-white text-black py-2 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors text-center'
+									>Join Us</a
+								>
+							</div>
+						</th>
+						<th class='p-6 md:p-8 text-center bg-[#0a0a0a]'>
+							<div class='flex flex-col items-center gap-4'>
+								<div class='flex flex-col md:flex-row items-center gap-2'>
+									<span class='text-2xl font-bold'>Premium</span>
+									<span class='text-gray-400 text-sm'
+										>$30 <br />
+										<span class='text-[10px]'>/per month</span></span
+									>
+								</div>
+								<a
+									href={featurePremiumLink}
+									class='w-full max-w-[160px] bg-[#FFD640] text-black py-2 rounded-full text-sm font-bold hover:brightness-110 transition-all text-center'
+									>Join Us</a
+								>
+							</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody class='text-black'>
+					{
+						features.map((feature) => (
+							<tr class='border-b border-gray-200 hover:bg-gray-50 transition-colors'>
+								<td class='p-5 md:px-8 text-sm md:text-base font-medium border-r border-gray-100'>
+									{feature.name}
+								</td>
+								<td class='p-5 text-center border-r border-gray-100'>
+									<div
+										class='flex justify-center'
+										set:html={feature.lite ? CheckIcon : DashIcon}
+									/>
+								</td>
+								<td class='p-5 text-center'>
+									<div
+										class='flex justify-center'
+										set:html={feature.premium ? CheckIcon : DashIcon}
+									/>
+								</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </section>
 
-<style lang="scss">
-  table {
-    font-variant-numeric: tabular-nums;
-  }
+<style lang='scss'>
+	table {
+		font-variant-numeric: tabular-nums;
+	}
 </style>
