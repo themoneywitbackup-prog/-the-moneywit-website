@@ -11,7 +11,7 @@ import {
 	X,
 } from '@lucide/astro';
 const navigation: {
-	link: string;
+	link?: string;
 	text: string;
 	clickable?: true;
 	children?: { link: string; text: string }[];
@@ -29,7 +29,6 @@ const navigation: {
 		],
 	},
 	{
-		link: '/our-programs',
 		text: 'Our Programs',
 		children: [
 			{ link: '/individual', text: 'Individual' },
@@ -94,9 +93,11 @@ const navigation: {
 			navigation.map((data) => {
 				return data.children ?
 						<li>
-							<details>
-								<summary>{data.text}</summary>
-								<div class='details'>
+							<div>
+								{data.link ?
+									<a href={data.link}>{data.text}</a>
+								:	<p>{data.text}</p>}
+								<div class='details ml-4'>
 									<ul>
 										{data.children.map((data) => (
 											<li>
@@ -105,7 +106,7 @@ const navigation: {
 										))}
 									</ul>
 								</div>
-							</details>
+							</div>
 						</li>
 					:	<li>
 							<a href={data.link}>{data.text}</a>
