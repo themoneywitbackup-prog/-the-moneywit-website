@@ -1,0 +1,104 @@
+---
+---
+<section class="bg-white py-20 px-6">
+  <div class="max-w-3xl mx-auto text-black">
+
+    <h2 class="text-2xl font-bold mb-4">1. Introduction</h2>
+    <p class="mb-4 leading-relaxed text-gray-700">
+      At The Money Wit, we are committed to protecting your personal data in compliance with the Nigeria Data Protection Act (NDPA) 2023 and applicable protection laws. By accessing our platform, or using our services, content, features, technologies or functions offered on our website, you accept to be bound by this Privacy Policy.
+    </p>
+    <p class="mb-4 leading-relaxed text-gray-700">
+      We may amend this Privacy Policy at any time by posting a revised version on our website, or placing such notice at conspicuous points at our office facilities.
+    </p>
+    <p class="mb-10 leading-relaxed text-gray-700">
+      The Money Wit is committed to protecting the privacy and security of your personal and financial information. This Privacy Policy explains how we collect, use, and safeguard your data in compliance with the Nigeria Data Protection Act (NDPA) 2023 and US financial privacy regulations, including the Gramm-Leach-Bliley Act (GLBA) 1999.
+    </p>
+
+    <h2 class="text-2xl font-bold mb-4">2. Consent</h2>
+    <p class="mb-4 leading-relaxed text-gray-700">
+      By accessing or using our website, purchasing our products or services, subscribing to our content, or otherwise interacting with The Money Wit, you acknowledge that you have read and understood this Privacy Policy and consent to the collection, use, and processing of your personal data in accordance with its terms. Where required by law, we will request your explicit consent before collecting or processing certain categories of personal data, including for marketing communications and the use of non-essential cookies.
+    </p>
+    <p class="mb-4 leading-relaxed text-gray-700">
+      You may withdraw your consent at any time by contacting us at <a href="mailto:contact@themoneywit.africa" class="underline text-black">contact@themoneywit.africa</a>, without affecting the lawfulness of processing carried out prior to such withdrawal.
+    </p>
+    <p class="mb-10 leading-relaxed text-gray-700">
+      We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date, and where appropriate, we will notify you via email or through a notice on our website. Continued use of our platform after such updates constitutes acceptance of the revised Privacy Policy.
+    </p>
+
+    <h2 class="text-2xl font-bold mb-4">3. Information We Collect</h2>
+    <p class="mb-3 leading-relaxed text-gray-700">As a financial advisory firm, we collect such information but are not limited to:</p>
+    <ul class="list-disc pl-6 mb-4 text-gray-700 flex flex-col gap-2">
+      <li>Personal Information: Name, email address, phone number</li>
+      <li>Financial Preferences (non-sensitive): Interests in financial literacy, investments</li>
+      <li>Payment Information (via third-party processors)</li>
+      <li>Technical Data: IP address, browser type, device information</li>
+      <li>Usage Data: Pages visited, time spent, interaction patterns</li>
+    </ul>
+    <p class="mb-3 leading-relaxed text-gray-700">We use the data to:</p>
+    <ul class="list-disc pl-6 mb-10 text-gray-700 flex flex-col gap-2">
+      <li>Provide financial education services</li>
+      <li>Process payments and enrollments</li>
+      <li>Send newsletters and updates</li>
+      <li>Improve website functionality</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mb-4">4. Legal Basis for Processing</h2>
+    <p class="mb-3 leading-relaxed text-gray-700">Under the NDPA 2023, we process your data based on:</p>
+    <ul class="list-disc pl-6 mb-10 text-gray-700 flex flex-col gap-2">
+      <li><strong>Consent:</strong> Explicit permission you give us for specific services.</li>
+      <li><strong>Contractual Necessity:</strong> To provide the financial advisory services you requested.</li>
+      <li><strong>Legal Obligation:</strong> To comply with anti-money laundering (AML) and "Know Your Customer" (KYC) regulations.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mb-4">5. How We Use Your Information</h2>
+    <p class="mb-3 leading-relaxed text-gray-700">Your information received may be used in:</p>
+    <ul class="list-disc pl-6 mb-10 text-gray-700 flex flex-col gap-2">
+      <li>Payment processors</li>
+      <li>Email marketing platforms</li>
+      <li>Analytics providers</li>
+      <li>Providing personalized financial advice and investment strategies</li>
+      <li>Processing transactions and maintaining account records</li>
+      <li>Communicating updates, newsletters, or marketing (subject to your opt-out rights)</li>
+      <li>Preventing fraud and ensuring the security of our platform</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mb-4">6. Data Sharing and Disclosure</h2>
+    <p class="mb-3 leading-relaxed text-gray-700">We do not sell your personal information; however, we may share data with:</p>
+    <ul class="list-disc pl-6 mb-10 text-gray-700 flex flex-col gap-2">
+      <li><strong>Service Providers:</strong> Custodians, brokers, or technology partners who assist in delivering our services under strict confidentiality agreements.</li>
+      <li><strong>Regulatory Bodies:</strong> When required by law, for example the Nigeria Data Protection Commission (NDPC).</li>
+      <li><strong>Affiliates:</strong> To offer additional financial products, subject to your right to opt-out.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mb-4">7. Your Rights and Choices</h2>
+    <p class="mb-2 font-semibold text-gray-800">Nigeria (NDPA 2023 Rights):</p>
+    <ul class="list-disc pl-6 mb-4 text-gray-700 flex flex-col gap-2">
+      <li><strong>Right to Access/Portability:</strong> Receive a copy of your data in a structured format.</li>
+      <li><strong>Right to Rectification/Erasure:</strong> Correct or delete your personal data.</li>
+      <li><strong>Right to Object:</strong> Challenge automated decision-making or direct marketing.</li>
+    </ul>
+    <p class="mb-2 font-semibold text-gray-800">United States (GLBA Rights):</p>
+    <ul class="list-disc pl-6 mb-10 text-gray-700 flex flex-col gap-2">
+      <li><strong>Opt-Out Rights:</strong> You have the right to direct us not to share your NPI with non-affiliated third parties for marketing.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mb-4">8. Data Security and Retention</h2>
+    <p class="mb-10 leading-relaxed text-gray-700">
+      We implement robust technical measures, including encryption and multi-factor authentication (MFA), to protect your financial data. We retain your data only as long as necessary for business purposes or as required by financial record-keeping laws (typically 6–10 years).
+    </p>
+
+    <h2 class="text-2xl font-bold mb-4">9. International Transfers</h2>
+    <p class="mb-10 leading-relaxed text-gray-700">
+      Data collected in Nigeria may be processed in the US. We ensure such transfers comply with NDPA "adequacy" requirements through standard contractual clauses or other approved mechanisms.
+    </p>
+
+    <h2 class="text-2xl font-bold mb-4">10. Contact Information</h2>
+    <p class="mb-2 leading-relaxed text-gray-700">For any privacy-related inquiries or to exercise your rights, contact our Data Protection Officer (DPO):</p>
+    <ul class="list-disc pl-6 mb-4 text-gray-700 flex flex-col gap-2">
+      <li>Email: <a href="mailto:contact@themoneywit.africa" class="underline text-black">contact@themoneywit.africa</a></li>
+      <li>Nigeria Regulator: You may also lodge complaints with the Nigeria Data Protection Commission (NDPC).</li>
+    </ul>
+
+  </div>
+</section>
