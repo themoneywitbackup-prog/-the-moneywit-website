@@ -1,1 +1,12 @@
 
+---
+import { Image } from 'astro:assets'
+import PrivacyBg from './assets/termsandcond.jpg'
+---
+<section class="relative py-32 px-6 flex items-center justify-center overflow-hidden">
+  <Image src={PrivacyBg} alt="" class="absolute inset-0 w-full h-full object-cover opacity-30" />
+  <div class="relative z-10 text-center">
+    <h1 class="text-5xl md:text-6xl font-bold text-white">Terms and Conditions</h1>
+    <p class="text-gray-400 mt-4 text-sm">Last updated: May 2026</p>
+  </div>
+</section>
