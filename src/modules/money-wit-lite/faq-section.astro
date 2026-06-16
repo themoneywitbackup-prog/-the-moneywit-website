@@ -1,0 +1,43 @@
+---
+const faqs = [
+  {
+    q: 'When does the first edition come out?',
+    a: 'Sunday, July 6, 2026. Between now and then, you\'ll receive a full onboarding series — apps to download, platforms to set up, and everything you need to be ready the moment the first edition lands in your inbox.',
+  },
+  {
+    q: 'Is this investment advice?',
+    a: 'No. This is financial education. Oler shares what she is watching and what she is personally doing — with clear explanations of her thinking. Every decision you make with your own money is yours. You are always in control.',
+  },
+  {
+    q: 'What if I\'m new to investing?',
+    a: 'The onboarding series is built for you. Before the first edition drops, we\'ll walk you through every app and account you need to be ready to act. You don\'t need prior investing experience — just the willingness to start.',
+  },
+  {
+    q: 'What markets does Money Wit Lite cover?',
+    a: 'Nigerian equities, Treasury Bills, fixed income, money market instruments — and global opportunities that are accessible and relevant to Nigerian investors. The focus is always on what you can actually do with your money, not just what\'s happening in the world.',
+  },
+  {
+    q: 'Can I cancel?',
+    a: 'Monthly subscribers can cancel anytime before their next billing date. Annual subscribers retain full access for the year they\'ve paid for. No hoops, no penalties.',
+  },
+  {
+    q: 'What\'s the founder rate?',
+    a: 'The founder rate is a discounted price available only to the people who join before [DATE] — the people who believed early. After [DATE], the price increases to the standard rate and the founder rate is gone permanently.',
+  },
+]
+---
+<section class="bg-black py-28 px-6">
+  <div class="max-w-2xl mx-auto">
+    <span class="block text-[10px] font-bold tracking-[0.2em] uppercase text-[#FFD100] mb-5">Questions</span>
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-14">Frequently asked</h2>
+    <div class="flex flex-col">
+      {faqs.map((faq) => (
+        <div class="border-b border-[#FFD100]/15 py-8">
+          <h3 class="text-xl font-bold text-white mb-4">{faq.q}</h3>
+          <p class="text-white/60 font-light leading-relaxed text-sm">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<hr class="border-none h-px bg-[#FFD100]/15" />
