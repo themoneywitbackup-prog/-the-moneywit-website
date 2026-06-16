@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+import OlerPhoto from './assets/oler-photo.jpg'
+---
+<section class="bg-[#111111] py-28 px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-16 items-start">
+    <div class="md:col-span-2">
+      <Image
+        src={OlerPhoto}
+        alt="Oler Oladele, CFA"
+        class="w-full h-auto object-cover"
+      />
+    </div>
+    <div class="md:col-span-3">
+      <span class="block text-[10px] font-bold tracking-[0.2em] uppercase text-[#FFD100] mb-5">Your Guide</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">Oler Oladele,<br>CFA, M.CIoD</h2>
+      <p class="text-white/65 font-light leading-relaxed mb-5">
+        I've spent nearly two decades in Nigerian capital markets — trading money market and fixed income securities at FBNQuest Merchant Bank, launching Nigeria's first-ever Treasury Bills investment app at Parthian Partners, and building one of Nigeria's most trusted financial education platforms.
+      </p>
+      <p class="text-white/65 font-light leading-relaxed mb-10">
+        I started The Money Wit because too many Nigerians are working hard and still losing ground financially. Not because they don't care — but because no one ever showed them what to actually do. Money Wit Lights is the most direct version of that mission: not theory, not "best practices" — what I actually do, written plainly so you can do it too.
+      </p>
+      <div class="flex flex-col gap-3">
+        {[
+          'CFA Charterholder',
+          'IFC & LPI Certified Trainer',
+          'Host, The Money Wit Show (nationally syndicated)',
+          'Author, Kila Wiki — weekly economics newsletter',
+          'Featured: BBC Africa · Guardian · Arise TV',
+          'Alumna: Cambridge University · Oxford Executive Leadership',
+        ].map((cred) => (
+          <div class="flex items-center gap-4 text-sm text-white/60">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#FFD100] flex-shrink-0"></span>
+            {cred}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="border-none h-px bg-[#FFD100]/15" />
