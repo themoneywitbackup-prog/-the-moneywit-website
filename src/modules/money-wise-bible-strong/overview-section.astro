@@ -1,0 +1,29 @@
+---
+---
+<section class="bg-white py-24 px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div>
+      <h2 class="text-4xl md:text-5xl font-bold text-black leading-tight mb-6">
+        A Practical, Prayerful<br><em class="italic text-[#CC9200]">Solution</em>
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-4">This isn't a typical finance camp. It's a 3-day immersive experience that weaves biblical wisdom with practical financial knowledge designed for teens and young adults aged 16–21 who are ready to step into life with clarity, purpose, and financial confidence.</p>
+      <p class="text-gray-600 leading-relaxed mb-4">Each day covers a pillar of financial wisdom rooted in scripture and supported by expert knowledge from financial markets, corporate experience, and faith communities.</p>
+      <p class="text-gray-600 leading-relaxed">The world is changing fast. Your child is under more pressure than ever to succeed quickly, live loudly, and spend recklessly. This camp gives them a different foundation: one built on God's word and real-world financial skill.</p>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      {[
+        { label: 'Format', value: 'Virtual (Zoom)' },
+        { label: 'Daily Time', value: '4PM GMT+1' },
+        { label: 'Dates', value: 'Aug 12–14, 2026' },
+        { label: 'Age Group', value: '16–21 Years' },
+        { label: 'Post-Camp', value: '4 Quarterly Check-ins' },
+        { label: 'Investment', value: '₦140,000 / $100' },
+      ].map((stat) => (
+        <div class="border border-gray-200 p-4">
+          <div class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-1">{stat.label}</div>
+          <div class="text-sm font-semibold text-black">{stat.value}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
