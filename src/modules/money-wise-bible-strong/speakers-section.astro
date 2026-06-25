@@ -1,0 +1,22 @@
+---
+---
+<section class="bg-white py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#CC9200] mb-4">Meet the Facilitators</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-black">Breakout Session Hosts</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {[1,2,3,4].map(() => (
+        <div class="text-center">
+          <div class="w-full aspect-square bg-[#F7F6F4] border-2 border-dashed border-gray-300 flex flex-col items-center justify-center gap-2 mb-4">
+            <span class="text-2xl">📷</span>
+            <span class="text-xs font-bold tracking-widest uppercase text-gray-400">Speaker Photo</span>
+          </div>
+          <div class="text-sm font-bold text-black mb-1">Speaker Name</div>
+          <div class="text-xs text-gray-400">Session Topic</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
