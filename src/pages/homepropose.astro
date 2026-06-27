@@ -1,0 +1,73 @@
+---
+import HeroSection from '@/modules/home/hero-section-propose.astro';
+import BaseLayout from '../layout/base-layout.astro';
+import TrustedByLogo from '../components/trusted-by-logo.astro';
+import WhoIsMoneyWit from '@/modules/home/who-is-money-wit.astro';
+import SchoolSection from '@/modules/home/school-section.astro';
+import OurCommunity from '@/modules/home/our-community.astro';
+import MediaHome from '@/modules/home/media-home.astro';
+import BrochureCTA from '@/components/Landing-page/BrochureCTA.astro';
+import ResourcesHome from '@/modules/home/resources-home.astro';
+import { getCollection } from 'astro:content';
+const HomepageContent = await getCollection('HomepageCollections');
+const pageContent = HomepageContent[0].data;
+const {
+	heroTag,
+	heroTitle,
+	heroDescription,
+	heroButton,
+	heroButtonLink,
+	whoismoneywitHeader,
+	whoismoneywitSubHeader,
+	whoismoneywitFirstCardHeader,
+	whoismoneywitFirstCardDesc,
+	whoismoneywitSecondCardHeader,
+	whoismoneywitSecondCardDesc,
+	patnerTitle,
+	partnerDesc,
+	patnerButton,
+	partnerButtonLink,
+} = pageContent;
+---
+<BaseLayout>
+	<HeroSection
+		heroTag={heroTag}
+		heroTitle={heroTitle}
+		description={heroDescription}
+		ctaText={heroButton}
+		ctaLink={heroButtonLink}
+		liveLabel="LIVE REGISTRATION"
+		programTitle="Next Program: The Money Wit Newsletter"
+		programDescription="A private weekly newsletter — what I'm watching, what I'm buying, and one clear move you can make before Monday opens"
+		programCtaText="Learn More"
+		programCtaLink="https://themoneywit.africa/money-wit-lite/"
+		programStartDate="Starting July 6th"
+	/>
+	<TrustedByLogo />
+	<WhoIsMoneyWit
+		whoismoneywitHeader={whoismoneywitHeader}
+		whoismoneywitSubHeader={whoismoneywitSubHeader}
+		whoismoneywitFirstCardHeader={whoismoneywitFirstCardHeader}
+		whoismoneywitFirstCardDesc={whoismoneywitFirstCardDesc}
+		whoismoneywitSecondCardHeader={whoismoneywitSecondCardHeader}
+		whoismoneywitSecondCardDesc={whoismoneywitSecondCardDesc}
+	/>
+	<SchoolSection />
+	<OurCommunity />
+	<MediaHome />
+	<BrochureCTA
+		heading={patnerTitle}
+		subtext={partnerDesc}
+		buttonText={patnerButton}
+		download={false}
+		btnLink={partnerButtonLink}
+	/>
+	<ResourcesHome />
+	<iframe
+		class='form-iframe'
+		aria-label='CONTACT US'
+		frameborder='0'
+		style='height:max(60vw, 60vh);width:99%;border:none;'
+		src='https://forms.zohopublic.com/oleroladelecom/form/CONTACTUS/formperma/QEh5-VzS88orhYBjbFwuuwCjYTRHJr4BfJP0JYRW-B4'
+	></iframe>
+</BaseLayout>
