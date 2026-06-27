@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+interface Props {
+  heroTag: string;
+  heroTitle: string;
+  description: string;
+  ctaText: string;
+  ctaLink: string;
+  liveLabel?: string;
+  programTitle?: string;
+  programDescription?: string;
+  programCtaText?: string;
+  programCtaLink?: string;
+  programStartDate?: string;
+}
+
+const {
+  heroTag,
+  heroTitle,
+  description,
+  ctaText,
+  ctaLink,
+  liveLabel = "LIVE REGISTRATION",
+  programTitle = "Next Program: Wealth Masterclass",
+  programDescription = "Join our flagship intensive session designed to accelerate your journey toward sustainable financial independence.",
+  programCtaText = "Learn More",
+  programCtaLink = "#",
+  programStartDate = "Starting Oct 15th",
+} = Astro.props;
+---
+
+<section class="bg-black text-white px-6 py-24">
+  <div class="max-w-containerBrand mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+    
+    <div>
+      <span class="inline-block border border-[#FFD100] text-[#FFD100] rounded-full px-4 py-1.5 text-xs font-medium bg-[#FFD10015] mb-6">
+        {heroTag}
+      </span>
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight max-w-[14ch] mb-6">
+        {heroTitle}
+      </h1>
+      <p class="text-white/60 text-lg max-w-[32ch] leading-relaxed mb-10">
+        {description}
+      </p>
+      
+        href={ctaLink}
+        class="inline-block bg-[#FFD100] text-black font-semibold px-8 py-4 rounded-full text-base hover:brightness-110 transition-all"
+      >
+        {ctaText}
+      </a>
+    </div>
+
+    <div class="relative bg-[#161616] border border-white/5 rounded-2xl p-8 overflow-hidden">
+      <div class="flex items-center gap-2 text-[#FFD100] text-xs font-bold tracking-widest uppercase mb-5">
+        <span class="w-2 h-2 rounded-full bg-[#FFD100] shadow-[0_0_0_4px_rgba(255,209,0,0.18)]"></span>
+        {liveLabel}
+      </div>
+      <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-4">
+        {programTitle}
+      </h2>
+      <p class="text-white/60 text-sm leading-relaxed mb-8 max-w-[40ch]">
+        {programDescription}
+      </p>
+      <div class="flex flex-wrap items-center gap-5">
+        
+          href={programCtaLink}
+          class="inline-block bg-[#FFD100] text-black font-semibold px-6 py-3 rounded-lg text-sm hover:brightness-110 transition-all"
+        >
+          {programCtaText}
+        </a>
+        <span class="flex items-center gap-2 text-white/45 text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          {programStartDate}
+        </span>
+      </div>
+      <span class="absolute bottom-[-4rem] right-[-1.5rem] text-[14rem] font-bold leading-none text-white/[0.03] pointer-events-none select-none">$</span>
+    </div>
+
+  </div>
+</section>
