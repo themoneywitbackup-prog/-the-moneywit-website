@@ -13,7 +13,6 @@ interface Props {
   programCtaLink?: string;
   programStartDate?: string;
 }
-
 const {
   heroTag,
   heroTitle,
@@ -28,7 +27,6 @@ const {
   programStartDate = "Starting Oct 15th",
 } = Astro.props;
 ---
-
 <section class="bg-black text-white px-6 py-24">
   <div class="max-w-containerBrand mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
     
@@ -46,7 +44,7 @@ const {
         href={ctaLink}
         class="inline-block bg-[#FFD100] text-black font-semibold px-8 py-4 rounded-full text-base hover:brightness-110 transition-all"
       >
-        {ctaText}
+        Get Started
       </a>
     </div>
 
@@ -66,7 +64,7 @@ const {
           href={programCtaLink}
           class="inline-block bg-[#FFD100] text-black font-semibold px-6 py-3 rounded-lg text-sm hover:brightness-110 transition-all"
         >
-          {programCtaText}
+          Learn More
         </a>
         <span class="flex items-center gap-2 text-white/45 text-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
