@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets'
+import OlerPhoto from './assets/oler-photo.jpg'
+---
+<section class="bg-white py-24 px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-16 items-start">
+    <div class="md:col-span-2">
+      <Image
+        src={OlerPhoto}
+        alt="Oler Oladele, CFA"
+        class="w-full h-auto object-cover"
+      />
+    </div>
+    <div class="md:col-span-3">
+      <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#CC9200] mb-5">About the Host</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-black mb-8 leading-tight">Hi, I'm Oler; And I've Seen What Happens When Young People Miss This.</h2>
+      <p class="text-gray-600 font-light leading-relaxed mb-5">Over my 17-year career in financial markets and corporate Treasury, I watched firsthand as talented, hardworking people had their potential quietly destroyed not by bad luck, but by a financial literacy gap that started long before they entered the workforce.</p>
+      <p class="text-gray-600 font-light leading-relaxed mb-5">I created this webinar, and the accompanying faith-based financial summer camp, because I believe our young people don't need to figure out the financial system by trial and error. They deserve biblical truth, structural knowledge, and professional guidance from someone who has sat inside the system they're about to enter.</p>
+      <p class="text-gray-600 font-light leading-relaxed mb-5">I am a CFA Charterholder, a Certified Trainer with the International Finance Corporation (IFC), and a children's church teacher at Covenant Nation. I regularly deliver financial education to young people at schools and summer camps across Nigeria. I've seen teenagers go from financially clueless to genuinely confident in a matter of days. That transformation is why I'm here.</p>
+      <p class="text-xl italic text-black mb-8" style="font-family:serif">Let's give them a strong start together.</p>
+      <div class="flex flex-wrap gap-2">
+        {[
+          'CFA Charterholder',
+          'IFC Certified Trainer',
+          '17 Years · Financial Markets',
+          'Covenant Nation Youth Teacher',
+          'Cambridge Rising Women Leaders',
+          'Oxford Executive Leadership',
+          'Tekedia Mini MBA Faculty',
+        ].map((cred) => (
+          <span class="text-xs font-semibold px-3 py-1.5 bg-[#FFFBEA] text-[#7A5500]">{cred}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
