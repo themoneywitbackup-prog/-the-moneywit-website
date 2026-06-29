@@ -1,0 +1,26 @@
+---
+const faqs = [
+  { q: 'Who is this webinar for?', a: 'This webinar is designed for parents and guardians of teenagers and young adults aged 16–21 who want to build biblical financial foundations in their children before life\'s big financial decisions begin.' },
+  { q: 'Do I need a finance background to attend?', a: 'Not at all. This webinar is specifically designed for parents not financial professionals. The language is plain, practical, and rooted in scripture rather than technical jargon.' },
+  { q: 'Can my teen attend the webinar with me?', a: 'Absolutely and we\'d encourage it. The webinar is designed so parents and their teens can watch together and begin the conversation in real time.' },
+  { q: 'Is this webinar really free? What\'s the catch?', a: 'Completely free. No catch. After the webinar, you\'ll have the option to enroll your child in the 3-day summer camp but that is entirely your choice. The webinar stands alone as a complete session.' },
+  { q: 'How is this different from a typical personal finance course?', a: 'Most finance courses teach money mechanics. This webinar teaches money wisdom grounded in biblical principles and delivered by an educator with 17 years inside financial markets who also teaches youth at church and schools.' },
+  { q: 'What if I miss the live webinar?', a: 'Register anyway. Registrants receive follow-up resources and information about replay access. Your WhatsApp number ensures you get a direct reminder before the session.' },
+]
+---
+<section class="bg-white py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#CC9200] mb-4">Frequently Asked Questions</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-black">Everything You Need to Know</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-100">
+      {faqs.map((faq) => (
+        <div class="bg-white p-8 border-b-2 border-b-transparent hover:border-b-[#FFD100] transition-colors">
+          <h3 class="text-sm font-bold text-black mb-3 leading-snug">{faq.q}</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
