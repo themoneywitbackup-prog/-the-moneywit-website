@@ -1,0 +1,33 @@
+---
+---
+<section class="relative bg-black text-white pt-28 pb-24 px-6 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 60% 0%, rgba(255,209,0,0.08) 0%, transparent 60%);"></div>
+  <div class="absolute right-[-40px] top-[-60px] font-bold italic text-[#FFD100] pointer-events-none select-none" style="font-size:500px; opacity:0.03; line-height:1; font-family:serif;">"</div>
+  <div class="relative z-10 max-w-3xl mx-auto">
+    <span class="block text-[#FFD100] text-xs font-bold tracking-[0.2em] uppercase mb-6">Free Webinar for Parents & Guardians</span>
+    <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+      "How Do I Teach Them<br>What <em class="italic text-[#FFD100]">I Was Never<br>Taught</em> Myself?"
+    </h1>
+    <p class="text-lg text-white/60 max-w-2xl leading-relaxed mb-10">
+      You want your teen to thrive financially and stay rooted in faith. But the world is louder, faster, and more deceptive than ever. This free webinar gives you God's blueprint and practical tools to guide them before it's too late.
+    </p>
+    <div class="inline-flex flex-wrap border border-white/10 mb-10">
+      {[
+        { icon: '📅', text: '[DATE]' },
+        { icon: '⏰', text: '[TIME] GMT+1' },
+        { icon: '💻', text: '100% Online' },
+        { icon: '👤', text: 'Ages 16–21 & Their Parents' },
+      ].map((item) => (
+        <div class="px-5 py-3 border-r border-white/10 last:border-r-0 text-sm text-white/50">
+          {item.icon} <strong class="text-white">{item.text}</strong>
+        </div>
+      ))}
+    </div>
+    <div class="flex flex-col gap-3 items-start">
+      <a href="#register" class="inline-block bg-[#FFD100] text-black px-10 py-5 text-sm font-bold tracking-[0.1em] uppercase hover:brightness-110 transition-all">
+        Reserve My Free Spot
+      </a>
+      <span class="text-xs text-white/35">Free. Online. <strong class="text-[#FFD100]">Limited spots.</strong></span>
+    </div>
+  </div>
+</section>
