@@ -1,0 +1,42 @@
+---
+---
+<section class="relative bg-black py-24 px-6 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 30% 100%, rgba(255,209,0,0.07) 0%, transparent 60%);"></div>
+  <div class="max-w-5xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div>
+      <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#FFD100] mb-4">Coming Up Next After the Webinar</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+        The 3-Day Camp That<br>Takes It <em class="italic text-[#FFD100]">All the Way</em>
+      </h2>
+      <p class="text-white/55 leading-relaxed mb-8 font-light">The webinar is the beginning. For parents who want to go deeper, our 3-day virtual faith-based financial literacy camp gives your teen an immersive, structured experience that builds lasting habits not just one-day inspiration.</p>
+      <ul class="flex flex-col mb-8">
+        {[
+          'God\'s purpose for wealth not just how to earn it',
+          'Budgeting, saving, and managing money with intention',
+          'Investing basics and how to start before they turn 21',
+          'How to avoid debt, peer pressure, and get-rich-quick traps',
+          '4 quarterly follow-up sessions post-camp so it actually sticks',
+        ].map((item) => (
+          <li class="text-sm text-white/55 py-3 border-b border-white/5 pl-5 relative before:content-['→'] before:absolute before:left-0 before:text-[#FFD100]">{item}</li>
+        ))}
+      </ul>
+      <a href="https://themoneywit.africa/school/mwbs" class="inline-block bg-[#FFD100] text-black px-10 py-4 text-sm font-bold tracking-[0.1em] uppercase hover:brightness-110 transition-all">
+        Learn About the Camp →
+      </a>
+    </div>
+    <div class="flex flex-col gap-4">
+      {[
+        { label: 'Camp Name', val: 'Money Wise Bible Strong' },
+        { label: 'Dates', val: 'August 12–14, 2026', sub: '4PM GMT+1 Daily · Virtual' },
+        { label: 'Who It\'s For', val: 'Young Adults · Ages 16–21' },
+        { label: 'Investment', val: '₦140,000 / $100', sub: 'Split payment available · Limited spots' },
+      ].map((tag) => (
+        <div class="bg-[#1a1a1a] border border-white/5 border-l-4 border-l-[#FFD100] p-5">
+          <div class="text-xs font-bold tracking-widest uppercase text-white/30 mb-1">{tag.label}</div>
+          <div class="text-base font-bold text-white">{tag.val}</div>
+          {tag.sub && <div class="text-xs text-white/30 mt-1">{tag.sub}</div>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
