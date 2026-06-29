@@ -1,5 +1,6 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
+import HeroImg from './assets/hero-img.png';
 interface Props {
   heroTag: string;
   heroTitle: string;
@@ -17,19 +18,15 @@ const {
   heroTag,
   heroTitle,
   description,
-  ctaText,
-  ctaLink,
   liveLabel = "LIVE REGISTRATION",
-  programTitle = "Next Program: Wealth Masterclass",
-  programDescription = "Join our flagship intensive session designed to accelerate your journey toward sustainable financial independence.",
-  programCtaText = "Learn More",
-  programCtaLink = "#",
-  programStartDate = "Starting Oct 15th",
+  programTitle = "Next Program: The Money Wit Newsletter",
+  programDescription = "A private weekly newsletter — what I'm watching, what I'm buying, and one clear move you can make before Monday opens",
+  programStartDate = "Starting July 6th",
 } = Astro.props;
 ---
 <section class="bg-black text-white px-6 py-24">
   <div class="max-w-containerBrand mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-    
+
     <div>
       <span class="inline-block border border-[#FFD100] text-[#FFD100] rounded-full px-4 py-1.5 text-xs font-medium bg-[#FFD10015] mb-6">
         {heroTag}
