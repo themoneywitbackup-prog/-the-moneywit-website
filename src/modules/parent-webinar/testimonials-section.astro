@@ -1,4 +1,10 @@
 ---
+import { Image } from 'astro:assets'
+import Testimonial1 from './assets/parent-webinar-1.jpg'
+import Testimonial2 from './assets/parent-webinar-2.jpg'
+import Testimonial3 from './assets/parent-webinar-3.jpg'
+
+const testimonials = [Testimonial1, Testimonial2, Testimonial3]
 ---
 <section class="bg-[#F7F6F4] py-24 px-6">
   <div class="max-w-5xl mx-auto">
@@ -7,10 +13,13 @@
       <h2 class="text-4xl md:text-5xl font-bold text-black">Real Families. Real Transformations.</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {[1,2,3].map(() => (
-        <div class="aspect-[4/5] bg-white border-2 border-dashed border-gray-300 flex flex-col items-center justify-center gap-3">
-          <span class="text-3xl">📸</span>
-          <span class="text-xs font-bold tracking-widest uppercase text-gray-400">Testimonial Screenshot</span>
+      {testimonials.map((testimonial, i) => (
+        <div class="aspect-[4/5] overflow-hidden">
+          <Image
+            src={testimonial}
+            alt={`Testimonial ${i + 1}`}
+            class="w-full h-full object-cover"
+          />
         </div>
       ))}
     </div>
