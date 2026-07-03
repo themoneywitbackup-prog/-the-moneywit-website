@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@/layout/base-layout.astro'
+
+const title = "Welcome to Money Wit Lite";
+const description = "You're in. Your first edition of Money Wit Lite arrives this Sunday.";
+---
+
+<BaseLayout>
+  <main class="min-h-screen bg-[#0a0a0a] text-white antialiased">
+    <div class="mx-auto max-w-2xl px-6 pb-24 pt-16 md:pt-24">
+
+      <div class="mb-8 flex items-center gap-3">
+        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-[#FDD817]">
+          <svg
+            class="h-4 w-4 text-[#0a0a0a]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12l5 5L20 7"></path>
+          </svg>
+        </span>
+        <span class="text-sm font-semibold text-[#FDD817]">Payment confirmed</span>
+      </div>
+
+      <h1 class="text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl">
+        You're in. Welcome to the <span class="italic text-[#FDD817]">Money Wit Lite.</span>
+      </h1>
+
+      <p class="mt-5 text-lg leading-relaxed text-white/70">
+        Your subscription is active. The first edition lands in your inbox this Sunday, clear, credible, and concise.
+      </p>
+
+      <section class="mt-12 rounded-2xl border border-[#FDD817]/20 bg-[#FDD817]/5 p-6 md:p-8">
+        <div class="mb-6 flex items-center gap-3">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#FDD817]">A note from Oler</span>
+          <div class="h-px flex-1 bg-[#FDD817]/20"></div>
+        </div>
+        <div class="space-y-5 text-[15px] leading-[1.7] text-white/85">
+          <p>Over the years, I've received repeated requests to share the stock options, recommendations, and investment decisions I'm currently looking at.</p>
+          <p>I've decided to start doing that every Sunday, straight to your inbox. The Money Wit Lite edition is built around one idea: your weekly investing signal, delivered in a way that is clear, credible, and concise.</p>
+          <p>Here's what you can expect each Sunday:</p>
+          <ul class="space-y-3">
+            <li class="flex gap-3">
+              <span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#FDD817]"></span>
+              <span>A short market review of what moved, what mattered, and what's next.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#FDD817]"></span>
+              <span>Investment recommendations drawn from my live portfolio and the work I do behind the scenes.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#FDD817]"></span>
+              <span>One clear move you can think through before Monday opens.</span>
+            </li>
+          </ul>
+          <p>No hype. No noise. Just the signal I wish I had when I started.</p>
+          <p class="font-medium text-white">See you Sunday.<br />— Oler</p>
+        </div>
+      </section>
+
+      <section class="mt-10 grid gap-6 sm:grid-cols-2">
+        <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <p class="text-xs font-bold uppercase tracking-widest text-white/50">When it arrives</p>
+          <p class="mt-2 text-sm leading-relaxed text-white/80">Every Sunday, around 7:00am WAT. First edition: this Sunday.</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <p class="text-xs font-bold uppercase tracking-widest text-white/50">Make sure it lands</p>
+        </div>
+      </section>
+
+      <p class="mt-10 text-sm text-white/40">
+        A confirmation email has been sent to you. If you don't see it in the next few minutes, check your spam or promotions folder.
+      </p>
+
+    </div>
+  </main>
+</BaseLayout>
