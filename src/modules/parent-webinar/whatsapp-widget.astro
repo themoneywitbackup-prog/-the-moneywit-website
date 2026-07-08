@@ -1,16 +1,29 @@
 ---
 ---
-<div class="fixed bottom-7 right-7 z-50 flex flex-col items-end gap-3 group">
-  <div class="hidden group-hover:block bg-white text-black text-sm px-4 py-3 rounded-xl rounded-br-none shadow-lg max-w-[200px] leading-snug">
-    Can't wait for the webinar? Chat us on WhatsApp now! 👋
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+  <!-- Message Bubble (Desktop Only) -->
+  <div class="hidden md:block bg-white text-black text-sm px-4 py-3 rounded-2xl rounded-br-md shadow-xl border border-gray-200 max-w-[240px]">
+    <p class="font-semibold">Can't wait for the webinar?</p>
+    <p class="text-gray-600">Chat us on WhatsApp now! 👋</p>
   </div>
-  
-    href="https://wa.me/2348100396925?text=Hi%20Oler%2C%20I%20saw%20the%20webinar%20page%20and%20I%27d%20like%20to%20know%20more"
+
+  <!-- WhatsApp Button -->
+  <a
+    href="https://wa.me/2348100396925?text=Hi%20Oler%2C%20I%20just%20visited%20the%20Parent%20Webinar%20page%20and%20I'd%20like%20to%20know%20more."
     target="_blank"
-    rel="noopener"
-    class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform"
-    title="Chat us on WhatsApp"
+    rel="noopener noreferrer"
+    aria-label="Chat with us on WhatsApp"
+    title="Chat with us on WhatsApp"
+    class="w-16 h-16 rounded-full bg-[#25D366] flex items-center justify-center shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-300"
   >
-    💬
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      class="w-8 h-8 fill-white"
+      aria-hidden="true"
+    >
+      <path d="M16.001 3C8.832 3 3 8.833 3 16.002c0 2.533.74 5.001 2.139 7.118L3 29l6.071-2.086A12.96 12.96 0 0016.001 29C23.17 29 29 23.168 29 16.002 29 8.833 23.17 3 16.001 3zm7.56 18.432c-.318.894-1.852 1.711-2.547 1.821-.654.104-1.48.148-2.389-.144-.552-.178-1.26-.412-2.174-.807-3.825-1.652-6.314-5.507-6.507-5.767-.193-.26-1.557-2.075-1.557-3.958s.985-2.805 1.333-3.188c.347-.383.758-.479 1.011-.479h.727c.231 0 .54-.088.845.647.318.767 1.08 2.649 1.174 2.842.096.193.16.418.032.678-.128.26-.193.418-.383.639-.193.223-.405.497-.578.668-.193.193-.394.402-.17.789.223.383.991 1.633 2.129 2.645 1.463 1.303 2.697 1.705 3.08 1.897.383.193.607.16.831-.096.223-.26.958-1.117 1.214-1.5.26-.383.511-.318.862-.193.351.128 2.226 1.049 2.609 1.24.383.193.639.287.735.446.096.16.096.926-.223 1.82z"/>
+    </svg>
   </a>
 </div>
