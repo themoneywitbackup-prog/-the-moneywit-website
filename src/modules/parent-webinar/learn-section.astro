@@ -17,7 +17,7 @@
         { num: '05', title: 'Simple tools to help them start early, stay grounded, and grow wise', desc: 'You\'ll leave with practical, age-appropriate tools you can introduce to your teen immediately, no financial background required.' },
       ].map((card) => (
         <div class="bg-white p-8 border border-gray-200 border-t-4 border-t-[#FFD100]">
-          <div class="text-5xl font-bold text-[#FFD100]/25 mb-4" style="font-family:serif">{card.num}</div>
+          <div class="text-5xl font-bold text-[#FFBD40]/25 mb-4" style="font-family:serif">{card.num}</div>
           <h3 class="text-sm font-bold text-black mb-3 leading-snug">{card.title}</h3>
           <p class="text-xs text-gray-500 leading-relaxed">{card.desc}</p>
         </div>
@@ -35,9 +35,9 @@
     <div class="max-w-lg mx-auto bg-white border border-gray-200 border-t-4 border-t-[#FFD100] p-10">
       <h3 class="text-2xl font-bold text-black mb-2">Save Your Spot - It's Free</h3>
       <p class="text-sm text-gray-500 mb-6">Enter your details below to register for the webinar.</p>
-      <div>
+      <div style="width:100%;overflow:hidden;">
         <groovewebinar-registration-widget permalink="AiwKQ1rQsxzSbjmpad2e"></groovewebinar-registration-widget>
-        <script src="https://groovewebinar.com/embed/js/app.js"></script>
+        <script is:inline src="https://groovewebinar.com/embed/js/app.js"></script>
       </div>
       <p class="text-xs text-gray-400 text-center mt-4">Limited spots. First come, first blessed. 🙏</p>
     </div>
