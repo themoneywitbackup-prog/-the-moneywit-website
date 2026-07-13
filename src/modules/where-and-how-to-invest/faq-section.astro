@@ -1,0 +1,30 @@
+---
+const faqs = [
+  ['Who is this course for?', "Anyone who wants to start investing but doesn't know where to begin, complete beginners very welcome."],
+  ['Do I need prior knowledge?', "None required. It's designed for any background or experience level."],
+  ['How long is the course?', 'One focused 60-minute session, packed with practical content.'],
+  ['When do I get access?', 'You receive an email with access to the course immediately after payment'],
+  ['What currency can I pay in?', 'Nigerian Naira (₦19,999) or US Dollars ($13.97), both at checkout.'],
+  ['Live or recorded?', 'Recorded. Watch at your pace, revisit as many times as you need.'],
+]
+---
+<section id="faq" class="bg-white py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-16">
+      <div class="text-xs tracking-[0.3em] uppercase font-bold text-[#CC9200] mb-4">§ 05 — Questions</div>
+      <h2 class="font-bold leading-[0.95] text-black" style="font-size: clamp(2.5rem, 5vw, 4rem);">Before you enrol.</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      {faqs.map(([q, a], i) => (
+        <div class="border-t-2 border-black pt-5">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-xs font-bold text-[#CC9200]">Q.0{i + 1}</span>
+            <h3 class="font-bold text-black text-lg">{q}</h3>
+          </div>
+          <p class="text-sm text-black/60 leading-relaxed pl-10">{a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
