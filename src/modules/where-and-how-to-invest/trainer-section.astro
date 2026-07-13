@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets'
+import OlerPhoto from './assets/oler-photo.jpg'
+---
+<section class="bg-white py-24 px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-16 items-start">
+    <div class="md:col-span-2">
+      <Image
+        src={OlerPhoto}
+        alt="Oler Oladele, CFA"
+        class="w-full h-auto object-cover"
+      />
+    </div>
+    <div class="md:col-span-3">
+      <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#CC9200] mb-5">Your Trainer</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-black mb-2">Oler Oladele, CFA</h2>
+      <p class="text-[#CC9200] font-medium mb-8">Trainer · The Money Wit School</p>
+      <p class="text-gray-600 font-light leading-relaxed mb-5">Oler Oladele is a CFA Charterholder with 17 years of experience in Nigerian financial markets and corporate Treasury. She traded money market and fixed income securities at FBNQuest Merchant Bank and launched Nigeria's first-ever Treasury Bills investment app at Parthian Partners.</p>
+      <p class="text-gray-600 font-light leading-relaxed mb-5">She founded The Money Wit to bridge the financial literacy gap across Nigeria and Africa helping individuals and organisations make smarter money decisions through practical, expert-led education.</p>
+      <p class="text-gray-600 font-light leading-relaxed mb-8">She is an IFC Certified Trainer, and a faculty member at Tekedia Mini MBA.</p>
+      <div class="flex flex-wrap gap-2">
+        {[
+          'CFA Charterholder',
+          'IFC Certified Trainer',
+          '17 Years · Financial Markets',
+          'Cambridge Rising Women Leaders',
+          'Oxford Executive Leadership',
+          'Tekedia Mini MBA Faculty',
+        ].map((cred) => (
+          <span class="text-xs font-semibold px-3 py-1.5 bg-[#FFFBEA] text-[#7A5500]">{cred}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
