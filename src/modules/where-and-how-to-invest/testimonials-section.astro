@@ -1,0 +1,22 @@
+---
+---
+<section class="bg-[#F7F6F4] py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#CC9200] mb-4">What Students Are Saying</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-black">Real People. Real Results.</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {[
+        { quote: 'This session completely changed how I think about money. I finally understood what investing actually means and took my first steps the very next week.', name: 'Adaeze O.', role: 'Marketing Professional · Lagos' },
+        { quote: 'I\'ve attended many finance webinars but none as clear and actionable as this. Oler breaks it down in a way that makes you feel like you can actually do it.', name: 'Tunde A.', role: 'Engineer · Abuja' },
+      ].map((t) => (
+        <div class="bg-white p-8 border border-gray-100">
+          <p class="italic text-gray-700 leading-relaxed mb-6 text-sm">"{t.quote}"</p>
+          <div class="text-xs font-bold text-black">{t.name}</div>
+          <div class="text-xs text-gray-400 mt-1">{t.role}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
