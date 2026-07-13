@@ -1,0 +1,26 @@
+---
+---
+<section class="bg-black py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#FFD100] mb-4">What You Will Learn</span>
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Everything you need to start<br>investing with confidence</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#FFD100]/10">
+      {[
+        { num: '01', title: 'Where to invest your money', desc: 'Discover the right investment vehicles for your financial goals, stocks, bonds, treasury bills, real estate, and more.' },
+        { num: '02', title: 'How to evaluate investment opportunities', desc: 'Learn the framework professionals use to assess risk, return, and whether an opportunity is worth your money.' },
+        { num: '03', title: 'How to avoid costly investment mistakes', desc: 'The traps that destroy wealth before it\'s built and how to recognize and sidestep them from day one.' },
+        { num: '04', title: 'Building your first investment portfolio', desc: 'Practical steps to go from zero to your first diversified portfolio, no matter how much you\'re starting with.' },
+        { num: '05', title: 'The Nigerian investment landscape', desc: 'A clear picture of the options available to you as a Nigerian investor locally and internationally.' },
+      ].map((card) => (
+        <div class="bg-[#111111] p-8 hover:bg-[#1a1a1a] transition-colors group">
+          <div class="text-4xl font-bold text-[#FFD100]/20 mb-4" style="font-family:serif">{card.num}</div>
+          <h3 class="text-sm font-bold text-white mb-3 leading-snug">{card.title}</h3>
+          <p class="text-xs text-white/45 leading-relaxed">{card.desc}</p>
+          <div class="h-px bg-[#FFD100] mt-6 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
