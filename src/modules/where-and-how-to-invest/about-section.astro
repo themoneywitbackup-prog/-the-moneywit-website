@@ -1,0 +1,29 @@
+---
+---
+<section class="bg-white py-24 px-6">
+  <div class="max-w-4xl mx-auto">
+    <span class="block text-xs font-bold tracking-[0.2em] uppercase text-[#CC9200] mb-4">About The Course</span>
+    <h2 class="text-4xl md:text-5xl font-bold text-black mb-10 leading-tight">Profitable investing is a skill.<br>And you can build it.</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="flex flex-col gap-5">
+        <p class="text-gray-600 leading-relaxed">The sure way to get out of the 'work to eat' rat race and have true financial independence is by investing profitably.</p>
+        <p class="text-gray-600 leading-relaxed">Profitable investing is a skill and not a random walk. Regardless of your educational background and your previous money experiences, <strong class="text-black">YOU CAN BUILD THIS SKILL!</strong></p>
+      </div>
+      <div class="flex flex-col gap-4">
+        {[
+          { icon: '🎯', title: 'Skill-based approach', desc: 'Investing is learnable — we break it down step by step regardless of your background.' },
+          { icon: '⚡', title: 'Instant access', desc: 'Course is available immediately after payment. Start learning today.' },
+          { icon: '🏆', title: 'Expert-led', desc: 'Taught by Oler Oladele, a CFA Charterholder with 17 years in financial markets.' },
+        ].map((item) => (
+          <div class="flex gap-4 items-start p-4 border border-gray-100 rounded-lg">
+            <span class="text-2xl flex-shrink-0">{item.icon}</span>
+            <div>
+              <h3 class="text-sm font-bold text-black mb-1">{item.title}</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
