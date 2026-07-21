@@ -1,0 +1,44 @@
+---
+const modules = [
+  { title: 'Introduction', lessons: 2, blurb: 'Set the tone, set the goal.' },
+  { title: 'Main course', lessons: 1, blurb: 'The core lecture.' },
+  { title: 'Understanding your current financial situation', lessons: 7, blurb: 'Numbers on the table. All of them.' },
+  { title: 'Bridging the gaps to achieving your goal', lessons: 6, blurb: 'From diagnosis to concrete moves.' },
+]
+---
+<section id="curriculum" class="bg-black text-white px-6 py-28 md:py-36">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-20 items-end">
+      <div class="md:col-span-8">
+        <div class="text-xs tracking-[0.4em] uppercase font-bold text-[#FFD100] mb-6">The Curriculum</div>
+        <h2 class="font-bold leading-[0.95] tracking-tight" style="font-size: clamp(2.5rem, 7vw, 6rem);">
+          Four modules.<br>
+          <em class="font-medium text-[#FFD100]">Two focused hours.</em>
+        </h2>
+      </div>
+      <div class="md:col-span-4 md:text-right">
+        <div class="text-[10px] tracking-[0.4em] uppercase text-[#FFD100] mb-2">Total Runtime</div>
+        <div class="text-4xl font-bold">2:00:00</div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/15">
+      {modules.map((m, i) => (
+        <div class="group grid grid-cols-12 gap-4 items-center py-10 border-b border-white/15 transition-colors hover:bg-white/[0.03] px-2 md:px-4">
+          <div class="col-span-2 md:col-span-1 font-bold text-transparent" style={`-webkit-text-stroke: 1px #FFD100; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1;`}>
+            {String(i + 1).padStart(2, '0')}
+          </div>
+          <div class="col-span-10 md:col-span-8">
+            <div class="font-bold leading-tight mb-2 group-hover:translate-x-2 transition-transform" style="font-size: clamp(1.15rem, 2.3vw, 1.9rem);">
+              {m.title}
+            </div>
+            <div class="text-sm text-white/50">{m.blurb}</div>
+          </div>
+          <div class="col-span-12 md:col-span-3 md:text-right text-xs tracking-[0.3em] uppercase text-white/50">
+            {m.lessons} Lesson{m.lessons > 1 ? 's' : ''}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
