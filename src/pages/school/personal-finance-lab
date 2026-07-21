@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layout/base-layout.astro'
+import Hero from '@/modules/personal-finance-lab/hero-section.astro'
+import Kinetic from '@/modules/personal-finance-lab/kinetic-section.astro'
+import About from '@/modules/personal-finance-lab/about-section.astro'
+import Pillars from '@/modules/personal-finance-lab/pillars-section.astro'
+import Facilitator from '@/modules/personal-finance-lab/facilitator-section.astro'
+import Curriculum from '@/modules/personal-finance-lab/curriculum-section.astro'
+import Testimonial from '@/modules/personal-finance-lab/testimonial-section.astro'
+import Pricing from '@/modules/personal-finance-lab/pricing-section.astro'
+import Finale from '@/modules/personal-finance-lab/finale-section.astro'
+---
+<BaseLayout
+  title="Personal Finance Lab | The Money Wit School"
+  description="A cinematic personal finance diagnostic course for working professionals. Know your real financial state and the moves that secure your future."
+>
+  <Hero />
+  <Kinetic />
+  <About />
+  <Pillars />
+  <Facilitator />
+  <Curriculum />
+  <Testimonial />
+  <Pricing />
+  <Finale />
+</BaseLayout>
