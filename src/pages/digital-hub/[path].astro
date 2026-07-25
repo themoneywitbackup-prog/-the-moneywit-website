@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layout/base-layout.astro'
 import { Image } from 'astro:assets'
-import { PATHS, bundles, groupByCategory, productsByPath, slugify, type Path, products } from '@/data/shop-data'
+import { PATHS, bundles, groupByCategory, productsByPath, slugify, type Path } from '@/data/shop-data'
 
 export function getStaticPaths() {
   return Object.keys(PATHS).map((path) => ({ params: { path } }))
@@ -73,7 +73,9 @@ const isInvest = path === 'invest'
           const category = p.assignments.find((a) => a.path === path)?.category || ''
           return (
             
-              href={`/digital-hub/product/${p.id}`}
+              href={p.href}
+              target="_blank"
+              rel="noreferrer"
               class="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition hover:-translate-y-0.5 hover:border-black hover:shadow-xl"
             >
               <div class="relative aspect-[4/3] overflow-hidden bg-[#F8F7F5]">
