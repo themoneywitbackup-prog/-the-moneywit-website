@@ -1,169 +1,219 @@
 ---
-import BaseLayout from '@/layout/base-layout.astro'
-import { Image } from 'astro:assets'
-import { PATHS, bundles, groupByCategory, productsByPath, slugify, type Path } from '@/data/shop-data'
+import BaseLayout from "@/layout/base-layout.astro";
+import { Image } from "astro:assets";
+import {
+  PATHS,
+  bundles,
+  groupByCategory,
+  productsByPath,
+  slugify,
+  type Path,
+} from "@/data/shop-data";
 
 export function getStaticPaths() {
-  return Object.keys(PATHS).map((path) => ({ params: { path } }))
+  return Object.keys(PATHS).map((path) => ({
+    params: { path },
+  }));
 }
 
-const { path } = Astro.params as { path: Path }
-const meta = PATHS[path]
-if (!meta) return Astro.redirect('/digital-hub')
+const { path } = Astro.params as { path: Path };
 
-const other = PATHS[meta.other]
-const items = productsByPath(path)
-const grouped = groupByCategory(items, path)
-const isInvest = path === 'invest'
+const meta = PATHS[path];
+
+if (!meta) {
+  return Astro.redirect("/digital-hub");
+}
+
+const products = productsByPath(path);
+const grouped = groupByCategory(products, path);
 ---
+
 <BaseLayout
   title={`${meta.title} — The Money Wit Digital Hub`}
   description={meta.blurb}
 >
 
-<!-- Hero -->
-<section class={`border-b border-black/10 ${isInvest ? 'bg-[#FFD100] text-black' : 'bg-black text-white'}`}>
-  <div class="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
-    <div class={`mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.3em] ${isInvest ? 'text-black/70' : 'text-white/70'}`}>
-      <a href="/digital-hub" class="hover:underline underline-offset-4">Digital Hub</a>
-      <span>/</span>
-      <span>{isInvest ? 'Build My Wealth' : 'Organize Your Finances'}</span>
-    </div>
-    <h1 class="max-w-3xl font-bold text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-      {meta.title}.
+<section class="bg-[#F8F7F5] py-16">
+  <div class="mx-auto max-w-7xl px-6">
+
+    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#C9A227]">
+      {meta.kicker}
+    </p>
+
+    <h1 class="mt-4 text-4xl font-black tracking-tight text-black md:text-6xl">
+      {meta.title}
     </h1>
-    <p class={`mt-5 max-w-xl text-base sm:text-lg ${isInvest ? 'text-black/75' : 'text-white/75'}`}>{meta.blurb}</p>
-    <div class={`mt-6 text-xs font-semibold uppercase tracking-[0.3em] ${isInvest ? 'text-black/60' : 'text-white/60'}`}>
-      {items.length} item{items.length === 1 ? '' : 's'} · {grouped.length} categor{grouped.length === 1 ? 'y' : 'ies'}
+
+    <p class="mt-4 max-w-3xl text-lg text-black/70">
+      {meta.tagline}
+    </p>
+
+    <p class="mt-3 max-w-3xl text-black/60">
+      {meta.blurb}
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+
+      {grouped.map(([category]) => (
+        <a
+          href={`#cat-${slugify(category)}`}
+          class="rounded-full border border-black/15 px-4 py-2 text-xs font-semibold uppercase tracking-widest transition hover:border-black hover:text-black"
+        >
+          {category}
+        </a>
+      ))}
+
+      <a
+        href="#bundles"
+        class="rounded-full bg-[#FFD100] px-4 py-2 text-xs font-semibold uppercase tracking-widest text-black"
+      >
+        Bundles
+      </a>
+
     </div>
+
   </div>
 </section>
 
-<!-- Category Jump -->
-<div class="sticky top-0 z-30 border-b border-black/10 bg-white/90 backdrop-blur">
-  <div class="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-6 py-3 lg:px-10">
-    {grouped.map(([cat]) => (
-      
-        href={`#cat-${slugify(cat)}`}
-        class="shrink-0 rounded-full border border-black/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-black/70 hover:border-black hover:text-black transition"
-      >
-        {cat}
-      </a>
-    ))}
-    <a href="#bundles" class="shrink-0 rounded-full border border-[#FFD100] bg-[#FFD100] px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-black hover:opacity-90 transition">
-      Bundles
-    </a>
-  </div>
-</div>
+{
+  grouped.map(([category, items]) => (
+    <section
+      id={`cat-${slugify(category)}`}
+      class="py-16"
+    >
+      <div class="mx-auto max-w-7xl px-6">
 
-<!-- Categories -->
-<div class="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
-  {grouped.map(([cat, list]) => (
-    <section id={`cat-${slugify(cat)}`} class="mb-16 last:mb-0">
-      <div class="mb-6 flex items-end justify-between gap-4">
-        <div>
-          <div class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FFD100]">Category</div>
-          <h2 class="mt-1 font-bold text-3xl tracking-tight sm:text-4xl text-black">{cat}</h2>
-        </div>
-        <span class="text-xs text-black/50">{list.length} item{list.length === 1 ? '' : 's'}</span>
-      </div>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {list.map((p) => {
-          const isFree = p.price.toUpperCase() === 'FREE'
-          const category = p.assignments.find((a) => a.path === path)?.category || ''
-          return (
-            
-              href={p.href}
-              target="_blank"
-              rel="noreferrer"
-              class="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition hover:-translate-y-0.5 hover:border-black hover:shadow-xl"
-            >
-              <div class="relative aspect-[4/3] overflow-hidden bg-[#F8F7F5]">
-                <Image
-                  src={p.image}
-                  alt={p.name}
-                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-                {category && (
-                  <span class={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest ${isFree ? 'bg-black text-white' : 'bg-[#FFD100] text-black'}`}>
-                    {category}
-                  </span>
-                )}
-              </div>
-              <div class="flex flex-1 flex-col p-5">
-                <h3 class="font-bold text-xl leading-tight tracking-tight text-black">{p.name}</h3>
-                <p class="mt-2 line-clamp-3 text-sm text-black/65">{p.short}</p>
-                <div class="mt-5 flex items-center justify-between border-t border-black/10 pt-4">
-                  <span class="text-sm font-semibold text-black">{isFree ? 'FREE' : p.price}</span>
-                  <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-black/70 transition group-hover:text-[#FFD100]">
-                    {p.cta} →
-                  </span>
+        <h2 class="mb-8 text-3xl font-bold">
+          {category}
+        </h2>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+          {items.map((p) => {
+            const isFree =
+              p.price.toLowerCase() === "free" ||
+              p.priceNumeric === 0;
+
+            return (
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div class="relative aspect-[4/3] overflow-hidden">
+
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+
+                  {p.featured && (
+                    <span class="absolute left-4 top-4 rounded-full bg-[#FFD100] px-3 py-1 text-xs font-bold uppercase">
+                      Featured
+                    </span>
+                  )}
+
                 </div>
-              </div>
-            </a>
-          )
-        })}
+
+                <div class="flex flex-1 flex-col p-6">
+
+                  <h3 class="text-xl font-bold">
+                    {p.name}
+                  </h3>
+
+                  <p class="mt-3 text-sm text-black/65">
+                    {p.short}
+                  </p>
+
+                  <p class="mt-4 text-sm text-black/60">
+                    {p.description}
+                  </p>
+
+                  <div class="mt-auto flex items-center justify-between pt-6">
+
+                    <span class="text-lg font-bold">
+                      {isFree ? "FREE" : p.price}
+                    </span>
+
+                    <span class="font-semibold text-[#C9A227] group-hover:translate-x-1 transition">
+                      {p.cta} →
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </a>
+            );
+          })}
+
+        </div>
+
       </div>
     </section>
-  ))}
-</div>
+  ))
+}
 
-<!-- Bundles -->
-<section id="bundles" class="border-t border-black/10 bg-[#F8F7F5]">
-  <div class="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
-    <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
-      <div>
-        <div class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FFD100]">Special bundles</div>
-        <h2 class="mt-1 font-bold text-3xl tracking-tight sm:text-4xl text-black">Save more when you go all in.</h2>
-      </div>
-      <p class="max-w-md text-sm text-black/60">Combine the tools and courses the Money Wit team recommends together at a bundled price.</p>
-    </div>
-    <div class="grid gap-6 md:grid-cols-2">
-      {bundles.map((b) => (
-        <article class="group relative flex flex-col overflow-hidden rounded-3xl border-2 border-black bg-white p-6 lg:p-8">
-          <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#FFD100] opacity-20 blur-2xl"></div>
-          <span class="inline-flex w-fit items-center gap-2 rounded-full bg-[#FFD100] px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-black">Bundle</span>
-          <h3 class="mt-4 font-bold text-2xl leading-tight tracking-tight sm:text-3xl text-black">{b.name}</h3>
-          <p class="mt-2 text-sm text-black/70">{b.description}</p>
-          <div class="mt-5">
-            <div class="text-xs font-semibold uppercase tracking-widest text-black/50">What is included</div>
-            <ul class="mt-2 space-y-1.5 text-sm">
-              {b.includes.map((inc) => (
-                <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFD100]"></span>
-                  <span class="text-black/85">{inc}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="mt-auto flex items-center justify-between border-t border-black/10 pt-5">
-            <div>
-              <div class="text-xs uppercase tracking-widest text-black/50">Bundle price</div>
-              <div class="mt-1 font-bold text-2xl text-black">{b.price}</div>
-            </div>
-            <a href={b.href} class="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-[#FFD100] hover:text-black">
-              {b.cta} →
+<section
+  id="bundles"
+  class="bg-[#F8F7F5] py-16"
+>
+
+  <div class="mx-auto max-w-7xl px-6">
+
+    <h2 class="mb-8 text-3xl font-bold">
+      Bundles
+    </h2>
+
+    <div class="grid gap-8 md:grid-cols-2">
+
+      {bundles.map((bundle) => (
+
+        <div class="rounded-2xl border border-black/10 bg-white p-8">
+
+          <h3 class="text-2xl font-bold">
+            {bundle.name}
+          </h3>
+
+          <p class="mt-3 text-black/70">
+            {bundle.description}
+          </p>
+
+          <ul class="mt-6 space-y-2">
+
+            {bundle.includes.map((item) => (
+              <li>• {item}</li>
+            ))}
+
+          </ul>
+
+          <div class="mt-8 flex items-center justify-between">
+
+            <span class="text-xl font-bold">
+              {bundle.price}
+            </span>
+
+            <a
+              href={bundle.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-lg bg-[#FFD100] px-6 py-3 font-semibold text-black transition hover:opacity-90"
+            >
+              {bundle.cta}
             </a>
-          </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
 
-<!-- Cross Path -->
-<section class="border-t border-black/10">
-  <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-6 py-12 lg:flex-row lg:items-center lg:px-10">
-    <div>
-      <div class="text-xs font-semibold uppercase tracking-[0.3em] text-black/50">Switch hub</div>
-      <h3 class="mt-2 font-bold text-2xl tracking-tight sm:text-3xl text-black">
-        {isInvest ? 'Looking to put your finances in order instead?' : 'Ready to start building your wealth?'}
-      </h3>
+          </div>
+
+        </div>
+
+      ))}
+
     </div>
-    <a href={`/digital-hub/${other.slug}`} class="inline-flex items-center gap-3 rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-[#FFD100] hover:text-black">
-      Explore: {other.title} →
-    </a>
+
   </div>
+
 </section>
 
 </BaseLayout>
