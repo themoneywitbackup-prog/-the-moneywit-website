@@ -1,0 +1,51 @@
+---
+const problems = [
+  {
+    icon: '💸',
+    title: 'Money comes in, then vanishes.',
+    body: 'You earn well but cannot explain where it goes each month. The gap between what you make and what you keep is invisible and growing.',
+  },
+  {
+    icon: '🧭',
+    title: 'You have goals, but no map.',
+    body: 'Owning a home, retiring early, funding your kids, the ambitions are clear. The next twelve concrete moves are not.',
+  },
+  {
+    icon: '📈',
+    title: 'You are making decisions on vibes.',
+    body: 'Investments, debt, insurance, side income all decided on gut, group chats and headlines instead of your own numbers.',
+  },
+]
+---
+<section id="why" class="border-b border-black/10 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFBD40]">Why you need this</span>
+      <h2 class="mt-3 font-bold text-4xl tracking-tight md:text-5xl text-black">
+        Most people don't have a money problem.
+        <span class="italic text-black/40"> They have a clarity problem.</span>
+      </h2>
+      <p class="mt-5 text-lg text-black/60">
+        You cannot fix what you cannot see. Before better habits, better investments or a bigger income, you need an honest picture of where your money actually goes and what's actually working.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {problems.map((p) => (
+        <div class="rounded-2xl border border-black/10 bg-white p-6 transition hover:border-[#FFBD40]/40">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-[#FFBD40]/10 text-2xl">
+            {p.icon}
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-black">{p.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-black/60">{p.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <a href="#pricing" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-95">
+        Start Your Financial Diagnostic →
+      </a>
+    </div>
+  </div>
+</section>
