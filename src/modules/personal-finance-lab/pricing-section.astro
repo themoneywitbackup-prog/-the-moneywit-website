@@ -1,43 +1,49 @@
 ---
+const features = [
+  '4 modules · 16 lessons',
+  'Diagnostic worksheets included',
+  'Instant, lifetime access',
+  'Watch on any device, forever',
+]
 ---
-<section id="pricing" class="relative bg-black text-white px-6 py-28 md:py-40 overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 50% 100%, rgba(255,209,0,0.18), transparent 60%);"></div>
-  <div class="relative max-w-4xl mx-auto text-center">
-    <div class="text-xs tracking-[0.4em] uppercase font-bold text-[#FFD100] mb-8">Get Started Now</div>
-    <h2 class="font-bold leading-[0.95] tracking-tight mb-14" style="font-size: clamp(2.5rem, 8vw, 6.5rem);">
-      Roll <em class="font-medium text-[#FFD100]">credits</em> on financial confusion.
-    </h2>
+<section id="pricing" class="border-b border-black/10 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFBD40]">Get started</span>
+      <h2 class="mt-3 font-bold text-4xl tracking-tight md:text-5xl text-black">
+        Make <span class="italic text-[#FFBD40]">intentional</span> financial decisions.
+      </h2>
+      <p class="mt-4 text-lg text-black/60">One time payment. Lifetime access. No subscription.</p>
+    </div>
 
-    <div class="rounded-lg border-2 border-[#FFD100] p-8 md:p-12 bg-[#FFD100]/4">
-      <div class="text-[10px] tracking-[0.4em] uppercase text-[#FFD100] mb-3">Personal Finance Lab</div>
-      <div class="text-white/60 text-sm mb-6">One time payment · Lifetime access</div>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
-        <div class="text-3xl md:text-5xl font-bold">₦150,000</div>
-        <div class="text-white/40 text-sm">or</div>
-        <div class="text-3xl md:text-5xl font-bold">$100</div>
+    <div class="mx-auto mt-12 max-w-lg overflow-hidden rounded-3xl border border-[#FFBD40]/40 bg-white shadow-[0_0_60px_rgba(255,189,64,0.15)]">
+      <div class="border-b border-black/10 bg-[#FFBD40] p-6 text-center text-black">
+        <div class="text-xs font-semibold uppercase tracking-[0.2em]">Personal Finance Lab</div>
+        <div class="mt-2 text-sm font-semibold">One-time payment · Lifetime access</div>
       </div>
-
-      <ul class="text-left max-w-md mx-auto space-y-3 mb-10 text-white/75 text-sm">
-        {[
-          '4 modules · 16 lessons',
-          'Diagnostic worksheets included',
-          'Instant, lifetime access',
-          'Watch on any device, forever',
-        ].map((f) => (
-          <li class="flex items-center gap-3">
-            <span class="w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 bg-[#FFD100] text-black">✓</span>
-            {f}
-          </li>
-        ))}
-      </ul>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto">
-        <a href="https://zohosecurepay.com/checkout/cv0v4a8-17p1zx54l3yai/Personal-Finance-Lab" class="text-center py-4 text-xs tracking-[0.2em] uppercase font-bold rounded-md hover:opacity-90 transition bg-[#FFD100] text-black">
-          Pay in Naira
-        </a>
-        <a href="https://zohosecurepay.com/checkout/epw3y1o-khuimsm5qfxmy/PERSONAL-FINANCE-LAB--USD" class="text-center py-4 text-xs tracking-[0.2em] uppercase font-bold rounded-md border-2 border-[#FFD100] text-[#FFD100] transition hover:bg-white/5">
-          Pay in USD
-        </a>
+      <div class="p-8">
+        <div class="flex items-baseline justify-center gap-3">
+          <span class="font-bold text-4xl text-black">₦150,000</span>
+          <span class="text-black/40">or</span>
+          <span class="font-bold text-4xl text-black">$100</span>
+        </div>
+        <ul class="mt-8 space-y-3 text-sm">
+          {features.map((f) => (
+            <li class="flex items-center gap-2 text-black">
+              <span class="text-[#FFBD40]">✅</span>
+              {f}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="https://zohosecurepay.com/checkout/q2l2ho2-izpi530oxgl1m/Personal-Finance-Lab" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3.5 text-base font-semibold text-black transition hover:brightness-95">
+            Pay in Naira →
+          </a>
+          <a href="https://zohosecurepay.com/checkout/nzv09a3-ylf27z7snwx7o/PERSONAL-FINANCE-LAB--USD" class="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-black px-6 py-3.5 text-base font-semibold text-black transition hover:bg-black hover:text-[#FFBD40]">
+            Pay in USD →
+          </a>
+        </div>
+        <p class="mt-4 text-center text-xs text-black/40">Built and taught by Oler Oladele, CFA.</p>
       </div>
     </div>
   </div>
