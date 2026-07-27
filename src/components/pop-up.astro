@@ -1,0 +1,59 @@
+---
+---
+<div id="popup-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 hidden">
+  <div class="relative bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl">
+
+    <!-- Close button -->
+    <button
+      id="popup-close"
+      class="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black transition text-lg font-bold"
+    >
+      ✕
+    </button>
+
+    <!-- Clickable Banner Image -->
+    <a href="https://themoneywit.africa/school/mwbs/" target="_blank" rel="noreferrer">
+      <img
+        src="/popup-banner.jpg"
+        alt="Money Wise Bible Strong"
+        class="w-full h-auto object-cover cursor-pointer hover:opacity-95 transition"
+      />
+    </a>
+
+    <!-- Form iframe -->
+    <div class="p-6">
+      <iframe
+        src="https://forms.zohopublic.com/oleroladelecom/form/TeenSummerCamp/formperma/MW8eU-UYsTHDPiY8zRiyjnRRxy6AZ9s0Rp9arxx_IU8"
+        frameborder="0"
+        class="w-full"
+        style="height: 450px; border: none;"
+      ></iframe>
+    </div>
+
+  </div>
+</div>
+
+<script is:inline>
+  // Only show if not seen this session
+  if (!sessionStorage.getItem('popup-seen')) {
+    setTimeout(() => {
+      const popup = document.getElementById('popup-overlay')
+      if (popup) {
+        popup.classList.remove('hidden')
+        sessionStorage.setItem('popup-seen', 'true')
+      }
+    }, 3000)
+  }
+
+  // Close on button click
+  document.getElementById('popup-close')?.addEventListener('click', () => {
+    document.getElementById('popup-overlay')?.classList.add('hidden')
+  })
+
+  // Close on overlay click
+  document.getElementById('popup-overlay')?.addEventListener('click', (e) => {
+    if (e.target === document.getElementById('popup-overlay')) {
+      document.getElementById('popup-overlay')?.classList.add('hidden')
+    }
+  })
+</script>
