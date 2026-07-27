@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets'
+import CfaSociety from '@/components/assets/logos/cfa-society.png'
+import Coronation from '@/components/assets/logos/coronation.png'
+import Fsdh from '@/components/assets/logos/fsdh.png'
+import Greenspring from '@/components/assets/logos/greenspring.png'
+import HalfFinance from '@/components/assets/logos/halffinance.png'
+import Icd from '@/components/assets/logos/icd.png'
+import Meristem from '@/components/assets/logos/meristem.png'
+import Shell from '@/components/assets/logos/shell.png'
+import Stanbic from '@/components/assets/logos/stanbic.png'
+
+const logos = [
+  { src: CfaSociety, alt: 'CFA Society' },
+  { src: Coronation, alt: 'Coronation' },
+  { src: Fsdh, alt: 'FSDH' },
+  { src: Greenspring, alt: 'Greenspring' },
+  { src: HalfFinance, alt: 'Half Finance' },
+  { src: Icd, alt: 'ICD' },
+  { src: Meristem, alt: 'Meristem' },
+  { src: Shell, alt: 'Shell' },
+  { src: Stanbic, alt: 'Stanbic' },
+]
+---
+<section class="border-b border-black/10 py-14">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-black/40">
+      Organisations whose teams & clients we have trained
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-12">
+      {logos.map((logo) => (
+        <Image
+          src={logo.src}
+          alt={logo.alt}
+          class="h-10 w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition"
+        />
+      ))}
+    </div>
+  </div>
+</section>
