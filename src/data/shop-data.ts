@@ -87,7 +87,7 @@ export const products: Product[] = [
     price: "NGN 7,000",
     priceNumeric: 7000,
     image: financialPlanningTool,
-    href: "https://shop.themoneywit.africa/products/fpt-2026/2782803000013673982",
+    href: "https://shop.themoneywit.africa/financial-planning-tool",
     cta: "Get the Tool",
     featured: true,
   },
