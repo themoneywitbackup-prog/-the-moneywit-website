@@ -1,44 +1,76 @@
 ---
 const modules = [
-  { title: 'Introduction', lessons: 2, blurb: 'Set the tone, set the goal.' },
-  { title: 'Main course', lessons: 1, blurb: 'The core lecture.' },
-  { title: 'Understanding your current financial situation', lessons: 7, blurb: 'Numbers on the table. All of them.' },
-  { title: 'Bridging the gaps to achieving your goal', lessons: 6, blurb: 'From diagnosis to concrete moves.' },
+  {
+    n: '01',
+    label: 'Introduction',
+    title: 'Set the tone. Set the goal.',
+    lessons: '2 Lessons',
+    body: 'Get grounded in how the diagnostic works and lock in exactly what you want this course to give you.',
+  },
+  {
+    n: '02',
+    label: 'Main course',
+    title: 'The core lecture.',
+    lessons: '1 Lesson',
+    body: 'The single most important frame for thinking about your money the lens the rest of the lab runs through.',
+  },
+  {
+    n: '03',
+    label: 'Your current situation',
+    title: 'Numbers on the table. All of them.',
+    lessons: '7 Lessons',
+    body: 'An honest x-ray of income, spending, debt and assets. You leave this module knowing where you actually stand, not where you thought you did.',
+  },
+  {
+    n: '04',
+    label: 'Bridging the gaps',
+    title: 'From diagnosis to concrete moves.',
+    lessons: '6 Lessons',
+    body: 'Turn the diagnosis into a plan. Identify the specific gaps between here and the future you want, then install the systems that close them.',
+  },
 ]
 ---
-<section id="curriculum" class="bg-black text-white px-6 py-28 md:py-36">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-20 items-end">
-      <div class="md:col-span-8">
-        <div class="text-xs tracking-[0.4em] uppercase font-bold text-[#FFD100] mb-6">The Curriculum</div>
-        <h2 class="font-bold leading-[0.95] tracking-tight" style="font-size: clamp(2.5rem, 7vw, 6rem);">
-          Four modules.<br>
-          <em class="font-medium text-[#FFD100]">Two focused hours.</em>
+<section id="curriculum" class="border-b border-black/10 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+      <div class="max-w-2xl">
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFBD40]">The curriculum</span>
+        <h2 class="mt-3 font-bold text-4xl tracking-tight md:text-5xl text-black">
+          Four modules.
+          <span class="italic text-black/40"> Two focused hours.</span>
         </h2>
+        <p class="mt-4 text-lg text-black/60">A logical journey: understand → diagnose → fix → build for the future.</p>
       </div>
-      <div class="md:col-span-4 md:text-right">
-        <div class="text-[10px] tracking-[0.4em] uppercase text-[#FFD100] mb-2">Total Runtime</div>
-        <div class="text-4xl font-bold">2:00:00</div>
+      <div class="rounded-xl border border-black/10 bg-white px-4 py-3 text-sm">
+        <div class="text-xs uppercase tracking-widest text-black/40">Total runtime</div>
+        <div class="font-bold text-2xl text-black">2:00:00</div>
       </div>
     </div>
 
-    <div class="border-t border-white/15">
-      {modules.map((m, i) => (
-        <div class="group grid grid-cols-12 gap-4 items-center py-10 border-b border-white/15 transition-colors hover:bg-white/[0.03] px-2 md:px-4">
-          <div class="col-span-2 md:col-span-1 font-bold text-transparent" style={`-webkit-text-stroke: 1px #FFD100; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1;`}>
-            {String(i + 1).padStart(2, '0')}
-          </div>
-          <div class="col-span-10 md:col-span-8">
-            <div class="font-bold leading-tight mb-2 group-hover:translate-x-2 transition-transform" style="font-size: clamp(1.15rem, 2.3vw, 1.9rem);">
-              {m.title}
+    <div class="mt-12 grid gap-5 md:grid-cols-2">
+      {modules.map((m) => (
+        <article class="group relative overflow-hidden rounded-2xl border border-black/10 bg-white p-7 transition hover:border-[#FFBD40]/50">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFBD40]">
+                Module {m.n} · {m.label}
+              </div>
+              <h3 class="mt-3 font-bold text-2xl leading-tight tracking-tight text-black">{m.title}</h3>
             </div>
-            <div class="text-sm text-white/50">{m.blurb}</div>
+            <span class="shrink-0 rounded-full border border-black/10 px-2.5 py-1 text-[11px] font-semibold text-black/50">{m.lessons}</span>
           </div>
-          <div class="col-span-12 md:col-span-3 md:text-right text-xs tracking-[0.3em] uppercase text-white/50">
-            {m.lessons} Lesson{m.lessons > 1 ? 's' : ''}
+          <p class="mt-4 text-sm leading-relaxed text-black/60">{m.body}</p>
+          <div aria-hidden class="pointer-events-none absolute -right-6 -top-6 font-bold text-[8rem] leading-none text-[#FFBD40]/5 transition group-hover:text-[#FFBD40]/10">
+            {m.n}
           </div>
-        </div>
+        </article>
       ))}
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <a href="#pricing" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-95">
+        Build Your Personal Finance Lab →
+      </a>
     </div>
   </div>
 </section>
