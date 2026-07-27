@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets'
+import OlerPhoto from './assets/oler-photo.jpg'
+
+const credentials = [
+  { icon: '🏆', label: 'CFA Charterholder' },
+  { icon: '👥', label: 'Chair, Gender Diversity Committee' },
+  { icon: '🛡', label: 'ILI Certified Trainer' },
+  { icon: '📻', label: 'Featured on Arise & other platforms' },
+]
+---
+<section id="instructor" class="border-b border-black/10 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid gap-12 md:grid-cols-[1fr_1.2fr] md:items-center">
+      <div class="relative mx-auto w-full max-w-sm md:mx-0">
+        <div class="absolute -inset-4 -z-10 rounded-3xl bg-[#FFBD40]/20 blur-2xl"></div>
+        <div class="overflow-hidden rounded-3xl border border-black/10 bg-white">
+          <Image
+            src={OlerPhoto}
+            alt="Oler Oladele, CFA"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <div>
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFBD40]">Why learn from Oler</span>
+        <h2 class="mt-3 font-bold text-4xl leading-tight tracking-tight md:text-5xl text-black">
+          Securities trader turned
+          <span class="italic text-[#FFBD40]"> financial educator.</span>
+        </h2>
+        <p class="mt-5 text-lg text-black/60">
+          As a CFA Charterholder, Oler has spent years helping professionals overcome financial fear and build a recession-proof future. Personal Finance Lab is the diagnostic she uses to bridge the knowledge gap and hand you real tools not vibes to take control of your financial destiny.
+        </p>
+
+        <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+          {credentials.map((c) => (
+            <li class="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-black">
+              <span class="text-xl">{c.icon}</span>
+              <span>{c.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
