@@ -1,0 +1,38 @@
+---
+const outcomes = [
+  'A clear x-ray of your current financial state',
+  'The exact gaps between where you are and your goals',
+  'Diagnostic worksheets you keep and reuse',
+  'Systems that make progress compound automatically',
+  'A short, honest plan for what to fix first',
+  'Confidence to make the next money decision alone',
+]
+---
+<section class="border-b border-black/10 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFBD40]">What you walk away with</span>
+      <h2 class="mt-3 font-bold text-4xl tracking-tight md:text-5xl text-black">
+        Two hours in.
+        <span class="italic text-[#FFBD40]"> A different relationship with your money.</span>
+      </h2>
+    </div>
+    <div class="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2">
+      {outcomes.map((o) => (
+        <div class="flex items-start gap-3 rounded-xl border border-black/10 bg-white p-4">
+          <span class="mt-0.5 text-[#FFBD40] text-lg">✅</span>
+          <span class="text-sm text-black">{o}</span>
+        </div>
+      ))}
+    </div>
+
+    <figure class="mx-auto mt-14 max-w-3xl rounded-3xl border border-[#FFBD40]/30 bg-white p-8 text-center md:p-12">
+      <div aria-hidden class="font-bold text-5xl leading-none text-[#FFBD40]">"</div>
+      <blockquote class="mt-2 font-bold text-2xl leading-snug text-black md:text-3xl">
+        For the first time I could actually
+        <span class="italic text-[#FFBD40]"> see my finances clearly</span> and knew exactly what to do next.
+      </blockquote>
+      <figcaption class="mt-4 text-sm uppercase tracking-widest text-black/40">Past Student · Lagos</figcaption>
+    </figure>
+  </div>
+</section>
