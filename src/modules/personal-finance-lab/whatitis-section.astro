@@ -1,0 +1,78 @@
+---
+const steps = [
+  {
+    n: '01',
+    t: 'Diagnose',
+    b: 'Get an honest x-ray of your current financial state; income, spending, debt, assets.',
+  },
+  {
+    n: '02',
+    t: 'Bridge',
+    b: 'Identify the exact gaps between where you are and the future you want.',
+  },
+  {
+    n: '03',
+    t: 'Secure',
+    b: 'Install the systems and habits that make progress compound automatically.',
+  },
+]
+
+const features = [
+  'Watch on any device, forever',
+  'Diagnostic worksheets included',
+  'Instant, lifetime access',
+  'One-time payment, no subscription',
+]
+---
+<section id="course" class="border-b border-black/10 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-center">
+      <div>
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#FFBD40]">What is The Personal Finance Lab?</span>
+        <h2 class="mt-3 font-bold text-4xl leading-tight tracking-tight md:text-5xl text-black">
+          A personal finance
+          <span class="italic text-[#FFBD40]"> diagnostic</span> for working professionals who want the truth about their money.
+        </h2>
+        <p class="mt-5 text-lg text-black/60">
+          Not a motivational course. Not a spreadsheet dump. A structured, two-hour framework that walks you through the same lens a professional would use to audit your finances then hands you the tools to act on what you find.
+        </p>
+
+        <div class="mt-8 grid gap-4">
+          {steps.map((s) => (
+            <div class="flex gap-4 rounded-xl border border-black/10 bg-white p-5">
+              <span class="font-bold text-2xl text-[#FFBD40]">{s.n}</span>
+              <div>
+                <h3 class="font-bold text-black">{s.t}</h3>
+                <p class="mt-1 text-sm text-black/60">{s.b}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-3xl border border-[#FFBD40]/30 bg-white p-8 shadow-[0_0_60px_rgba(255,189,64,0.15)]">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-black/50">Total runtime</span>
+            <span class="rounded-full bg-[#FFBD40]/15 px-2.5 py-1 text-xs font-semibold text-[#FFBD40]">Self-paced</span>
+          </div>
+          <div class="mt-4 font-bold text-6xl tracking-tight text-black">2:00:00</div>
+          <p class="mt-2 text-sm text-black/60">
+            Four modules. Sixteen lessons. One clear picture of where you stand and what to do about it.
+          </p>
+          <div class="mt-6 space-y-3 border-t border-black/10 pt-6">
+            {features.map((f) => (
+              <div class="flex items-center gap-2 text-sm text-black">
+                <span class="text-[#FFBD40]">✅</span>
+                <span>{f}</span>
+              </div>
+            ))}
+          </div>
+          <a href="#pricing" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FFBD40] px-5 py-3 text-sm font-semibold text-black transition hover:brightness-95">
+            Enrol Now →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
