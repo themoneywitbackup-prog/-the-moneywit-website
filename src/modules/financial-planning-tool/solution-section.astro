@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+import ProductImage from './assets/fpt-product.png'
+---
+<section class="bg-[#0A0A0A] text-white">
+  <div class="max-w-7xl mx-auto px-6 grid gap-12 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <Image
+      src={ProductImage}
+      alt="The Money Wit Financial Planning Tool shown as a Google Sheet system"
+      class="w-full rounded-3xl border border-white/10 shadow-2xl"
+      loading="lazy"
+    />
+    <div>
+      <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-5">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        The solution
+      </span>
+      <h2 class="text-3xl font-bold sm:text-4xl text-white">A complete planning framework, not another spreadsheet</h2>
+      <p class="mt-4 leading-relaxed text-white/70">
+        The Financial Planning Tool replaces erratic discipline with an automated financial structure. You enter your income streams, spending, assets and liabilities once. The system turns them into the numbers that actually drive decisions: your real required savings figure, your full net worth position, your year-on-year trend and your projected year-end net worth.
+      </p>
+      <ul class="mt-8 space-y-4">
+        {[
+          'You input: income streams, expenses, savings, investments, assets and liabilities.',
+          'You get out: required savings number, net worth position and gap, year-on-year trend, modelled year-end net worth and a recommended bank account structure.',
+          'You decide with numbers instead of guesses every month.',
+        ].map((line) => (
+          <li class="flex gap-3 text-sm leading-relaxed text-white/80">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFBD40]" aria-hidden></span>
+            {line}
+          </li>
+        ))}
+      </ul>
+      <div class="mt-9 flex flex-col sm:flex-row gap-3">
+        <a href="#" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+          Start planning →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
