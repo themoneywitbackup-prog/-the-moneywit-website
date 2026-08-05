@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets'
+import ProductImage from './assets/fpt-product.png'
+---
+<section class="relative overflow-hidden bg-[#0A0A0A] text-white">
+  <div class="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full opacity-20 blur-3xl bg-[#FFBD40]" aria-hidden></div>
+  <div class="max-w-7xl mx-auto px-6 relative grid gap-14 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+    <div>
+      <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-6">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        The Money Wit · Financial Planning Tool
+      </span>
+      <h1 class="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl text-white">
+        Stop tracking where your money went.
+        <span class="text-[#FFBD40]"> Start telling your money where to go.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+        An expert-grade personal wealth system for professionals who are done winging it. It maps your income, optimises your spending, and connects your monthly cash flow directly to your long-term net worth growth. Designed by a CFA Charterholder with almost 20 years in global markets; this is not a budget template.
+      </p>
+      <div class="mt-8 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+        <span class="text-3xl font-extrabold text-[#FFBD40] sm:text-4xl">NGN 7,000</span>
+        <span class="text-sm text-white/60">one-time · instant Google Sheet access</span>
+      </div>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3.5 text-sm font-bold text-black hover:brightness-95 transition">
+          Get instant access (NGN) →
+        </a>
+        <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full border border-[#FFBD40]/40 px-6 py-3.5 text-sm font-bold text-[#FFBD40] hover:bg-[#FFBD40]/10 transition">
+          Pay in USD →
+        </a>
+      </div>
+      <p class="mt-4 text-xs text-white/40">Walkthrough video included · Works on phone, tablet and laptop</p>
+    </div>
+
+    <div class="relative">
+      <div class="absolute inset-0 translate-y-6 rounded-3xl bg-[#FFBD40]/20 blur-2xl" aria-hidden></div>
+      <Image
+        src={ProductImage}
+        alt="Preview of The Money Wit Financial Planning Tool dashboard"
+        class="relative w-full rounded-3xl border border-white/10 shadow-2xl"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
