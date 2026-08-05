@@ -1,0 +1,33 @@
+---
+const steps = [
+  { n: '01', t: 'Get instant access', d: 'Buy once and receive the Google Sheet immediately. No shipping, no waiting.' },
+  { n: '02', t: 'Watch the walkthrough', d: 'A guided video takes you through the system. Setup is straightforward, even if finance is not your field.' },
+  { n: '03', t: 'Enter your numbers', d: 'Add your income streams, spending, assets and liabilities in one place.' },
+  { n: '04', t: 'Model and act', d: 'See your real savings number, your net worth gap and your year-end target then run your money to the plan.' },
+]
+---
+<section class="border-y border-black/10 bg-[#F8F7F5]">
+  <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="max-w-2xl">
+      <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-5">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        How it works
+      </span>
+      <h2 class="text-3xl font-bold sm:text-4xl text-black">Set up in one sitting.</h2>
+    </div>
+    <ol class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s) => (
+        <li class="rounded-2xl bg-white p-7">
+          <span class="text-3xl font-extrabold text-[#FFBD40]">{s.n}</span>
+          <h3 class="mt-4 text-base font-bold text-black">{s.t}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-black/60">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+    <div class="mt-12">
+      <a href="#" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+        Get started today →
+      </a>
+    </div>
+  </div>
+</section>
