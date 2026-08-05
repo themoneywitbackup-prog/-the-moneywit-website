@@ -1,0 +1,36 @@
+---
+const problems = [
+  'You are cash-flow positive on paper, yet your net worth barely moves year to year.',
+  'Your income, savings, investments and debts live in different places so no one view tells you the truth.',
+  'You save whatever is left instead of the number your plan actually requires.',
+  'Rising costs and shifting rates keep changing the maths, and you are still guessing.',
+  'You have goals, but nothing connects this month\'s cash flow to them.',
+  'Your money sits in an account structure you never intentionally designed.',
+]
+---
+<section class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+  <div class="max-w-2xl">
+    <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-5">
+      <span class="h-px w-6 bg-[#FFBD40]"></span>
+      Why you need this
+    </span>
+    <h2 class="text-3xl font-bold sm:text-4xl text-black">The problem is not your income. It is structure.</h2>
+    <p class="mt-4 text-base leading-relaxed text-black/60">
+      In an economy defined by rising costs, shifting interest rates and shrinking salary value, managing your finances on guesswork is no longer an option. High-earning professionals across Nigeria are cash-flow positive on paper and still not building wealth.
+    </p>
+  </div>
+  <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {problems.map((p) => (
+      <li class="rounded-2xl border border-black/10 bg-[#F8F7F5] p-6 text-sm leading-relaxed text-black">
+        <span class="mb-3 block h-1 w-8 rounded-full bg-[#FFBD40]" aria-hidden></span>
+        {p}
+      </li>
+    ))}
+  </ul>
+  <div class="mt-12 flex flex-col sm:flex-row gap-3">
+    <a href="#" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+      Fix the structure → NGN 6,999
+    </a>
+    <p class="flex items-center text-xs text-black/40">One-time payment · NGN 6,999</p>
+  </div>
+</section>
