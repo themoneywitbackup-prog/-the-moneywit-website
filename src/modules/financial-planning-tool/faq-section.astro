@@ -1,0 +1,71 @@
+---
+const faqs = [
+  { q: 'What exactly is this product?', a: 'A digital financial planning tool that helps you organize your income, expenses, savings, and investments in one clear system. Not a budget template a complete planning framework.' },
+  { q: 'Who created it?', a: 'A CFA Charterholder with almost 20 years of experience in financial markets.' },
+  { q: 'Who is it for?', a: 'Anyone ready to start putting their finances in order.' },
+  { q: 'What format do I receive?', a: 'A Google Sheet, with instant digital access after purchase. No shipping, no waiting.' },
+  { q: 'Can I use it on my phone?', a: 'Yes. It works on phones, tablets and laptops.' },
+  { q: 'Do I need finance knowledge to use it?', a: 'No. It is designed to be simple and practical no degree required. A walkthrough video is included.' },
+  { q: 'Is this a one-time payment?', a: 'Yes. The Financial Planning Tool is a one-time purchase at NGN 6,999, with a USD checkout option available.' },
+]
+---
+<section class="border-t border-black/10 bg-[#F8F7F5]">
+  <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-3xl">
+      <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-8">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        Frequently asked questions
+      </span>
+
+      <div class="space-y-2" id="faq-accordion">
+        {faqs.map((f, i) => (
+          <div class="faq-item rounded-2xl border border-black/10 bg-white overflow-hidden">
+            <button
+              class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-black hover:bg-black/5 transition"
+              aria-expanded="false"
+              data-index={i}
+            >
+              {f.q}
+              <span class="faq-icon shrink-0 text-[#FFBD40] text-xl font-bold transition-transform">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-5 text-sm leading-relaxed text-black/60">
+              {f.a}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="pricing" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+          Start your financial plan →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling
+      const icon = btn.querySelector('.faq-icon')
+      const isOpen = btn.getAttribute('aria-expanded') === 'true'
+
+      // Close all
+      document.querySelectorAll('.faq-trigger').forEach((b) => {
+        b.setAttribute('aria-expanded', 'false')
+        b.nextElementSibling.classList.add('hidden')
+        b.querySelector('.faq-icon').textContent = '+'
+        b.querySelector('.faq-icon').style.transform = 'rotate(0deg)'
+      })
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true')
+        content.classList.remove('hidden')
+        icon.textContent = '×'
+        icon.style.transform = 'rotate(0deg)'
+      }
+    })
+  })
+</script>
