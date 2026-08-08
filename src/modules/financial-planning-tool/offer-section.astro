@@ -1,0 +1,41 @@
+---
+const features = [
+  'All six modules of the planning system',
+  'Delivered as a Google Sheet — instant digital access after purchase',
+  'Walkthrough video included',
+  'Works on phone, tablet and laptop',
+  'No shipping, no waiting, no special software',
+]
+---
+<section id="pricing" class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+  <div class="grid gap-10 rounded-3xl border border-black/10 p-8 md:p-12 lg:grid-cols-[1fr_0.85fr] lg:items-center">
+    <div>
+      <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-5">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        The offer
+      </span>
+      <h2 class="text-3xl font-bold sm:text-4xl text-black">The Money Wit Financial Planning Tool</h2>
+      <ul class="mt-7 space-y-3 text-sm">
+        {features.map((f) => (
+          <li class="flex gap-3 text-black">
+            <span class="mt-1 text-[#FFBD40]">✓</span>
+            {f}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="rounded-2xl bg-[#0A0A0A] p-8 text-white">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">One-time payment</p>
+      <p class="mt-3 text-4xl font-extrabold text-[#FFBD40]">NGN 6,999</p>
+      <p class="mt-2 text-sm text-white/50">USD checkout also available.</p>
+      <div class="mt-7 flex flex-col gap-3">
+        <a href="https://zohosecurepay.com/checkout/ilrldo0-nacn61rp5nmrx/Financial-planning-tool" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3.5 text-sm font-bold text-black hover:brightness-95 transition">
+          Get the tool (NGN) →
+        </a>
+        <a href="https://zohosecurepay.com/checkout/mifpsx4-3zq2txtw2nhya/FINANCIAL-PLANNING-TOOL-USD" class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#FFBD40]/40 px-6 py-3.5 text-sm font-bold text-[#FFBD40] hover:bg-[#FFBD40]/10 transition">
+          Pay in USD →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
