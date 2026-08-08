@@ -1,0 +1,39 @@
+---
+const testimonials = [
+  {
+    quote: 'I finally understood what my money was actually doing. The net worth section showed me gaps I did not even know existed and gave me a clear path to fix them.',
+    name: 'Adaeze M.',
+    role: 'Marketing Manager, Lagos',
+  },
+  {
+    quote: 'I have tried so many budget apps. This is the first tool that made me feel like I had a real financial plan not just a spreadsheet.',
+    name: 'Tunde A.',
+    role: 'Engineer, Abuja',
+  },
+  {
+    quote: 'The walkthrough video made setup so easy. I had my full plan done in one sitting.',
+    name: 'Chisom N.',
+    role: 'HR Professional, Lagos',
+  },
+]
+---
+<section class="bg-[#0A0A0A] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-10">
+      <span class="h-px w-6 bg-[#FFBD40]"></span>
+      What our users said
+    </span>
+    <div class="grid gap-6 md:grid-cols-3">
+      {testimonials.map((t) => (
+        <figure class="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-7">
+          <span class="font-bold text-4xl leading-none text-[#FFBD40]" aria-hidden>"</span>
+          <blockquote class="mt-3 flex-1 text-sm leading-relaxed text-white/85">{t.quote}</blockquote>
+          <figcaption class="mt-6 border-t border-white/10 pt-4 text-sm">
+            <span class="font-bold text-white">{t.name}</span>
+            <span class="block text-xs text-white/50">{t.role}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
