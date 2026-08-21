@@ -1,0 +1,30 @@
+---
+const audience = [
+  'Complete beginners who want to start investing but do not know where to begin',
+  'Professionals earning well but watching their savings lose value to inflation',
+  'Anyone who has tried investing before but lost money or got confused',
+  'People who want to invest locally and globally but do not know how',
+  'Those who are tired of waiting until they know enough to start',
+  'Anyone who wants a clear, expert-led framework — not tips from a group chat',
+]
+---
+<section class="border-y border-black/10 bg-[#F8F7F5]">
+  <div class="max-w-7xl mx-auto px-6 grid gap-12 py-20 md:py-28 lg:grid-cols-2 lg:items-start">
+    <div>
+      <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-5">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        Who it is for
+      </span>
+      <h2 class="text-3xl font-bold sm:text-4xl text-black">Built for anyone ready to stop waiting and start investing.</h2>
+      <p class="mt-4 leading-relaxed text-black/60">No prior knowledge required. No finance degree needed. Just 60 minutes and the willingness to start.</p>
+    </div>
+    <ul class="space-y-4">
+      {audience.map((a) => (
+        <li class="flex gap-4 rounded-2xl bg-white p-5 text-sm leading-relaxed text-black">
+          <span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#FFBD40] text-[11px] font-bold text-black">✓</span>
+          {a}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
