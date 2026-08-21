@@ -1,32 +1,41 @@
 ---
+import { Image } from 'astro:assets'
+import ProductImage from './assets/whi-product.png'
 ---
-<section class="relative bg-black text-white pt-32 pb-24 px-6 overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 60% 0%, rgba(255,209,0,0.08) 0%, transparent 60%);"></div>
-  <div class="relative z-10 max-w-3xl mx-auto">
-    <span class="block text-[#FFD100] text-xs font-bold tracking-[0.2em] uppercase mb-6">The Money Wit School · Online Masterclass</span>
-    <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-      Where and How<br><em class="italic text-[#FFD100]">to Invest.</em>
-    </h1>
-    <p class="text-lg md:text-xl text-white/60 max-w-xl leading-relaxed mb-10 font-light">
-      The sure way to get out of the 'work to eat' rat race and have true financial independence is by investing profitably. This masterclass shows you exactly how.
-    </p>
-    <div class="inline-flex flex-wrap border border-white/10 mb-10">
-      {[
-        { icon: '⏱', text: '60 Minutes' },
-        { icon: '📹', text: '1 Lesson' },
-        { icon: '💳', text: 'One Time Payment' },
-        { icon: '✅', text: 'Instant Access' },
-      ].map((item) => (
-        <div class="px-5 py-3 border-r border-white/10 last:border-r-0 text-sm text-white/50">
-          {item.icon} <strong class="text-white">{item.text}</strong>
-        </div>
-      ))}
+<section class="relative overflow-hidden bg-[#0A0A0A] text-white">
+  <div class="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full opacity-20 blur-3xl bg-[#FFBD40]" aria-hidden></div>
+  <div class="max-w-7xl mx-auto px-6 relative grid gap-14 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+    <div>
+      </span>
+      <h1 class="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl text-white">
+        Where and How to Invest.
+      </h1>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+        A 60-minute masterclass that removes the guesswork from investing. Learn exactly where your money should go, how to evaluate opportunities, and how to start building wealth through the Nigerian and global markets regardless of your background or how much you are starting with.
+      </p>
+      <div class="mt-8 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+        <span class="text-3xl font-extrabold text-[#FFBD40] sm:text-4xl">NGN 20,000</span>
+        <span class="text-sm text-white/60">one-time · instant access after payment</span>
+      </div>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3.5 text-sm font-bold text-black hover:brightness-95 transition">
+          Get instant access (NGN) →
+        </a>
+        <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full border border-[#FFBD40]/40 px-6 py-3.5 text-sm font-bold text-[#FFBD40] hover:bg-[#FFBD40]/10 transition">
+          Pay in USD →
+        </a>
+      </div>
+      <p class="mt-4 text-xs text-white/40">1 lesson · 60 minutes · Taught by Oler Oladele, CFA</p>
     </div>
-    <div class="flex flex-col sm:flex-row gap-4">
-      <a href="#pricing" class="inline-block bg-[#FFD100] text-black px-10 py-5 text-sm font-bold tracking-[0.1em] uppercase hover:brightness-110 transition-all text-center">
-        Enroll Now
-      </a>
+
+    <div class="relative">
+      <div class="absolute inset-0 translate-y-6 rounded-3xl bg-[#FFBD40]/20 blur-2xl" aria-hidden></div>
+      <Image
+        src={ProductImage}
+        alt="Where and How to Invest masterclass by The Money Wit"
+        class="relative w-full rounded-3xl border border-white/10 shadow-2xl"
+        loading="eager"
+      />
     </div>
-    <p class="text-xs text-white/35 mt-5">Course available immediately after payment · Taught by Oler Oladele, CFA</p>
   </div>
 </section>
