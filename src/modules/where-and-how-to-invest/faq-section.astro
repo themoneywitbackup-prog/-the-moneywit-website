@@ -1,30 +1,69 @@
 ---
 const faqs = [
-  ['Who is this course for?', "Anyone who wants to start investing but doesn't know where to begin, complete beginners very welcome."],
-  ['Do I need prior knowledge?', "None required. It's designed for any background or experience level."],
-  ['How long is the course?', 'One focused 60-minute session, packed with practical content.'],
-  ['When do I get access?', 'You receive an email with access to the course immediately after payment'],
-  ['What currency can I pay in?', 'Nigerian Naira (₦19,999) or US Dollars ($13.97), both at checkout.'],
-  ['Live or recorded?', 'Recorded. Watch at your pace, revisit as many times as you need.'],
+  { q: 'What exactly is this masterclass?', a: 'A 60-minute video session taught by Oler Oladele, CFA. It gives you the framework to understand where your money should go and how to evaluate investment opportunities — across Nigerian and global markets.' },
+  { q: 'Who created it?', a: 'Oler Oladele, a CFA Charterholder with almost 20 years of experience in Nigerian and global financial markets.' },
+  { q: 'Who is it for?', a: 'Anyone ready to start investing — from complete beginners to those who have tried before and want a clearer framework.' },
+  { q: 'Do I need prior knowledge?', a: 'No. The masterclass is designed to be accessible regardless of your educational background or previous experience with money.' },
+  { q: 'When do I get access?', a: 'Immediately after payment. You will also receive a post-session email with accounts to open and introductions to relevant investment partners.' },
+  { q: 'Can I watch it on my phone?', a: 'Yes. It works on phones, tablets and laptops.' },
+  { q: 'Is this a one-time payment?', a: 'Yes. The masterclass is a one-time purchase at NGN 20,000, with a USD checkout option available.' },
 ]
 ---
-<section id="faq" class="bg-white py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
-      <div class="text-xs tracking-[0.3em] uppercase font-bold text-[#CC9200] mb-4">§ 05 — Questions</div>
-      <h2 class="font-bold leading-[0.95] text-black" style="font-size: clamp(2.5rem, 5vw, 4rem);">Before you enrol.</h2>
-    </div>
+<section class="border-t border-black/10 bg-[#F8F7F5]">
+  <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="mx-auto max-w-3xl">
+      <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-8">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        Frequently asked questions
+      </span>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-      {faqs.map(([q, a], i) => (
-        <div class="border-t-2 border-black pt-5">
-          <div class="flex items-baseline gap-3 mb-2">
-            <span class="text-xs font-bold text-[#CC9200]">Q.0{i + 1}</span>
-            <h3 class="font-bold text-black text-lg">{q}</h3>
+      <div class="space-y-2" id="faq-accordion">
+        {faqs.map((f, i) => (
+          <div class="faq-item rounded-2xl border border-black/10 bg-white overflow-hidden">
+            <button
+              class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-black hover:bg-black/5 transition"
+              aria-expanded="false"
+              data-index={i}
+            >
+              {f.q}
+              <span class="faq-icon shrink-0 text-[#FFBD40] text-xl font-bold transition-transform">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-5 text-sm leading-relaxed text-black/60">
+              {f.a}
+            </div>
           </div>
-          <p class="text-sm text-black/60 leading-relaxed pl-10">{a}</p>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="#" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+          Start investing today →
+        </a>
+      </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling
+      const icon = btn.querySelector('.faq-icon')
+      const isOpen = btn.getAttribute('aria-expanded') === 'true'
+
+      document.querySelectorAll('.faq-trigger').forEach((b) => {
+        b.setAttribute('aria-expanded', 'false')
+        b.nextElementSibling.classList.add('hidden')
+        b.querySelector('.faq-icon').textContent = '+'
+        b.querySelector('.faq-icon').style.transform = 'rotate(0deg)'
+      })
+
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true')
+        content.classList.remove('hidden')
+        icon.textContent = '×'
+        icon.style.transform = 'rotate(0deg)'
+      }
+    })
+  })
+</script>
