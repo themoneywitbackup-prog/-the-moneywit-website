@@ -1,0 +1,36 @@
+---
+const problems = [
+  'You earn well but your money is sitting in a savings account losing value to inflation every day.',
+  'You hear about investing constantly but have no idea where to actually start or what is right for you.',
+  'You have tried investing before and lost money or got confused — and now you are nervous to try again.',
+  'You do not know how to evaluate whether an opportunity is worth your money or a trap.',
+  'The Nigerian market feels opaque and global investing feels out of reach.',
+  'You keep waiting until you know enough — but the right time never comes.',
+]
+---
+<section class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+  <div class="max-w-2xl">
+    <span class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-5">
+      <span class="h-px w-6 bg-[#FFBD40]"></span>
+      Why you need this
+    </span>
+    <h2 class="text-3xl font-bold sm:text-4xl text-black">The problem is not that you do not want to invest. It is that no one has shown you how.</h2>
+    <p class="mt-4 text-base leading-relaxed text-black/60">
+      Profitable investing is a skill not a personality trait, not a privilege and not luck. Regardless of your educational background or your previous experiences with money, you can build this skill. This masterclass is how.
+    </p>
+  </div>
+  <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {problems.map((p) => (
+      <li class="rounded-2xl border border-black/10 bg-[#F8F7F5] p-6 text-sm leading-relaxed text-black">
+        <span class="mb-3 block h-1 w-8 rounded-full bg-[#FFBD40]" aria-hidden></span>
+        {p}
+      </li>
+    ))}
+  </ul>
+  <div class="mt-12 flex flex-col sm:flex-row gap-3">
+    <a href="#" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+      Learn how to invest →
+    </a>
+    <p class="flex items-center text-xs text-black/40">One-time payment · NGN 20,000</p>
+  </div>
+</section>
