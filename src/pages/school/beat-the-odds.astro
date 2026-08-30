@@ -1,28 +1,30 @@
 ---
 import BaseLayout from '@/layout/base-layout.astro'
+import Nav from '@/modules/beat-the-odds/nav-section.astro'
 import Hero from '@/modules/beat-the-odds/hero-section.astro'
 import Problem from '@/modules/beat-the-odds/problem-section.astro'
 import WhatItIs from '@/modules/beat-the-odds/whatitis-section.astro'
-import Inside from '@/modules/beat-the-odds/inside-section.astro'
-import WhoItsFor from '@/modules/beat-the-odds/whoitsfor-section.astro'
+import Curriculum from '@/modules/beat-the-odds/curriculum-section.astro'
 import Instructor from '@/modules/beat-the-odds/instructor-section.astro'
 import Testimonials from '@/modules/beat-the-odds/testimonials-section.astro'
 import Offer from '@/modules/beat-the-odds/offer-section.astro'
 import FAQ from '@/modules/beat-the-odds/faq-section.astro'
 import FinalCta from '@/modules/beat-the-odds/finalcta-section.astro'
+import Footer from '@/modules/beat-the-odds/footer-section.astro'
 ---
 <BaseLayout
   title="Beat the Odds | Personal Finance & Investment Workshop | The Money Wit"
   description="A live personal finance and investment workshop for professionals ready to secure their money and build wealth in uncertain times. Led by Oler Oladele, CFA."
 >
+  <Nav />
   <Hero />
   <Problem />
   <WhatItIs />
-  <Inside />
-  <WhoItsFor />
+  <Curriculum />
   <Instructor />
   <Testimonials />
   <Offer />
   <FAQ />
   <FinalCta />
+  <Footer />
 </BaseLayout>
