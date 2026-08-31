@@ -2,8 +2,10 @@
 interface Props {
   title?: string;
   description?: string;
+  gtm?: boolean;
 }
-const { title, description } = Astro.props;
+
+const { title, description, gtm = false } = Astro.props;
 
 import '../styles/global.css';
 import '@/styles/reset.scss';
@@ -23,12 +25,12 @@ const { cookiesSettingsLink, termsOfServiceLink, privacyPolicyLink } =
 <html lang='en'>
 	<head>
 		<meta charset='utf-8' />
+
 		<AstroFont
 			config={[
 				{
 					src: [],
 					name: 'inter',
-					// Google Fonts URL
 					googleFontsURL:
 						'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
 					preload: true,
@@ -39,52 +41,116 @@ const { cookiesSettingsLink, termsOfServiceLink, privacyPolicyLink } =
 				},
 			]}
 		/>
+
 		<link
 			rel='icon'
 			type='image/svg+xml'
 			href='/favicon.svg'
 		/>
+
 		<meta
 			name='viewport'
 			content='width=device-width'
 		/>
+
 		<meta
 			name='generator'
 			content={Astro.generator}
 		/>
-		<title>{title ?? 'The Money Wit | Dogwood and Oaks - Financial Literacy Nigeria'}</title>
-<meta name="description" content={description ?? 'Financial literacy and investment education platform by Dogwood and Oaks.'} />
-<meta name="keywords" content="The Money Wit, Dogwood and Oaks, Financial Literacy Nigeria, Investment Education Africa, Corporate Financial Wellness, Personal Finance Nigeria" />
-<meta property="og:title" content={title ?? 'The Money Wit | Dogwood and Oaks'} />
-<meta property="og:description" content={description ?? 'Financial literacy and investment education for Nigerians and Africans by Dogwood and Oaks.'} />
-<meta property="og:url" content="https://themoneywit.africa" />
-<meta property="og:site_name" content="The Money Wit by Dogwood and Oaks" />
-		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WKGGPDJM');</script>
+
+		<title>
+			{title ?? 'The Money Wit | Dogwood and Oaks - Financial Literacy Nigeria'}
+		</title>
+
+		<meta
+			name="description"
+			content={description ?? 'Financial literacy and investment education platform by Dogwood and Oaks.'}
+		/>
+
+		<meta
+			name="keywords"
+			content="The Money Wit, Dogwood and Oaks, Financial Literacy Nigeria, Investment Education Africa, Corporate Financial Wellness, Personal Finance Nigeria"
+		/>
+
+		<meta
+			property="og:title"
+			content={title ?? 'The Money Wit | Dogwood and Oaks'}
+		/>
+
+		<meta
+			property="og:description"
+			content={description ?? 'Financial literacy and investment education for Nigerians and Africans by Dogwood and Oaks.'}
+		/>
+
+		<meta
+			property="og:url"
+			content="https://themoneywit.africa"
+		/>
+
+		<meta
+			property="og:site_name"
+			content="The Money Wit by Dogwood and Oaks"
+		/>
+
+		<!-- Google Tag Manager - Only loads when gtm={true} -->
+		{gtm && (
+			<script is:inline>
+				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer','GTM-WKGGPDJM');
+			</script>
+		)}
+
+		<!-- Ahrefs Analytics -->
 		<script
 			src='https://analytics.ahrefs.com/analytics.js'
 			data-key='epAX+NEVmFh3C+2PSfOqpA'
 			async
 		></script>
+
+		<!-- Zoho SalesIQ -->
+		<script is:inline>
+			window.$zoho=window.$zoho || {};
+			$zoho.salesiq=$zoho.salesiq||{
+				ready:function(){}
+			}
+		</script>
+
 		<script
-			src='https://analytics.ahrefs.com/analytics.js'
-			data-key='epAX+NEVmFh3C+2PSfOqpA'
-			async
+			is:inline
+			id="zsiqscript"
+			src="https://salesiq.zohopublic.com/widget?wc=siqdcc8691293cb5a44fd559c4679cb5de52c423eafbfa4f23dd0f425fadf21dd64"
+			defer
 		></script>
-		<script is:inline>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
-		<script is:inline id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqdcc8691293cb5a44fd559c4679cb5de52c423eafbfa4f23dd0f425fadf21dd64" defer></script>
+
 		<style is:inline>
-  		#zsiqwidget, .zsiq_flt_rel, #zsiq_agtpic { display: none !important; }
+			#zsiqwidget,
+			.zsiq_flt_rel,
+			#zsiq_agtpic {
+				display: none !important;
+			}
 		</style>
 	</head>
+
 	<body>
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKGGPDJM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- Google Tag Manager (noscript) - Only loads when gtm={true} -->
+		{gtm && (
+			<noscript>
+				<iframe
+					src="https://www.googletagmanager.com/ns.html?id=GTM-WKGGPDJM"
+					height="0"
+					width="0"
+					style="display:none;visibility:hidden"
+				></iframe>
+			</noscript>
+		)}
+
 		<Nav />
+
 		<slot />
+
 		<Footer
 			privacyPolicyLink={privacyPolicyLink}
 			termsOfServiceLink={termsOfServiceLink}
