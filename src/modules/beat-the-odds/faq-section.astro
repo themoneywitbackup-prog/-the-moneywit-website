@@ -1,0 +1,64 @@
+---
+const faqs = [
+  { q: 'What exactly is Beat the Odds?', a: 'A live, expert-led personal finance and investment workshop for professionals. It is a working session where you arrive with your real numbers and leave with a real plan a personalised twelve-month wealth plan built on your actual financial situation.' },
+  { q: 'Who leads the workshop?', a: 'Oler Oladele, a CFA Charterholder with almost 20 years of experience in Nigerian and global financial markets. She previously traded money market and fixed income securities at FBNQuest Merchant Bank and launched Nigeria\'s first Treasury Bills investment app at Parthian Partners.' },
+  { q: 'Who is it for?', a: 'Professionals who are earning well but not building wealth at the pace they expected. People who want to start investing but do not know where to begin safely. Anyone ready to stop making financial decisions on gut feel and build a real, structured plan.' },
+  { q: 'What is the format?', a: 'Beat the Odds is a live, workshop. It is not recorded the energy, the live Q&A with Oler and the real-time application of frameworks to your actual numbers are what make it transformational.' },
+  { q: 'How many spots are available?', a: 'Each cohort is intentionally small to ensure every attendee gets the depth and attention they need. Spots are strictly limited. Joining the waitlist secures your place in the next available cohort.' },
+  { q: 'What do I walk away with?', a: 'A complete financial current state assessment, an inflation-proofing framework, investment clarity, a personalised twelve-month wealth plan, planning tools and templates, and expert answers to your specific financial situation from a live Q&A with Oler.' },
+  { q: 'Is there a USD payment option?', a: 'Yes. Both NGN and USD checkout options are available when you join the waitlist.' },
+  { q: 'What if I have never invested before?', a: 'Beat the Odds is designed to meet you where you are. Whether you are starting from scratch or restructuring an existing approach, the workshop gives you a framework and a plan built on your specific situation not a generic template.' },
+]
+---
+<section class="py-20 md:py-28 px-6 bg-[#F9F8F5]">
+  <div class="max-w-7xl mx-auto">
+    <div class="mx-auto max-w-3xl">
+      <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-8">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        Frequently asked questions
+      </div>
+      <div class="space-y-2">
+        {faqs.map((f, i) => (
+          <div class="faq-item rounded-2xl border border-black/10 bg-white overflow-hidden">
+            <button
+              class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-black hover:bg-black/5 transition"
+              aria-expanded="false"
+              data-index={i}
+            >
+              {f.q}
+              <span class="faq-icon shrink-0 text-[#FFBD40] text-xl font-bold">+</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-5 text-sm leading-relaxed text-black/60">
+              {f.a}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <a href="#offer" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+          Join the Waitlist →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling
+      const icon = btn.querySelector('.faq-icon')
+      const isOpen = btn.getAttribute('aria-expanded') === 'true'
+      document.querySelectorAll('.faq-trigger').forEach((b) => {
+        b.setAttribute('aria-expanded', 'false')
+        b.nextElementSibling.classList.add('hidden')
+        b.querySelector('.faq-icon').textContent = '+'
+      })
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true')
+        content.classList.remove('hidden')
+        icon.textContent = '×'
+      }
+    })
+  })
+</script>
