@@ -1,0 +1,52 @@
+---
+const sessions = [
+  { n: '01', title: 'Your Financial Current State', time: 'Session 1', body: 'Map your income streams, spending patterns, debts, assets and liabilities in one complete picture. You will see your actual net worth not an estimate and what it needs to be.', outcome: 'A complete, honest x-ray of your money.' },
+  { n: '02', title: 'The Gap Analysis', time: 'Session 2', body: 'Identify exactly what stands between where you are and where you want to be. Quantify the gap in real numbers and understand which lever moves it the fastest.', outcome: 'A clear gap number and the levers to close it.' },
+  { n: '03', title: 'Inflation-Proofing Your Finances', time: 'Session 3', body: 'Understand how inflation, devaluation and rising costs are working against you — and the specific structural moves that protect and preserve your purchasing power.', outcome: 'A protection plan built for the current economy.' },
+  { n: '04', title: 'Investment Clarity', time: 'Session 4', body: 'Learn the framework for evaluating investment opportunities across Nigerian and global markets. Understand risk, return and how to choose what is right for your situation.', outcome: 'A clear investment framework and a first move.' },
+  { n: '05', title: 'Building Your Wealth Plan', time: 'Session 5', body: 'Connect this month\'s cash flow to your long-term wealth goals. Leave with a structured, twelve-month financial plan built on your actual numbers not a template.', outcome: 'A personalised, twelve-month wealth plan.' },
+  { n: '06', title: 'Live Q&A With Oler', time: 'Session 6', body: 'Bring your specific financial questions and get answers from a CFA Charterholder with almost 20 years inside Nigerian and global markets. No canned responses.', outcome: 'Expert answers to your actual situation.' },
+]
+---
+<section id="curriculum" class="py-20 md:py-28 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-4">
+          <span class="h-px w-6 bg-[#FFBD40]"></span>
+          The workshop curriculum
+        </div>
+        <h2 class="text-3xl md:text-5xl font-bold text-black tracking-tight leading-[1.1]">Six sessions. One complete financial rebuild.</h2>
+      </div>
+      <div class="rounded-xl border border-black/10 bg-[#F9F8F5] px-5 py-4 text-sm flex-shrink-0">
+        <div class="text-xs uppercase tracking-widest text-black/40 mb-1">Format</div>
+        <div class="font-bold text-black">Live · Full Day</div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {sessions.map((s) => (
+        <article class="group relative overflow-hidden rounded-2xl border border-black/10 bg-[#F9F8F5] p-7 hover:border-[#FFBD40]/50 transition-colors">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-2">{s.time} · {s.n}</div>
+              <h3 class="text-xl font-bold text-black leading-tight">{s.title}</h3>
+            </div>
+          </div>
+          <p class="text-sm text-black/60 leading-relaxed mb-4">{s.body}</p>
+          <div class="flex items-center gap-2 text-sm font-semibold text-black border-t border-black/10 pt-4">
+            <span class="text-[#FFBD40]">→</span>
+            {s.outcome}
+          </div>
+          <div class="pointer-events-none absolute -right-4 -top-4 font-bold text-[6rem] leading-none text-[#FFBD40]/5 group-hover:text-[#FFBD40]/10 transition-colors">
+            {s.n}
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="mt-10">
+      <a href="#offer" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+        Join the Waitlist →
+      </a>
+    </div>
+  </div>
+</section>
