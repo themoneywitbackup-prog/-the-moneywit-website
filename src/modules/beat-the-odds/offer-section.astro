@@ -1,0 +1,49 @@
+---
+const features = [
+  '3 hours live workshop with Oler Oladele, CFA',
+  'Financial current state assessment',
+  'Gap analysis where you are vs where you need to be',
+  'Inflation-proofing framework',
+  'Investment clarity session',
+  'Personalised twelve-month wealth plan',
+  'Planning tools and templates included',
+  'Live Q&A with Oler',
+  'Post-workshop resources and support',
+]
+---
+<section id="offer" class="py-20 md:py-28 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-8">
+      <span class="h-px w-6 bg-[#FFBD40]"></span>
+      Join the waitlist
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 rounded-3xl border border-black/10 p-8 md:p-12 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-black mb-3">Beat the Odds Workshop</h2>
+        <p class="text-black/60 text-sm mb-8">A live, 3 hour personal finance and investment workshop. Limited cohort. Led by Oler Oladele, CFA.</p>
+        <ul class="space-y-3 text-sm">
+          {features.map((f) => (
+            <li class="flex gap-3 text-black">
+              <span class="text-[#FFBD40] mt-0.5 flex-shrink-0">✓</span>
+              {f}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-[#0A0A0A] p-8 text-white">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-3">Workshop investment</p>
+        <p class="text-5xl font-extrabold text-[#FFBD40] mb-1">NGN 300,000</p>
+        <p class="text-sm text-white/50 mb-8">USD checkout also available · Limited spots per cohort</p>
+        <div class="flex flex-col gap-3">
+          <a href="#" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3.5 text-sm font-bold text-black hover:brightness-95 transition">
+            Join the Waitlist (NGN) →
+          </a>
+          <a href="#" class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#FFBD40]/40 px-6 py-3.5 text-sm font-bold text-[#FFBD40] hover:bg-[#FFBD40]/10 transition">
+            Join the Waitlist (USD) →
+          </a>
+        </div>
+        <p class="text-xs text-white/30 text-center mt-4">Waitlist is free. We will contact you when the next cohort opens.</p>
+      </div>
+    </div>
+  </div>
+</section>
