@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+import OlerPhoto from './assets/oler-photo.jpg'
+
+const credentials = [
+  { icon: '🏆', label: 'CFA Charterholder' },
+  { icon: '📈', label: 'Almost 20 years in financial markets' },
+  { icon: '🏦', label: 'Former securities trader, FBNQuest' },
+  { icon: '🎙', label: 'Host, The Money Wit Show' },
+  { icon: '🎓', label: 'Cambridge & Oxford Alumna' },
+]
+---
+<section id="instructor" class="py-20 md:py-28 px-6 bg-[#F9F8F5]">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+      <div class="relative">
+        <div class="absolute -inset-4 -z-10 rounded-3xl blur-2xl" style="background: rgba(255,189,64,0.15);"></div>
+        <div class="overflow-hidden rounded-3xl border border-black/10">
+          <Image
+            src={OlerPhoto}
+            alt="Oler Oladele, CFA — Lead Facilitator, Beat the Odds"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-5">
+          <span class="h-px w-6 bg-[#FFBD40]"></span>
+          Who leads the workshop
+        </div>
+        <h2 class="text-3xl md:text-5xl font-bold text-black leading-tight tracking-tight mb-6">
+          Oler Oladele, CFA —
+          <span class="text-[#FFBD40] italic font-normal"> securities trader turned financial educator.</span>
+        </h2>
+        <div class="space-y-4 text-black/65 leading-relaxed mb-8">
+          <p>Oler spent almost 20 years inside Nigerian and global financial markets trading money market and fixed income at FBNQuest Merchant Bank, launching Nigeria's first Treasury Bills investment app at Parthian Partners, and building one of Nigeria's most trusted financial education platforms.</p>
+          <p>She created Beat the Odds because too many high-earning professionals are doing everything right and still falling behind. Not from lack of effort, but from lack of structure. This workshop is the structured solution.</p>
+        </div>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {credentials.map((c) => (
+            <li class="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-black">
+              <span class="text-xl">{c.icon}</span>
+              <span>{c.label}</span>
+            </li>
+          ))}
+        </ul>
+        <a href="#offer" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+          Join the Waitlist →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
