@@ -1,0 +1,48 @@
+---
+const testimonials = [
+  {
+    quote: 'Like my brain is over calculating some restructuring I need to do. And this is what I have always wanted. I especially loved the financial current state assessment. I started digging for my payslips from 8/10 years ago. So I was so eager to know what good looked like from a ratio standpoint. Came into the session with new realizations!',
+    name: 'Omorefe',
+    role: 'Beat the Odds Workshop',
+    initials: 'O',
+  },
+  {
+    quote: 'Simple and practical explanations of concepts that seemed complex. Oler also had an exceptional grasp of exactly what was needed to make informed decisions independently. The workshop was perfect in showing me what to do without telling me what to do. It was exactly what I needed to match the right investments to my goals.',
+    name: 'Akwugo',
+    role: 'Beat the Odds Workshop',
+    initials: 'A',
+  },
+  {
+    quote: 'I finally understood what my money was actually doing. The net worth section showed me gaps I did not even know existed and gave me a clear path to fix them. This is the most practical finance session I have attended.',
+    name: 'Adaeze M.',
+    role: 'Beat the Odds Workshop',
+    initials: 'AM',
+  },
+]
+---
+<section class="py-20 md:py-28 px-6 bg-[#0A0A0A] text-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-10">
+      <span class="h-px w-6 bg-[#FFBD40]"></span>
+      What past attendees said
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((t) => (
+        <figure class="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-7">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-full bg-[#FFBD40] flex items-center justify-center text-black font-bold text-sm flex-shrink-0">
+              {t.initials}
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">{t.name}</div>
+              <div class="text-xs text-white/45">{t.role}</div>
+            </div>
+          </div>
+          <blockquote class="text-sm leading-relaxed text-white/80 flex-1 italic">
+            "{t.quote}"
+          </blockquote>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
