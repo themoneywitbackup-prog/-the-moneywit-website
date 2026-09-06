@@ -1,0 +1,40 @@
+---
+const checklistLink = "#contactform";
+
+const benefits = [
+  "The 10 biggest blind spots keeping high earners from real wealth",
+  "A quick self-assessment to pinpoint where you’re stuck",
+  "The difference between income and true financial freedom",
+  "A simple roadmap to move from guessing to confident, strategic action",
+];
+---
+
+<section class="section-rule bg-paper">
+  <div class="page-shell py-20 sm:py-28">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:items-end">
+      <div>
+        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-ink/50">02</p>
+        <h2 class="display-type mt-5 max-w-[14ch] text-5xl leading-[0.95] sm:text-6xl">
+          What’s Inside the High-Earners Clarity Checklist:
+        </h2>
+      </div>
+      <div class="h-px bg-gold lg:mb-2" aria-hidden="true"></div>
+    </div>
+    <div class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-ink/15 bg-ink/15 sm:grid-cols-2">
+      {benefits.map((benefit, index) => (
+        <article class="group min-h-56 bg-paper p-7 transition-colors hover:bg-ink hover:text-paper sm:p-9">
+          <span class="display-type text-5xl leading-none text-gold">{`0${index + 1}`}</span>
+          <h3 class="mt-8 max-w-[18ch] text-xl font-semibold leading-snug text-ink transition-colors group-hover:text-paper sm:text-2xl">
+            {benefit}
+          </h3>
+        </article>
+      ))}
+    </div>
+    <a
+      href={checklistLink}
+      class="mt-10 inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-gold px-7 py-4 text-sm font-semibold text-ink transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+    >
+      <span aria-hidden="true">🎯</span> Get the Free Checklist
+    </a>
+  </div>
+</section>
