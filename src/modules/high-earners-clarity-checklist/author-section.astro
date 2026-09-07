@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets'
+import olerPortrait from '@/assets/oler-photo.jpg'
+---
+<section class="bg-white">
+  <div class="max-w-7xl mx-auto px-6 grid gap-12 py-20 sm:py-28 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-20">
+    <div class="relative max-w-[32rem]">
+      <div class="absolute -inset-4 rounded-[2rem] border border-[#FFBD40]" aria-hidden="true"></div>
+      <div class="relative overflow-hidden rounded-2xl bg-[#F8F7F5]">
+        <Image
+          src={olerPortrait}
+          alt="Oler, securities trader turned financial educator"
+          class="block aspect-[4/5] w-full object-cover object-center"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <div class="min-w-0">
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-black/50">04</p>
+      <h2 class="mt-5 text-5xl font-bold leading-[0.95] sm:text-6xl text-black">About the Creator</h2>
+      <div class="mt-10 max-w-[46rem] space-y-7 text-lg leading-8 text-black/75 sm:text-xl">
+        <p>Hi, I'm Oler—a securities trader turned financial educator.</p>
+        <p>As a <strong class="font-semibold text-black">CFA Charterholder</strong>, I have years of experience helping people just like you overcome their financial fears and build a secure, recession-proof future</p>
+        <p>I help high-performing professionals and business leaders take control of their finances and build real, lasting wealth without guesswork or overwhelm by providing education, resources, and community support on personal finance and investing.</p>
+        <p>Many people struggle with financial confidence because they lack the understanding of money as a tool and haven't made the best financial decisions.</p>
+        <p>My mission is to bridge that knowledge gap and empower you to take control of your financial destiny.</p>
+        <p>As the <strong class="font-semibold text-black">founder of The Money Wit Club</strong>, I've guided hundreds of professionals like you to stop spinning their financial wheels and start building purpose-driven portfolios and plans.</p>
+        <p class="border-l-4 border-[#FFBD40] pl-5 font-semibold text-black">This checklist is the first step.</p>
+      </div>
+    </div>
+  </div>
+</section>
