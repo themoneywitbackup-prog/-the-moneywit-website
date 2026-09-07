@@ -1,25 +1,24 @@
 ---
 const audiences = [
-  "Mid-level to senior-level corporate executive, consultant, or entrepreneur",
-  "Professional earning well, but unsure where your money is really going",
-  "Person who’s done the “smart” things — but still doesn’t feel financially clear or in control",
-  "Doer who’s ready to stop winging it and finally take charge of your money",
-];
+  'Mid-level to senior-level corporate executive, consultant, or entrepreneur',
+  'Professional earning well, but unsure where your money is really going',
+  'Person who\'s done the "smart" things but still doesn\'t feel financially clear or in control',
+  'Doer who\'s ready to stop winging it and finally take charge of your money',
+]
 ---
-
-<section class="bg-ink text-paper">
-  <div class="page-shell grid gap-12 py-20 sm:py-28 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-20">
+<section class="bg-[#0A0A0A] text-white">
+  <div class="max-w-7xl mx-auto px-6 grid gap-12 py-20 sm:py-28 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
     <div>
-      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gold">03</p>
-      <h2 class="display-type mt-5 max-w-[10ch] text-5xl leading-[0.95] sm:text-6xl">Who This is For.</h2>
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-[#FFBD40]">03</p>
+      <h2 class="mt-5 max-w-[10ch] text-5xl font-bold leading-[0.95] sm:text-6xl text-white">Who This is For.</h2>
     </div>
     <div class="min-w-0">
-      <p class="text-xl leading-8 text-paper/80">This is for you if you’re a:</p>
-      <ul class="mt-8 divide-y divide-paper/20 border-y border-paper/20">
+      <p class="text-xl leading-8 text-white/80">This is for you if you're a:</p>
+      <ul class="mt-8 divide-y divide-white/20 border-y border-white/20">
         {audiences.map((audience, index) => (
-          <li class="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 py-6 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-6">
-            <span class="display-type text-3xl text-gold">{`0${index + 1}`}</span>
-            <span class="text-lg leading-8 text-paper/88 sm:text-xl">{audience}</span>
+          <li class="grid grid-cols-[3rem_1fr] gap-4 py-6 sm:grid-cols-[4rem_1fr] sm:gap-6">
+            <span class="text-3xl font-bold text-[#FFBD40]">{`0${index + 1}`}</span>
+            <span class="text-lg leading-8 text-white/85 sm:text-xl">{audience}</span>
           </li>
         ))}
       </ul>
