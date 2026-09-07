@@ -2,43 +2,68 @@
 import { Image } from 'astro:assets'
 import ProductImage from './assets/High-Earner-Checklist.png'
 
-const checklistLink = "#contactform";
+const checklistLink = '#contactform'
 ---
-
-<section class="bg-ink text-paper">
-  <div class="page-shell grid gap-12 py-16 sm:py-24 lg:grid-cols-[minmax(0,1.04fr)_minmax(20rem,0.96fr)] lg:items-center lg:gap-16 lg:py-28">
-    <div class="reveal-up min-w-0">
-      <p class="mb-7 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gold">
+<section class="bg-[#0A0A0A] text-white">
+  <div class="max-w-7xl mx-auto px-6 grid gap-12 py-16 sm:py-24 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-16 lg:py-28">
+    <div class="min-w-0">
+      <p class="mb-7 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-[#FFBD40]">
         High-Earners Clarity Checklist
       </p>
-      <h1 class="display-type max-w-[11ch] text-[clamp(3.5rem,7vw,6.75rem)] leading-[0.9] tracking-[-0.02em]">
+      <h1 class="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.9] tracking-tight max-w-[11ch]">
         Are You Earning Well But Not Seeing the Wealth to Match?
       </h1>
-      <p class="mt-8 max-w-[38rem] text-lg leading-8 text-paper/78 sm:text-xl">
+      <p class="mt-8 max-w-[38rem] text-lg leading-8 text-white/75 sm:text-xl">
         Discover the 10 strategic gaps holding back even the smartest professionals and what to do instead.
       </p>
-      <a
+      
         href={checklistLink}
-        class="mt-9 inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-gold px-7 py-4 text-center text-sm font-semibold text-ink transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+        class="mt-9 inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#FFBD40] px-7 py-4 text-center text-sm font-semibold text-black hover:-translate-y-1 transition-transform"
       >
         <span aria-hidden="true">🎯</span> Get the Free Checklist
       </a>
     </div>
 
-    <div class="reveal-up relative mx-auto w-full max-w-[32rem] [animation-delay:160ms]">
-      <div class="absolute -inset-4 rounded-[2rem] border border-gold/40" aria-hidden="true"></div>
-      <div class="relative overflow-hidden rounded-2xl bg-paper p-4 shadow-2xl shadow-ink">
-        <img
-          src={ProductImage}
+    <div class="relative mx-auto w-full max-w-[32rem]">
+      <div class="absolute -inset-4 rounded-[2rem] border border-[#FFBD40]/40" aria-hidden="true"></div>
+      <div class="relative overflow-hidden rounded-2xl bg-white p-4 shadow-2xl">
+        <Image
+          src={ebookCover}
           alt="The High-Earners Clarity Checklist cover"
           class="block aspect-square w-full object-cover"
-          fetchpriority="high"
+          loading="eager"
         />
       </div>
-      <div class="absolute -bottom-5 -left-3 rounded-xl bg-gold px-5 py-4 text-ink shadow-xl sm:-left-8">
-        <span class="display-type block text-3xl leading-none">10</span>
+      <div class="absolute -bottom-5 -left-3 rounded-xl bg-[#FFBD40] px-5 py-4 text-black shadow-xl sm:-left-8">
+        <span class="block text-3xl font-bold leading-none">10</span>
         <span class="mt-1 block text-[0.65rem] font-semibold uppercase tracking-[0.16em]">strategic gaps</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="max-w-7xl mx-auto px-6 grid gap-10 py-20 sm:py-28 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+    <div>
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-black/50">01</p>
+      <h2 class="mt-5 max-w-[10ch] text-5xl font-bold leading-[0.95] sm:text-6xl text-black">
+        You Are Not Alone — And You Are Not Failing.
+      </h2>
+    </div>
+    <div class="min-w-0 max-w-[46rem] text-lg leading-8 text-black/75 sm:text-xl">
+      <p>You're ticking the boxes: good income, maybe even promotions, a few investments, a decent lifestyle.</p>
+      <p class="mt-7">But behind the scenes,</p>
+      <p class="mt-1">there's a nagging feeling:</p>
+      <div class="my-10 grid gap-5 border-y border-black/15 py-8">
+        <blockquote class="border-l-4 border-[#FFBD40] pl-5 text-3xl font-bold leading-tight sm:text-4xl text-black">
+          "Why don't I feel financially secure?"
+        </blockquote>
+        <blockquote class="border-l-4 border-black pl-5 text-3xl font-bold leading-tight sm:text-4xl text-black">
+          "Am I actually building wealth, or just coasting?"
+        </blockquote>
+      </div>
+      <p>The truth? Most professionals don't need more hustle.</p>
+      <p class="mt-7">They need more clarity and a smarter way to use the money they already earn.</p>
     </div>
   </div>
 </section>
