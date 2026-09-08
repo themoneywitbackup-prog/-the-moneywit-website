@@ -1,0 +1,49 @@
+---
+const pillars = [
+  { n: '01', label: 'Break the Cycle', title: "Don't extend it", body: "Many professionals are quietly funding two households, their own and their aging parents', because no one planned early enough." },
+  { n: '02', label: 'Watching', title: 'Your children are watching', body: "Financial planning is the blueprint they'll inherit, spoken or not." },
+  { n: '03', label: 'Legacy', title: 'Not a burden', body: 'One day, someone will ask what you left behind. A plan is how you make sure the answer is a legacy, not a burden.' },
+]
+---
+<section class="py-20 md:py-28 px-6 bg-[#0A0A0A] text-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-5">
+          <span class="h-px w-6 bg-[#FFBD40]"></span>
+          Why This Matters
+        </div>
+        <h2 class="text-3xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight mb-6">
+          "This isn't just about you." A financial plan is also the plan for everyone counting on you.
+        </h2>
+        <p class="text-white/65 leading-relaxed mb-5">
+          Without a plan, the gap doesn't disappear, it just gets inherited. It shows up as the parent you're quietly supporting because no one planned early enough, and it risks becoming the load your own children carry one day.
+        </p>
+        <p class="text-white/65 leading-relaxed mb-8">
+          Your children are already watching how you handle money, whether you talk about it or not. What you build now becomes the blueprint they inherit. The only real question is whether what you leave behind is a legacy, or a burden.
+        </p>
+        <a href="#offer" class="inline-flex items-center gap-2 rounded-full bg-[#FFBD40] px-6 py-3 text-sm font-bold text-black hover:brightness-95 transition">
+          Reserve Your Seat →
+        </a>
+        <p class="mt-5 text-sm text-white/55 leading-relaxed">
+          <span class="text-white font-semibold">Can't make it live? You're still covered.</span>
+          One month of replay access, the discussion forum, introductions and support are already included.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4">
+        {pillars.map((p) => (
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-[#FFBD40] flex items-center justify-center text-black font-bold text-sm flex-shrink-0">{p.n}</div>
+              <div>
+                <div class="text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-1">{p.label}</div>
+                <h3 class="text-base font-bold text-white mb-2">{p.title}</h3>
+                <p class="text-sm text-white/55 leading-relaxed">{p.body}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
