@@ -46,6 +46,45 @@ import ProductImage from './assets/beat-the-odds.jpg'
           </a>
         </div>
         <p class="text-xs text-white/40">Investment: NGN 300,000 ($200) · Pay in full or 2 installments · Led by Oler Oladele, CFA</p>
+
+        <!-- Countdown -->
+        <div class="mt-6" data-countdown="2026-11-14T00:00:00+01:00">
+          <p class="text-xs font-medium uppercase tracking-[0.2em] text-white/50 mb-3">
+            Cohort 5 starts in
+          </p>
+          <div
+            class="inline-flex items-center gap-2 rounded-2xl border border-[#FFBD40]/30 bg-[#FFBD40]/5 p-3"
+            style="box-shadow: 0 0 12px rgba(255,189,64,0.35), 0 0 32px rgba(255,189,64,0.15);"
+          >
+            <div class="flex items-center">
+              <div class="flex flex-col items-center min-w-[52px] px-1">
+                <span class="text-lg md:text-xl font-bold text-[#FFBD40]" data-unit="days">00</span>
+                <span class="text-[10px] uppercase tracking-wide text-white/40">Days</span>
+              </div>
+              <span class="text-[#FFBD40]/30 text-sm font-bold px-1">:</span>
+            </div>
+            <div class="flex items-center">
+              <div class="flex flex-col items-center min-w-[52px] px-1">
+                <span class="text-lg md:text-xl font-bold text-[#FFBD40]" data-unit="hours">00</span>
+                <span class="text-[10px] uppercase tracking-wide text-white/40">Hours</span>
+              </div>
+              <span class="text-[#FFBD40]/30 text-sm font-bold px-1">:</span>
+            </div>
+            <div class="flex items-center">
+              <div class="flex flex-col items-center min-w-[52px] px-1">
+                <span class="text-lg md:text-xl font-bold text-[#FFBD40]" data-unit="minutes">00</span>
+                <span class="text-[10px] uppercase tracking-wide text-white/40">Minutes</span>
+              </div>
+              <span class="text-[#FFBD40]/30 text-sm font-bold px-1">:</span>
+            </div>
+            <div class="flex items-center">
+              <div class="flex flex-col items-center min-w-[52px] px-1">
+                <span class="text-lg md:text-xl font-bold text-[#FFBD40]" data-unit="seconds">00</span>
+                <span class="text-[10px] uppercase tracking-wide text-white/40">Seconds</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="relative">
         <div class="absolute inset-0 translate-y-6 rounded-3xl blur-2xl" style="background: rgba(255,189,64,0.2);"></div>
@@ -59,3 +98,40 @@ import ProductImage from './assets/beat-the-odds.jpg'
     </div>
   </div>
 </section>
+
+<script>
+  function pad(n: number) {
+    return n.toString().padStart(2, "0");
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-countdown]").forEach((root) => {
+    const targetDate = new Date(root.dataset.countdown ?? "");
+    const daysEl = root.querySelector<HTMLElement>('[data-unit="days"]');
+    const hoursEl = root.querySelector<HTMLElement>('[data-unit="hours"]');
+    const minutesEl = root.querySelector<HTMLElement>('[data-unit="minutes"]');
+    const secondsEl = root.querySelector<HTMLElement>('[data-unit="seconds"]');
+
+    const tick = () => {
+      const distance = targetDate.getTime() - Date.now();
+
+      if (distance <= 0) {
+        root.style.display = "none";
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      if (daysEl) daysEl.textContent = pad(days);
+      if (hoursEl) hoursEl.textContent = pad(hours);
+      if (minutesEl) minutesEl.textContent = pad(minutes);
+      if (secondsEl) secondsEl.textContent = pad(seconds);
+    };
+
+    tick();
+    const interval = setInterval(tick, 1000);
+  });
+</script>
