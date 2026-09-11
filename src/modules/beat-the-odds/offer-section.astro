@@ -13,6 +13,8 @@ const PAY_FULL_USD_LINK = 'https://zohosecurepay.com/checkout/2kugmvg-9fq65d5hc0
 const PAY_FULL_NGN_LINK = 'https://zohosecurepay.com/checkout/1zmzdnc-l8rlqs96m5g5s/BEAT-THE-ODDS-WORKSHOP'
 const PAY_INSTALLMENT_USD_LINK = 'https://forms.zohopublic.com/oleroladelecom/form/BeattheOddsWaitlist/formperma/aTAolI6VJoEI5Ed7unSTJNhp9MrlX_VUMd_HR5sFzqc'
 const PAY_INSTALLMENT_NGN_LINK = 'https://billing.zohosecure.com/subscribe/c4252e43db41984bd425a5a82e036bde8dcfc5faa1a502c5ad482bf477cf719e/BTO-insta'
+// TODO: swap in the real corporate registration page URL
+const CORPORATE_LINK = '#corporate'
 ---
 <section id="offer" class="py-20 md:py-28 px-6 bg-white">
   <div class="max-w-7xl mx-auto">
@@ -92,6 +94,20 @@ const PAY_INSTALLMENT_NGN_LINK = 'https://billing.zohosecure.com/subscribe/c4252
             </div>
           </div>
         </div>
+
+        <!-- Corporate CTA — deliberately separated from the individual payment options above -->
+        <div class="mt-6 flex items-center gap-3">
+          <span class="h-px flex-1 bg-white/10"></span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">Registering a team?</span>
+          <span class="h-px flex-1 bg-white/10"></span>
+        </div>
+        <a
+          href={CORPORATE_LINK}
+          class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-transparent px-6 py-3.5 text-sm font-bold text-white hover:border-[#FFBD40]/60 hover:text-[#FFBD40] transition"
+        >
+          Corporate Enrolment →
+        </a>
+
         <p class="text-xs text-white/30 text-center mt-4">Cohort 5.</p>
       </div>
     </div>
