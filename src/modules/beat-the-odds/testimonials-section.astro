@@ -3,19 +3,19 @@ const testimonials = [
   {
     quote: 'Like my brain is over calculating some restructuring I need to do. And this is what I have always wanted. I especially loved the financial current state assessment. I started digging for my payslips from 8/10 years ago. So I was so eager to know what good looked like from a ratio standpoint. Came into the session with new realizations!',
     name: 'Omorefe',
-    role: 'Beat the Odds Workshop',
+    role: 'Geologist Stratigrapher',
     initials: 'O',
   },
   {
     quote: 'Simple and practical explanations of concepts that seemed complex. Oler also had an exceptional grasp of exactly what was needed to make informed decisions independently. The workshop was perfect in showing me what to do without telling me what to do. It was exactly what I needed to match the right investments to my goals.',
     name: 'Akwugo',
-    role: 'Beat the Odds Workshop',
+    role: 'International Policy and Development Strategist',
     initials: 'A',
   },
   {
     quote: 'I finally understood what my money was actually doing. The net worth section showed me gaps I did not even know existed and gave me a clear path to fix them. This is the most practical finance session I have attended.',
     name: 'Adaeze M.',
-    role: 'Beat the Odds Workshop',
+    role: 'Medical Doctor',
     initials: 'AM',
   },
 ]
@@ -43,6 +43,31 @@ const testimonials = [
           </blockquote>
         </figure>
       ))}
+    </div>
+
+    <div class="mt-16">
+      <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-8">
+        <span class="h-px w-6 bg-[#FFBD40]"></span>
+        Hear it from past attendees
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          'https://www.youtube.com/embed/d_Vw68tfz6w',
+          'https://www.youtube.com/embed/_raabDzrIOw',
+          'https://www.youtube.com/embed/HCW1A6VHoxM',
+        ].map((src) => (
+          <div class="overflow-hidden rounded-2xl border border-white/10 aspect-video">
+            <iframe
+              src={src}
+              title="Beat the Odds testimonial"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              class="w-full h-full border-0"
+            ></iframe>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
