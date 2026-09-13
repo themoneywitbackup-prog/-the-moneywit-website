@@ -1,11 +1,12 @@
 ---
 interface Props {
-  title?: string;
-  description?: string;
-  gtm?: boolean;
+	title?: string;
+	description?: string;
+	gtm?: boolean;
+	image?: string;
 }
 
-const { title, description, gtm = false } = Astro.props;
+const { title, description, gtm = false, image } = Astro.props;
 
 import '../styles/global.css';
 import '@/styles/reset.scss';
@@ -91,6 +92,15 @@ const { cookiesSettingsLink, termsOfServiceLink, privacyPolicyLink } =
 			property="og:site_name"
 			content="The Money Wit by Dogwood and Oaks"
 		/>
+
+		<!-- Only rendered when a page explicitly passes an `image` prop — every other page is unaffected -->
+		{image && (
+			<>
+				<meta property="og:image" content={image} />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:image" content={image} />
+			</>
+		)}
 
 		<!-- Google Tag Manager - Only loads when gtm={true} -->
 		{gtm && (
