@@ -10,10 +10,15 @@ import Offer from '@/modules/beat-the-odds/offer-section.astro'
 import Testimonials from '@/modules/beat-the-odds/testimonials-section.astro'
 import FAQ from '@/modules/beat-the-odds/faq-section.astro'
 import FinalCta from '@/modules/beat-the-odds/finalcta-section.astro'
+import ogImage from '@/modules/beat-the-odds/assets/beat-the-odds.jpg'
+
+// Turns the imported asset into the full absolute URL og:image needs
+const ogImageUrl = new URL(ogImage.src, Astro.site).toString()
 ---
 <BaseLayout
   title="Beat the Odds | Personal Finance & Investment Workshop | The Money Wit"
   description="A live personal finance and investment workshop for professionals ready to secure their money and build wealth in uncertain times. Led by Oler Oladele, CFA."
+  image={ogImageUrl}
 >
   <Hero />
   <Problem />
