@@ -1,0 +1,99 @@
+---
+const FORM_URL = 'https://forms.zohopublic.com/oleroladelecom/form/HighEarnerClarityChecklist/formperma/9UvbypJQ-fRqO7KR73KrY2SHyItvKDFi-PIIpphYvDA'
+---
+<div
+  id="exit-popup-overlay"
+  class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+>
+  <div
+    id="exit-popup-card"
+    class="relative w-full max-w-lg rounded-2xl border border-[#FFBD40]/30 bg-[#0A0A0A] p-6 sm:p-8 text-white shadow-2xl"
+    style="box-shadow: 0 0 40px rgba(255,189,64,0.15), 0 20px 60px rgba(0,0,0,0.6);"
+  >
+    <button
+      id="exit-popup-close"
+      type="button"
+      aria-label="Close"
+      class="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#FFBD40]/40 bg-[#0A0A0A] text-sm font-bold text-white/70 transition hover:text-[#FFBD40] hover:border-[#FFBD40]"
+    >
+      ×
+    </button>
+
+    <p class="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#FFBD40]">Before you go</p>
+    <h2 class="mt-3 text-2xl sm:text-3xl font-bold leading-tight text-white">
+      Grab the Free Clarity Checklist
+    </h2>
+    <p class="mt-3 text-sm sm:text-base leading-relaxed text-white/70">
+      10 strategic gaps holding back high earners — and what to do instead. Takes 30 seconds.
+    </p>
+
+    <div class="mt-6 overflow-hidden rounded-xl border border-white/15 bg-white">
+      <iframe
+        id="exit-popup-iframe"
+        src={FORM_URL}
+        title="High-Earners Clarity Checklist signup form"
+        loading="lazy"
+        class="block h-[520px] w-full border-0"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var overlay = document.getElementById('exit-popup-overlay')
+    var closeBtn = document.getElementById('exit-popup-close')
+    if (!overlay) return
+
+    var STORAGE_KEY = 'exitPopupShown'
+    var shown = false
+
+    function openPopup() {
+      if (shown) return
+      if (sessionStorage.getItem(STORAGE_KEY)) return
+      shown = true
+      sessionStorage.setItem(STORAGE_KEY, '1')
+      overlay.classList.remove('hidden')
+      overlay.classList.add('flex')
+    }
+
+    function closePopup() {
+      overlay.classList.add('hidden')
+      overlay.classList.remove('flex')
+    }
+
+    closeBtn.addEventListener('click', closePopup)
+
+    // Click outside the card also closes it
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closePopup()
+    })
+
+    // Escape key closes it
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closePopup()
+    })
+
+    // Exit-intent trigger: fires when the mouse leaves toward the top of the window (desktop only —
+    // there's no cursor to track on mobile, so this simply won't fire there).
+    document.addEventListener('mouseout', function (e) {
+      if (!e.relatedTarget && !e.toElement && e.clientY < 10) {
+        openPopup()
+      }
+    })
+
+    // Close automatically once the form is submitted.
+    // Zoho embedded forms send window.postMessage events; this listens for common
+    // success/submit indicators in that message. See note below for a more reliable setup.
+    window.addEventListener('message', function (event) {
+      var data = event.data
+      if (data === 'exit-popup-submitted') {
+        closePopup()
+        return
+      }
+      if (typeof data === 'string' && /submit|thank/i.test(data)) {
+        closePopup()
+      }
+    })
+  })()
+</script>
