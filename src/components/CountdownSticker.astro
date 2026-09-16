@@ -54,6 +54,15 @@
     const root = document.getElementById('countdown-sticker')
     if (!root) return
 
+    const closeBtn = document.getElementById('countdown-sticker-close')
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        root.style.display = 'none'
+      })
+    }
+
     const targetDate = new Date(root.getAttribute('data-countdown') ?? '')
 
     function pad(n) {
