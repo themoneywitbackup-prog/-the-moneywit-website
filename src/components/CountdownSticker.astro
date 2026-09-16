@@ -1,0 +1,82 @@
+---
+---
+
+  href="https://themoneywit.africa/school/beat-the-odds"
+  id="countdown-sticker"
+  class="fixed bottom-6 left-6 z-50 flex flex-col gap-1 rounded-2xl border border-[#FFBD40]/40 bg-[#0A0A0A] px-4 py-3 text-white shadow-2xl transition hover:-translate-y-1 hover:border-[#FFBD40]/70"
+  style="box-shadow: 0 0 20px rgba(255,189,64,0.2), 0 4px 24px rgba(0,0,0,0.4);"
+  data-countdown="2026-11-14T00:00:00+01:00"
+>
+  <div class="flex items-center gap-2 mb-1">
+    <span class="relative flex h-2 w-2">
+      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FFBD40] opacity-75"></span>
+      <span class="relative inline-flex h-2 w-2 rounded-full bg-[#FFBD40]"></span>
+    </span>
+    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFBD40]">Beat The Odds · Cohort 5</span>
+  </div>
+
+  <div class="flex items-center gap-1">
+    <div class="flex flex-col items-center min-w-[36px]">
+      <span class="text-base font-bold text-[#FFBD40]" data-unit="days">00</span>
+      <span class="text-[9px] uppercase tracking-wide text-white/40">Days</span>
+    </div>
+    <span class="text-[#FFBD40]/40 font-bold text-sm">:</span>
+    <div class="flex flex-col items-center min-w-[36px]">
+      <span class="text-base font-bold text-[#FFBD40]" data-unit="hours">00</span>
+      <span class="text-[9px] uppercase tracking-wide text-white/40">Hrs</span>
+    </div>
+    <span class="text-[#FFBD40]/40 font-bold text-sm">:</span>
+    <div class="flex flex-col items-center min-w-[36px]">
+      <span class="text-base font-bold text-[#FFBD40]" data-unit="minutes">00</span>
+      <span class="text-[9px] uppercase tracking-wide text-white/40">Min</span>
+    </div>
+    <span class="text-[#FFBD40]/40 font-bold text-sm">:</span>
+    <div class="flex flex-col items-center min-w-[36px]">
+      <span class="text-base font-bold text-[#FFBD40]" data-unit="seconds">00</span>
+      <span class="text-[9px] uppercase tracking-wide text-white/40">Sec</span>
+    </div>
+  </div>
+
+  <span class="text-[9px] text-white/40 mt-1">Sat, Nov 14 · Click to reserve →</span>
+</a>
+
+<script is:inline>
+  (function () {
+    const root = document.getElementById('countdown-sticker')
+    if (!root) return
+
+    const targetDate = new Date(root.getAttribute('data-countdown') ?? '')
+
+    function pad(n) {
+      return n.toString().padStart(2, '0')
+    }
+
+    function tick() {
+      const distance = targetDate.getTime() - Date.now()
+
+      if (distance <= 0) {
+        root.style.display = 'none'
+        clearInterval(interval)
+        return
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24)
+      const minutes = Math.floor((distance / (1000 * 60)) % 60)
+      const seconds = Math.floor((distance / 1000) % 60)
+
+      const d = root.querySelector('[data-unit="days"]')
+      const h = root.querySelector('[data-unit="hours"]')
+      const m = root.querySelector('[data-unit="minutes"]')
+      const s = root.querySelector('[data-unit="seconds"]')
+
+      if (d) d.textContent = pad(days)
+      if (h) h.textContent = pad(hours)
+      if (m) m.textContent = pad(minutes)
+      if (s) s.textContent = pad(seconds)
+    }
+
+    tick()
+    var interval = setInterval(tick, 1000)
+  })()
+</script>
