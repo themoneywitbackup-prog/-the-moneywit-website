@@ -9,23 +9,46 @@ const features = [
   'Live Q&A with Oler',
   'Post-workshop resources and support',
 ]
-const PAY_FULL_USD_LINK = 'https://zohosecurepay.com/checkout/2kugmvg-9fq65d5hc06z3/Beat-the-odds'
-const PAY_FULL_NGN_LINK = 'https://zohosecurepay.com/checkout/1zmzdnc-l8rlqs96m5g5s/BEAT-THE-ODDS-WORKSHOP'
-const PAY_INSTALLMENT_USD_LINK = 'https://forms.zohopublic.com/oleroladelecom/form/BeattheOddsWaitlist/formperma/aTAolI6VJoEI5Ed7unSTJNhp9MrlX_VUMd_HR5sFzqc'
-const PAY_INSTALLMENT_NGN_LINK = 'https://billing.zohosecure.com/subscribe/c4252e43db41984bd425a5a82e036bde8dcfc5faa1a502c5ad482bf477cf719e/BTO-insta'
+
+const PAY_FULL_USD_LINK =
+  'https://zohosecurepay.com/checkout/2kugmvg-9fq65d5hc06z3/Beat-the-odds'
+
+const PAY_FULL_NGN_LINK =
+  'https://zohosecurepay.com/checkout/1zmzdnc-l8rlqs96m5g5s/BEAT-THE-ODDS-WORKSHOP'
+
+const PAY_INSTALLMENT_NGN_LINK =
+  'https://billing.zohosecure.com/subscribe/c4252e43db41984bd425a5a82e036bde8dcfc5faa1a502c5ad482bf477cf719e/BTO-insta'
+
 // TODO: swap in the real corporate registration page URL
-const CORPORATE_LINK = 'https://forms.zohopublic.com/oleroladelecom/form/BeattheOddsWaitlist/formperma/aTAolI6VJoEI5Ed7unSTJNhp9MrlX_VUMd_HR5sFzqc'
+const CORPORATE_LINK =
+  'https://forms.zohopublic.com/oleroladelecom/form/BeattheOddsWaitlist/formperma/aTAolI6VJoEI5Ed7unSTJNhp9MrlX_VUMd_HR5sFzqc'
 ---
+
 <section id="offer" class="py-20 md:py-28 px-6 bg-white">
   <div class="max-w-7xl mx-auto">
-    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-8">
+
+    <div
+      class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-black/50 mb-8"
+    >
       <span class="h-px w-6 bg-[#FFBD40]"></span>
       Reserve Your Seat - Cohort 5
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 rounded-3xl border border-black/10 p-8 md:p-12 items-center">
+
+    <div
+      class="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 rounded-3xl border border-black/10 p-8 md:p-12 items-center"
+    >
+
+      <!-- Left Content -->
       <div>
-        <h2 class="text-3xl md:text-4xl font-bold text-black mb-3">Beat the Odds Workshop</h2>
-        <p class="text-black/60 text-sm mb-8">A live, 3 hour personal finance and investment workshop. Limited cohort. Led by Oler Oladele, CFA.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-black mb-3">
+          Beat the Odds Workshop
+        </h2>
+
+        <p class="text-black/60 text-sm mb-8">
+          A live, 3 hour personal finance and investment workshop. Limited cohort.
+          Led by Oler Oladele, CFA.
+        </p>
+
         <ul class="space-y-3 text-sm">
           {features.map((f) => (
             <li class="flex gap-3 text-black">
@@ -35,11 +58,26 @@ const CORPORATE_LINK = 'https://forms.zohopublic.com/oleroladelecom/form/Beatthe
           ))}
         </ul>
       </div>
+
+      <!-- Payment Card -->
       <div class="rounded-2xl bg-[#0A0A0A] p-8 text-white">
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-3">Workshop investment</p>
-        <p class="text-3xl font-extrabold text-[#FFBD40] mb-1">NGN 300,000 or USD 200</p>
-        <p class="text-sm text-white/50 mb-8">USD checkout also available · Limited spots per cohort</p>
+
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-3"
+        >
+          Workshop investment
+        </p>
+
+        <p class="text-3xl font-extrabold text-[#FFBD40] mb-1">
+          NGN 300,000 or USD 200
+        </p>
+
+        <p class="text-sm text-white/50 mb-8">
+          USD checkout also available · Limited spots per cohort
+        </p>
+
         <div class="flex flex-col gap-3">
+
           <!-- Pay in Full -->
           <div>
             <button
@@ -49,58 +87,62 @@ const CORPORATE_LINK = 'https://forms.zohopublic.com/oleroladelecom/form/Beatthe
             >
               Pay in Full — Reserve My Seat
             </button>
-            <div id="panel-full" class="overflow-hidden max-h-0 opacity-0 mt-0 transition-all duration-300 ease-out">
+
+            <div
+              id="panel-full"
+              class="overflow-hidden max-h-0 opacity-0 mt-0 transition-all duration-300 ease-out"
+            >
               <div class="flex flex-col gap-2 mt-3">
+
+                <!-- Pay in USD -->
                 <a
                   href={PAY_FULL_USD_LINK}
                   class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-xs font-semibold text-white hover:bg-white/20 transition"
                 >
                   Pay in USD →
                 </a>
+
+                <!-- Pay in NGN -->
                 <a
                   href={PAY_FULL_NGN_LINK}
                   class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-xs font-semibold text-white hover:bg-white/20 transition"
                 >
                   Pay in NGN →
                 </a>
+
               </div>
             </div>
           </div>
+
           <!-- Pay in Instalments -->
-          <div>
-            <button
-              id="btn-installment"
-              type="button"
-              class="inline-flex w-full flex-col items-center justify-center rounded-full border border-[#FFBD40]/40 px-6 py-3.5 text-sm font-bold text-[#FFBD40] hover:bg-[#FFBD40]/10 transition"
+          <a
+            href={PAY_INSTALLMENT_NGN_LINK}
+            class="inline-flex w-full flex-col items-center justify-center rounded-full border border-[#FFBD40]/40 px-6 py-3.5 text-sm font-bold text-[#FFBD40] hover:bg-[#FFBD40]/10 transition"
+          >
+            <span>Pay in Installments</span>
+
+            <span
+              class="text-[10px] font-medium text-[#FFBD40]/70 mt-0.5"
             >
-              <span>Pay in 2 Instalments — Reserve My Seat</span>
-              <span class="text-[10px] font-medium text-[#FFBD40]/70 mt-0.5">₦150,000 now / ₦150,000 due Oct 31</span>
-            </button>
-            <div id="panel-installment" class="overflow-hidden max-h-0 opacity-0 mt-0 transition-all duration-300 ease-out">
-              <div class="flex flex-col gap-2 mt-3">
-                <a
-                  href={PAY_INSTALLMENT_USD_LINK}
-                  class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-xs font-semibold text-white hover:bg-white/10 transition"
-                >
-                  Pay in USD →
-                </a>
-                <a
-                  href={PAY_INSTALLMENT_NGN_LINK}
-                  class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-xs font-semibold text-white hover:bg-white/10 transition"
-                >
-                  Pay in NGN →
-                </a>
-              </div>
-            </div>
-          </div>
+              ₦150,000 now / ₦150,000 due Oct 31
+            </span>
+          </a>
+
         </div>
 
-        <!-- Corporate CTA — deliberately separated from the individual payment options above -->
+        <!-- Waitlist CTA -->
         <div class="mt-6 flex items-center gap-3">
           <span class="h-px flex-1 bg-white/10"></span>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">Not Ready Yet?</span>
+
+          <span
+            class="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30"
+          >
+            Not Ready Yet?
+          </span>
+
           <span class="h-px flex-1 bg-white/10"></span>
         </div>
+
         <a
           href={CORPORATE_LINK}
           class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white px-6 py-3.5 text-sm font-bold text-black hover:border-[#FFBD40]/60 hover:text-[#FFBD40] transition"
@@ -108,37 +150,34 @@ const CORPORATE_LINK = 'https://forms.zohopublic.com/oleroladelecom/form/Beatthe
           Join The Waitlist →
         </a>
 
-        <p class="text-xs text-white/30 text-center mt-4">Cohort 5.</p>
+        <p class="text-xs text-white/30 text-center mt-4">
+          Cohort 5.
+        </p>
+
       </div>
     </div>
   </div>
 </section>
+
 <script is:inline>
-  function togglePanel(btnId, panelId) {
-    const btn = document.getElementById(btnId)
-    const panel = document.getElementById(panelId)
-    const otherPanelId = panelId === 'panel-full' ? 'panel-installment' : 'panel-full'
-    const otherPanel = document.getElementById(otherPanelId)
-    const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px'
-    // Close other panel first
-    otherPanel.style.maxHeight = '0px'
-    otherPanel.style.opacity = '0'
-    otherPanel.style.marginTop = '0'
-    // Toggle clicked panel
+  const btnFull = document.getElementById('btn-full')
+  const panelFull = document.getElementById('panel-full')
+
+  btnFull?.addEventListener('click', () => {
+    if (!panelFull) return
+
+    const isOpen =
+      panelFull.style.maxHeight &&
+      panelFull.style.maxHeight !== '0px'
+
     if (isOpen) {
-      panel.style.maxHeight = '0px'
-      panel.style.opacity = '0'
-      panel.style.marginTop = '0'
+      panelFull.style.maxHeight = '0px'
+      panelFull.style.opacity = '0'
+      panelFull.style.marginTop = '0'
     } else {
-      panel.style.maxHeight = '160px'
-      panel.style.opacity = '1'
-      panel.style.marginTop = '12px'
+      panelFull.style.maxHeight = '160px'
+      panelFull.style.opacity = '1'
+      panelFull.style.marginTop = '12px'
     }
-  }
-  document.getElementById('btn-full')?.addEventListener('click', () => {
-    togglePanel('btn-full', 'panel-full')
-  })
-  document.getElementById('btn-installment')?.addEventListener('click', () => {
-    togglePanel('btn-installment', 'panel-installment')
   })
 </script>
