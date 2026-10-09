@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets'
+import familyImage from './assets/family-money-session.jpg'
+---
+<section class="relative min-h-[660px] overflow-hidden bg-black">
+  <Image
+    src={familyImage}
+    alt="A mother and daughter exploring money together with a notebook, coins and a laptop"
+    class="absolute inset-0 w-full h-full object-cover object-[center_54%]"
+    loading="eager"
+  />
+  <div class="absolute inset-0" style="background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.62) 40%, transparent 72%);"></div>
+  <div class="absolute inset-0" style="background: linear-gradient(0deg, #000, transparent 35%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10 pt-16 pb-16">
+    <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-7">
+      <span class="w-2 h-2 bg-[#FFBD40] block flex-shrink-0"></span>
+      A MONEY WIT FAMILY PROGRAM
+    </div>
+    <h1 class="text-6xl md:text-7xl font-bold text-white leading-[1.08] max-w-[13ch] mb-6">
+      Financial Planning<br />for <span class="text-[#FFBD40]">Kids.</span>
+    </h1>
+    <h2 class="text-lg font-medium text-white mb-4">Raising Money-Smart Kids</h2>
+    <p class="max-w-[440px] text-sm text-white/65 leading-relaxed mb-3">A 40-minute interactive financial literacy session designed for children aged 7–11, held online via ZOOM.</p>
+    <p class="max-w-[425px] text-xs text-white/55 leading-relaxed mb-7">A hands-on experience with engaging activities and practical learning, followed by a simple 4-week home guide to help the lessons stick.</p>
+    <div class="flex flex-col sm:flex-row gap-3 mb-6">
+      <a href="#session-dates" class="inline-flex items-center justify-center gap-3 rounded-full bg-[#FFBD40] px-6 py-3.5 text-xs font-bold text-black hover:brightness-95 transition">
+        Choose a Session Date →
+      </a>
+      <a href="#included" class="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 px-6 py-3.5 text-xs font-bold text-white hover:border-[#FFBD40] hover:text-[#FFBD40] transition">
+        See What's Included →
+      </a>
+    </div>
+    <div class="flex items-center gap-4 text-[10px] text-white/55">
+      <span class="text-sm font-bold text-white pr-4 border-r border-white/20">₦60,000 / $45</span>
+      <span>One session. Four weeks of learning at home.</span>
+    </div>
+  </div>
+
+  <div class="absolute right-12 bottom-8 z-10 flex items-center gap-3 text-[9px] text-white/60">
+    <span class="w-8 h-px bg-[#FFBD40] block"></span>
+    LITTLE LEARNERS. BIG POSSIBILITIES.
+  </div>
+</section>
+
+<div class="border-y border-[#FFBD40]/30 bg-black">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 py-7 gap-6">
+    {[
+      { label: 'AGE', value: '7–11 years', icon: '👥' },
+      { label: 'FORMAT', value: 'Online via ZOOM', icon: '💻' },
+      { label: 'SESSION', value: '40 minutes', icon: '⏱' },
+      { label: 'INCLUDED', value: '4-week home guide', icon: '📖' },
+    ].map((item) => (
+      <div class="flex items-center gap-4 pl-4 border-l border-white/10 first:border-0 first:pl-0">
+        <span class="text-2xl">{item.icon}</span>
+        <div class="flex flex-col">
+          <span class="text-[9px] text-white/50">{item.label}</span>
+          <strong class="text-sm font-medium text-white">{item.value}</strong>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
