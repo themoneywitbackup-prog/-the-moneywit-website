@@ -1,0 +1,34 @@
+---
+const faqs = [
+  ['What age is this session for?', 'Children ages 7–11.'],
+  ['How long is the session?', '40 minutes.'],
+  ['Is the session online?', 'Yes. The session is held online via ZOOM.'],
+  ['What does my child receive after the session?', 'A 4-week home guide designed to help parents reinforce the lessons.'],
+  ['Is this a lecture?', 'No. The session is interactive and includes engaging activities and practical learning experiences.'],
+  ['Who is this designed for?', 'Children ages 7–11, with parents/guardians making the booking.'],
+  ['How much does it cost?', '₦60,000 / $45'],
+]
+---
+<section class="py-24 md:py-32 px-6 bg-white/5 border-t border-white/10" id="faq">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16">
+    <div>
+      <div class="flex items-center gap-4 text-[10px] font-semibold text-white/50 mb-6">
+        <span class="text-[#FFBD40] text-xs pr-4 border-r border-[#FFBD40]/40">08</span>
+        A FEW THINGS YOU MAY BE WONDERING
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Questions,<br />Answered.</h2>
+      <p class="text-sm text-white/60">For parents and guardians.</p>
+    </div>
+    <div>
+      {faqs.map(([question, answer]) => (
+        <details class="border-b border-white/10 first:border-t first:border-white/10 group">
+          <summary class="flex items-center justify-between gap-5 py-5 text-sm text-white cursor-pointer list-none">
+            {question}
+            <span class="text-[#FFBD40] flex-shrink-0 transition-transform group-open:rotate-180">▾</span>
+          </summary>
+          <p class="text-sm text-white/55 pb-5">{answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
