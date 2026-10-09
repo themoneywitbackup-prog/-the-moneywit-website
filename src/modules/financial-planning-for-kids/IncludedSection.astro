@@ -2,7 +2,6 @@
 const benefits = [
   { icon: '⏱', title: '40-Minute Interactive Session', copy: 'A live online financial literacy experience designed for children ages 7–11.' },
   { icon: '✨', title: 'Practical Learning', copy: 'Engaging activities and practical experiences that make money concepts easier to understand.' },
-  { icon: '💻', title: 'ZOOM Experience', copy: 'A convenient online session your child can join from home.' },
   { icon: '📖', title: '4-Week Home Guide', copy: 'A simple structure for parents to continue reinforcing the lessons after the session.' },
 ]
 ---
@@ -20,7 +19,7 @@ const benefits = [
         Choose a Session Date →
       </a>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {benefits.map((b) => (
         <article class="border border-white/10 rounded p-7 bg-white/5 hover:-translate-y-1 hover:border-[#FFBD40] transition-all">
           <span class="text-3xl block mb-6">{b.icon}</span>
