@@ -1,0 +1,26 @@
+---
+const points = [
+  { icon: '✨', title: 'Interactive', copy: 'Children participate rather than simply listen.' },
+  { icon: '💰', title: 'Practical', copy: 'Concepts are connected to everyday money decisions.' },
+  { icon: '👥', title: 'Age-Appropriate', copy: 'Everything is designed specifically for children ages 7–11.' },
+]
+---
+<section class="py-24 md:py-32 px-6 bg-black">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-4 text-[10px] font-semibold text-white/50 mb-6">
+      <span class="text-[#FFBD40] text-xs pr-4 border-r border-[#FFBD40]/40">03</span>
+      MADE FOR HOW CHILDREN LEARN
+    </div>
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-5">40 Minutes. Hands-On.<br />Practical. Age-Appropriate.</h2>
+    <p class="text-sm text-white/60 max-w-xl mb-12">The session is designed to keep children engaged while introducing practical money concepts they can understand and begin applying.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      {points.map((p) => (
+        <div class="border-t border-white/15 pt-6">
+          <span class="text-3xl block mb-5">{p.icon}</span>
+          <h3 class="text-lg font-medium text-white mb-3">{p.title}</h3>
+          <p class="text-sm text-white/55">{p.copy}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
