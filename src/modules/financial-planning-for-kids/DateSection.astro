@@ -1,0 +1,140 @@
+---
+const sessionDates = [
+  { id: 'feb-2027', day: 'Wednesday', date: '24 February 2027', available: true, checkoutUrl: '#' },
+  { id: 'june-2027', day: 'Wednesday', date: '16 June 2027', available: true, checkoutUrl: '#' },
+  { id: 'august-2027', day: 'Thursday', date: '5 August 2027', available: true, checkoutUrl: '#' },
+]
+---
+<section class="py-24 md:py-32 px-6 bg-black" id="session-dates">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-4 text-[10px] font-semibold text-white/50 mb-6">
+        <span class="text-[#FFBD40] text-xs pr-4 border-r border-[#FFBD40]/40">07</span>
+        YOUR FAMILY. YOUR DATE.
+      </div>
+      <h2 id="dates-heading" class="text-4xl md:text-5xl font-bold text-white mb-4" tabindex="-1">Choose a Date That Works for You</h2>
+      <p class="text-sm text-white/60">Pick the session date that works best for your family.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" id="dates-grid">
+      {sessionDates.map((session) => (
+        <article
+          class="date-card border border-white/15 rounded p-7 bg-white/5 hover:border-[#FFBD40] hover:-translate-y-1 transition-all"
+          data-id={session.id}
+          data-checkout={session.checkoutUrl}
+          data-available={session.available ? 'true' : 'false'}
+          data-day={session.day}
+          data-date={session.date}
+        >
+          <div class="flex items-center justify-between mb-7">
+            <span class="text-2xl text-[#FFBD40]">📅</span>
+            <span class="text-[10px] flex items-center gap-2 text-white/50">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FFBD40] block"></span>
+              {session.available ? 'Available' : 'Unavailable'}
+            </span>
+          </div>
+          <p class="text-xs text-white/50 mb-2">{session.day}</p>
+          <h3 class="text-4xl font-bold text-white leading-tight mb-1">
+            {session.date.split(' ')[0]} <span class="text-3xl">{session.date.split(' ')[1]}</span>
+          </h3>
+          <span class="text-sm text-[#FFBD40] block mb-6">2027</span>
+          <div class="border-t border-white/10 pt-5 mb-5 text-xs text-white/50">
+            40 minutes · Online via ZOOM
+          </div>
+          <button
+            class="date-btn w-full flex items-center justify-between px-5 py-3 text-xs font-bold border border-white/30 text-white rounded hover:border-[#FFBD40] hover:text-[#FFBD40] transition"
+            data-id={session.id}
+            disabled={!session.available}
+            aria-label={`Choose ${session.day}, ${session.date}`}
+          >
+            Choose This Date
+            <span>↗</span>
+          </button>
+        </article>
+      ))}
+    </div>
+
+    <div id="confirmation" class="hidden mt-8 p-8 border border-[#FFBD40] rounded bg-white/5 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" role="region" aria-label="Your Selected Session" tabindex="-1">
+      <div>
+        <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFBD40] mb-3">
+          <span>✓</span> YOUR SELECTED SESSION
+        </div>
+        <h3 id="conf-title" class="text-2xl font-bold text-white mb-2"></h3>
+        <p class="text-xs text-white/50 mb-1">40-minute online session via ZOOM</p>
+        <p class="text-xs text-white/50 mb-4">Includes the 4-week home guide</p>
+        <button id="change-date-btn" class="text-xs text-[#FFBD40] underline underline-offset-4 bg-none border-none cursor-pointer">Change Date</button>
+      </div>
+      <div class="flex flex-col items-start md:items-end gap-4">
+        <strong class="text-2xl font-bold text-[#FFBD40]">₦60,000 / $45</strong>
+        <a id="checkout-btn" href="#" class="inline-flex items-center gap-3 rounded-full bg-[#FFBD40] px-6 py-3.5 text-xs font-bold text-black hover:brightness-95 transition">
+          Continue to Zoho Checkout →
+        </a>
+        <p id="coming-soon-msg" class="hidden text-xs text-white/50 max-w-[260px] text-right">Payment link coming soon. Checkout is not yet available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  let selectedId = null
+
+  document.querySelectorAll('.date-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id
+      const card = document.querySelector(`.date-card[data-id="${id}"]`)
+      selectedId = id
+
+      document.querySelectorAll('.date-card').forEach(c => {
+        c.style.borderColor = ''
+        c.style.transform = ''
+        c.style.background = ''
+        const b = c.querySelector('.date-btn')
+        b.textContent = 'Choose This Date ↗'
+        b.style.background = ''
+        b.style.color = ''
+        b.style.borderColor = ''
+      })
+
+      card.style.borderColor = '#FFBD40'
+      card.style.background = 'rgba(255,189,64,0.06)'
+
+      btn.textContent = 'Selected ✓'
+      btn.style.background = '#FFBD40'
+      btn.style.color = '#000'
+      btn.style.borderColor = '#FFBD40'
+
+      const day = card.dataset.day
+      const date = card.dataset.date
+      const checkout = card.dataset.checkout
+
+      document.getElementById('conf-title').textContent = `${day}, ${date}`
+
+      const isReady = checkout && checkout.startsWith('https://')
+      const checkoutBtn = document.getElementById('checkout-btn')
+      const comingSoonMsg = document.getElementById('coming-soon-msg')
+
+      checkoutBtn.style.display = isReady ? 'inline-flex' : 'none'
+      comingSoonMsg.style.display = isReady ? 'none' : 'block'
+      if (isReady) checkoutBtn.href = checkout
+
+      const conf = document.getElementById('confirmation')
+      conf.classList.remove('hidden')
+      conf.focus({ preventScroll: true })
+    })
+  })
+
+  document.getElementById('change-date-btn')?.addEventListener('click', () => {
+    selectedId = null
+    document.querySelectorAll('.date-card').forEach(c => {
+      c.style.borderColor = ''
+      c.style.background = ''
+      const b = c.querySelector('.date-btn')
+      b.textContent = 'Choose This Date ↗'
+      b.style.background = ''
+      b.style.color = ''
+      b.style.borderColor = ''
+    })
+    document.getElementById('confirmation').classList.add('hidden')
+    document.getElementById('dates-heading').focus({ preventScroll: true })
+  })
+</script>
