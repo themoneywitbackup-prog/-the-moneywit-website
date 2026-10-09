@@ -1,0 +1,33 @@
+---
+const benefits = [
+  { icon: '⏱', title: '40-Minute Interactive Session', copy: 'A live online financial literacy experience designed for children ages 7–11.' },
+  { icon: '✨', title: 'Practical Learning', copy: 'Engaging activities and practical experiences that make money concepts easier to understand.' },
+  { icon: '💻', title: 'ZOOM Experience', copy: 'A convenient online session your child can join from home.' },
+  { icon: '📖', title: '4-Week Home Guide', copy: 'A simple structure for parents to continue reinforcing the lessons after the session.' },
+]
+---
+<section class="py-24 md:py-32 px-6 bg-black" id="included">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <div class="flex items-center gap-4 text-[10px] font-semibold text-white/50 mb-6">
+          <span class="text-[#FFBD40] text-xs pr-4 border-r border-[#FFBD40]/40">05</span>
+          ONE PROGRAM. THE WHOLE EXPERIENCE.
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-white">What Your Child Gets</h2>
+      </div>
+      <a href="#session-dates" class="inline-flex items-center gap-3 rounded-full border border-white/30 px-6 py-3 text-xs font-bold text-white hover:border-[#FFBD40] hover:text-[#FFBD40] transition flex-shrink-0">
+        Choose a Session Date →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {benefits.map((b) => (
+        <article class="border border-white/10 rounded p-7 bg-white/5 hover:-translate-y-1 hover:border-[#FFBD40] transition-all">
+          <span class="text-3xl block mb-6">{b.icon}</span>
+          <h3 class="text-base font-medium text-white mb-3">{b.title}</h3>
+          <p class="text-xs text-white/55">{b.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
