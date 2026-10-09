@@ -1,19 +1,18 @@
 ---
 ---
-<header style="background: var(--kids-background); border-bottom: 1px solid var(--kids-border);">
-  <div class="kids-container" style="height: 98px; display: flex; align-items: center; justify-content: space-between; gap: 30px;">
-    <a href="https://www.themoneywit.africa/" style="display: flex; align-items: center; gap: 11px; flex-shrink: 0;" aria-label="The Money Wit home">
+<header class="bg-black border-b border-white/10 sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between gap-8">
+    <a href="https://www.themoneywit.africa/" class="flex items-center gap-3 flex-shrink-0" aria-label="The Money Wit home">
       <img src="/moneywit-mark.svg" width="44" height="44" alt="" />
-      <span style="font-size: 13px; font-weight: 700; line-height: 1.2;">THE<br />MONEY WIT<span style="color: var(--kids-primary);">.</span></span>
+      <span class="text-sm font-bold text-white leading-tight">THE<br />MONEY WIT<span class="text-[#FFBD40]">.</span></span>
     </a>
-    <nav aria-label="Page navigation" style="display: flex; gap: 30px; font-size: 12px; color: var(--kids-muted-foreground);">
-      <a href="#inside" style="transition: color .2s;" onmouseover="this.style.color='var(--kids-primary)'" onmouseout="this.style.color='var(--kids-muted-foreground)'">The experience</a>
-      <a href="#home-guide" style="transition: color .2s;" onmouseover="this.style.color='var(--kids-primary)'" onmouseout="this.style.color='var(--kids-muted-foreground)'">The home guide</a>
-      <a href="#faq" style="transition: color .2s;" onmouseover="this.style.color='var(--kids-primary)'" onmouseout="this.style.color='var(--kids-muted-foreground)'">FAQs</a>
+    <nav class="hidden md:flex gap-8 text-xs text-white/60" aria-label="Page navigation">
+      <a href="#inside" class="hover:text-[#FFBD40] transition-colors">The experience</a>
+      <a href="#home-guide" class="hover:text-[#FFBD40] transition-colors">The home guide</a>
+      <a href="#faq" class="hover:text-[#FFBD40] transition-colors">FAQs</a>
     </nav>
-    <a href="#session-dates" class="kids-btn kids-btn-gold" style="height: 41px; padding-inline: 18px; font-size: 11px; gap: 12px;">
-      Choose a Session Date
-      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    <a href="#session-dates" class="inline-flex items-center gap-3 rounded-full bg-[#FFBD40] px-5 py-2.5 text-xs font-bold text-black hover:brightness-95 transition flex-shrink-0">
+      Choose a Session Date →
     </a>
   </div>
 </header>
