@@ -119,7 +119,9 @@ const sessionDates = [
 
       const conf = document.getElementById('confirmation')
       conf.classList.remove('hidden')
-      conf.focus({ preventScroll: true })
+      setTimeout(() => {
+        conf.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
     })
   })
 
