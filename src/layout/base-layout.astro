@@ -60,6 +60,7 @@ const { cookiesSettingsLink, termsOfServiceLink, privacyPolicyLink } =
 			name='generator'
 			content={Astro.generator}
 		/>
+		<slot name="head" />
 
 		<title>
 			{title ?? 'The Money Wit | Dogwood and Oaks - Financial Literacy Nigeria'}
