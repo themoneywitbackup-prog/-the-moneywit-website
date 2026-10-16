@@ -12,21 +12,21 @@ const faqs = [
 <section class="py-24 md:py-32 px-6 bg-white/5 border-t border-white/10" id="faq">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16">
     <div>
-      <div class="flex items-center gap-4 text-[10px] font-semibold text-white/50 mb-6">
+      <div class="flex items-center gap-4 text-[10px] font-semibold text-black/50 mb-6">
         <span class="text-[#FFBD40] text-xs pr-4 border-r border-[#FFBD40]/40">08</span>
         A FEW THINGS YOU MAY BE WONDERING
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Questions,<br />Answered.</h2>
-      <p class="text-sm text-white/60">For parents and guardians.</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-black mb-4">Questions,<br />Answered.</h2>
+      <p class="text-sm text-black/60">For parents and guardians.</p>
     </div>
     <div>
       {faqs.map(([question, answer]) => (
         <details class="border-b border-white/10 first:border-t first:border-white/10 group">
-          <summary class="flex items-center justify-between gap-5 py-5 text-sm text-white cursor-pointer list-none">
+          <summary class="flex items-center justify-between gap-5 py-5 text-sm text-black cursor-pointer list-none">
             {question}
             <span class="text-[#FFBD40] flex-shrink-0 transition-transform group-open:rotate-180">▾</span>
           </summary>
-          <p class="text-sm text-white/55 pb-5">{answer}</p>
+          <p class="text-sm text-black/55 pb-5">{answer}</p>
         </details>
       ))}
     </div>
